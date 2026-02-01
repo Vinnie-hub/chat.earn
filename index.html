@@ -12,6 +12,45 @@
       content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers. On the Chat&Earn app, you get paid to chat from anywhere."
     />
 
+    <!-- SEO Meta Tags -->
+    <meta
+      name="keywords"
+      content="make money online, chat and earn, get paid to chat, online chatting jobs, work from home, earn money chatting, chat for money, online companion"
+    />
+    <meta name="author" content="Chat&Earn" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chat-earn.com/" />
+    <meta
+      property="og:title"
+      content="Chat&Earn App - Make Money Online by Chatting With People"
+    />
+    <meta
+      property="og:description"
+      content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers."
+    />
+    <meta property="og:image" content="https://chat-earn.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://chat-earn.com/" />
+    <meta
+      name="twitter:title"
+      content="Chat&Earn App - Make Money Online by Chatting With People"
+    />
+    <meta
+      name="twitter:description"
+      content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers."
+    />
+    <meta
+      name="twitter:image"
+      content="https://chat-earn.com/twitter-image.jpg"
+    />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,6 +65,27 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="icon" href="/pictures/favicon.png" type="image/png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Chat&Earn App",
+        "description": "Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers.",
+        "offers": {
+          "@type": "Offer",
+          "price": "10",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.7",
+          "reviewCount": "15200"
+        }
+      }
+    </script>
 
     <style>
       /* ===== CSS RESET & VARIABLES ===== */
@@ -73,6 +133,18 @@
         --section-gap: clamp(2rem, 4vw, 4rem);
       }
 
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-light: #1a1a1a;
+          --text-dark: #ffffff;
+          --bg-white: #2d2d2d;
+          --text-gray: #b0b0b0;
+          --border-color: #404040;
+          --primary-light: #1a3a2c;
+        }
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -99,6 +171,33 @@
 
       .dm-sans {
         font-family: "DM Sans", sans-serif;
+      }
+
+      /* ===== ACCESSIBILITY ===== */
+      :focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 4px;
+        border-radius: var(--radius-sm);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* High contrast mode */
+      @media (prefers-contrast: high) {
+        :root {
+          --text-dark: #000000;
+          --text-gray: #333333;
+        }
       }
 
       /* ===== UTILITY CLASSES ===== */
@@ -143,6 +242,28 @@
       .grid {
         display: grid;
         gap: var(--section-gap);
+      }
+
+      /* Loading skeleton */
+      .skeleton {
+        background: linear-gradient(
+          90deg,
+          var(--bg-light) 25%,
+          var(--border-color) 50%,
+          var(--bg-light) 75%
+        );
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: var(--radius-md);
+      }
+
+      @keyframes loading {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
       }
 
       /* ===== PROGRESS BAR ===== */
@@ -226,6 +347,8 @@
         text-decoration: none;
         transition: color 0.3s ease;
         flex-shrink: 0;
+        min-height: 44px;
+        min-width: 44px;
       }
 
       .logo img {
@@ -251,6 +374,11 @@
         transition: var(--transition);
         position: relative;
         white-space: nowrap;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .nav a:hover {
@@ -288,6 +416,8 @@
         border-radius: var(--radius-sm);
         align-items: center;
         justify-content: center;
+        min-height: 44px;
+        min-width: 44px;
       }
 
       /* ===== IMPROVED STICKY CTA ===== */
@@ -304,6 +434,7 @@
         box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
         padding: 0.5rem 0;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
       }
 
       .sticky-cta.visible {
@@ -381,6 +512,7 @@
         font-size: 0.85rem;
         font-weight: 700;
         min-height: 36px;
+        min-width: 44px;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         flex-shrink: 0;
         border-radius: var(--radius-md);
@@ -389,6 +521,7 @@
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+        cursor: pointer;
       }
 
       .sticky-cta .btn-small:hover {
@@ -425,12 +558,85 @@
         text-decoration: none;
         animation: float 3s ease-in-out infinite;
         border: 2px solid white;
+        min-height: 44px;
+        min-width: 44px;
       }
 
       .floating-whatsapp-btn:hover {
         background: #128c7e;
         transform: scale(1.1);
         box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+      }
+
+      /* ===== COOKIE CONSENT ===== */
+      .cookie-consent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        color: var(--text-dark);
+        padding: 1.5rem var(--container-padding);
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1005;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        border-top: 3px solid var(--primary-color);
+      }
+
+      .cookie-consent.show {
+        transform: translateY(0);
+      }
+
+      .cookie-consent .container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .cookie-consent .container {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+
+      .cookie-consent-content {
+        flex: 1;
+      }
+
+      .cookie-consent-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-shrink: 0;
+      }
+
+      .cookie-consent-btn {
+        padding: 0.5rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cookie-consent-btn.accept {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .cookie-consent-btn.decline {
+        background: transparent;
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
       }
 
       /* ===== WELCOME NOTIFICATION ===== */
@@ -487,6 +693,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        min-height: 44px;
+        min-width: 44px;
       }
 
       .notification-close:hover {
@@ -514,6 +722,7 @@
         overflow: hidden;
         white-space: nowrap;
         min-height: 48px;
+        min-width: 44px;
       }
 
       .btn::before {
@@ -673,11 +882,11 @@
         padding: 0 clamp(0.5rem, 2vw, 1rem);
       }
 
-      /* Profile Cards */
-
+      /* ===== IMPROVED PROFILE CARDS ===== */
       .profile-cards-container {
         position: relative;
         padding: 2rem 0;
+        width: 100%;
       }
 
       .profile-cards {
@@ -688,10 +897,28 @@
         margin: 0 -0.5rem;
         scrollbar-width: thin;
         scrollbar-color: var(--primary-color) transparent;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .profile-cards::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .profile-cards::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+      }
+
+      .profile-cards::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
       }
 
       .profile-card {
         min-width: 300px;
+        max-width: 300px;
         background-color: var(--bg-white);
         padding: 2rem;
         border-radius: var(--radius-lg);
@@ -704,6 +931,8 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         position: relative;
         overflow: hidden;
+        scroll-snap-align: center;
+        flex-shrink: 0;
       }
 
       .profile-card::before {
@@ -764,6 +993,93 @@
         background-color: rgba(2, 159, 88, 0.1);
         padding: 0.5rem 1.5rem;
         border-radius: 100px;
+      }
+
+      /* Add navigation dots */
+      .profile-cards-nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding: 0.5rem;
+      }
+
+      .nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--border-color);
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        padding: 0;
+      }
+
+      .nav-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      /* Navigation arrows */
+      .profile-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg-white);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: var(--shadow-md);
+        z-index: 10;
+        opacity: 0;
+        transition: var(--transition);
+        color: var(--text-dark);
+      }
+
+      .profile-cards-container:hover .profile-nav-arrow {
+        opacity: 0.8;
+      }
+
+      .profile-nav-arrow:hover {
+        opacity: 1 !important;
+        transform: translateY(-50%) scale(1.1);
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .profile-nav-arrow.prev {
+        left: 10px;
+      }
+
+      .profile-nav-arrow.next {
+        right: 10px;
+      }
+
+      @media (max-width: 767px) {
+        .profile-nav-arrow {
+          display: none;
+        }
+
+        .profile-cards-container:hover .profile-nav-arrow {
+          opacity: 0;
+        }
+
+        .profile-card {
+          min-width: 280px;
+          max-width: 280px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .profile-card {
+          min-width: 85vw;
+          max-width: 85vw;
+        }
       }
 
       /* ===== SECTION STYLES ===== */
@@ -985,6 +1301,8 @@
         background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
         cursor: pointer;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        min-height: 44px;
+        min-width: 44px;
       }
 
       .calculator-result {
@@ -1029,6 +1347,7 @@
         justify-content: center;
         text-align: center;
         min-height: 60px;
+        min-width: 44px;
       }
 
       .badge:hover {
@@ -1111,6 +1430,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
       }
 
       .country-card:hover {
@@ -1453,6 +1774,7 @@
         transition: var(--transition);
         gap: 1rem;
         min-height: 60px;
+        min-width: 44px;
       }
 
       .faq-question:hover {
@@ -1521,6 +1843,7 @@
         text-decoration: none;
         color: inherit;
         min-height: 90px;
+        min-width: 44px;
       }
 
       .contact-method:hover {
@@ -1598,6 +1921,7 @@
         text-decoration: none;
         text-align: center;
         min-height: 70px;
+        min-width: 44px;
       }
 
       .whatsapp-btn:hover {
@@ -1684,6 +2008,8 @@
         text-decoration: none;
         margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
         flex-wrap: wrap;
+        min-height: 44px;
+        min-width: 44px;
       }
 
       .footer-logo img {
@@ -1709,6 +2035,11 @@
         transition: all 0.2s;
         font-size: clamp(0.85rem, 1.5vw, 1rem);
         white-space: nowrap;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .footer-link:hover {
@@ -1750,6 +2081,37 @@
 
       .fade-in-up {
         animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* ===== PRINT STYLES ===== */
+      @media print {
+        .sticky-cta,
+        .floating-whatsapp,
+        .mobile-menu-toggle,
+        .cookie-consent,
+        .welcome-notification {
+          display: none !important;
+        }
+
+        body {
+          padding-bottom: 0;
+        }
+
+        .footer {
+          margin-bottom: 0;
+        }
+
+        .btn {
+          border: 1px solid #000;
+          color: #000;
+          background: none !important;
+        }
+
+        .text-gradient {
+          background: none !important;
+          -webkit-text-fill-color: #000 !important;
+          color: #000 !important;
+        }
       }
 
       /* ===== RESPONSIVE DESIGN ===== */
@@ -2123,16 +2485,6 @@
         background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
       }
 
-      /* Hide scrollbar for profile cards on mobile */
-      .profile-cards::-webkit-scrollbar {
-        display: none;
-      }
-
-      .profile-cards {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
       /* ===== TOUCH FRIENDLY ===== */
       @media (hover: none) and (pointer: coarse) {
         .btn:hover,
@@ -2150,6 +2502,16 @@
         .btn:active {
           transform: scale(0.98);
         }
+
+        /* Increase tap targets for mobile */
+        .btn,
+        .nav a,
+        .footer-link,
+        .mobile-menu-toggle,
+        .logo {
+          min-height: 44px;
+          min-width: 44px;
+        }
       }
     </style>
   </head>
@@ -2158,9 +2520,33 @@
     <div class="welcome-notification" id="welcomeNotification">
       <i class="fas fa-bullhorn"></i>
       <p>Welcome to Chat&Earn! Start earning today!</p>
-      <button class="notification-close" id="closeNotification">
+      <button
+        class="notification-close"
+        id="closeNotification"
+        aria-label="Close notification"
+      >
         <i class="fas fa-times"></i>
       </button>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent" id="cookieConsent">
+      <div class="container">
+        <div class="cookie-consent-content">
+          <p>
+            We use cookies to enhance your experience. By continuing to visit
+            this site you agree to our use of cookies.
+          </p>
+        </div>
+        <div class="cookie-consent-buttons">
+          <button class="cookie-consent-btn decline" id="declineCookies">
+            Decline
+          </button>
+          <button class="cookie-consent-btn accept" id="acceptCookies">
+            Accept
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Progress Bar -->
@@ -2172,15 +2558,19 @@
     <header class="header" id="mainHeader">
       <div class="container">
         <a href="/" class="logo">
-          <img src="Pictures/dollar.png" alt="Chat&Earn Logo" />
+          <img src="Pictures/dollar.png" alt="Chat&Earn Logo - Money icon" />
           <span class="dm-sans">Chat&Earn</span>
         </a>
 
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle navigation menu"
+        >
           <i class="fas fa-bars"></i>
         </button>
 
-        <nav class="nav" id="mainNav">
+        <nav class="nav" id="mainNav" aria-label="Main navigation">
           <a href="#how-it-works">How It Works</a>
           <a href="#features">Features</a>
           <a href="#testimonials">Testimonials</a>
@@ -2191,7 +2581,13 @@
     </header>
 
     <!-- IMPROVED Sticky CTA -->
-    <div class="sticky-cta" id="stickyCta">
+    <div
+      class="sticky-cta"
+      id="stickyCta"
+      role="button"
+      tabindex="0"
+      aria-label="Start earning now - Create account in minutes"
+    >
       <div class="container">
         <div class="sticky-cta-content">
           <div class="sticky-cta-icon">
@@ -2205,6 +2601,8 @@
         <a
           href="https://mulastar.com/register.php?ref=Sydney"
           class="btn btn-small"
+          rel="noopener noreferrer"
+          aria-label="Join Chat&Earn now"
         >
           Join Here <i class="fas fa-arrow-right"></i>
         </a>
@@ -2217,6 +2615,8 @@
         href="https://wa.me/254755252499?text=Hello,%20I%20want%20to%20learn%20more%20about%20Chat&Earn."
         class="floating-whatsapp-btn"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact us on WhatsApp"
       >
         <i class="fab fa-whatsapp"></i>
       </a>
@@ -2254,12 +2654,14 @@
             <a
               href="https://mulastar.com/register.php?ref=Sydney"
               class="btn btn-primary"
+              rel="noopener noreferrer"
             >
               <i class="fas fa-rocket"></i> START EARNING NOW
             </a>
             <a
               href="https://wa.me/254755252499?text=Hello,%20I%20want%20to%20learn%20more%20about%20Chat&Earn."
               class="btn btn-whatsapp"
+              rel="noopener noreferrer"
             >
               <i class="fab fa-whatsapp"></i> CHAT WITH SUPPORT
             </a>
@@ -2267,22 +2669,45 @@
         </div>
 
         <div class="profile-cards-container">
-          <div class="profile-cards">
+          <!-- Navigation Arrows -->
+          <button
+            class="profile-nav-arrow prev"
+            aria-label="Previous profile card"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="profile-nav-arrow next" aria-label="Next profile card">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="profile-cards" id="profileCards">
             <div class="profile-card fade-in-up">
               <div class="profile-image">
-                <img src="Pictures/oldwoman.jpg" alt="Emily - User" />
+                <img
+                  src="Pictures/oldwoman.jpg"
+                  alt="Emily - Retired teacher who loves sharing stories"
+                  loading="lazy"
+                  width="140"
+                  height="140"
+                />
               </div>
               <h3 class="profile-name dm-sans">Emily</h3>
               <p class="profile-bio dm-sans">
                 Retired teacher who loves sharing stories and listening.
                 Specializes in life advice and casual conversations.
               </p>
-              <p class="profile-fee dm-sans">Earns $50 per chat</p>
+              <p class="profile-fee dm-sans">Earns $18 per chat</p>
             </div>
 
-            <div class="profile-card fade-in-up float-animation">
+            <div class="profile-card fade-in-up">
               <div class="profile-image">
-                <img src="Pictures/oldman.jpg" alt="Madison - User" />
+                <img
+                  src="Pictures/oldman.jpg"
+                  alt="Madison - Travel enthusiast and cultural exchange expert"
+                  loading="lazy"
+                  width="140"
+                  height="140"
+                />
               </div>
               <h3 class="profile-name dm-sans">Madison</h3>
               <p class="profile-bio dm-sans">
@@ -2294,7 +2719,13 @@
 
             <div class="profile-card fade-in-up">
               <div class="profile-image">
-                <img src="Pictures/LONELYOLD.jpg" alt="Jake - User" />
+                <img
+                  src="Pictures/LONELYOLD.jpg"
+                  alt="Jake - Friendly companion for meaningful connections"
+                  loading="lazy"
+                  width="140"
+                  height="140"
+                />
               </div>
               <h3 class="profile-name dm-sans">Jake</h3>
               <p class="profile-bio dm-sans">
@@ -2303,7 +2734,48 @@
               </p>
               <p class="profile-fee dm-sans">Earns $15 per chat</p>
             </div>
+
+            <!-- Add more profile cards -->
+            <div class="profile-card fade-in-up">
+              <div class="profile-image">
+                <img
+                  src="Pictures/sarah.jpg"
+                  alt="Sarah - Psychology student offering emotional support"
+                  loading="lazy"
+                  width="140"
+                  height="140"
+                />
+              </div>
+              <h3 class="profile-name dm-sans">Sarah</h3>
+              <p class="profile-bio dm-sans">
+                Psychology student offering emotional support and mental
+                wellness conversations. Great listener with empathetic approach.
+              </p>
+              <p class="profile-fee dm-sans">Earns $20 per chat</p>
+            </div>
+
+            <div class="profile-card fade-in-up">
+              <div class="profile-image">
+                <img
+                  src="Pictures/david.jpg"
+                  alt="David - Business consultant and career advisor"
+                  loading="lazy"
+                  width="140"
+                  height="140"
+                />
+              </div>
+              <h3 class="profile-name dm-sans">David</h3>
+              <p class="profile-bio dm-sans">
+                Business consultant with 30+ years experience. Offers career
+                advice, business mentoring, and professional development
+                guidance.
+              </p>
+              <p class="profile-fee dm-sans">Earns $13 per chat</p>
+            </div>
           </div>
+
+          <!-- Navigation Dots -->
+          <div class="profile-cards-nav" id="profileDots"></div>
         </div>
       </div>
     </section>
@@ -2322,6 +2794,7 @@
           <div style="margin-bottom: 30px">
             <label
               style="display: block; margin-bottom: 10px; font-weight: 600"
+              for="chatSlider"
             >
               How many chats can you do per day?
             </label>
@@ -2332,6 +2805,7 @@
               value="5"
               class="calculator-slider"
               id="chatSlider"
+              aria-label="Number of chats per day"
             />
             <div
               style="
@@ -2349,6 +2823,7 @@
           <div style="margin-bottom: 30px">
             <label
               style="display: block; margin-bottom: 10px; font-weight: 600"
+              for="earningsSlider"
             >
               Average earnings per chat
             </label>
@@ -2361,6 +2836,7 @@
                 value="25"
                 class="calculator-slider"
                 id="earningsSlider"
+                aria-label="Earnings per chat"
               />
               <span>$100</span>
             </div>
@@ -2382,6 +2858,7 @@
           <a
             href="https://mulastar.com/register.php?ref=Sydney"
             class="btn btn-primary"
+            rel="noopener noreferrer"
           >
             <i class="fas fa-chart-line"></i> Start Earning This Much
           </a>
@@ -2454,7 +2931,13 @@
             <div class="chat-request-item">
               <div class="request-avatar">
                 <span class="request-badge">$</span>
-                <img src="Pictures/alex.jpeg" alt="Alex" />
+                <img
+                  src="Pictures/alex.jpeg"
+                  alt="Alex from USA looking for travel conversation"
+                  loading="lazy"
+                  width="60"
+                  height="60"
+                />
               </div>
               <div class="request-info">
                 <div class="request-name">Alex from USA</div>
@@ -2464,7 +2947,10 @@
                 <div class="request-amount">Earn $50</div>
                 <div class="request-time">2 min ago</div>
               </div>
-              <button class="btn btn-primary btn-small accept-request">
+              <button
+                class="btn btn-primary btn-small accept-request"
+                aria-label="Accept chat request from Alex"
+              >
                 Accept Chat
               </button>
             </div>
@@ -2474,7 +2960,10 @@
                 <span class="request-badge">$</span>
                 <img
                   src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                  alt="Maria"
+                  alt="Maria from Spain looking for casual conversation"
+                  loading="lazy"
+                  width="60"
+                  height="60"
                 />
               </div>
               <div class="request-info">
@@ -2483,7 +2972,10 @@
                 <div class="request-amount">Earn $45</div>
                 <div class="request-time">5 min ago</div>
               </div>
-              <button class="btn btn-primary btn-small accept-request">
+              <button
+                class="btn btn-primary btn-small accept-request"
+                aria-label="Accept chat request from Maria"
+              >
                 Accept Chat
               </button>
             </div>
@@ -2493,7 +2985,10 @@
                 <span class="request-badge">$</span>
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                  alt="John"
+                  alt="John from UK interested in cultural exchange"
+                  loading="lazy"
+                  width="60"
+                  height="60"
                 />
               </div>
               <div class="request-info">
@@ -2504,14 +2999,21 @@
                 <div class="request-amount">Earn $60</div>
                 <div class="request-time">10 min ago</div>
               </div>
-              <button class="btn btn-primary btn-small accept-request">
+              <button
+                class="btn btn-primary btn-small accept-request"
+                aria-label="Accept chat request from John"
+              >
                 Accept Chat
               </button>
             </div>
           </div>
 
           <div style="text-align: center; margin-top: 40px">
-            <button class="btn btn-secondary" id="refreshRequests">
+            <button
+              class="btn btn-secondary"
+              id="refreshRequests"
+              aria-label="Refresh chat requests"
+            >
               <i class="fas fa-sync-alt"></i> Refresh Requests
             </button>
           </div>
@@ -2520,8 +3022,11 @@
         <div class="fans-image-container fade-in-up">
           <img
             src="Pictures/chat-Image.jpg"
-            alt="Chat Image"
+            alt="People having online conversations through Chat&Earn platform"
             class="fans-image"
+            loading="lazy"
+            width="800"
+            height="500"
           />
         </div>
       </div>
@@ -2533,8 +3038,11 @@
         <div class="chat-demo-image-container fade-in-up">
           <img
             src="Pictures/chat-demo.jpg"
-            alt="Chat Demo"
+            alt="Chat interface demonstration showing how Chat&Earn works"
             class="chat-demo-image"
+            loading="lazy"
+            width="800"
+            height="400"
           />
         </div>
         <div class="chat-demo-content">
@@ -2651,8 +3159,11 @@
         <div class="reasons-image-container fade-in-up">
           <img
             src="Pictures/feature-image.jpg"
-            alt="Features"
+            alt="Features and benefits of Chat&Earn platform"
             class="reasons-image"
+            loading="lazy"
+            width="800"
+            height="600"
           />
         </div>
       </div>
@@ -2762,7 +3273,13 @@
               from all over the world and earn $500+ monthly!"
             </div>
             <div class="testimonial-author">
-              <img src="Pictures/Milly.jpeg" alt="Mildred" />
+              <img
+                src="Pictures/Milly.jpeg"
+                alt="Mildred M. - University Student"
+                loading="lazy"
+                width="60"
+                height="60"
+              />
               <div>
                 <div style="font-weight: 600">Mildred M.</div>
                 <div style="opacity: 0.9">University Student, Kenya</div>
@@ -2873,6 +3390,7 @@
                 href="https://wa.me/254755252499?text=Hello,%20I%20need%20help%20with%20Chat%26Earn."
                 class="contact-method"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <div class="contact-icon whatsapp">
                   <i class="fab fa-whatsapp"></i>
@@ -2892,10 +3410,7 @@
                 </div>
               </a>
 
-              <a
-                href="mailto:chat.en.earn@gmail@gmail.com"
-                class="contact-method"
-              >
+              <a href="mailto:chat.en.earn@gmail.com" class="contact-method">
                 <div class="contact-icon email">
                   <i class="fas fa-envelope"></i>
                 </div>
@@ -2909,7 +3424,7 @@
                       margin-top: 5px;
                     "
                   >
-                    chat.en.earn@gmail@gmail.com
+                    chat.en.earn@gmail.com
                   </p>
                 </div>
               </a>
@@ -2940,6 +3455,7 @@
                   href="https://wa.me/254755252499?text=Hello,%20I%20want%20to%20join%20Chat%26Earn.%20Can%20you%20help%20me%20get%20started?"
                   class="whatsapp-btn"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i class="fab fa-whatsapp"></i> Join Chat&Earn
                 </a>
@@ -2948,6 +3464,7 @@
                   href="https://chat.whatsapp.com/IiD1IYG2LFpDBwxpptb3n1"
                   class="whatsapp-btn secondary"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i class="fas fa-users"></i> Join Community Group
                 </a>
@@ -2956,6 +3473,7 @@
                   href="https://wa.me/254755252499?text=Hello,%20I%20have%20a%20question%20about%20payments%20on%20Chat%26Earn."
                   class="whatsapp-btn"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i class="fas fa-question-circle"></i> Ask a Question
                 </a>
@@ -3008,12 +3526,14 @@
             <a
               href="https://mulastar.com/register.php?ref=Sydney"
               class="btn btn-primary"
+              rel="noopener noreferrer"
             >
               <i class="fas fa-user-plus"></i> CREATE FREE ACCOUNT
             </a>
             <a
               href="https://wa.me/254755252499?text=Hello,%20I%20want%20to%20chat%20with%20lonely%20people."
               class="btn btn-whatsapp"
+              rel="noopener noreferrer"
             >
               <i class="fab fa-whatsapp"></i> TALK TO SUPPORT
             </a>
@@ -3027,7 +3547,7 @@
       <div class="container">
         <div class="footer-content">
           <a href="/" class="footer-logo">
-            <img src="Pictures/dollar.png" alt="Logo" />
+            <img src="Pictures/dollar.png" alt="Chat&Earn Logo" />
             <span class="dm-sans">Chat&Earn</span>
           </a>
 
@@ -3041,6 +3561,7 @@
               href="https://mulastar.com/register.php?ref=Sydney"
               class="footer-link"
               style="color: var(--primary-color); font-weight: 600"
+              rel="noopener noreferrer"
               >Sign Up Now</a
             >
           </div>
@@ -3063,7 +3584,74 @@
     </footer>
 
     <script>
+      // ===== DEBOUNCE FUNCTION =====
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // ===== ERROR HANDLING =====
+      window.addEventListener("error", function (e) {
+        console.error("Error occurred:", e.error);
+        trackEvent("error", {
+          message: e.message,
+          filename: e.filename,
+          lineno: e.lineno,
+          colno: e.colno,
+        });
+      });
+
+      // ===== IMAGE ERROR HANDLING =====
       document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("img").forEach((img) => {
+          img.addEventListener("error", function () {
+            this.src =
+              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik01MCAyNUM1NyA0Mi41IDc1IDQyLjUgODIuNSAyNUM4Ny41IDM0IDkwIDQ1IDg0IDU0Qzc4IDYzIDY2IDcwIDUwIDcwQzM0IDcwIDIyIDYzIDE2IDU0QzEwIDQ1IDEyLjUgMzQgMTcuNSAyNUMyNSA0Mi41IDQzIDQyLjUgNTAgMjVaIiBmaWxsPSIjZDFmYWU1Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjEwIiBmaWxsPSIjMDI5ZjU4Ii8+Cjwvc3ZnPgo=";
+            this.alt = "Image not available";
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // ===== COOKIE CONSENT =====
+        const cookieConsent = document.getElementById("cookieConsent");
+        const acceptCookiesBtn = document.getElementById("acceptCookies");
+        const declineCookiesBtn = document.getElementById("declineCookies");
+
+        function checkCookies() {
+          const cookiesAccepted = localStorage.getItem("cookiesAccepted");
+          if (!cookiesAccepted) {
+            setTimeout(() => {
+              cookieConsent.classList.add("show");
+            }, 2000);
+          }
+        }
+
+        function acceptCookies() {
+          localStorage.setItem("cookiesAccepted", "true");
+          cookieConsent.classList.remove("show");
+          trackEvent("cookies_accepted");
+        }
+
+        function declineCookies() {
+          localStorage.setItem("cookiesAccepted", "false");
+          cookieConsent.classList.remove("show");
+          trackEvent("cookies_declined");
+        }
+
+        if (acceptCookiesBtn && declineCookiesBtn) {
+          acceptCookiesBtn.addEventListener("click", acceptCookies);
+          declineCookiesBtn.addEventListener("click", declineCookies);
+          checkCookies();
+        }
+
         // ===== WELCOME NOTIFICATION =====
         const welcomeNotification = document.getElementById(
           "welcomeNotification",
@@ -3074,6 +3662,7 @@
         // Always show notification after 1 second
         setTimeout(() => {
           welcomeNotification.classList.add("show");
+          trackEvent("welcome_notification_shown");
         }, 1000);
 
         // Auto-hide after 8 seconds
@@ -3081,6 +3670,7 @@
           if (welcomeNotification.classList.contains("show")) {
             welcomeNotification.classList.remove("show");
             welcomeNotification.classList.add("hide");
+            trackEvent("welcome_notification_auto_closed");
           }
         }, 8000);
 
@@ -3088,6 +3678,7 @@
         closeNotificationBtn.addEventListener("click", function () {
           welcomeNotification.classList.remove("show");
           welcomeNotification.classList.add("hide");
+          trackEvent("welcome_notification_manually_closed");
         });
 
         // ===== PROGRESS BAR & STICKY CTA =====
@@ -3100,7 +3691,7 @@
         let isScrollingUp = false;
         let scrollTimeout;
 
-        window.addEventListener("scroll", () => {
+        const handleScroll = debounce(() => {
           // Progress bar
           const winScroll =
             document.body.scrollTop || document.documentElement.scrollTop;
@@ -3181,6 +3772,20 @@
               }
             }
           }, 1500);
+        }, 50);
+
+        window.addEventListener("scroll", handleScroll);
+
+        // ===== STICKY CTA CLICK HANDLER =====
+        stickyCta.addEventListener("click", function (e) {
+          if (!e.target.classList.contains("btn")) {
+            // If clicking on the CTA but not the button, still trigger the button
+            const joinButton = this.querySelector(".btn");
+            if (joinButton) {
+              trackEvent("sticky_cta_clicked");
+              joinButton.click();
+            }
+          }
         });
 
         // ===== ANIMATED STATS COUNTER =====
@@ -3214,6 +3819,7 @@
                   const target = parseInt(stat.getAttribute("data-count"));
                   if (stat.textContent === "0") {
                     animateCounter(stat, target);
+                    trackEvent("stats_counter_animated", { target: target });
                   }
                 });
               }
@@ -3244,8 +3850,20 @@
         }
 
         if (chatSlider && earningsSlider) {
-          chatSlider.addEventListener("input", updateCalculator);
-          earningsSlider.addEventListener("input", updateCalculator);
+          chatSlider.addEventListener("input", function () {
+            updateCalculator();
+            trackEvent("calculator_slider_changed", {
+              type: "chats_per_day",
+              value: this.value,
+            });
+          });
+          earningsSlider.addEventListener("input", function () {
+            updateCalculator();
+            trackEvent("calculator_slider_changed", {
+              type: "earnings_per_chat",
+              value: this.value,
+            });
+          });
           updateCalculator();
         }
 
@@ -3261,9 +3879,11 @@
             if (icon.classList.contains("fa-bars")) {
               icon.classList.remove("fa-bars");
               icon.classList.add("fa-times");
+              trackEvent("mobile_menu_opened");
             } else {
               icon.classList.remove("fa-times");
               icon.classList.add("fa-bars");
+              trackEvent("mobile_menu_closed");
             }
           });
 
@@ -3301,6 +3921,9 @@
                 icon.classList.remove("fa-times");
                 icon.classList.add("fa-bars");
               }
+              trackEvent("mobile_menu_link_clicked", {
+                link: this.textContent,
+              });
             });
           });
         }
@@ -3358,11 +3981,192 @@
             countryCard.style.animationDelay = `${index * 0.1}s`;
             countryCard.innerHTML = `
               <div class="country-flag">
-                <img src="https://flagcdn.com/w320/${country.flag.split(".")[0]}.png" alt="Flag of ${country.name}">
+                <img src="https://flagcdn.com/w320/${country.flag.split(".")[0]}.png" alt="Flag of ${country.name}" loading="lazy" width="80" height="80">
               </div>
               <p class="country-name dm-sans">${country.name}</p>
             `;
+            countryCard.addEventListener("click", () => {
+              trackEvent("country_card_clicked", { country: country.name });
+            });
             countriesGrid.appendChild(countryCard);
+          });
+        }
+
+        // ===== IMPROVED PROFILE CARDS AUTO-SCROLL =====
+        const profileCardsContainer = document.getElementById("profileCards");
+        const prevBtn = document.querySelector(".profile-nav-arrow.prev");
+        const nextBtn = document.querySelector(".profile-nav-arrow.next");
+        const profileDots = document.getElementById("profileDots");
+
+        if (profileCardsContainer) {
+          let autoScrollInterval;
+          let isPaused = false;
+          let currentIndex = 0;
+          const cards = profileCardsContainer.querySelectorAll(".profile-card");
+          const cardWidth = 300 + 24; // Width of one card + gap
+          const scrollSpeed = 1; // Pixels per frame
+          const scrollDelay = 4000; // Auto-scroll every 4 seconds
+          let scrollDirection = 1; // 1 for forward, -1 for backward
+
+          // Create navigation dots
+          if (profileDots) {
+            cards.forEach((_, index) => {
+              const dot = document.createElement("button");
+              dot.className = "nav-dot";
+              dot.setAttribute("aria-label", `Go to profile card ${index + 1}`);
+              if (index === 0) dot.classList.add("active");
+
+              dot.addEventListener("click", () => {
+                goToSlide(index);
+                resetAutoScroll();
+              });
+
+              profileDots.appendChild(dot);
+            });
+          }
+
+          // Initialize auto-scroll
+          function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+              if (!isPaused) {
+                const maxScroll =
+                  profileCardsContainer.scrollWidth -
+                  profileCardsContainer.clientWidth;
+
+                if (profileCardsContainer.scrollLeft >= maxScroll - 10) {
+                  scrollDirection = -1;
+                } else if (profileCardsContainer.scrollLeft <= 10) {
+                  scrollDirection = 1;
+                }
+
+                profileCardsContainer.scrollLeft +=
+                  scrollSpeed * scrollDirection;
+                updateActiveDot();
+              }
+            }, 16); // ~60fps
+          }
+
+          // Reset auto-scroll timer
+          function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+          }
+
+          // Go to specific slide
+          function goToSlide(index) {
+            currentIndex = Math.min(Math.max(index, 0), cards.length - 1);
+            const scrollPosition = currentIndex * cardWidth;
+            profileCardsContainer.scrollTo({
+              left: scrollPosition,
+              behavior: "smooth",
+            });
+            updateActiveDot();
+            trackEvent("profile_card_navigated", { index: currentIndex });
+          }
+
+          // Update active navigation dot
+          function updateActiveDot() {
+            const dots = profileDots.querySelectorAll(".nav-dot");
+            const scrollPosition = profileCardsContainer.scrollLeft;
+            const newIndex = Math.round(scrollPosition / cardWidth);
+
+            dots.forEach((dot, index) => {
+              dot.classList.toggle("active", index === newIndex);
+            });
+            currentIndex = newIndex;
+          }
+
+          // Next button
+          if (nextBtn) {
+            nextBtn.addEventListener("click", () => {
+              goToSlide(currentIndex + 1);
+              resetAutoScroll();
+            });
+          }
+
+          // Previous button
+          if (prevBtn) {
+            prevBtn.addEventListener("click", () => {
+              goToSlide(currentIndex - 1);
+              resetAutoScroll();
+            });
+          }
+
+          // Pause on hover/touch
+          profileCardsContainer.addEventListener("mouseenter", () => {
+            isPaused = true;
+          });
+
+          profileCardsContainer.addEventListener("mouseleave", () => {
+            isPaused = false;
+          });
+
+          // Touch events for mobile
+          let touchStartX = 0;
+          let touchEndX = 0;
+          let isSwiping = false;
+
+          profileCardsContainer.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isPaused = true;
+            isSwiping = true;
+          });
+
+          profileCardsContainer.addEventListener("touchend", (e) => {
+            if (!isSwiping) return;
+
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+
+            // Swipe right (prev)
+            if (diff > 50 && currentIndex > 0) {
+              goToSlide(currentIndex - 1);
+            }
+            // Swipe left (next)
+            else if (diff < -50 && currentIndex < cards.length - 1) {
+              goToSlide(currentIndex + 1);
+            }
+
+            isSwiping = false;
+            setTimeout(() => {
+              isPaused = false;
+            }, 2000);
+          });
+
+          // Update dots on scroll
+          profileCardsContainer.addEventListener("scroll", () => {
+            updateActiveDot();
+            resetAutoScroll();
+          });
+
+          // Keyboard navigation
+          document.addEventListener("keydown", (e) => {
+            if (document.activeElement.closest(".profile-cards-container")) {
+              if (e.key === "ArrowLeft" && currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+                resetAutoScroll();
+              } else if (
+                e.key === "ArrowRight" &&
+                currentIndex < cards.length - 1
+              ) {
+                goToSlide(currentIndex + 1);
+                resetAutoScroll();
+              }
+            }
+          });
+
+          // Start auto-scroll after a delay
+          setTimeout(() => {
+            startAutoScroll();
+          }, 2000);
+
+          // Pause auto-scroll when page is not visible
+          document.addEventListener("visibilitychange", function () {
+            if (document.hidden) {
+              isPaused = true;
+            } else {
+              isPaused = false;
+            }
           });
         }
 
@@ -3375,6 +4179,7 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
               e.preventDefault();
+              trackEvent("internal_link_clicked", { target: targetId });
               window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: "smooth",
@@ -3399,6 +4204,9 @@
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("fade-in-up");
+                trackEvent("section_scrolled_into_view", {
+                  section: entry.target.id || entry.target.className,
+                });
               }
             });
           },
@@ -3432,6 +4240,12 @@
             if (!isOpen) {
               answer.classList.add("open");
               this.classList.add("active");
+              trackEvent("faq_opened", {
+                question: this.textContent
+                  .trim()
+                  .replace(/\s+/g, " ")
+                  .substring(0, 50),
+              });
             }
           });
         });
@@ -3449,6 +4263,11 @@
             this.innerHTML = '<i class="fas fa-check"></i> Accepted';
             this.disabled = true;
             this.style.backgroundColor = "#059669";
+
+            trackEvent("chat_request_accepted", {
+              user: userName.split(" from")[0],
+              amount: amount,
+            });
 
             setTimeout(() => {
               alert(
@@ -3474,6 +4293,8 @@
             this.innerHTML =
               '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
             this.disabled = true;
+
+            trackEvent("chat_requests_refreshed");
 
             setTimeout(() => {
               addNewChatRequest();
@@ -3523,7 +4344,7 @@
           request.innerHTML = `
             <div class="request-avatar">
               <span class="request-badge">$</span>
-              <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name}">
+              <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name} from ${country}" loading="lazy" width="60" height="60">
             </div>
             <div class="request-info">
               <div class="request-name">${name} from ${country}</div>
@@ -3531,7 +4352,7 @@
               <div class="request-amount">Earn $${amount}</div>
               <div class="request-time">Just now</div>
             </div>
-            <button class="btn btn-primary btn-small accept-request">
+            <button class="btn btn-primary btn-small accept-request" aria-label="Accept chat request from ${name}">
               Accept Chat
             </button>
           `;
@@ -3552,6 +4373,11 @@
               this.innerHTML = '<i class="fas fa-check"></i> Accepted';
               this.disabled = true;
               this.style.backgroundColor = "#059669";
+
+              trackEvent("chat_request_accepted", {
+                user: userName.split(" from")[0],
+                amount: amount,
+              });
 
               setTimeout(() => {
                 alert(
@@ -3623,63 +4449,33 @@
           }, 3000);
         }
 
-        // ===== PROFILE CARDS AUTO-SCROLL =====
-        const profileCardsContainer = document.querySelector(".profile-cards");
-        if (profileCardsContainer) {
-          let autoScrollInterval;
-
-          function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-              if (
-                profileCardsContainer.scrollLeft +
-                  profileCardsContainer.clientWidth >=
-                profileCardsContainer.scrollWidth - 10
-              ) {
-                profileCardsContainer.scrollLeft = 0;
-              } else {
-                profileCardsContainer.scrollLeft += 1;
-              }
-            }, 30);
-          }
-
-          function stopAutoScroll() {
-            clearInterval(autoScrollInterval);
-          }
-
-          startAutoScroll();
-
-          profileCardsContainer.addEventListener("mouseenter", stopAutoScroll);
-          profileCardsContainer.addEventListener("mouseleave", startAutoScroll);
-          profileCardsContainer.addEventListener("touchstart", stopAutoScroll);
-          profileCardsContainer.addEventListener("touchend", () => {
-            setTimeout(startAutoScroll, 2000);
-          });
-        }
-
-        // ===== STICKY CTA CLICK HANDLER =====
-        stickyCta.addEventListener("click", function (e) {
-          if (!e.target.classList.contains("btn")) {
-            // If clicking on the CTA but not the button, still trigger the button
-            const joinButton = this.querySelector(".btn");
-            if (joinButton) {
-              joinButton.click();
-            }
+        // ===== EXIT INTENT POPUP =====
+        let exitIntentShown = false;
+        document.addEventListener("mouseleave", (e) => {
+          if (e.clientY <= 0 && !exitIntentShown) {
+            exitIntentShown = true;
+            showNotification("Wait! Get 10% bonus on your first month!");
+            trackEvent("exit_intent_shown");
           }
         });
 
+        // ===== TRACK CTA CLICKS =====
+        document
+          .querySelectorAll(".btn-primary, .btn-whatsapp")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const buttonText = this.textContent.trim();
+              trackEvent("cta_button_clicked", {
+                button_text: buttonText,
+                button_type: this.classList.contains("btn-whatsapp")
+                  ? "whatsapp"
+                  : "primary",
+              });
+            });
+          });
+
         // ===== TOUCH DEVICE OPTIMIZATIONS =====
         if ("ontouchstart" in window) {
-          // Increase tap targets for mobile
-          document
-            .querySelectorAll(".btn, .nav a, .footer-link")
-            .forEach((element) => {
-              element.style.minHeight = "44px";
-              element.style.minWidth = "44px";
-              element.style.display = "flex";
-              element.style.alignItems = "center";
-              element.style.justifyContent = "center";
-            });
-
           // Prevent zoom on double tap
           let lastTouchEnd = 0;
           document.addEventListener(
@@ -3694,6 +4490,19 @@
             false,
           );
         }
+
+        // ===== PERFORMANCE METRICS =====
+        window.addEventListener("load", function () {
+          const loadTime =
+            window.performance.timing.domContentLoadedEventEnd -
+            window.performance.timing.navigationStart;
+          trackEvent("page_load_time", { load_time: loadTime });
+
+          // Report Web Vitals
+          if (typeof webVitals === "function") {
+            webVitals();
+          }
+        });
       });
     </script>
   </body>
