@@ -51,18 +51,26 @@
       content="https://chat-earn.com/twitter-image.jpg"
     />
 
-    <!-- Fonts -->
+    <!-- Performance Optimizations -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://flagcdn.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
+      crossorigin="anonymous"
     />
 
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
     />
     <link rel="icon" href="/pictures/favicon.png" type="image/png" />
 
@@ -90,7 +98,7 @@
     <style>
       /* ===== CSS RESET & VARIABLES ===== */
       :root {
-        /* Colors */
+        /* Light theme colors (default) */
         --primary-color: #029f58;
         --primary-dark: #007640;
         --primary-light: #e6f7ef;
@@ -110,6 +118,8 @@
         --bg-light: #fafafa;
         --bg-cream: #fdf6e3;
         --bg-white: #ffffff;
+        --bg-section: #ffffff;
+        --bg-section-alt: #f8f9fa;
         --border-color: #e8e8e8;
 
         /* Shadows */
@@ -133,16 +143,31 @@
         --section-gap: clamp(2rem, 4vw, 4rem);
       }
 
-      /* Dark mode support */
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg-light: #1a1a1a;
-          --text-dark: #ffffff;
-          --bg-white: #2d2d2d;
-          --text-gray: #b0b0b0;
-          --border-color: #404040;
-          --primary-light: #1a3a2c;
-        }
+      /* Dark theme */
+      .dark-mode {
+        --primary-color: #34d399;
+        --primary-dark: #10b981;
+        --primary-light: #064e3b;
+        --secondary-color: #60a5fa;
+
+        /* Text Colors */
+        --text-dark: #ffffff;
+        --text-light: #1a1a1a;
+        --text-gray: #d1d5db;
+        --text-light-gray: #9ca3af;
+
+        /* Background Colors */
+        --bg-light: #1a1a1a;
+        --bg-cream: #2a2a2a;
+        --bg-white: #2d2d2d;
+        --bg-section: #2d2d2d;
+        --bg-section-alt: #252525;
+        --border-color: #404040;
+
+        /* Shadows */
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
       }
 
       * {
@@ -166,7 +191,8 @@
         -moz-osx-font-smoothing: grayscale;
         width: 100%;
         min-height: 100vh;
-        padding-bottom: 70px; /* Space for sticky CTA */
+        padding-bottom: 70px;
+        transition: var(--transition);
       }
 
       .dm-sans {
@@ -175,8 +201,8 @@
 
       /* ===== ACCESSIBILITY ===== */
       :focus-visible {
-        outline: 2px solid var(--primary-color);
-        outline-offset: 4px;
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
         border-radius: var(--radius-sm);
       }
 
@@ -192,14 +218,6 @@
         border: 0;
       }
 
-      /* High contrast mode */
-      @media (prefers-contrast: high) {
-        :root {
-          --text-dark: #000000;
-          --text-gray: #333333;
-        }
-      }
-
       /* ===== UTILITY CLASSES ===== */
       .container {
         width: 100%;
@@ -212,6 +230,12 @@
         padding: var(--section-padding) 0;
         width: 100%;
         overflow: hidden;
+        background-color: var(--bg-section);
+        transition: var(--transition);
+      }
+
+      .section-alt {
+        background-color: var(--bg-section-alt);
       }
 
       .text-center {
@@ -227,7 +251,11 @@
       }
 
       .text-gradient {
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -244,28 +272,6 @@
         gap: var(--section-gap);
       }
 
-      /* Loading skeleton */
-      .skeleton {
-        background: linear-gradient(
-          90deg,
-          var(--bg-light) 25%,
-          var(--border-color) 50%,
-          var(--bg-light) 75%
-        );
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-        border-radius: var(--radius-md);
-      }
-
-      @keyframes loading {
-        0% {
-          background-position: 200% 0;
-        }
-        100% {
-          background-position: -200% 0;
-        }
-      }
-
       /* ===== PROGRESS BAR ===== */
       .progress-container {
         position: fixed;
@@ -279,7 +285,11 @@
 
       .progress-bar {
         height: 4px;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
         width: 0%;
         transition: width 0.3s ease;
       }
@@ -290,7 +300,11 @@
         top: 0;
         left: 0;
         width: 100%;
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
         z-index: 1001;
         transition:
           transform 0.3s ease,
@@ -307,7 +321,7 @@
       }
 
       .header.scrolled {
-        background: rgba(255, 255, 255, 0.98);
+        background: var(--bg-white);
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       }
@@ -324,7 +338,8 @@
         background: rgba(0, 0, 0, 0.05);
       }
 
-      .header.scrolled .mobile-menu-toggle {
+      .header.scrolled .mobile-menu-toggle,
+      .header.scrolled .theme-toggle {
         color: var(--text-dark);
       }
 
@@ -348,7 +363,6 @@
         transition: color 0.3s ease;
         flex-shrink: 0;
         min-height: 44px;
-        min-width: 44px;
       }
 
       .logo img {
@@ -375,7 +389,6 @@
         position: relative;
         white-space: nowrap;
         min-height: 44px;
-        min-width: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -401,6 +414,40 @@
         width: 80%;
       }
 
+      /* Theme Toggle Button */
+      .theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+        margin-left: 0.5rem;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .theme-toggle .fa-sun {
+        display: none;
+      }
+
+      .dark-mode .theme-toggle .fa-moon {
+        display: none;
+      }
+
+      .dark-mode .theme-toggle .fa-sun {
+        display: block;
+      }
+
       /* Mobile Menu Toggle */
       .mobile-menu-toggle {
         display: none;
@@ -417,17 +464,20 @@
         align-items: center;
         justify-content: center;
         min-height: 44px;
-        min-width: 44px;
       }
 
-      /* ===== IMPROVED STICKY CTA ===== */
+      /* ===== STICKY CTA ===== */
       .sticky-cta {
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         z-index: 999;
         transform: translateY(100%);
         transition: transform 0.3s ease;
@@ -471,7 +521,7 @@
 
       .sticky-cta-icon i {
         font-size: 1rem;
-        color: white;
+        color: var(--text-light);
       }
 
       .sticky-cta-text {
@@ -481,7 +531,7 @@
 
       .sticky-cta-text p {
         margin: 0;
-        color: white;
+        color: var(--text-light);
         line-height: 1.3;
       }
 
@@ -505,14 +555,13 @@
       }
 
       .sticky-cta .btn-small {
-        background: white;
+        background: var(--text-light);
         color: var(--primary-color);
         border: none;
         padding: 0.5rem 1.25rem;
         font-size: 0.85rem;
         font-weight: 700;
         min-height: 36px;
-        min-width: 44px;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         flex-shrink: 0;
         border-radius: var(--radius-md);
@@ -557,15 +606,24 @@
         transition: var(--transition);
         text-decoration: none;
         animation: float 3s ease-in-out infinite;
-        border: 2px solid white;
+        border: 2px solid var(--text-light);
         min-height: 44px;
-        min-width: 44px;
       }
 
       .floating-whatsapp-btn:hover {
         background: #128c7e;
         transform: scale(1.1);
         box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
       }
 
       /* ===== COOKIE CONSENT ===== */
@@ -622,7 +680,6 @@
         transition: var(--transition);
         border: none;
         min-height: 44px;
-        min-width: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -630,7 +687,7 @@
 
       .cookie-consent-btn.accept {
         background: var(--primary-color);
-        color: white;
+        color: var(--text-light);
       }
 
       .cookie-consent-btn.decline {
@@ -644,8 +701,12 @@
         position: fixed;
         top: 20px;
         right: 20px;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         padding: 1rem 1.5rem;
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-lg);
@@ -680,7 +741,7 @@
       .notification-close {
         background: none;
         border: none;
-        color: white;
+        color: var(--text-light);
         cursor: pointer;
         font-size: 1.2rem;
         padding: 0.25rem;
@@ -694,7 +755,6 @@
         align-items: center;
         justify-content: center;
         min-height: 44px;
-        min-width: 44px;
       }
 
       .notification-close:hover {
@@ -722,7 +782,6 @@
         overflow: hidden;
         white-space: nowrap;
         min-height: 48px;
-        min-width: 44px;
       }
 
       .btn::before {
@@ -746,8 +805,12 @@
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
       }
 
@@ -758,7 +821,7 @@
 
       .btn-whatsapp {
         background-color: #25d366;
-        color: white;
+        color: var(--text-light);
         box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
       }
 
@@ -775,7 +838,7 @@
       }
 
       .btn-secondary:hover {
-        background-color: #e5e7eb;
+        background-color: var(--border-color);
         transform: translateY(-2px);
       }
 
@@ -787,8 +850,12 @@
 
       /* ===== HERO SECTION ===== */
       .hero {
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         padding: clamp(5rem, 12vw, 8rem) 0 clamp(2rem, 6vw, 4rem);
         position: relative;
         overflow: hidden;
@@ -821,7 +888,7 @@
         line-height: 1.2;
         margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
         letter-spacing: -0.02em;
-        background: white;
+        background: var(--text-light);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -858,7 +925,7 @@
       .stat-number {
         font-size: clamp(1.75rem, 4vw, 2.5rem);
         font-weight: 800;
-        background: white;
+        background: var(--text-light);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -882,57 +949,110 @@
         padding: 0 clamp(0.5rem, 2vw, 1rem);
       }
 
-      /* ===== IMPROVED PROFILE CARDS ===== */
+      /* ===== PROFILE CARDS SECTION ===== */
+      .profile-cards-section {
+        background: var(--bg-section-alt);
+        padding: clamp(3rem, 6vw, 5rem) 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-cards-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 20% 50%,
+          rgba(2, 159, 88, 0.05) 0%,
+          transparent 50%
+        );
+        pointer-events: none;
+      }
+
+      .dark-mode .profile-cards-section::before {
+        background: radial-gradient(
+          circle at 20% 50%,
+          rgba(52, 211, 153, 0.05) 0%,
+          transparent 50%
+        );
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: clamp(2rem, 4vw, 3.5rem);
+        position: relative;
+      }
+
+      .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
+        padding: 0.5rem 1.25rem;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Enhanced Profile Cards Container */
       .profile-cards-container {
         position: relative;
-        padding: 2rem 0;
+        padding: 2rem 0 3rem;
         width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .profile-cards-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
       }
 
       .profile-cards {
         display: flex;
-        gap: 1.5rem;
-        overflow-x: auto;
-        padding: 1.5rem 0.5rem;
-        margin: 0 -0.5rem;
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary-color) transparent;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
+        gap: 1.75rem;
+        padding: 1rem 0.5rem 2rem;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        width: max-content;
         -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
       }
 
-      .profile-cards::-webkit-scrollbar {
-        height: 6px;
-      }
-
-      .profile-cards::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.05);
-        border-radius: 3px;
-      }
-
-      .profile-cards::-webkit-scrollbar-thumb {
-        background: var(--primary-color);
-        border-radius: 3px;
-      }
-
+      /* Enhanced Profile Card */
       .profile-card {
-        min-width: 300px;
-        max-width: 300px;
-        background-color: var(--bg-white);
-        padding: 2rem;
-        border-radius: var(--radius-lg);
+        width: 320px;
+        min-width: 320px;
+        max-width: 320px;
+        background: var(--bg-white);
+        padding: 1.75rem;
+        border-radius: var(--radius-xl);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        box-shadow: var(--shadow-md);
-        transition: var(--transition);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: var(--shadow-lg);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid var(--border-color);
         position: relative;
         overflow: hidden;
-        scroll-snap-align: center;
         flex-shrink: 0;
+        scroll-snap-align: center;
+        cursor: grab;
+      }
+
+      .profile-card:active {
+        cursor: grabbing;
       }
 
       .profile-card::before {
@@ -941,13 +1061,100 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 4px;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        height: 6px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
       }
 
       .profile-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-lg);
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-color);
+      }
+
+      .profile-card-header {
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.75rem;
+        z-index: 2;
+      }
+
+      .profile-badge {
+        padding: 0.35rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: var(--primary-color);
+        color: var(--text-light);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .profile-badge.top-earner {
+        background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+        color: #000;
+      }
+
+      .profile-badge.popular {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+      }
+
+      .profile-badge.new {
+        background: linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%);
+      }
+
+      .profile-badge.willing {
+        background: linear-gradient(135deg, #029f58 0%, #2f80ed 100%);
+      }
+
+      .profile-badge.high-demand {
+        background: linear-gradient(135deg, #9b51e0 0%, #bb6bd9 100%);
+      }
+
+      .profile-badge.business {
+        background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+      }
+
+      .online-status {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid var(--bg-white);
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+      }
+
+      .online-status.online {
+        background: #4cd964;
+        animation: pulse 2s infinite;
+      }
+
+      .online-status.busy {
+        background: #ff9500;
+      }
+
+      .online-status.offline {
+        background: #8e8e93;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(76, 217, 100, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 6px rgba(76, 217, 100, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(76, 217, 100, 0);
+        }
       }
 
       .profile-image {
@@ -955,14 +1162,17 @@
         height: 140px;
         border-radius: 50%;
         overflow: hidden;
-        margin-bottom: 1.5rem;
-        border: 5px solid var(--primary-light);
+        margin: 2.5rem 0 1rem;
+        border: 5px solid var(--bg-white);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        position: relative;
         transition: all 0.3s ease;
       }
 
       .profile-card:hover .profile-image {
-        border-color: #d1fae5;
-        transform: scale(1.05);
+        transform: scale(1.08);
+        border-color: var(--primary-light);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
       }
 
       .profile-image img {
@@ -971,115 +1181,341 @@
         object-fit: cover;
       }
 
+      .profile-rating {
+        position: absolute;
+        bottom: -8px;
+        right: -8px;
+        background: var(--bg-white);
+        color: var(--text-dark);
+        padding: 0.35rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 2px solid var(--primary-color);
+      }
+
+      .profile-rating i {
+        color: #ffd700;
+      }
+
       .profile-name {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.25rem;
         color: var(--text-dark);
+        line-height: 1.3;
+      }
+
+      .profile-location {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .profile-location i {
+        color: var(--primary-color);
+        font-size: 0.8rem;
       }
 
       .profile-bio {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 1.5rem;
         color: var(--text-gray);
-        min-height: 72px;
+        min-height: 76px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
-      .profile-fee {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        background-color: rgba(2, 159, 88, 0.1);
-        padding: 0.5rem 1.5rem;
-        border-radius: 100px;
-      }
-
-      /* Add navigation dots */
-      .profile-cards-nav {
+      .profile-tags {
         display: flex;
-        justify-content: center;
+        flex-wrap: wrap;
         gap: 0.5rem;
-        margin-top: 1.5rem;
-        padding: 0.5rem;
+        margin-bottom: 1.5rem;
+        justify-content: center;
       }
 
-      .nav-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--border-color);
-        cursor: pointer;
-        transition: var(--transition);
-        border: none;
-        padding: 0;
+      .profile-tags .tag {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        padding: 0.35rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 500;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
       }
 
-      .nav-dot.active {
-        background: var(--primary-color);
-        transform: scale(1.2);
+      .profile-card:hover .profile-tags .tag {
+        background: var(--primary-light);
+        border-color: var(--primary-color);
+        color: var(--primary-dark);
       }
 
-      /* Navigation arrows */
+      .profile-stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: var(--bg-light);
+        border-radius: var(--radius-md);
+        width: 100%;
+        justify-content: center;
+      }
+
+      .profile-stats .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .profile-stats .stat i {
+        color: var(--primary-color);
+        font-size: 1rem;
+      }
+
+      .profile-stats .stat span {
+        font-size: 0.8rem;
+        color: var(--text-gray);
+        font-weight: 500;
+      }
+
+      .profile-earnings {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius-lg);
+        text-align: center;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-earnings::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 70%
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .earnings-label {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        margin-bottom: 0.25rem;
+      }
+
+      .earnings-amount {
+        font-size: 1.75rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .earnings-amount span {
+        font-size: 0.875rem;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      .profile-card .btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      /* Enhanced Navigation Arrows */
       .profile-nav-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         background: var(--bg-white);
-        border: none;
-        width: 40px;
-        height: 40px;
+        border: 2px solid var(--border-color);
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-lg);
         z-index: 10;
-        opacity: 0;
-        transition: var(--transition);
+        opacity: 0.9;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         color: var(--text-dark);
-      }
-
-      .profile-cards-container:hover .profile-nav-arrow {
-        opacity: 0.8;
+        backdrop-filter: blur(10px);
       }
 
       .profile-nav-arrow:hover {
-        opacity: 1 !important;
-        transform: translateY(-50%) scale(1.1);
+        opacity: 1;
+        transform: translateY(-50%) scale(1.15);
         background: var(--primary-color);
-        color: white;
+        color: var(--text-light);
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       }
 
       .profile-nav-arrow.prev {
-        left: 10px;
+        left: 0;
       }
 
       .profile-nav-arrow.next {
-        right: 10px;
+        right: 0;
       }
 
-      @media (max-width: 767px) {
-        .profile-nav-arrow {
-          display: none;
-        }
-
-        .profile-cards-container:hover .profile-nav-arrow {
-          opacity: 0;
-        }
-
-        .profile-card {
-          min-width: 280px;
-          max-width: 280px;
-        }
+      /* Enhanced Navigation Dots */
+      .profile-cards-nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        margin: 2rem 0 1rem;
+        padding: 0.5rem;
       }
 
-      @media (max-width: 480px) {
-        .profile-card {
-          min-width: 85vw;
-          max-width: 85vw;
-        }
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--border-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-dot::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .nav-dot.active {
+        background: transparent;
+        transform: scale(1.2);
+        border-color: var(--primary-color);
+      }
+
+      .nav-dot.active::before {
+        opacity: 1;
+      }
+
+      .nav-dot:hover {
+        transform: scale(1.3);
+        background: var(--primary-color);
+      }
+
+      /* Progress Indicator */
+      .profile-progress {
+        width: 100%;
+        max-width: 300px;
+        height: 4px;
+        background: var(--bg-light);
+        border-radius: 2px;
+        margin: 0 auto 2rem;
+        overflow: hidden;
+      }
+
+      .profile-progress .progress-bar {
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        width: 20%;
+        transition: width 0.3s ease;
+      }
+
+      /* CTA Section */
+      .profile-cta {
+        text-align: center;
+        background: var(--bg-white);
+        padding: 2.5rem;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-lg);
+        margin-top: 3rem;
+        border: 2px solid var(--primary-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+      }
+
+      .cta-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+      }
+
+      .cta-subtitle {
+        color: var(--text-gray);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .profile-cta .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
       /* ===== SECTION STYLES ===== */
@@ -1100,25 +1536,112 @@
         max-width: min(800px, 95vw);
       }
 
-      .tag {
-        display: inline-block;
-        padding: clamp(0.375rem, 1vw, 0.5rem) clamp(1rem, 2vw, 1.5rem);
-        border-radius: var(--radius-full);
-        font-weight: 600;
-        margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
-        font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
+      /* ===== EARNINGS CALCULATOR ===== */
+      .calculator-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-light) 0%,
+          rgba(219, 234, 254, 0.3) 100%
+        );
+        position: relative;
       }
 
-      .tag-fans {
-        background-color: var(--accent-yellow);
-        color: black;
+      .dark-mode .calculator-section {
+        background: linear-gradient(
+          135deg,
+          rgba(6, 78, 59, 0.3) 0%,
+          rgba(30, 41, 59, 0.3) 100%
+        );
       }
 
-      .tag-influencers {
-        background-color: var(--accent-orange);
-        color: black;
+      .calculator {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        max-width: min(600px, 95vw);
+        margin: clamp(1rem, 3vw, 2rem) auto;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .calculator-slider {
+        width: 100%;
+        height: 10px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: var(--bg-light);
+        border-radius: 5px;
+        margin: clamp(1rem, 2vw, 1.5rem) 0;
+        outline: none;
+      }
+
+      .calculator-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        min-height: 44px;
+      }
+
+      .calculator-result {
+        text-align: center;
+        margin-top: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      .calculator-amount {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0.5rem 0;
+        line-height: 1;
+      }
+
+      .calculator-label {
+        color: var(--text-gray);
+        font-size: clamp(1rem, 2vw, 1.125rem);
+      }
+
+      /* ===== TRUST BADGES ===== */
+      .trust-badges {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: clamp(0.75rem, 2vw, 1rem);
+        margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+      }
+
+      .badge {
+        background: var(--bg-white);
+        padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+        border-radius: var(--radius-sm);
+        font-weight: 500;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        align-items: center;
+        gap: clamp(8px, 1.5vw, 10px);
+        transition: all 0.3s ease;
+        justify-content: center;
+        text-align: center;
+        min-height: 60px;
+        color: var(--text-dark);
+      }
+
+      .badge:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
       }
 
       /* ===== FANS SECTION ===== */
@@ -1136,7 +1659,7 @@
       .fans-image-container {
         position: relative;
         width: 100%;
-        height: clamp(250px, 50vw, 500px);
+        height: clamp(350px, 50vw, 800px);
         border-radius: var(--radius-xl);
         overflow: hidden;
         box-shadow: var(--shadow-lg);
@@ -1180,7 +1703,7 @@
         top: 10px;
         right: -25px;
         background: var(--primary-color);
-        color: white;
+        color: var(--text-light);
         padding: 4px 30px;
         font-size: 12px;
         font-weight: 600;
@@ -1203,8 +1726,12 @@
       .request-badge {
         width: 32px;
         height: 32px;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1215,7 +1742,7 @@
         top: -8px;
         z-index: 2;
         font-size: 0.75rem;
-        border: 2px solid white;
+        border: 2px solid var(--bg-white);
       }
 
       .request-avatar img {
@@ -1223,7 +1750,7 @@
         height: 60px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid white;
+        border: 3px solid var(--bg-white);
         box-shadow: var(--shadow-sm);
       }
 
@@ -1256,7 +1783,7 @@
 
       .request-time {
         font-size: clamp(0.75rem, 1.5vw, 0.8rem);
-        color: #9ca3af;
+        color: var(--text-light-gray);
         margin-top: 5px;
       }
 
@@ -1266,99 +1793,14 @@
         margin: 0 auto;
       }
 
-      /* ===== EARNINGS CALCULATOR ===== */
-      .calculator-section {
-        background: linear-gradient(135deg, #d1fae5 0%, #dbeafe 100%);
-        position: relative;
-      }
-
-      .calculator {
-        background: var(--bg-white);
-        border-radius: var(--radius-lg);
-        padding: clamp(1.5rem, 3vw, 2.5rem);
-        max-width: min(600px, 95vw);
-        margin: clamp(1rem, 3vw, 2rem) auto;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .calculator-slider {
-        width: 100%;
-        height: 10px;
-        -webkit-appearance: none;
-        appearance: none;
-        background: var(--bg-light);
-        border-radius: 5px;
-        margin: clamp(1rem, 2vw, 1.5rem) 0;
-        outline: none;
-      }
-
-      .calculator-slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        min-height: 44px;
-        min-width: 44px;
-      }
-
-      .calculator-result {
-        text-align: center;
-        margin-top: clamp(1.5rem, 3vw, 2rem);
-      }
-
-      .calculator-amount {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 800;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin: 0.5rem 0;
-        line-height: 1;
-      }
-
-      .calculator-label {
-        color: var(--text-gray);
-        font-size: clamp(1rem, 2vw, 1.125rem);
-      }
-
-      /* ===== TRUST BADGES ===== */
-      .trust-badges {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: clamp(0.75rem, 2vw, 1rem);
-        margin: clamp(1.5rem, 4vw, 2.5rem) 0;
-      }
-
-      .badge {
-        background: var(--bg-white);
-        padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2vw, 1.5rem);
-        border-radius: var(--radius-sm);
-        font-weight: 500;
-        box-shadow: var(--shadow-sm);
-        display: flex;
-        align-items: center;
-        gap: clamp(8px, 1.5vw, 10px);
-        transition: all 0.3s ease;
-        justify-content: center;
-        text-align: center;
-        min-height: 60px;
-        min-width: 44px;
-      }
-
-      .badge:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-      }
-
       /* ===== CHAT DEMO SECTION ===== */
       .chat-demo-section {
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         padding: clamp(2.5rem, 6vw, 4rem) 0;
         position: relative;
         overflow: hidden;
@@ -1408,6 +1850,10 @@
       }
 
       /* ===== COUNTRIES SECTION ===== */
+      .countries-section {
+        background: var(--bg-section-alt);
+      }
+
       .countries-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -1430,7 +1876,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-width: 44px;
         min-height: 44px;
       }
 
@@ -1446,7 +1891,7 @@
         border-radius: 50%;
         overflow: hidden;
         margin: 0 auto clamp(1rem, 2vw, 1.5rem);
-        background-color: white;
+        background-color: var(--bg-white);
         box-shadow: var(--shadow-sm);
         display: flex;
         align-items: center;
@@ -1469,15 +1914,26 @@
       }
 
       /* ===== REASONS SECTION ===== */
-      .reasons-section .container {
+
+      .reasons-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: clamp(2rem, 5vw, 4rem);
         align-items: center;
       }
 
-      .reasons-content {
-        order: 2;
+      @media (min-width: 768px) {
+        .reasons-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .reasons-image-container {
+          order: 1;
+        }
+
+        .reasons-content {
+          order: 2;
+        }
       }
 
       .reasons-image-container {
@@ -1487,7 +1943,6 @@
         border-radius: var(--radius-xl);
         overflow: hidden;
         box-shadow: var(--shadow-lg);
-        order: 1;
       }
 
       .reasons-image {
@@ -1544,17 +1999,20 @@
         line-height: 1.6;
         max-width: min(500px, 100%);
       }
-
       /* ===== HOW IT WORKS ===== */
       .how-it-works {
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         text-align: center;
       }
 
       .how-it-works .section-title,
       .how-it-works .section-subtitle {
-        color: white;
+        color: var(--text-light);
       }
 
       .how-it-works .section-subtitle {
@@ -1584,8 +2042,12 @@
       .step-number {
         width: clamp(50px, 10vw, 60px);
         height: clamp(50px, 10vw, 60px);
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1593,14 +2055,14 @@
         font-size: clamp(1.25rem, 2.5vw, 1.5rem);
         font-weight: 800;
         margin: 0 auto clamp(1rem, 2vw, 1.5rem);
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        box-shadow: var(--shadow-md);
       }
 
       .step-title {
         font-size: clamp(1.25rem, 2.5vw, 1.5rem);
         font-weight: 700;
         margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
-        color: white;
+        color: var(--text-light);
         line-height: 1.3;
       }
 
@@ -1641,7 +2103,11 @@
         left: 0;
         width: 100%;
         height: 4px;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
       }
 
       .feature-card:hover {
@@ -1652,15 +2118,19 @@
       .feature-icon {
         width: clamp(60px, 12vw, 70px);
         height: clamp(60px, 12vw, 70px);
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: clamp(24px, 5vw, 32px);
         margin: 0 auto clamp(1rem, 2vw, 20px);
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        box-shadow: var(--shadow-md);
         flex-shrink: 0;
       }
 
@@ -1680,10 +2150,35 @@
         font-size: clamp(0.9rem, 1.5vw, 1rem);
       }
 
-      /* ===== TESTIMONIALS ===== */
+      /* ===== TESTIMONIALS CAROUSEL ===== */
       .testimonial-slider {
         max-width: min(800px, 95vw);
         margin: clamp(2rem, 4vw, 3rem) auto 0;
+        position: relative;
+      }
+
+      .testimonial-slider-container {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .testimonial-slide {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .testimonial-slide.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       .testimonial {
@@ -1742,6 +2237,59 @@
         flex-shrink: 0;
       }
 
+      .testimonial-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .testimonial-nav-btn {
+        background: var(--bg-white);
+        border: 2px solid var(--border-color);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--text-dark);
+      }
+
+      .testimonial-nav-btn:hover {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--text-light);
+        transform: scale(1.1);
+      }
+
+      .testimonial-dots {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .testimonial-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--border-color);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .testimonial-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      .testimonial-dot:hover {
+        background: var(--primary-color);
+      }
+
       /* ===== FAQ ===== */
       .faq-container {
         max-width: min(800px, 95vw);
@@ -1774,7 +2322,6 @@
         transition: var(--transition);
         gap: 1rem;
         min-height: 60px;
-        min-width: 44px;
       }
 
       .faq-question:hover {
@@ -1807,7 +2354,11 @@
 
       /* ===== CONTACT SECTION ===== */
       .contact-section {
-        background: linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 100%);
+        background: linear-gradient(
+          135deg,
+          var(--bg-section-alt) 0%,
+          var(--bg-light) 100%
+        );
         padding: clamp(2.5rem, 6vw, 4rem) 0;
         position: relative;
       }
@@ -1843,7 +2394,6 @@
         text-decoration: none;
         color: inherit;
         min-height: 90px;
-        min-width: 44px;
       }
 
       .contact-method:hover {
@@ -1859,7 +2409,7 @@
         align-items: center;
         justify-content: center;
         font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-        color: white;
+        color: var(--text-light);
         flex-shrink: 0;
       }
 
@@ -1890,8 +2440,12 @@
       }
 
       .response-time {
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
         padding: clamp(0.75rem, 2vw, 1rem);
         border-radius: var(--radius-md);
         text-align: center;
@@ -1912,7 +2466,7 @@
         gap: 15px;
         padding: clamp(1rem, 2.5vw, 1.5rem);
         background: #25d366;
-        color: white;
+        color: var(--text-light);
         border-radius: var(--radius-lg);
         font-weight: 600;
         font-size: clamp(1rem, 2vw, 1.125rem);
@@ -1921,7 +2475,6 @@
         text-decoration: none;
         text-align: center;
         min-height: 70px;
-        min-width: 44px;
       }
 
       .whatsapp-btn:hover {
@@ -1931,16 +2484,28 @@
       }
 
       .whatsapp-btn.secondary {
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
       }
 
       .whatsapp-btn.secondary:hover {
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark) 0%,
+          #2563eb 100%
+        );
       }
 
       /* ===== CTA SECTION ===== */
       .cta-section {
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
         padding: clamp(2.5rem, 6vw, 4rem) 0;
         text-align: center;
         position: relative;
@@ -1966,7 +2531,7 @@
       }
 
       .cta-title {
-        color: white;
+        color: var(--text-light);
         font-size: clamp(1.75rem, 4vw, 3rem);
         font-weight: 800;
         line-height: 1.2;
@@ -1980,7 +2545,6 @@
         padding: clamp(2rem, 4vw, 3rem) 0;
         border-top: 1px solid var(--border-color);
         position: relative;
-        margin-bottom: 70px;
       }
 
       .footer::before {
@@ -1990,7 +2554,11 @@
         left: 0;
         width: 100%;
         height: 4px;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
       }
 
       .footer-content {
@@ -2009,7 +2577,6 @@
         margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
         flex-wrap: wrap;
         min-height: 44px;
-        min-width: 44px;
       }
 
       .footer-logo img {
@@ -2027,7 +2594,7 @@
       }
 
       .footer-link {
-        color: #666;
+        color: var(--text-gray);
         text-decoration: none;
         font-weight: 500;
         padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem);
@@ -2036,7 +2603,6 @@
         font-size: clamp(0.85rem, 1.5vw, 1rem);
         white-space: nowrap;
         min-height: 44px;
-        min-width: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2047,71 +2613,14 @@
         background: rgba(2, 159, 88, 0.1);
       }
 
+      .dark-mode .footer-link:hover {
+        background: rgba(52, 211, 153, 0.1);
+      }
+
       .copyright {
         color: var(--text-light-gray);
         font-size: clamp(0.85rem, 1.5vw, 0.95rem);
         margin-bottom: 1rem;
-      }
-
-      /* ===== ANIMATIONS ===== */
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .float-animation {
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
-      }
-
-      /* ===== PRINT STYLES ===== */
-      @media print {
-        .sticky-cta,
-        .floating-whatsapp,
-        .mobile-menu-toggle,
-        .cookie-consent,
-        .welcome-notification {
-          display: none !important;
-        }
-
-        body {
-          padding-bottom: 0;
-        }
-
-        .footer {
-          margin-bottom: 0;
-        }
-
-        .btn {
-          border: 1px solid #000;
-          color: #000;
-          background: none !important;
-        }
-
-        .text-gradient {
-          background: none !important;
-          -webkit-text-fill-color: #000 !important;
-          color: #000 !important;
-        }
       }
 
       /* ===== RESPONSIVE DESIGN ===== */
@@ -2137,20 +2646,17 @@
         }
 
         .fans-section .container,
-        .chat-demo-section .container,
-        .reasons-section .container {
+        .chat-demo-section .container {
           grid-template-columns: 1fr 1fr;
         }
 
         .fans-content,
-        .chat-demo-content,
-        .reasons-content {
+        .chat-demo-content {
           order: 1;
         }
 
         .fans-image-container,
-        .chat-demo-image-container,
-        .reasons-image-container {
+        .chat-demo-image-container {
           order: 2;
         }
 
@@ -2175,33 +2681,17 @@
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
 
-        /* Improved Sticky CTA for Desktop */
-        .sticky-cta {
-          padding: 0.6rem 0;
+        .profile-cards-container {
+          padding-left: 60px;
+          padding-right: 60px;
         }
 
-        .sticky-cta-icon {
-          width: 40px;
-          height: 40px;
+        .profile-nav-arrow.prev {
+          left: -20px;
         }
 
-        .sticky-cta-title {
-          font-size: 1.1rem;
-        }
-
-        .sticky-cta-subtitle {
-          font-size: 0.9rem;
-          display: block;
-        }
-
-        .sticky-cta .btn-small {
-          padding: 0.6rem 1.5rem;
-          font-size: 0.95rem;
-          min-height: 42px;
-        }
-
-        .floating-whatsapp {
-          bottom: 100px;
+        .profile-nav-arrow.next {
+          right: -20px;
         }
       }
 
@@ -2225,7 +2715,11 @@
           top: 100%;
           left: 0;
           width: 100%;
-          background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+          background: linear-gradient(
+            135deg,
+            var(--primary-color) 0%,
+            var(--secondary-color) 100%
+          );
           padding: 1.5rem var(--container-padding);
           flex-direction: column;
           gap: 0.75rem;
@@ -2248,7 +2742,7 @@
         }
 
         .header.scrolled .nav {
-          background: rgba(255, 255, 255, 0.98);
+          background: var(--bg-white);
           backdrop-filter: blur(10px);
         }
 
@@ -2270,42 +2764,63 @@
           grid-template-columns: 1fr;
         }
 
-        /* Optimized Sticky CTA for Mobile */
-        .sticky-cta {
-          padding: 0.4rem 0;
+        /* Profile Cards Responsive */
+        .profile-card {
+          width: 280px;
+          min-width: 280px;
+          max-width: 280px;
+          padding: 1.5rem;
         }
 
-        .sticky-cta .container {
-          gap: 0.5rem;
+        .profile-image {
+          width: 120px;
+          height: 120px;
+          margin: 2rem 0 1rem;
         }
 
-        .sticky-cta-icon {
-          width: 32px;
-          height: 32px;
+        .profile-name {
+          font-size: 1.35rem;
         }
 
-        .sticky-cta-icon i {
+        .profile-bio {
+          font-size: 0.9rem;
+          min-height: 72px;
+        }
+
+        .earnings-amount {
+          font-size: 1.5rem;
+        }
+
+        .profile-nav-arrow {
+          width: 42px;
+          height: 42px;
           font-size: 0.9rem;
         }
 
-        .sticky-cta-title {
-          font-size: 0.85rem;
+        .profile-nav-arrow.prev {
+          left: -5px;
         }
 
-        .sticky-cta-subtitle {
-          font-size: 0.75rem;
-          -webkit-line-clamp: 1;
+        .profile-nav-arrow.next {
+          right: -5px;
         }
 
-        .sticky-cta .btn-small {
-          padding: 0.4rem 0.9rem;
-          font-size: 0.8rem;
-          min-height: 34px;
-          gap: 0.25rem;
+        .profile-cta {
+          padding: 2rem 1.5rem;
         }
 
-        .sticky-cta .btn-small i {
-          font-size: 0.8rem;
+        .cta-title {
+          font-size: 1.5rem;
+        }
+
+        .profile-cta .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .profile-cta .btn {
+          width: 100%;
+          max-width: 300px;
         }
       }
 
@@ -2339,153 +2854,65 @@
           max-width: none;
         }
 
-        .profile-cards {
-          scroll-snap-type: x mandatory;
-        }
-
+        /* Profile Cards Mobile */
         .profile-card {
           width: 85vw;
-          scroll-snap-align: center;
+          min-width: 85vw;
+          max-width: 85vw;
+          padding: 1.25rem;
         }
 
-        /* Ultra-compact Sticky CTA for Small Phones */
-        .sticky-cta {
-          padding: 0.35rem 0;
+        .profile-image {
+          width: 100px;
+          height: 100px;
         }
 
-        .sticky-cta-icon {
-          width: 28px;
-          height: 28px;
+        .profile-name {
+          font-size: 1.25rem;
         }
 
-        .sticky-cta-icon i {
+        .profile-bio {
+          font-size: 0.85rem;
+          min-height: 68px;
+        }
+
+        .profile-stats {
+          gap: 1rem;
+          padding: 0.75rem;
+        }
+
+        .profile-earnings {
+          padding: 0.75rem 1rem;
+        }
+
+        .earnings-amount {
+          font-size: 1.35rem;
+        }
+
+        .profile-nav-arrow {
+          width: 36px;
+          height: 36px;
           font-size: 0.8rem;
         }
 
-        .sticky-cta-title {
-          font-size: 0.8rem;
+        .profile-nav-arrow.prev {
+          left: -8px;
         }
 
-        .sticky-cta-subtitle {
-          display: none; /* Hide subtitle on very small screens */
+        .profile-nav-arrow.next {
+          right: -8px;
         }
 
-        .sticky-cta .btn-small {
-          padding: 0.35rem 0.7rem;
-          font-size: 0.75rem;
-          min-height: 32px;
-          min-width: 85px;
+        .profile-cta {
+          padding: 1.5rem;
         }
 
-        .floating-whatsapp {
-          bottom: 65px;
-          right: 15px;
-        }
-
-        .floating-whatsapp-btn {
-          width: 48px;
-          height: 48px;
+        .cta-title {
           font-size: 1.25rem;
         }
       }
 
-      @media (max-width: 360px) {
-        .hero h1 {
-          font-size: 1.5rem;
-        }
-
-        .hero h2 {
-          font-size: 0.95rem;
-        }
-
-        .section-title {
-          font-size: 1.5rem;
-        }
-
-        .section-subtitle {
-          font-size: 0.9rem;
-        }
-
-        .btn {
-          padding: 0.75rem 1rem;
-          font-size: 0.85rem;
-        }
-
-        .profile-card {
-          padding: 1rem;
-        }
-
-        /* Minimum size Sticky CTA */
-        .sticky-cta-icon {
-          display: none; /* Hide icon on very small screens */
-        }
-
-        .sticky-cta-title {
-          font-size: 0.75rem;
-        }
-
-        .sticky-cta .btn-small {
-          padding: 0.3rem 0.6rem;
-          font-size: 0.7rem;
-          min-width: 80px;
-          min-height: 30px;
-        }
-
-        .sticky-cta .btn-small i {
-          display: none; /* Hide arrow icon */
-        }
-      }
-
-      /* Landscape mode optimization */
-      @media (max-height: 500px) and (orientation: landscape) {
-        .sticky-cta {
-          padding: 0.25rem 0;
-        }
-
-        .sticky-cta-subtitle {
-          display: none;
-        }
-
-        .sticky-cta .btn-small {
-          min-height: 30px;
-          padding: 0.25rem 0.5rem;
-        }
-
-        .floating-whatsapp {
-          bottom: 55px;
-        }
-      }
-
-      /* iPhone notch/safe area support */
-      @supports (padding: max(0px)) {
-        .sticky-cta {
-          padding-left: max(0.5rem, env(safe-area-inset-left));
-          padding-right: max(0.5rem, env(safe-area-inset-right));
-          padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
-        }
-      }
-
-      /* ===== CUSTOM SCROLLBAR ===== */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
-      }
-
-      /* ===== TOUCH FRIENDLY ===== */
+      /* Touch Device Optimizations */
       @media (hover: none) and (pointer: coarse) {
         .btn:hover,
         .feature-card:hover,
@@ -2503,15 +2930,61 @@
           transform: scale(0.98);
         }
 
-        /* Increase tap targets for mobile */
-        .btn,
-        .nav a,
-        .footer-link,
-        .mobile-menu-toggle,
-        .logo {
-          min-height: 44px;
-          min-width: 44px;
+        .profile-card:hover {
+          transform: none;
         }
+
+        .profile-nav-arrow:hover {
+          transform: translateY(-50%);
+        }
+
+        .profile-card:active {
+          transform: scale(0.98);
+        }
+      }
+
+      /* CUSTOM SCROLLBAR */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-light);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark) 0%,
+          #2563eb 100%
+        );
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
       }
     </style>
   </head>
@@ -2563,6 +3036,15 @@
         </a>
 
         <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle dark mode"
+        >
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <button
           class="mobile-menu-toggle"
           id="mobileMenuToggle"
           aria-label="Toggle navigation menu"
@@ -2580,7 +3062,7 @@
       </div>
     </header>
 
-    <!-- IMPROVED Sticky CTA -->
+    <!-- Sticky CTA -->
     <div
       class="sticky-cta"
       id="stickyCta"
@@ -2667,118 +3149,336 @@
             </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Profile Cards Section -->
+    <div class="profile-cards-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fas fa-users"></i> Available Chat Partners
+          </span>
+          <h2 class="section-title dm-sans text-gradient">
+            Connect With People Willing To Pay For Conversation
+          </h2>
+          <p class="section-subtitle">
+            These are real people looking for meaningful connections. Chat with
+            them and earn money for your time and attention.
+          </p>
+        </div>
 
         <div class="profile-cards-container">
           <!-- Navigation Arrows -->
           <button
             class="profile-nav-arrow prev"
             aria-label="Previous profile card"
+            id="profilePrev"
           >
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="profile-nav-arrow next" aria-label="Next profile card">
-            <i class="fas fa-chevron-right"></i>
-          </button>
 
-          <div class="profile-cards" id="profileCards">
-            <div class="profile-card fade-in-up">
-              <div class="profile-image">
-                <img
-                  src="Pictures/oldwoman.jpg"
-                  alt="Emily - Retired teacher who loves sharing stories"
-                  loading="lazy"
-                  width="140"
-                  height="140"
-                />
+          <div class="profile-cards-wrapper">
+            <div class="profile-cards" id="profileCards">
+              <!-- Profile Card 1 -->
+              <div class="profile-card fade-in-up">
+                <div class="profile-card-header">
+                  <div class="profile-badge willing">Willing To Pay</div>
+                  <div class="online-status online" title="Online Now"></div>
+                </div>
+                <div class="profile-image">
+                  <img
+                    src="Pictures/oldwoman.jpg"
+                    alt="Emily - Retired teacher looking for conversation"
+                    loading="lazy"
+                    width="140"
+                    height="140"
+                  />
+                  <div class="profile-rating">
+                    <i class="fas fa-star"></i>
+                    <span>Regular Client</span>
+                  </div>
+                </div>
+                <h3 class="profile-name dm-sans">Emily, 65</h3>
+                <p class="profile-location">
+                  <i class="fas fa-map-marker-alt"></i> Chicago, USA
+                </p>
+                <p class="profile-bio dm-sans">
+                  Retired teacher looking for someone to share stories with.
+                  Enjoys meaningful conversations about life experiences.
+                </p>
+                <div class="profile-tags">
+                  <span class="tag">Pays Well</span>
+                  <span class="tag">Regular Chats</span>
+                  <span class="tag">Friendly</span>
+                </div>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>120+ Chats</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>High Tipper</span>
+                  </div>
+                </div>
+                <div class="profile-earnings">
+                  <div class="earnings-label">You Can Earn</div>
+                  <div class="earnings-amount">$18<span>/chat</span></div>
+                </div>
+                <button class="btn btn-primary btn-small start-chat">
+                  <i class="fas fa-comment"></i> Start Chatting
+                </button>
               </div>
-              <h3 class="profile-name dm-sans">Emily</h3>
-              <p class="profile-bio dm-sans">
-                Retired teacher who loves sharing stories and listening.
-                Specializes in life advice and casual conversations.
-              </p>
-              <p class="profile-fee dm-sans">Earns $18 per chat</p>
-            </div>
 
-            <div class="profile-card fade-in-up">
-              <div class="profile-image">
-                <img
-                  src="Pictures/oldman.jpg"
-                  alt="Madison - Travel enthusiast and cultural exchange expert"
-                  loading="lazy"
-                  width="140"
-                  height="140"
-                />
+              <!-- Profile Card 2 -->
+              <div class="profile-card fade-in-up">
+                <div class="profile-card-header">
+                  <div class="profile-badge popular">Popular</div>
+                  <div class="online-status online" title="Online Now"></div>
+                </div>
+                <div class="profile-image">
+                  <img
+                    src="Pictures/oldman.jpg"
+                    alt="Robert - Business professional seeking advice"
+                    loading="lazy"
+                    width="140"
+                    height="140"
+                  />
+                  <div class="profile-rating">
+                    <i class="fas fa-star"></i>
+                    <span>Consistent</span>
+                  </div>
+                </div>
+                <h3 class="profile-name dm-sans">Robert, 58</h3>
+                <p class="profile-location">
+                  <i class="fas fa-map-marker-alt"></i> London, UK
+                </p>
+                <p class="profile-bio dm-sans">
+                  Business professional looking for advice and casual
+                  conversation. Interested in cultural exchange and learning.
+                </p>
+                <div class="profile-tags">
+                  <span class="tag">Business Talks</span>
+                  <span class="tag">Cultural Exchange</span>
+                  <span class="tag">Good Listener</span>
+                </div>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>85+ Chats</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Prompt Pay</span>
+                  </div>
+                </div>
+                <div class="profile-earnings">
+                  <div class="earnings-label">You Can Earn</div>
+                  <div class="earnings-amount">$22<span>/chat</span></div>
+                </div>
+                <button class="btn btn-primary btn-small start-chat">
+                  <i class="fas fa-comment"></i> Start Chatting
+                </button>
               </div>
-              <h3 class="profile-name dm-sans">Madison</h3>
-              <p class="profile-bio dm-sans">
-                Travel enthusiast and cultural exchange expert. Great for
-                learning about different countries and customs.
-              </p>
-              <p class="profile-fee dm-sans">Earns $20 per chat</p>
-            </div>
 
-            <div class="profile-card fade-in-up">
-              <div class="profile-image">
-                <img
-                  src="Pictures/LONELYOLD.jpg"
-                  alt="Jake - Friendly companion for meaningful connections"
-                  loading="lazy"
-                  width="140"
-                  height="140"
-                />
+              <!-- Profile Card 3 -->
+              <div class="profile-card fade-in-up">
+                <div class="profile-card-header">
+                  <div class="profile-badge new">New Member</div>
+                  <div
+                    class="online-status busy"
+                    title="Currently Chatting"
+                  ></div>
+                </div>
+                <div class="profile-image">
+                  <img
+                    src="Pictures/LONELYOLD.jpg"
+                    alt="Michael - Retired engineer seeking companionship"
+                    loading="lazy"
+                    width="140"
+                    height="140"
+                  />
+                  <div class="profile-rating">
+                    <i class="fas fa-star"></i>
+                    <span>Easy to Talk</span>
+                  </div>
+                </div>
+                <h3 class="profile-name dm-sans">Michael, 62</h3>
+                <p class="profile-location">
+                  <i class="fas fa-map-marker-alt"></i> Toronto, Canada
+                </p>
+                <p class="profile-bio dm-sans">
+                  Retired engineer seeking friendly companionship and
+                  conversation about hobbies, travel, and daily life.
+                </p>
+                <div class="profile-tags">
+                  <span class="tag">Companionship</span>
+                  <span class="tag">Hobbies</span>
+                  <span class="tag">Travel Stories</span>
+                </div>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>New Member</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Generous</span>
+                  </div>
+                </div>
+                <div class="profile-earnings">
+                  <div class="earnings-label">You Can Earn</div>
+                  <div class="earnings-amount">$20<span>/chat</span></div>
+                </div>
+                <button class="btn btn-primary btn-small start-chat">
+                  <i class="fas fa-comment"></i> Start Chatting
+                </button>
               </div>
-              <h3 class="profile-name dm-sans">Jake</h3>
-              <p class="profile-bio dm-sans">
-                Friendly companion for those seeking meaningful connections.
-                Available for deep conversations and emotional support.
-              </p>
-              <p class="profile-fee dm-sans">Earns $15 per chat</p>
-            </div>
 
-            <!-- Add more profile cards -->
-            <div class="profile-card fade-in-up">
-              <div class="profile-image">
-                <img
-                  src="Pictures/sarah.jpg"
-                  alt="Sarah - Psychology student offering emotional support"
-                  loading="lazy"
-                  width="140"
-                  height="140"
-                />
+              <!-- Profile Card 4 -->
+              <div class="profile-card fade-in-up">
+                <div class="profile-card-header">
+                  <div class="profile-badge high-demand">High Demand</div>
+                  <div class="online-status online" title="Online Now"></div>
+                </div>
+                <div class="profile-image">
+                  <img
+                    src="Pictures/sarah.jpg"
+                    alt="Linda - Widow looking for emotional support"
+                    loading="lazy"
+                    width="140"
+                    height="140"
+                  />
+                  <div class="profile-rating">
+                    <i class="fas fa-star"></i>
+                    <span>Very Kind</span>
+                  </div>
+                </div>
+                <h3 class="profile-name dm-sans">Linda, 68</h3>
+                <p class="profile-location">
+                  <i class="fas fa-map-marker-alt"></i> Florida, USA
+                </p>
+                <p class="profile-bio dm-sans">
+                  Widow looking for emotional support and friendly conversation.
+                  Enjoys talking about family, memories, and daily life.
+                </p>
+                <div class="profile-tags">
+                  <span class="tag">Emotional Support</span>
+                  <span class="tag">Good Conversationalist</span>
+                  <span class="tag">Patient</span>
+                </div>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>200+ Chats</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>High Budget</span>
+                  </div>
+                </div>
+                <div class="profile-earnings">
+                  <div class="earnings-label">You Can Earn</div>
+                  <div class="earnings-amount">$25<span>/chat</span></div>
+                </div>
+                <button class="btn btn-primary btn-small start-chat">
+                  <i class="fas fa-comment"></i> Start Chatting
+                </button>
               </div>
-              <h3 class="profile-name dm-sans">Sarah</h3>
-              <p class="profile-bio dm-sans">
-                Psychology student offering emotional support and mental
-                wellness conversations. Great listener with empathetic approach.
-              </p>
-              <p class="profile-fee dm-sans">Earns $20 per chat</p>
-            </div>
 
-            <div class="profile-card fade-in-up">
-              <div class="profile-image">
-                <img
-                  src="Pictures/David.jpg"
-                  alt="David - Business consultant and career advisor"
-                  loading="lazy"
-                  width="140"
-                  height="140"
-                />
+              <!-- Profile Card 5 -->
+              <div class="profile-card fade-in-up">
+                <div class="profile-card-header">
+                  <div class="profile-badge business">Business Owner</div>
+                  <div
+                    class="online-status offline"
+                    title="Will Return Soon"
+                  ></div>
+                </div>
+                <div class="profile-image">
+                  <img
+                    src="Pictures/David.jpg"
+                    alt="David - Business owner seeking mentorship conversations"
+                    loading="lazy"
+                    width="140"
+                    height="140"
+                  />
+                  <div class="profile-rating">
+                    <i class="fas fa-star"></i>
+                    <span>Professional</span>
+                  </div>
+                </div>
+                <h3 class="profile-name dm-sans">David, 55</h3>
+                <p class="profile-location">
+                  <i class="fas fa-map-marker-alt"></i> New York, USA
+                </p>
+                <p class="profile-bio dm-sans">
+                  Business owner looking for insightful conversations about
+                  success, challenges, and life lessons. Values honest dialogue.
+                </p>
+                <div class="profile-tags">
+                  <span class="tag">Business Insights</span>
+                  <span class="tag">Life Lessons</span>
+                  <span class="tag">Deep Conversations</span>
+                </div>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>150+ Chats</span>
+                  </div>
+                  <div class="stat">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Top Tipper</span>
+                  </div>
+                </div>
+                <div class="profile-earnings">
+                  <div class="earnings-label">You Can Earn</div>
+                  <div class="earnings-amount">$30<span>/chat</span></div>
+                </div>
+                <button class="btn btn-primary btn-small start-chat">
+                  <i class="fas fa-comment"></i> Start Chatting
+                </button>
               </div>
-              <h3 class="profile-name dm-sans">David</h3>
-              <p class="profile-bio dm-sans">
-                Business consultant with 30+ years experience. Offers career
-                advice, business mentoring, and professional development
-                guidance.
-              </p>
-              <p class="profile-fee dm-sans">Earns $13 per chat</p>
             </div>
           </div>
 
-          <!-- Navigation Dots -->
-          <div class="profile-cards-nav" id="profileDots"></div>
+          <button
+            class="profile-nav-arrow next"
+            aria-label="Next profile card"
+            id="profileNext"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="profile-cards-nav" id="profileDots"></div>
+
+        <!-- CTA Section -->
+        <div class="profile-cta">
+          <h3 class="cta-title dm-sans">
+            Ready To Earn By Chatting With These People?
+          </h3>
+          <p class="cta-subtitle">
+            Join now and start earning money by having meaningful conversations
+            with people who value your time
+          </p>
+          <div class="cta-buttons">
+            <a
+              href="https://mulastar.com/register.php?ref=Sydney"
+              class="btn btn-primary"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-user-plus"></i> Start Earning Now
+            </a>
+            <a href="#fans" class="btn btn-secondary">
+              <i class="fas fa-comments"></i> View More Profiles
+            </a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Earnings Calculator -->
     <section class="section calculator-section" id="calculator">
@@ -2901,7 +3601,7 @@
     </section>
 
     <!-- Fans Section -->
-    <section class="section fans-section" id="fans">
+    <section class="section fans-section section-alt" id="fans">
       <div class="container">
         <div class="fans-content">
           <span class="tag tag-fans dm-sans">For Chat Partners</span>
@@ -3026,7 +3726,7 @@
             class="fans-image"
             loading="lazy"
             width="800"
-            height="500"
+            height="800"
           />
         </div>
       </div>
@@ -3071,26 +3771,8 @@
       </div>
     </section>
 
-    <!-- Influencers Section -->
-    <section class="section" id="influencers">
-      <div class="container">
-        <div>
-          <span class="tag tag-influencers dm-sans">Our Community</span>
-          <h2 class="section-title dm-sans text-gradient">
-            Who Joins Chat&Earn?
-          </h2>
-          <p class="section-subtitle dm-sans">
-            Our community includes students, stay-at-home parents, retirees,
-            freelancers, and anyone looking to earn extra income through
-            meaningful conversations. No experience needed - just a willingness
-            to connect and chat.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- Countries Section -->
-    <section class="section">
+    <section class="section countries-section">
       <div class="container">
         <h2 class="section-title dm-sans text-center text-gradient">
           Global Community
@@ -3109,62 +3791,66 @@
     <!-- Reasons Section -->
     <section class="section reasons-section">
       <div class="container">
-        <div class="reasons-content">
-          <h2 class="section-title dm-sans text-gradient">
-            Why Choose Chat&Earn?
-          </h2>
-          <p class="section-subtitle dm-sans">
-            Discover the benefits of joining our platform
-          </p>
+        <div class="reasons-grid">
+          <!-- Image on left -->
+          <div class="reasons-image-container fade-in-up">
+            <img
+              src="Pictures/feature-image.jpg"
+              alt="Features and benefits of Chat&Earn platform"
+              class="reasons-image"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+          </div>
 
-          <ol class="reasons-list">
-            <li class="reason-item fade-in-up">
-              <div class="reason-number">1</div>
-              <h3 class="reason-title dm-sans">Low Startup Cost</h3>
-              <p class="reason-description dm-sans">
-                Start with just $10 activation fee. No monthly subscriptions or
-                hidden charges.
-              </p>
-            </li>
+          <!-- Content on right -->
+          <div class="reasons-content">
+            <h2 class="section-title dm-sans text-gradient">
+              Why Choose Chat&Earn?
+            </h2>
+            <p class="section-subtitle dm-sans">
+              Discover the benefits of joining our platform
+            </p>
 
-            <li class="reason-item fade-in-up">
-              <div class="reason-number">2</div>
-              <h3 class="reason-title dm-sans">Flexible Schedule</h3>
-              <p class="reason-description dm-sans">
-                Work whenever you want. Chat during your free time without fixed
-                hours.
-              </p>
-            </li>
+            <ol class="reasons-list">
+              <li class="reason-item fade-in-up">
+                <div class="reason-number">1</div>
+                <h3 class="reason-title dm-sans">Low Startup Cost</h3>
+                <p class="reason-description dm-sans">
+                  Start with just $10 activation fee. No monthly subscriptions
+                  or hidden charges.
+                </p>
+              </li>
 
-            <li class="reason-item fade-in-up">
-              <div class="reason-number">3</div>
-              <h3 class="reason-title dm-sans">Global Connections</h3>
-              <p class="reason-description dm-sans">
-                Meet people from different cultures and backgrounds. Expand your
-                worldview.
-              </p>
-            </li>
+              <li class="reason-item fade-in-up">
+                <div class="reason-number">2</div>
+                <h3 class="reason-title dm-sans">Flexible Schedule</h3>
+                <p class="reason-description dm-sans">
+                  Work whenever you want. Chat during your free time without
+                  fixed hours.
+                </p>
+              </li>
 
-            <li class="reason-item fade-in-up">
-              <div class="reason-number">4</div>
-              <h3 class="reason-title dm-sans">Weekly Payments</h3>
-              <p class="reason-description dm-sans">
-                Get paid weekly via your preferred method (PayPal, bank
-                transfer, mobile money).
-              </p>
-            </li>
-          </ol>
-        </div>
+              <li class="reason-item fade-in-up">
+                <div class="reason-number">3</div>
+                <h3 class="reason-title dm-sans">Global Connections</h3>
+                <p class="reason-description dm-sans">
+                  Meet people from different cultures and backgrounds. Expand
+                  your worldview.
+                </p>
+              </li>
 
-        <div class="reasons-image-container fade-in-up">
-          <img
-            src="Pictures/feature-image.jpg"
-            alt="Features and benefits of Chat&Earn platform"
-            class="reasons-image"
-            loading="lazy"
-            width="800"
-            height="600"
-          />
+              <li class="reason-item fade-in-up">
+                <div class="reason-number">4</div>
+                <h3 class="reason-title dm-sans">Weekly Payments</h3>
+                <p class="reason-description dm-sans">
+                  Get paid weekly via your preferred method (PayPal, bank
+                  transfer, mobile money).
+                </p>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -3255,7 +3941,7 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials Carousel -->
     <section class="section" id="testimonials">
       <div class="container">
         <h2 class="section-title dm-sans text-center text-gradient">
@@ -3266,36 +3952,181 @@
         </p>
 
         <div class="testimonial-slider">
-          <div class="testimonial fade-in-up">
-            <div class="testimonial-text dm-sans">
-              "Chat&Earn has been life-changing. As a student, I can now pay my
-              tuition while helping people feel less lonely. I've made friends
-              from all over the world and earn $500+ monthly!"
-            </div>
-            <div class="testimonial-author">
-              <img
-                src="Pictures/Milly.jpeg"
-                alt="Mildred M. - University Student"
-                loading="lazy"
-                width="60"
-                height="60"
-              />
-              <div>
-                <div style="font-weight: 600">Mildred M.</div>
-                <div style="opacity: 0.9">University Student, Kenya</div>
-                <div
-                  style="
-                    font-size: 0.9rem;
-                    color: var(--primary-color);
-                    margin-top: 5px;
-                  "
-                >
-                  <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+          <div class="testimonial-slider-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-slide active">
+              <div class="testimonial">
+                <div class="testimonial-text dm-sans">
+                  "Chat&Earn has been life-changing. As a student, I can now pay
+                  my tuition while helping people feel less lonely. I've made
+                  friends from all over the world and earn $500+ monthly!"
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="Pictures/Milly.jpeg"
+                    alt="Mildred M. - University Student"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                  />
+                  <div>
+                    <div style="font-weight: 600">Mildred M.</div>
+                    <div style="opacity: 0.9">University Student, Kenya</div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--primary-color);
+                        margin-top: 5px;
+                      "
+                    >
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-slide">
+              <div class="testimonial">
+                <div class="testimonial-text dm-sans">
+                  "I was skeptical at first, but now I earn $800/month working
+                  from home. The flexibility is amazing - I chat when my kids
+                  are at school. The people I've met are genuinely interesting
+                  and kind."
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="Pictures/sarina.jpg"
+                    alt="Sarina K. - Stay-at-Home Mom"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                  />
+                  <div>
+                    <div style="font-weight: 600">Sarina K.</div>
+                    <div style="opacity: 0.9">Stay-at-Home Mom, Uganda</div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--primary-color);
+                        margin-top: 5px;
+                      "
+                    >
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-slide">
+              <div class="testimonial">
+                <div class="testimonial-text dm-sans">
+                  "As a retiree, this gives me purpose and extra income. I chat
+                  about my life experiences and help younger people with advice.
+                  Earning $300/week while making a difference is wonderful."
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                    alt="John D. - Retired Teacher"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                  />
+                  <div>
+                    <div style="font-weight: 600">John D.</div>
+                    <div style="opacity: 0.9">Retired Teacher, Ghana</div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--primary-color);
+                        margin-top: 5px;
+                      "
+                    >
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-slide">
+              <div class="testimonial">
+                <div class="testimonial-text dm-sans">
+                  "From Nigeria, I earn more chatting than my previous office
+                  job! The platform is secure, payments are reliable, and I've
+                  learned so much about different cultures. Highly recommended!"
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                    alt="Emmanuel A. - Digital Nomad"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                  />
+                  <div>
+                    <div style="font-weight: 600">Emmanuel A.</div>
+                    <div style="opacity: 0.9">Digital Nomad, Nigeria</div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        color: var(--primary-color);
+                        margin-top: 5px;
+                      "
+                    >
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Navigation -->
+          <div class="testimonial-nav">
+            <button
+              class="testimonial-nav-btn prev"
+              aria-label="Previous testimonial"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="testimonial-dots">
+              <button
+                class="testimonial-dot active"
+                aria-label="Show testimonial 1"
+              ></button>
+              <button
+                class="testimonial-dot"
+                aria-label="Show testimonial 2"
+              ></button>
+              <button
+                class="testimonial-dot"
+                aria-label="Show testimonial 3"
+              ></button>
+              <button
+                class="testimonial-dot"
+                aria-label="Show testimonial 4"
+              ></button>
+            </div>
+            <button
+              class="testimonial-nav-btn next"
+              aria-label="Next testimonial"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -3584,6 +4415,16 @@
     </footer>
 
     <script>
+      // ===== PERFORMANCE OPTIMIZATIONS =====
+      // Report page load time
+      if ("performance" in window) {
+        window.addEventListener("load", () => {
+          const perfData = window.performance.timing;
+          const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+          console.log(`Page loaded in ${pageLoadTime}ms`);
+        });
+      }
+
       // ===== DEBOUNCE FUNCTION =====
       function debounce(func, wait) {
         let timeout;
@@ -3597,29 +4438,30 @@
         };
       }
 
-      // ===== ERROR HANDLING =====
-      window.addEventListener("error", function (e) {
-        console.error("Error occurred:", e.error);
-        trackEvent("error", {
-          message: e.message,
-          filename: e.filename,
-          lineno: e.lineno,
-          colno: e.colno,
-        });
-      });
-
-      // ===== IMAGE ERROR HANDLING =====
       document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("img").forEach((img) => {
-          img.addEventListener("error", function () {
-            this.src =
-              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik01MCAyNUM1NyA0Mi41IDc1IDQyLjUgODIuNSAyNUM4Ny41IDM0IDkwIDQ1IDg0IDU0Qzc4IDYzIDY2IDcwIDUwIDcwQzM0IDcwIDIyIDYzIDE2IDU0QzEwIDQ1IDEyLjUgMzQgMTcuNSAyNUMyNSA0Mi41IDQzIDQyLjUgNTAgMjVaIiBmaWxsPSIjZDFmYWU1Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzUiIHI9IjEwIiBmaWxsPSIjMDI5ZjU4Ii8+Cjwvc3ZnPgo=";
-            this.alt = "Image not available";
-          });
-        });
-      });
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById("themeToggle");
+        const body = document.body;
 
-      document.addEventListener("DOMContentLoaded", function () {
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+          body.classList.add("dark-mode");
+        }
+
+        themeToggle.addEventListener("click", function () {
+          body.classList.toggle("dark-mode");
+          const isDarkMode = body.classList.contains("dark-mode");
+          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+          showNotification(
+            isDarkMode ? "Dark mode enabled" : "Light mode enabled",
+          );
+        });
+
         // ===== COOKIE CONSENT =====
         const cookieConsent = document.getElementById("cookieConsent");
         const acceptCookiesBtn = document.getElementById("acceptCookies");
@@ -3637,13 +4479,11 @@
         function acceptCookies() {
           localStorage.setItem("cookiesAccepted", "true");
           cookieConsent.classList.remove("show");
-          trackEvent("cookies_accepted");
         }
 
         function declineCookies() {
           localStorage.setItem("cookiesAccepted", "false");
           cookieConsent.classList.remove("show");
-          trackEvent("cookies_declined");
         }
 
         if (acceptCookiesBtn && declineCookiesBtn) {
@@ -3659,26 +4499,20 @@
         const closeNotificationBtn =
           document.getElementById("closeNotification");
 
-        // Always show notification after 1 second
         setTimeout(() => {
           welcomeNotification.classList.add("show");
-          trackEvent("welcome_notification_shown");
         }, 1000);
 
-        // Auto-hide after 8 seconds
         setTimeout(() => {
           if (welcomeNotification.classList.contains("show")) {
             welcomeNotification.classList.remove("show");
             welcomeNotification.classList.add("hide");
-            trackEvent("welcome_notification_auto_closed");
           }
         }, 8000);
 
-        // Close notification button
         closeNotificationBtn.addEventListener("click", function () {
           welcomeNotification.classList.remove("show");
           welcomeNotification.classList.add("hide");
-          trackEvent("welcome_notification_manually_closed");
         });
 
         // ===== PROGRESS BAR & STICKY CTA =====
@@ -3708,19 +4542,17 @@
           // Show sticky CTA only when scrolling up
           if (currentScroll < lastScrollTop) {
             isScrollingUp = true;
-            // Show sticky CTA when scrolling up and past 500px
             if (currentScroll > 500) {
               stickyCta.classList.add("visible");
             }
           } else {
             isScrollingUp = false;
-            // Hide sticky CTA when scrolling down
             if (currentScroll > 500) {
               stickyCta.classList.remove("visible");
             }
           }
 
-          // Adjust floating WhatsApp position based on sticky CTA visibility
+          // Adjust floating WhatsApp position
           if (window.innerWidth <= 768) {
             if (stickyCta.classList.contains("visible")) {
               floatingWhatsApp.style.bottom = "70px";
@@ -3734,11 +4566,9 @@
 
           if (window.innerWidth <= 768) {
             if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
-              // Scrolling down - hide header
               header.classList.add("hidden");
               header.classList.remove("scrolled");
             } else {
-              // Scrolling up - show header
               header.classList.remove("hidden");
               if (currentScroll > 100) {
                 header.classList.add("scrolled");
@@ -3747,7 +4577,6 @@
               }
             }
           } else {
-            // Desktop behavior
             if (currentScroll > 100) {
               header.classList.add("scrolled");
             } else {
@@ -3758,13 +4587,10 @@
 
           lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 
-          // Clear timeout and set new one
           clearTimeout(scrollTimeout);
 
-          // Auto-hide sticky CTA after stopping scrolling
           scrollTimeout = setTimeout(() => {
             if (isScrollingUp && currentScroll > 500) {
-              // Keep visible if still near bottom
               if (currentScroll < height - 500) {
                 setTimeout(() => {
                   stickyCta.classList.remove("visible");
@@ -3779,10 +4605,8 @@
         // ===== STICKY CTA CLICK HANDLER =====
         stickyCta.addEventListener("click", function (e) {
           if (!e.target.classList.contains("btn")) {
-            // If clicking on the CTA but not the button, still trigger the button
             const joinButton = this.querySelector(".btn");
             if (joinButton) {
-              trackEvent("sticky_cta_clicked");
               joinButton.click();
             }
           }
@@ -3819,7 +4643,6 @@
                   const target = parseInt(stat.getAttribute("data-count"));
                   if (stat.textContent === "0") {
                     animateCounter(stat, target);
-                    trackEvent("stats_counter_animated", { target: target });
                   }
                 });
               }
@@ -3850,20 +4673,8 @@
         }
 
         if (chatSlider && earningsSlider) {
-          chatSlider.addEventListener("input", function () {
-            updateCalculator();
-            trackEvent("calculator_slider_changed", {
-              type: "chats_per_day",
-              value: this.value,
-            });
-          });
-          earningsSlider.addEventListener("input", function () {
-            updateCalculator();
-            trackEvent("calculator_slider_changed", {
-              type: "earnings_per_chat",
-              value: this.value,
-            });
-          });
+          chatSlider.addEventListener("input", updateCalculator);
+          earningsSlider.addEventListener("input", updateCalculator);
           updateCalculator();
         }
 
@@ -3879,11 +4690,9 @@
             if (icon.classList.contains("fa-bars")) {
               icon.classList.remove("fa-bars");
               icon.classList.add("fa-times");
-              trackEvent("mobile_menu_opened");
             } else {
               icon.classList.remove("fa-times");
               icon.classList.add("fa-bars");
-              trackEvent("mobile_menu_closed");
             }
           });
 
@@ -3921,11 +4730,258 @@
                 icon.classList.remove("fa-times");
                 icon.classList.add("fa-bars");
               }
-              trackEvent("mobile_menu_link_clicked", {
-                link: this.textContent,
-              });
             });
           });
+        }
+
+        // ===== ENHANCED PROFILE CARDS =====
+        const profileCards = document.getElementById("profileCards");
+        const prevBtn = document.getElementById("profilePrev");
+        const nextBtn = document.getElementById("profileNext");
+        const profileDots = document.getElementById("profileDots");
+        const viewProfileBtns = document.querySelectorAll(".start-chat");
+
+        if (profileCards) {
+          let currentIndex = 0;
+          let isAnimating = false;
+          let startX = 0;
+          let currentX = 0;
+          let isDragging = false;
+          let autoScrollInterval;
+          const cards = profileCards.querySelectorAll(".profile-card");
+          const totalCards = cards.length;
+          const cardWidth = 320 + 28;
+          let visibleCards = Math.floor(window.innerWidth / cardWidth);
+
+          function init() {
+            createDots();
+            updateUI();
+            startAutoScroll();
+            setupEventListeners();
+            setupChatButtons();
+          }
+
+          function createDots() {
+            if (!profileDots) return;
+
+            profileDots.innerHTML = "";
+
+            for (let i = 0; i < Math.ceil(totalCards / visibleCards); i++) {
+              const dot = document.createElement("button");
+              dot.className = "nav-dot";
+              dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+              if (i === 0) dot.classList.add("active");
+
+              dot.addEventListener("click", () => goToSlide(i));
+              profileDots.appendChild(dot);
+            }
+          }
+
+          function updateUI() {
+            updateDots();
+            updateArrowVisibility();
+          }
+
+          function updateDots() {
+            if (!profileDots) return;
+
+            const dots = profileDots.querySelectorAll(".nav-dot");
+            const activeDotIndex = Math.floor(currentIndex / visibleCards);
+
+            dots.forEach((dot, index) => {
+              dot.classList.toggle("active", index === activeDotIndex);
+            });
+          }
+
+          function updateArrowVisibility() {
+            if (prevBtn) {
+              prevBtn.style.opacity = currentIndex > 0 ? "0.9" : "0.3";
+              prevBtn.style.cursor =
+                currentIndex > 0 ? "pointer" : "not-allowed";
+            }
+
+            if (nextBtn) {
+              const maxIndex = Math.max(0, totalCards - visibleCards);
+              nextBtn.style.opacity = currentIndex < maxIndex ? "0.9" : "0.3";
+              nextBtn.style.cursor =
+                currentIndex < maxIndex ? "pointer" : "not-allowed";
+            }
+          }
+
+          function goToSlide(index) {
+            if (isAnimating) return;
+
+            const maxIndex = Math.max(0, totalCards - visibleCards);
+            currentIndex = Math.min(Math.max(index, 0), maxIndex);
+
+            isAnimating = true;
+            profileCards.style.transition =
+              "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
+            profileCards.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+            setTimeout(() => {
+              isAnimating = false;
+              updateUI();
+              resetAutoScroll();
+            }, 500);
+          }
+
+          function nextSlide() {
+            const maxIndex = Math.max(0, totalCards - visibleCards);
+            if (currentIndex < maxIndex) {
+              goToSlide(currentIndex + 1);
+            } else {
+              goToSlide(0);
+            }
+          }
+
+          function prevSlide() {
+            const maxIndex = Math.max(0, totalCards - visibleCards);
+            if (currentIndex > 0) {
+              goToSlide(currentIndex - 1);
+            } else {
+              goToSlide(maxIndex);
+            }
+          }
+
+          function startAutoScroll() {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(() => {
+              nextSlide();
+            }, 6000);
+          }
+
+          function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+          }
+
+          function startDrag(e) {
+            isDragging = true;
+            profileCards.style.transition = "none";
+            profileCards.style.cursor = "grabbing";
+
+            startX = getXPosition(e);
+            currentX = startX;
+
+            document.addEventListener("mousemove", dragMove);
+            document.addEventListener("mouseup", endDrag);
+            document.addEventListener("touchmove", dragMove);
+            document.addEventListener("touchend", endDrag);
+          }
+
+          function dragMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            currentX = getXPosition(e);
+            const diff = currentX - startX;
+            profileCards.style.transform = `translateX(-${currentIndex * cardWidth - diff}px)`;
+          }
+
+          function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            profileCards.style.cursor = "grab";
+            profileCards.style.transition = "transform 0.3s ease";
+
+            const diff = currentX - startX;
+            const threshold = cardWidth / 3;
+
+            if (Math.abs(diff) > threshold) {
+              if (diff > 0) {
+                prevSlide();
+              } else {
+                nextSlide();
+              }
+            } else {
+              goToSlide(currentIndex);
+            }
+
+            document.removeEventListener("mousemove", dragMove);
+            document.removeEventListener("mouseup", endDrag);
+            document.removeEventListener("touchmove", dragMove);
+            document.removeEventListener("touchend", endDrag);
+          }
+
+          function getXPosition(e) {
+            return e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
+          }
+
+          function setupChatButtons() {
+            viewProfileBtns.forEach((btn, index) => {
+              btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const profileName =
+                  cards[index].querySelector(".profile-name").textContent;
+                const earnings =
+                  cards[index].querySelector(".earnings-amount").textContent;
+
+                showNotification(
+                  `To start chatting with ${profileName.split(",")[0]}, please create your account first. You can earn ${earnings} per chat!`,
+                );
+
+                setTimeout(() => {
+                  window.open(
+                    "https://mulastar.com/register.php?ref=Sydney",
+                    "_blank",
+                  );
+                }, 1500);
+              });
+            });
+          }
+
+          function setupEventListeners() {
+            if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+            if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+
+            profileCards.addEventListener("mousedown", startDrag);
+            profileCards.addEventListener("touchstart", startDrag);
+
+            document.addEventListener("keydown", (e) => {
+              if (document.activeElement.closest(".profile-cards-container")) {
+                if (e.key === "ArrowLeft") {
+                  e.preventDefault();
+                  prevSlide();
+                } else if (e.key === "ArrowRight") {
+                  e.preventDefault();
+                  nextSlide();
+                }
+              }
+            });
+
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+              clearTimeout(resizeTimeout);
+              resizeTimeout = setTimeout(() => {
+                visibleCards = Math.floor(window.innerWidth / cardWidth);
+                createDots();
+                goToSlide(
+                  Math.min(
+                    currentIndex,
+                    Math.max(0, totalCards - visibleCards),
+                  ),
+                );
+              }, 250);
+            });
+
+            profileCards.addEventListener("mouseenter", () => {
+              clearInterval(autoScrollInterval);
+            });
+
+            profileCards.addEventListener("mouseleave", () => {
+              startAutoScroll();
+            });
+
+            profileCards.addEventListener("touchstart", () => {
+              clearInterval(autoScrollInterval);
+              setTimeout(() => {
+                startAutoScroll();
+              }, 5000);
+            });
+          }
+
+          init();
         }
 
         // ===== COUNTRIES DATA =====
@@ -3985,188 +5041,7 @@
               </div>
               <p class="country-name dm-sans">${country.name}</p>
             `;
-            countryCard.addEventListener("click", () => {
-              trackEvent("country_card_clicked", { country: country.name });
-            });
             countriesGrid.appendChild(countryCard);
-          });
-        }
-
-        // ===== IMPROVED PROFILE CARDS AUTO-SCROLL =====
-        const profileCardsContainer = document.getElementById("profileCards");
-        const prevBtn = document.querySelector(".profile-nav-arrow.prev");
-        const nextBtn = document.querySelector(".profile-nav-arrow.next");
-        const profileDots = document.getElementById("profileDots");
-
-        if (profileCardsContainer) {
-          let autoScrollInterval;
-          let isPaused = false;
-          let currentIndex = 0;
-          const cards = profileCardsContainer.querySelectorAll(".profile-card");
-          const cardWidth = 300 + 24; // Width of one card + gap
-          const scrollSpeed = 1; // Pixels per frame
-          const scrollDelay = 4000; // Auto-scroll every 4 seconds
-          let scrollDirection = 1; // 1 for forward, -1 for backward
-
-          // Create navigation dots
-          if (profileDots) {
-            cards.forEach((_, index) => {
-              const dot = document.createElement("button");
-              dot.className = "nav-dot";
-              dot.setAttribute("aria-label", `Go to profile card ${index + 1}`);
-              if (index === 0) dot.classList.add("active");
-
-              dot.addEventListener("click", () => {
-                goToSlide(index);
-                resetAutoScroll();
-              });
-
-              profileDots.appendChild(dot);
-            });
-          }
-
-          // Initialize auto-scroll
-          function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-              if (!isPaused) {
-                const maxScroll =
-                  profileCardsContainer.scrollWidth -
-                  profileCardsContainer.clientWidth;
-
-                if (profileCardsContainer.scrollLeft >= maxScroll - 10) {
-                  scrollDirection = -1;
-                } else if (profileCardsContainer.scrollLeft <= 10) {
-                  scrollDirection = 1;
-                }
-
-                profileCardsContainer.scrollLeft +=
-                  scrollSpeed * scrollDirection;
-                updateActiveDot();
-              }
-            }, 16); // ~60fps
-          }
-
-          // Reset auto-scroll timer
-          function resetAutoScroll() {
-            clearInterval(autoScrollInterval);
-            startAutoScroll();
-          }
-
-          // Go to specific slide
-          function goToSlide(index) {
-            currentIndex = Math.min(Math.max(index, 0), cards.length - 1);
-            const scrollPosition = currentIndex * cardWidth;
-            profileCardsContainer.scrollTo({
-              left: scrollPosition,
-              behavior: "smooth",
-            });
-            updateActiveDot();
-            trackEvent("profile_card_navigated", { index: currentIndex });
-          }
-
-          // Update active navigation dot
-          function updateActiveDot() {
-            const dots = profileDots.querySelectorAll(".nav-dot");
-            const scrollPosition = profileCardsContainer.scrollLeft;
-            const newIndex = Math.round(scrollPosition / cardWidth);
-
-            dots.forEach((dot, index) => {
-              dot.classList.toggle("active", index === newIndex);
-            });
-            currentIndex = newIndex;
-          }
-
-          // Next button
-          if (nextBtn) {
-            nextBtn.addEventListener("click", () => {
-              goToSlide(currentIndex + 1);
-              resetAutoScroll();
-            });
-          }
-
-          // Previous button
-          if (prevBtn) {
-            prevBtn.addEventListener("click", () => {
-              goToSlide(currentIndex - 1);
-              resetAutoScroll();
-            });
-          }
-
-          // Pause on hover/touch
-          profileCardsContainer.addEventListener("mouseenter", () => {
-            isPaused = true;
-          });
-
-          profileCardsContainer.addEventListener("mouseleave", () => {
-            isPaused = false;
-          });
-
-          // Touch events for mobile
-          let touchStartX = 0;
-          let touchEndX = 0;
-          let isSwiping = false;
-
-          profileCardsContainer.addEventListener("touchstart", (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            isPaused = true;
-            isSwiping = true;
-          });
-
-          profileCardsContainer.addEventListener("touchend", (e) => {
-            if (!isSwiping) return;
-
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-
-            // Swipe right (prev)
-            if (diff > 50 && currentIndex > 0) {
-              goToSlide(currentIndex - 1);
-            }
-            // Swipe left (next)
-            else if (diff < -50 && currentIndex < cards.length - 1) {
-              goToSlide(currentIndex + 1);
-            }
-
-            isSwiping = false;
-            setTimeout(() => {
-              isPaused = false;
-            }, 2000);
-          });
-
-          // Update dots on scroll
-          profileCardsContainer.addEventListener("scroll", () => {
-            updateActiveDot();
-            resetAutoScroll();
-          });
-
-          // Keyboard navigation
-          document.addEventListener("keydown", (e) => {
-            if (document.activeElement.closest(".profile-cards-container")) {
-              if (e.key === "ArrowLeft" && currentIndex > 0) {
-                goToSlide(currentIndex - 1);
-                resetAutoScroll();
-              } else if (
-                e.key === "ArrowRight" &&
-                currentIndex < cards.length - 1
-              ) {
-                goToSlide(currentIndex + 1);
-                resetAutoScroll();
-              }
-            }
-          });
-
-          // Start auto-scroll after a delay
-          setTimeout(() => {
-            startAutoScroll();
-          }, 2000);
-
-          // Pause auto-scroll when page is not visible
-          document.addEventListener("visibilitychange", function () {
-            if (document.hidden) {
-              isPaused = true;
-            } else {
-              isPaused = false;
-            }
           });
         }
 
@@ -4179,13 +5054,11 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
               e.preventDefault();
-              trackEvent("internal_link_clicked", { target: targetId });
               window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: "smooth",
               });
 
-              // Close mobile menu if open
               if (mainNav && mainNav.classList.contains("active")) {
                 mainNav.classList.remove("active");
                 const icon = mobileMenuToggle.querySelector("i");
@@ -4204,9 +5077,6 @@
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("fade-in-up");
-                trackEvent("section_scrolled_into_view", {
-                  section: entry.target.id || entry.target.className,
-                });
               }
             });
           },
@@ -4215,11 +5085,98 @@
 
         document
           .querySelectorAll(
-            ".section, .hero-content, .country-card, .feature-card, .step, .fans-image-container, .chat-demo-image-container, .reasons-image-container, .profile-card, .faq-item, .testimonial, .reason-item",
+            ".section, .hero-content, .country-card, .feature-card, .step, .fans-image-container, .chat-demo-image-container, .profile-card, .faq-item, .reason-item",
           )
           .forEach((element) => {
             scrollObserver.observe(element);
           });
+
+        // ===== TESTIMONIAL CAROUSEL =====
+        function initTestimonialCarousel() {
+          const slides = document.querySelectorAll(".testimonial-slide");
+          const dots = document.querySelectorAll(".testimonial-dot");
+          const prevBtn = document.querySelector(".testimonial-nav-btn.prev");
+          const nextBtn = document.querySelector(".testimonial-nav-btn.next");
+
+          if (!slides.length) return;
+
+          let currentSlide = 0;
+          let autoSlideInterval;
+
+          function showSlide(index) {
+            slides.forEach((slide) => slide.classList.remove("active"));
+            dots.forEach((dot) => dot.classList.remove("active"));
+
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add("active");
+            dots[currentSlide].classList.add("active");
+          }
+
+          function nextSlide() {
+            showSlide(currentSlide + 1);
+          }
+
+          function prevSlide() {
+            showSlide(currentSlide - 1);
+          }
+
+          function startAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 5000);
+          }
+
+          function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+          }
+
+          if (prevBtn)
+            prevBtn.addEventListener("click", () => {
+              prevSlide();
+              resetAutoSlide();
+            });
+
+          if (nextBtn)
+            nextBtn.addEventListener("click", () => {
+              nextSlide();
+              resetAutoSlide();
+            });
+
+          dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+              showSlide(index);
+              resetAutoSlide();
+            });
+          });
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") {
+              prevSlide();
+              resetAutoSlide();
+            } else if (e.key === "ArrowRight") {
+              nextSlide();
+              resetAutoSlide();
+            }
+          });
+
+          const testimonialSlider = document.querySelector(
+            ".testimonial-slider",
+          );
+          if (testimonialSlider) {
+            testimonialSlider.addEventListener("mouseenter", () => {
+              clearInterval(autoSlideInterval);
+            });
+
+            testimonialSlider.addEventListener("mouseleave", () => {
+              startAutoSlide();
+            });
+          }
+
+          showSlide(0);
+          startAutoSlide();
+        }
+
+        initTestimonialCarousel();
 
         // ===== FAQ FUNCTIONALITY =====
         const faqQuestions = document.querySelectorAll(".faq-question");
@@ -4228,7 +5185,6 @@
             const answer = this.nextElementSibling;
             const isOpen = answer.classList.contains("open");
 
-            // Close all other FAQs
             document.querySelectorAll(".faq-answer").forEach((ans) => {
               ans.classList.remove("open");
             });
@@ -4236,16 +5192,9 @@
               q.classList.remove("active");
             });
 
-            // Toggle current FAQ
             if (!isOpen) {
               answer.classList.add("open");
               this.classList.add("active");
-              trackEvent("faq_opened", {
-                question: this.textContent
-                  .trim()
-                  .replace(/\s+/g, " ")
-                  .substring(0, 50),
-              });
             }
           });
         });
@@ -4262,12 +5211,7 @@
 
             this.innerHTML = '<i class="fas fa-check"></i> Accepted';
             this.disabled = true;
-            this.style.backgroundColor = "#059669";
-
-            trackEvent("chat_request_accepted", {
-              user: userName.split(" from")[0],
-              amount: amount,
-            });
+            this.style.backgroundColor = "var(--primary-color)";
 
             setTimeout(() => {
               alert(
@@ -4286,15 +5230,12 @@
           });
         });
 
-        // Refresh Chat Requests
         const refreshRequestsBtn = document.getElementById("refreshRequests");
         if (refreshRequestsBtn) {
           refreshRequestsBtn.addEventListener("click", function () {
             this.innerHTML =
               '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
             this.disabled = true;
-
-            trackEvent("chat_requests_refreshed");
 
             setTimeout(() => {
               addNewChatRequest();
@@ -4306,7 +5247,6 @@
           });
         }
 
-        // Add New Chat Request
         function addNewChatRequest() {
           const names = [
             "Mildred",
@@ -4360,7 +5300,6 @@
           const chatRequests = document.querySelector(".chat-requests");
           chatRequests.prepend(request);
 
-          // Add event listener to new button
           request
             .querySelector(".accept-request")
             .addEventListener("click", function () {
@@ -4372,12 +5311,7 @@
 
               this.innerHTML = '<i class="fas fa-check"></i> Accepted';
               this.disabled = true;
-              this.style.backgroundColor = "#059669";
-
-              trackEvent("chat_request_accepted", {
-                user: userName.split(" from")[0],
-                amount: amount,
-              });
+              this.style.backgroundColor = "var(--primary-color)";
 
               setTimeout(() => {
                 alert(
@@ -4395,13 +5329,11 @@
               }, 1500);
             });
 
-          // Remove extra requests
           if (chatRequests.children.length > 4) {
             chatRequests.removeChild(chatRequests.lastChild);
           }
         }
 
-        // Auto-add new chat requests
         setInterval(() => {
           if (Math.random() > 0.7) {
             addNewChatRequest();
@@ -4416,11 +5348,11 @@
             position: fixed;
             top: 100px;
             right: 20px;
-            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
             padding: 15px 25px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--shadow-lg);
             z-index: 1000;
             transform: translateX(120%);
             transition: transform 0.3s ease;
@@ -4429,7 +5361,6 @@
           notification.textContent = message;
           document.body.appendChild(notification);
 
-          // Mobile adjustments
           if (window.innerWidth <= 768) {
             notification.style.top = "80px";
             notification.style.right = "15px";
@@ -4442,41 +5373,44 @@
             () => (notification.style.transform = "translateX(0)"),
             10,
           );
-
           setTimeout(() => {
             notification.style.transform = "translateX(120%)";
             setTimeout(() => notification.remove(), 300);
           }, 3000);
         }
 
-        // ===== EXIT INTENT POPUP =====
-        let exitIntentShown = false;
-        document.addEventListener("mouseleave", (e) => {
-          if (e.clientY <= 0 && !exitIntentShown) {
-            exitIntentShown = true;
-            showNotification("Wait! Get 10% bonus on your first month!");
-            trackEvent("exit_intent_shown");
-          }
-        });
+        // ===== OPTIMIZE IMAGE LOADING =====
+        function optimizeImages() {
+          const images = document.querySelectorAll('img[loading="lazy"]');
 
-        // ===== TRACK CTA CLICKS =====
-        document
-          .querySelectorAll(".btn-primary, .btn-whatsapp")
-          .forEach((btn) => {
-            btn.addEventListener("click", function () {
-              const buttonText = this.textContent.trim();
-              trackEvent("cta_button_clicked", {
-                button_text: buttonText,
-                button_type: this.classList.contains("btn-whatsapp")
-                  ? "whatsapp"
-                  : "primary",
+          const imageObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  const src = img.getAttribute("data-src") || img.src;
+
+                  if (src !== img.src) {
+                    img.src = src;
+                  }
+                  imageObserver.unobserve(img);
+                }
               });
-            });
+            },
+            { rootMargin: "50px 0px" },
+          );
+
+          images.forEach((img) => {
+            if (!img.complete) {
+              imageObserver.observe(img);
+            }
           });
+        }
+
+        optimizeImages();
 
         // ===== TOUCH DEVICE OPTIMIZATIONS =====
         if ("ontouchstart" in window) {
-          // Prevent zoom on double tap
           let lastTouchEnd = 0;
           document.addEventListener(
             "touchend",
@@ -4490,19 +5424,6 @@
             false,
           );
         }
-
-        // ===== PERFORMANCE METRICS =====
-        window.addEventListener("load", function () {
-          const loadTime =
-            window.performance.timing.domContentLoadedEventEnd -
-            window.performance.timing.navigationStart;
-          trackEvent("page_load_time", { load_time: loadTime });
-
-          // Report Web Vitals
-          if (typeof webVitals === "function") {
-            webVitals();
-          }
-        });
       });
     </script>
   </body>
