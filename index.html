@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
     />
-    <title>Chat&Earn App - Make Money Online by Chatting With People</title>
+    <title>Mulastar - Chat & Earn App | Get Paid to Chat with foreigners</title>
     <meta
       name="description"
       content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers. On the Chat&Earn app, you get paid to chat from anywhere."
@@ -22,25 +22,25 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://chat-earn.com/" />
+    <meta property="og:url" content="https://mulastar.com/" />
     <meta
       property="og:title"
-      content="Chat&Earn App - Make Money Online by Chatting With People"
+      content="Mulastar - Chat & Earn App | Get Paid to Chat with foreigners"
     />
     <meta
       property="og:description"
       content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers."
     />
-    <meta property="og:image" content="https://chat-earn.com/og-image.jpg" />
+    <meta property="og:image" content="https://mulastar.com/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://chat-earn.com/" />
+    <meta name="twitter:url" content="https://mulastar.com/" />
     <meta
       name="twitter:title"
-      content="Chat&Earn App - Make Money Online by Chatting With People"
+      content="Mulastar - Chat & Earn App | Get Paid to Chat with foreigners"
     />
     <meta
       name="twitter:description"
@@ -48,7 +48,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://chat-earn.com/twitter-image.jpg"
+      content="https://mulastar.com/twitter-image.jpg"
     />
 
     <!-- Performance Optimizations -->
@@ -96,7 +96,6 @@
     </script>
 
     <style>
-      /* ===== CSS RESET & VARIABLES ===== */
       :root {
         /* Light theme colors (default) */
         --primary-color: #029f58;
@@ -242,14 +241,6 @@
         text-align: center;
       }
 
-      .text-left {
-        text-align: left;
-      }
-
-      .text-right {
-        text-align: right;
-      }
-
       .text-gradient {
         background: linear-gradient(
           135deg,
@@ -272,7 +263,9 @@
         gap: var(--section-gap);
       }
 
-      /* ===== PROGRESS BAR ===== */
+      /* ===== COMPONENTS ===== */
+
+      /* Progress Bar */
       .progress-container {
         position: fixed;
         top: 0;
@@ -294,26 +287,46 @@
         transition: width 0.3s ease;
       }
 
-      /* ===== HEADER ===== */
+      /* Header */
       .header {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 1001;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        padding: 0.5rem 0;
+        height: 70px;
+        border-bottom: 1px solid rgba(2, 159, 88, 0.1);
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
           var(--secondary-color) 100%
         );
-        z-index: 1001;
-        transition:
-          transform 0.3s ease,
-          background 0.3s ease;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        padding: 0.75rem 0;
-        height: 70px;
-        display: flex;
-        align-items: center;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .header.scrolled::before {
+        transform: scaleX(1);
+      }
+
+      .dark-mode .header {
+        background: rgba(45, 45, 45, 0.95);
+        border-bottom: 1px solid rgba(52, 211, 153, 0.1);
       }
 
       .header.hidden {
@@ -321,119 +334,314 @@
       }
 
       .header.scrolled {
-        background: var(--bg-white);
-        backdrop-filter: blur(10px);
+        height: 65px;
+        padding: 0.4rem 0;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .header.scrolled .logo {
-        color: var(--text-dark);
-      }
-
-      .header.scrolled .nav a {
-        color: var(--text-dark);
-      }
-
-      .header.scrolled .nav a:hover {
-        background: rgba(0, 0, 0, 0.05);
-      }
-
-      .header.scrolled .mobile-menu-toggle,
-      .header.scrolled .theme-toggle {
-        color: var(--text-dark);
       }
 
       .header .container {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
+        gap: 1.5rem;
         height: 100%;
       }
 
+      /* Logo */
       .logo {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        font-size: clamp(1.25rem, 3vw, 1.75rem);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        color: white;
+        gap: 0.875rem;
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: transform 0.3s ease;
         flex-shrink: 0;
-        min-height: 44px;
       }
 
-      .logo img {
-        width: clamp(32px, 4vw, 40px);
-        height: clamp(32px, 4vw, 40px);
+      .logo:hover {
+        transform: translateY(-1px);
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        justify-content: center;
+        padding: 8px;
+        box-shadow: 0 4px 15px rgba(2, 159, 88, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .logo:hover .logo-icon {
+        transform: rotate(-5deg) scale(1.05);
+        box-shadow: 0 6px 20px rgba(2, 159, 88, 0.3);
+      }
+
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
         object-fit: contain;
       }
 
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .logo-main {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        letter-spacing: -0.5px;
+        font-family: "DM Sans", sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .logo-subtext {
+        font-size: 0.75rem;
+        color: var(--text-light-gray);
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+      }
+
+      /* Navigation */
       .nav {
         display: flex;
         align-items: center;
-        gap: clamp(0.75rem, 1.5vw, 2.5rem);
+        gap: 0.25rem;
         margin-left: auto;
+        margin-right: 1.5rem;
       }
 
-      .nav a {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: clamp(0.9rem, 1.5vw, 1rem);
-        padding: 0.5rem clamp(0.5rem, 1vw, 1rem);
-        border-radius: var(--radius-sm);
-        transition: var(--transition);
-        position: relative;
-        white-space: nowrap;
-        min-height: 44px;
+      .nav-link {
         display: flex;
         align-items: center;
-        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1rem;
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        position: relative;
+        white-space: nowrap;
+        border: 1px solid transparent;
       }
 
-      .nav a:hover {
-        background: rgba(255, 255, 255, 0.1);
+      .nav-link i {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: all 0.3s ease;
       }
 
-      .nav a::after {
+      .nav-link:hover {
+        background: var(--primary-light);
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+      }
+
+      .nav-link:hover i {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .nav-link.active {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        box-shadow: 0 4px 15px rgba(2, 159, 88, 0.2);
+      }
+
+      .nav-link.active i {
+        opacity: 1;
+        color: white;
+      }
+
+      .nav-link::after {
         content: "";
         position: absolute;
-        bottom: -2px;
+        bottom: -4px;
         left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: white;
         transform: translateX(-50%);
+        width: 0;
+        height: 3px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        border-radius: 2px;
         transition: width 0.3s ease;
       }
 
-      .nav a:hover::after {
+      .nav-link:hover::after,
+      .nav-link.active::after {
         width: 80%;
       }
 
-      /* Theme Toggle Button */
+      /* Header Actions */
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: clamp(0.875rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        text-decoration: none;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-family: "DM Sans", sans-serif;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        min-height: 48px;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      .btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+      }
+
+      .btn-whatsapp {
+        background-color: #25d366;
+        color: var(--text-light);
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-whatsapp:hover {
+        background-color: #128c7e;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      }
+
+      .btn-secondary {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--border-color);
+        transform: translateY(-2px);
+      }
+
+      .btn-small {
+        padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+        font-size: clamp(0.8rem, 1.5vw, 0.875rem);
+        min-height: 40px;
+      }
+
+      .btn-header {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        min-height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 4px 15px rgba(2, 159, 88, 0.2);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-header:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(2, 159, 88, 0.3);
+      }
+
+      /* Theme Toggle */
       .theme-toggle {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.25rem;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+        color: var(--text-dark);
         cursor: pointer;
-        padding: 0.5rem;
-        width: 44px;
-        height: 44px;
-        border-radius: var(--radius-sm);
-        transition: var(--transition);
-        margin-left: 0.5rem;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: none;
       }
 
       .theme-toggle:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--primary-light);
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        transform: rotate(15deg);
       }
 
       .theme-toggle .fa-sun {
@@ -453,20 +661,115 @@
         display: none;
         background: none;
         border: none;
-        color: white;
-        font-size: 1.5rem;
         cursor: pointer;
         padding: 0.5rem;
-        z-index: 1003;
         width: 44px;
         height: 44px;
-        border-radius: var(--radius-sm);
+        border-radius: 10px;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
+        flex-direction: column;
+        gap: 4px;
+        transition: all 0.3s ease;
       }
 
-      /* ===== STICKY CTA ===== */
+      .menu-icon {
+        width: 24px;
+        height: 2px;
+        background: var(--text-dark);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      .mobile-menu-toggle:hover {
+        background: var(--primary-light);
+      }
+
+      .mobile-menu-toggle:hover .menu-icon {
+        background: var(--primary-color);
+      }
+
+      .mobile-menu-toggle.active .menu-icon:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+      }
+
+      .mobile-menu-toggle.active .menu-icon:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active .menu-icon:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+      }
+
+      /* Mobile Navigation */
+      .mobile-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border-top: 1px solid var(--border-color);
+        z-index: 1000;
+      }
+
+      .dark-mode .mobile-nav {
+        background: rgba(45, 45, 45, 0.98);
+      }
+
+      .mobile-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mobile-nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .mobile-nav-link i {
+        font-size: 1rem;
+        width: 24px;
+        text-align: center;
+      }
+
+      .mobile-nav-link:hover,
+      .mobile-nav-link.active {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        transform: translateX(5px);
+      }
+
+      .mobile-nav-link:hover i {
+        color: white;
+      }
+
+      /* Sticky CTA */
       .sticky-cta {
         position: fixed;
         bottom: 0;
@@ -571,6 +874,7 @@
         justify-content: center;
         gap: 0.5rem;
         cursor: pointer;
+        text-decoration: none;
       }
 
       .sticky-cta .btn-small:hover {
@@ -579,11 +883,7 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       }
 
-      .sticky-cta .btn-small i {
-        font-size: 0.9rem;
-      }
-
-      /* ===== FLOATING WHATSAPP BUTTON ===== */
+      /* Floating WhatsApp Button */
       .floating-whatsapp {
         position: fixed;
         bottom: 80px;
@@ -626,7 +926,7 @@
         }
       }
 
-      /* ===== COOKIE CONSENT ===== */
+      /* Cookie Consent */
       .cookie-consent {
         position: fixed;
         bottom: 0;
@@ -696,10 +996,10 @@
         border: 2px solid var(--border-color);
       }
 
-      /* ===== WELCOME NOTIFICATION ===== */
+      /* Welcome Notification */
       .welcome-notification {
         position: fixed;
-        top: 20px;
+        top: 80px;
         right: 20px;
         background: linear-gradient(
           135deg,
@@ -710,7 +1010,7 @@
         padding: 1rem 1.5rem;
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-lg);
-        z-index: 1004;
+        z-index: 1005;
         transform: translateX(120%);
         transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         max-width: min(300px, 90vw);
@@ -762,93 +1062,9 @@
         background: rgba(255, 255, 255, 0.1);
       }
 
-      /* ===== BUTTONS ===== */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: clamp(0.875rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        font-size: clamp(0.9rem, 1.5vw, 1rem);
-        text-decoration: none;
-        transition: var(--transition);
-        cursor: pointer;
-        border: none;
-        outline: none;
-        font-family: "DM Sans", sans-serif;
-        position: relative;
-        overflow: hidden;
-        white-space: nowrap;
-        min-height: 48px;
-      }
+      /* ===== LAYOUT COMPONENTS ===== */
 
-      .btn::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.6s,
-          height 0.6s;
-      }
-
-      .btn:hover::before {
-        width: 300px;
-        height: 300px;
-      }
-
-      .btn-primary {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-      }
-
-      .btn-whatsapp {
-        background-color: #25d366;
-        color: var(--text-light);
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-      }
-
-      .btn-whatsapp:hover {
-        background-color: #128c7e;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-      }
-
-      .btn-secondary {
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        border: 2px solid var(--border-color);
-      }
-
-      .btn-secondary:hover {
-        background-color: var(--border-color);
-        transform: translateY(-2px);
-      }
-
-      .btn-small {
-        padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
-        font-size: clamp(0.8rem, 1.5vw, 0.875rem);
-        min-height: 40px;
-      }
-
-      /* ===== HERO SECTION ===== */
+      /* Hero Section */
       .hero {
         background: linear-gradient(
           135deg,
@@ -870,7 +1086,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         opacity: 0.1;
       }
 
@@ -907,37 +1122,28 @@
         padding: 0 clamp(0.5rem, 2vw, 1rem);
       }
 
-      /* Animated Stats */
-      .animated-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: clamp(1rem, 3vw, 2.5rem);
-        margin: clamp(1.5rem, 4vw, 2.5rem) 0;
-        padding: 0 clamp(0.5rem, 2vw, 1rem);
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0;
       }
 
-      .stat {
+      .hero-stat {
         text-align: center;
-        min-width: 0;
-        padding: clamp(0.75rem, 2vw, 1rem);
       }
 
-      .stat-number {
-        font-size: clamp(1.75rem, 4vw, 2.5rem);
-        font-weight: 800;
-        background: var(--text-light);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1;
-        margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
+      .hero-stat-number {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 5px;
       }
 
-      .stat-label {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-        font-weight: 500;
-        white-space: nowrap;
+      .hero-stat-label {
+        font-size: 14px;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       .cta-buttons {
@@ -949,576 +1155,7 @@
         padding: 0 clamp(0.5rem, 2vw, 1rem);
       }
 
-      /* ===== PROFILE CARDS SECTION ===== */
-      .profile-cards-section {
-        background: var(--bg-section-alt);
-        padding: clamp(3rem, 6vw, 5rem) 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .profile-cards-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          circle at 20% 50%,
-          rgba(2, 159, 88, 0.05) 0%,
-          transparent 50%
-        );
-        pointer-events: none;
-      }
-
-      .dark-mode .profile-cards-section::before {
-        background: radial-gradient(
-          circle at 20% 50%,
-          rgba(52, 211, 153, 0.05) 0%,
-          transparent 50%
-        );
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: clamp(2rem, 4vw, 3.5rem);
-        position: relative;
-      }
-
-      .section-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        padding: 0.5rem 1.25rem;
-        border-radius: var(--radius-full);
-        font-weight: 600;
-        font-size: 0.875rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Enhanced Profile Cards Container */
-      .profile-cards-container {
-        position: relative;
-        padding: 2rem 0 3rem;
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-      }
-
-      .profile-cards-wrapper {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-      }
-
-      .profile-cards {
-        display: flex;
-        gap: 1.75rem;
-        padding: 1rem 0.5rem 2rem;
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        width: max-content;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-      }
-
-      /* Enhanced Profile Card */
-      .profile-card {
-        width: 320px;
-        min-width: 320px;
-        max-width: 320px;
-        background: var(--bg-white);
-        padding: 1.75rem;
-        border-radius: var(--radius-xl);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        box-shadow: var(--shadow-lg);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid var(--border-color);
-        position: relative;
-        overflow: hidden;
-        flex-shrink: 0;
-        scroll-snap-align: center;
-        cursor: grab;
-      }
-
-      .profile-card:active {
-        cursor: grabbing;
-      }
-
-      .profile-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-      }
-
-      .profile-card:hover {
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary-color);
-      }
-
-      .profile-card-header {
-        position: absolute;
-        top: 1rem;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 1.75rem;
-        z-index: 2;
-      }
-
-      .profile-badge {
-        padding: 0.35rem 0.75rem;
-        border-radius: var(--radius-full);
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        background: var(--primary-color);
-        color: var(--text-light);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .profile-badge.top-earner {
-        background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-        color: #000;
-      }
-
-      .profile-badge.popular {
-        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-      }
-
-      .profile-badge.new {
-        background: linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%);
-      }
-
-      .profile-badge.willing {
-        background: linear-gradient(135deg, #029f58 0%, #2f80ed 100%);
-      }
-
-      .profile-badge.high-demand {
-        background: linear-gradient(135deg, #9b51e0 0%, #bb6bd9 100%);
-      }
-
-      .profile-badge.business {
-        background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
-      }
-
-      .online-status {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 2px solid var(--bg-white);
-        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
-      }
-
-      .online-status.online {
-        background: #4cd964;
-        animation: pulse 2s infinite;
-      }
-
-      .online-status.busy {
-        background: #ff9500;
-      }
-
-      .online-status.offline {
-        background: #8e8e93;
-      }
-
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(76, 217, 100, 0.7);
-        }
-        70% {
-          box-shadow: 0 0 0 6px rgba(76, 217, 100, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(76, 217, 100, 0);
-        }
-      }
-
-      .profile-image {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 2.5rem 0 1rem;
-        border: 5px solid var(--bg-white);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        position: relative;
-        transition: all 0.3s ease;
-      }
-
-      .profile-card:hover .profile-image {
-        transform: scale(1.08);
-        border-color: var(--primary-light);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .profile-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .profile-rating {
-        position: absolute;
-        bottom: -8px;
-        right: -8px;
-        background: var(--bg-white);
-        color: var(--text-dark);
-        padding: 0.35rem 0.75rem;
-        border-radius: var(--radius-full);
-        font-size: 0.875rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border: 2px solid var(--primary-color);
-      }
-
-      .profile-rating i {
-        color: #ffd700;
-      }
-
-      .profile-name {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-        color: var(--text-dark);
-        line-height: 1.3;
-      }
-
-      .profile-location {
-        color: var(--text-gray);
-        font-size: 0.9rem;
-        margin-bottom: 1.25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .profile-location i {
-        color: var(--primary-color);
-        font-size: 0.8rem;
-      }
-
-      .profile-bio {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        color: var(--text-gray);
-        min-height: 76px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .profile-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        justify-content: center;
-      }
-
-      .profile-tags .tag {
-        background: var(--bg-light);
-        color: var(--text-dark);
-        padding: 0.35rem 0.75rem;
-        border-radius: var(--radius-full);
-        font-size: 0.75rem;
-        font-weight: 500;
-        border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
-      }
-
-      .profile-card:hover .profile-tags .tag {
-        background: var(--primary-light);
-        border-color: var(--primary-color);
-        color: var(--primary-dark);
-      }
-
-      .profile-stats {
-        display: flex;
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-        padding: 1rem;
-        background: var(--bg-light);
-        border-radius: var(--radius-md);
-        width: 100%;
-        justify-content: center;
-      }
-
-      .profile-stats .stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.25rem;
-      }
-
-      .profile-stats .stat i {
-        color: var(--primary-color);
-        font-size: 1rem;
-      }
-
-      .profile-stats .stat span {
-        font-size: 0.8rem;
-        color: var(--text-gray);
-        font-weight: 500;
-      }
-
-      .profile-earnings {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        padding: 1rem 1.5rem;
-        border-radius: var(--radius-lg);
-        text-align: center;
-        margin-bottom: 1.5rem;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .profile-earnings::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          45deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.1) 50%,
-          transparent 70%
-        );
-        animation: shine 3s infinite;
-      }
-
-      @keyframes shine {
-        0% {
-          transform: translateX(-100%);
-        }
-        100% {
-          transform: translateX(100%);
-        }
-      }
-
-      .earnings-label {
-        font-size: 0.875rem;
-        opacity: 0.9;
-        margin-bottom: 0.25rem;
-      }
-
-      .earnings-amount {
-        font-size: 1.75rem;
-        font-weight: 800;
-        line-height: 1;
-      }
-
-      .earnings-amount span {
-        font-size: 0.875rem;
-        font-weight: 600;
-        opacity: 0.9;
-      }
-
-      .profile-card .btn {
-        width: 100%;
-        max-width: 200px;
-        margin: 0 auto;
-      }
-
-      /* Enhanced Navigation Arrows */
-      .profile-nav-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: var(--bg-white);
-        border: 2px solid var(--border-color);
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: var(--shadow-lg);
-        z-index: 10;
-        opacity: 0.9;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: var(--text-dark);
-        backdrop-filter: blur(10px);
-      }
-
-      .profile-nav-arrow:hover {
-        opacity: 1;
-        transform: translateY(-50%) scale(1.15);
-        background: var(--primary-color);
-        color: var(--text-light);
-        border-color: var(--primary-color);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      .profile-nav-arrow.prev {
-        left: 0;
-      }
-
-      .profile-nav-arrow.next {
-        right: 0;
-      }
-
-      /* Enhanced Navigation Dots */
-      .profile-cards-nav {
-        display: flex;
-        justify-content: center;
-        gap: 0.75rem;
-        margin: 2rem 0 1rem;
-        padding: 0.5rem;
-      }
-
-      .nav-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--border-color);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .nav-dot::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .nav-dot.active {
-        background: transparent;
-        transform: scale(1.2);
-        border-color: var(--primary-color);
-      }
-
-      .nav-dot.active::before {
-        opacity: 1;
-      }
-
-      .nav-dot:hover {
-        transform: scale(1.3);
-        background: var(--primary-color);
-      }
-
-      /* Progress Indicator */
-      .profile-progress {
-        width: 100%;
-        max-width: 300px;
-        height: 4px;
-        background: var(--bg-light);
-        border-radius: 2px;
-        margin: 0 auto 2rem;
-        overflow: hidden;
-      }
-
-      .profile-progress .progress-bar {
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        width: 20%;
-        transition: width 0.3s ease;
-      }
-
-      /* CTA Section */
-      .profile-cta {
-        text-align: center;
-        background: var(--bg-white);
-        padding: 2.5rem;
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-lg);
-        margin-top: 3rem;
-        border: 2px solid var(--primary-light);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .profile-cta::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-      }
-
-      .cta-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--text-dark);
-      }
-
-      .cta-subtitle {
-        color: var(--text-gray);
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .profile-cta .cta-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      /* ===== SECTION STYLES ===== */
+      /* Section Styles */
       .section-title {
         font-size: clamp(1.75rem, 4vw, 3rem);
         font-weight: 700;
@@ -1536,7 +1173,7 @@
         max-width: min(800px, 95vw);
       }
 
-      /* ===== EARNINGS CALCULATOR ===== */
+      /* Earnings Calculator */
       .calculator-section {
         background: linear-gradient(
           135deg,
@@ -1615,7 +1252,7 @@
         font-size: clamp(1rem, 2vw, 1.125rem);
       }
 
-      /* ===== TRUST BADGES ===== */
+      /* Trust Badges */
       .trust-badges {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1644,7 +1281,7 @@
         box-shadow: var(--shadow-md);
       }
 
-      /* ===== FANS SECTION ===== */
+      /* Fans Section */
       .fans-section .container {
         display: grid;
         grid-template-columns: 1fr;
@@ -1793,7 +1430,7 @@
         margin: 0 auto;
       }
 
-      /* ===== CHAT DEMO SECTION ===== */
+      /* Chat Demo Section */
       .chat-demo-section {
         background: linear-gradient(
           135deg,
@@ -1849,7 +1486,7 @@
         justify-content: center;
       }
 
-      /* ===== COUNTRIES SECTION ===== */
+      /* Countries Section */
       .countries-section {
         background: var(--bg-section-alt);
       }
@@ -1876,7 +1513,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
       }
 
       .country-card:hover {
@@ -1913,27 +1549,34 @@
         word-break: break-word;
       }
 
-      /* ===== REASONS SECTION ===== */
+      .country-fee {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-top: 0.5rem;
+        background: var(--primary-light);
+        padding: 0.35rem 0.75rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(2, 159, 88, 0.2);
+      }
 
+      .dark-mode .country-fee {
+        background: rgba(52, 211, 153, 0.1);
+        border-color: rgba(52, 211, 153, 0.2);
+      }
+
+      .country-card:hover .country-fee {
+        background: var(--primary-color);
+        color: var(--text-light);
+        border-color: var(--primary-color);
+      }
+
+      /* Reasons Section */
       .reasons-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: clamp(2rem, 5vw, 4rem);
         align-items: center;
-      }
-
-      @media (min-width: 768px) {
-        .reasons-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .reasons-image-container {
-          order: 1;
-        }
-
-        .reasons-content {
-          order: 2;
-        }
       }
 
       .reasons-image-container {
@@ -1999,7 +1642,8 @@
         line-height: 1.6;
         max-width: min(500px, 100%);
       }
-      /* ===== HOW IT WORKS ===== */
+
+      /* How It Works */
       .how-it-works {
         background: linear-gradient(
           135deg,
@@ -2072,7 +1716,7 @@
         font-size: clamp(0.9rem, 1.5vw, 1rem);
       }
 
-      /* ===== FEATURES SECTION ===== */
+      /* Features Section */
       .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2150,7 +1794,7 @@
         font-size: clamp(0.9rem, 1.5vw, 1rem);
       }
 
-      /* ===== TESTIMONIALS CAROUSEL ===== */
+      /* Testimonials Carousel */
       .testimonial-slider {
         max-width: min(800px, 95vw);
         margin: clamp(2rem, 4vw, 3rem) auto 0;
@@ -2290,7 +1934,7 @@
         background: var(--primary-color);
       }
 
-      /* ===== FAQ ===== */
+      /* FAQ */
       .faq-container {
         max-width: min(800px, 95vw);
         margin: clamp(2rem, 4vw, 3rem) auto 0;
@@ -2352,7 +1996,7 @@
         max-height: 500px;
       }
 
-      /* ===== CONTACT SECTION ===== */
+      /* Contact Section */
       .contact-section {
         background: linear-gradient(
           135deg,
@@ -2499,7 +2143,7 @@
         );
       }
 
-      /* ===== CTA SECTION ===== */
+      /* CTA Section */
       .cta-section {
         background: linear-gradient(
           135deg,
@@ -2539,7 +2183,7 @@
         letter-spacing: -0.02em;
       }
 
-      /* ===== FOOTER ===== */
+      /* Footer */
       .footer {
         background-color: var(--bg-white);
         padding: clamp(2rem, 4vw, 3rem) 0;
@@ -2639,6 +2283,683 @@
         text-decoration: underline;
       }
 
+      /* ===== PREMIUM PROFILES SECTION ===== */
+      .premium-profiles-section {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .dark-mode .premium-profiles-section {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      }
+
+      .premium-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .header-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+
+      .badge-icon {
+        font-size: 0.9rem;
+      }
+
+      .premium-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+      }
+
+      .premium-subtitle {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--text-gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Live Stats Ticker */
+      .live-stats-ticker {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow-md);
+      }
+
+      .ticker-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .ticker-item i {
+        font-size: 2rem;
+        color: var(--primary-color);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-light);
+        border-radius: 50%;
+      }
+
+      .ticker-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        line-height: 1.2;
+      }
+
+      .ticker-label {
+        font-size: 0.875rem;
+        color: var(--text-gray);
+        margin-top: 0.25rem;
+      }
+
+      /* Compact Profile Cards */
+      .profile-card {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+        height: 100%;
+      }
+
+      .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .status-badge.premium {
+        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+        color: #000;
+      }
+
+      .status-badge.featured {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+        color: white;
+      }
+
+      .status-badge.new {
+        background: linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%);
+        color: white;
+      }
+
+      .online-status {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid var(--bg-white);
+      }
+
+      .online-status.active {
+        background: #4cd964;
+        animation: pulse 2s infinite;
+      }
+
+      .online-status.busy {
+        background: #ff9500;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .profile-summary {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .profile-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--bg-white);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .profile-info h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--text-dark);
+      }
+
+      .profile-meta {
+        font-size: 0.875rem;
+        color: var(--text-gray);
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .stars {
+        color: #ffd700;
+        font-size: 0.9rem;
+      }
+
+      .rating-text {
+        font-size: 0.8rem;
+        color: var(--text-light-gray);
+      }
+
+      .quick-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin: 1rem 0;
+        background: var(--bg-light);
+        padding: 0.75rem;
+        border-radius: var(--radius-md);
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--text-dark);
+      }
+
+      .info-item i {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+      }
+
+      .profile-excerpt {
+        font-size: 0.9rem;
+        color: var(--text-gray);
+        line-height: 1.5;
+        margin: 1rem 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .card-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .btn-quick-chat,
+      .btn-view-details {
+        flex: 1;
+        padding: 0.75rem;
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-quick-chat {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+      }
+
+      .btn-quick-chat:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(2, 159, 88, 0.3);
+      }
+
+      .btn-view-details {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-view-details:hover {
+        background: var(--border-color);
+        transform: translateY(-2px);
+      }
+
+      /* Profile Grid */
+      .profiles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .profiles-container {
+        position: relative;
+      }
+
+      .nav-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--border-color);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      .dot:hover {
+        background: var(--primary-color);
+      }
+
+      /* Quick Join Bar */
+      .quick-join-bar {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      .join-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+      }
+
+      .join-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .join-content p {
+        opacity: 0.9;
+      }
+
+      .btn-join {
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        white-space: nowrap;
+      }
+
+      .btn-join:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Profile Modal */
+      .profile-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: var(--shadow-xl);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .modal-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        color: var(--text-gray);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .modal-close:hover {
+        background: var(--bg-light);
+        color: var(--text-dark);
+      }
+
+      .modal-body {
+        padding: 1.5rem;
+      }
+
+      .modal-footer {
+        padding: 1.5rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn-modal-chat,
+      .btn-modal-favorite {
+        flex: 1;
+        padding: 1rem;
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-modal-chat {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+      }
+
+      .btn-modal-chat:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(2, 159, 88, 0.3);
+      }
+
+      .btn-modal-favorite {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-modal-favorite:hover {
+        background: var(--border-color);
+        transform: translateY(-2px);
+      }
+
+      /* Modal Styles for Profile Details */
+      .modal-profile {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .modal-header-info {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .modal-avatar-section {
+        flex-shrink: 0;
+        text-align: center;
+      }
+
+      .modal-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--bg-white);
+        box-shadow: var(--shadow-md);
+      }
+
+      .modal-status {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+      }
+
+      .modal-rating {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        display: inline-block;
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      .modal-chats {
+        font-size: 0.75rem;
+        color: var(--text-gray);
+        text-align: center;
+      }
+
+      .modal-basic-info {
+        flex: 1;
+      }
+
+      .info-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+      }
+
+      .info-row i {
+        color: var(--primary-color);
+        width: 20px;
+        text-align: center;
+      }
+
+      .modal-section {
+        background: var(--bg-light);
+        padding: 1.25rem;
+        border-radius: var(--radius-md);
+      }
+
+      .modal-section h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-dark);
+      }
+
+      .earning-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+
+      .earning-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: var(--bg-white);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      .earning-item i {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+      }
+
+      .earning-item div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .earning-item strong {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .earning-item small {
+        font-size: 0.75rem;
+        color: var(--text-gray);
+        margin-top: 0.25rem;
+      }
+
+      .topics-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .topic-tag {
+        background: var(--primary-light);
+        color: var(--primary-color);
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(2, 159, 88, 0.2);
+      }
+
+      .dark-mode .topic-tag {
+        background: rgba(52, 211, 153, 0.1);
+        border-color: rgba(52, 211, 153, 0.2);
+      }
+
+      .interests-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .interests-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .interest-tag {
+        background: var(--bg-white);
+        color: var(--text-dark);
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid var(--border-color);
+      }
+
+      .languages-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .language-tag {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
       /* ===== RESPONSIVE DESIGN ===== */
       @media (min-width: 768px) {
         .header {
@@ -2657,8 +2978,8 @@
           display: none;
         }
 
-        .animated-stats {
-          grid-template-columns: repeat(3, 1fr);
+        .floating-whatsapp {
+          display: block;
         }
 
         .fans-section .container,
@@ -2674,10 +2995,6 @@
         .fans-image-container,
         .chat-demo-image-container {
           order: 2;
-        }
-
-        .floating-whatsapp {
-          display: block;
         }
 
         .chat-request-item {
@@ -2697,74 +3014,55 @@
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
 
-        .profile-cards-container {
-          padding-left: 60px;
-          padding-right: 60px;
+        .reasons-grid {
+          grid-template-columns: 1fr 1fr;
         }
 
-        .profile-nav-arrow.prev {
-          left: -20px;
+        .reasons-image-container {
+          order: 1;
         }
 
-        .profile-nav-arrow.next {
-          right: -20px;
+        .reasons-content {
+          order: 2;
         }
       }
 
-      @media (max-width: 767px) {
-        .animated-stats {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
+      @media (max-width: 1200px) {
+        .profiles-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        .stat {
-          padding: 0.75rem;
+        .ticker-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          display: none;
         }
 
         .mobile-menu-toggle {
           display: flex;
         }
+      }
 
-        .nav {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background: linear-gradient(
-            135deg,
-            var(--primary-color) 0%,
-            var(--secondary-color) 100%
-          );
-          padding: 1.5rem var(--container-padding);
+      @media (max-width: 768px) {
+        .profiles-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        .join-content {
           flex-direction: column;
-          gap: 0.75rem;
-          z-index: 1000;
-          box-shadow: var(--shadow-lg);
-          align-items: stretch;
-        }
-
-        .nav.active {
-          display: flex;
-        }
-
-        .nav a {
-          padding: 1rem;
           text-align: center;
-          border-radius: var(--radius-md);
-          background: rgba(255, 255, 255, 0.1);
-          margin-bottom: 0;
-          font-size: 1rem;
+          gap: 1.5rem;
         }
 
-        .header.scrolled .nav {
-          background: var(--bg-white);
-          backdrop-filter: blur(10px);
-        }
-
-        .header.scrolled .nav a {
-          background: rgba(0, 0, 0, 0.05);
-          color: var(--text-dark);
+        .btn-join {
+          width: 100%;
+          justify-content: center;
         }
 
         .floating-whatsapp {
@@ -2780,77 +3078,19 @@
           grid-template-columns: 1fr;
         }
 
-        /* Profile Cards Responsive */
-        .profile-card {
-          width: 280px;
-          min-width: 280px;
-          max-width: 280px;
-          padding: 1.5rem;
-        }
-
-        .profile-image {
-          width: 120px;
-          height: 120px;
-          margin: 2rem 0 1rem;
-        }
-
-        .profile-name {
-          font-size: 1.35rem;
-        }
-
-        .profile-bio {
-          font-size: 0.9rem;
-          min-height: 72px;
-        }
-
-        .earnings-amount {
-          font-size: 1.5rem;
-        }
-
-        .profile-nav-arrow {
-          width: 42px;
-          height: 42px;
-          font-size: 0.9rem;
-        }
-
-        .profile-nav-arrow.prev {
-          left: -5px;
-        }
-
-        .profile-nav-arrow.next {
-          right: -5px;
-        }
-
-        .profile-cta {
-          padding: 2rem 1.5rem;
-        }
-
-        .cta-title {
-          font-size: 1.5rem;
-        }
-
-        .profile-cta .cta-buttons {
+        .hero-stats {
           flex-direction: column;
-          align-items: center;
+          gap: 2rem;
         }
 
-        .profile-cta .btn {
-          width: 100%;
-          max-width: 300px;
+        .ticker-container {
+          grid-template-columns: 1fr;
         }
       }
 
       @media (max-width: 480px) {
         .countries-grid {
           grid-template-columns: 1fr;
-        }
-
-        .animated-stats {
-          gap: 1rem;
-        }
-
-        .stat {
-          padding: 0.5rem;
         }
 
         .cta-buttons {
@@ -2870,61 +3110,21 @@
           max-width: none;
         }
 
-        /* Profile Cards Mobile */
-        .profile-card {
-          width: 85vw;
-          min-width: 85vw;
-          max-width: 85vw;
-          padding: 1.25rem;
+        .modal-content {
+          width: 95%;
+          margin: 1rem;
         }
 
-        .profile-image {
-          width: 100px;
-          height: 100px;
+        .modal-footer {
+          flex-direction: column;
         }
 
-        .profile-name {
-          font-size: 1.25rem;
+        .card-actions {
+          flex-direction: column;
         }
 
-        .profile-bio {
-          font-size: 0.85rem;
-          min-height: 68px;
-        }
-
-        .profile-stats {
-          gap: 1rem;
-          padding: 0.75rem;
-        }
-
-        .profile-earnings {
-          padding: 0.75rem 1rem;
-        }
-
-        .earnings-amount {
-          font-size: 1.35rem;
-        }
-
-        .profile-nav-arrow {
-          width: 36px;
-          height: 36px;
-          font-size: 0.8rem;
-        }
-
-        .profile-nav-arrow.prev {
-          left: -8px;
-        }
-
-        .profile-nav-arrow.next {
-          right: -8px;
-        }
-
-        .profile-cta {
-          padding: 1.5rem;
-        }
-
-        .cta-title {
-          font-size: 1.25rem;
+        .quick-info {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -2944,14 +3144,6 @@
 
         .btn:active {
           transform: scale(0.98);
-        }
-
-        .profile-card:hover {
-          transform: none;
-        }
-
-        .profile-nav-arrow:hover {
-          transform: translateY(-50%);
         }
 
         .profile-card:active {
@@ -3047,36 +3239,101 @@
     <header class="header" id="mainHeader">
       <div class="container">
         <a href="/" class="logo">
-          <img src="Pictures/dollar.png" alt="Chat&Earn Logo - Money icon" />
-          <span class="dm-sans">Chat&Earn</span>
+          <div class="logo-icon">
+            <img src="Pictures/dollar.png" alt="Chat&Earn Logo - Money icon" />
+          </div>
+          <div class="logo-text">
+            <span class="logo-main dm-sans">Mulastar</span>
+            <span class="logo-subtext">Chat&Earn App</span>
+          </div>
         </a>
 
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Toggle dark mode"
-        >
-          <i class="fas fa-moon"></i>
-          <i class="fas fa-sun"></i>
-        </button>
-
-        <button
-          class="mobile-menu-toggle"
-          id="mobileMenuToggle"
-          aria-label="Toggle navigation menu"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-
         <nav class="nav" id="mainNav" aria-label="Main navigation">
-          <a href="#how-it-works">How It Works</a>
-          <a href="#features">Features</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#faq">FAQs</a>
-          <a href="#contact">Contact</a>
+          <a href="#how-it-works" class="nav-link">
+            <i class="fas fa-play-circle"></i>
+            <span>How It Works</span>
+          </a>
+          <a href="#features" class="nav-link">
+            <i class="fas fa-star"></i>
+            <span>Features</span>
+          </a>
+          <a href="#testimonials" class="nav-link">
+            <i class="fas fa-comment-alt"></i>
+            <span>Testimonials</span>
+          </a>
+          <a href="#faq" class="nav-link">
+            <i class="fas fa-question-circle"></i>
+            <span>FAQs</span>
+          </a>
+          <a href="#contact" class="nav-link">
+            <i class="fas fa-headset"></i>
+            <span>Contact</span>
+          </a>
         </nav>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle dark mode"
+          >
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+          </button>
+
+          <a
+            href="https://mulastar.com/register.php?ref=Sydney"
+            class="btn btn-primary btn-header"
+            rel="noopener noreferrer"
+          >
+            <i class="fas fa-rocket"></i>
+            <span>Start Earning</span>
+          </a>
+
+          <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            aria-label="Toggle navigation menu"
+          >
+            <span class="menu-icon"></span>
+            <span class="menu-icon"></span>
+            <span class="menu-icon"></span>
+          </button>
+        </div>
       </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#how-it-works" class="mobile-nav-link">
+        <i class="fas fa-play-circle"></i>
+        <span>How It Works</span>
+      </a>
+      <a href="#features" class="mobile-nav-link">
+        <i class="fas fa-star"></i>
+        <span>Features</span>
+      </a>
+      <a href="#testimonials" class="mobile-nav-link">
+        <i class="fas fa-comment-alt"></i>
+        <span>Testimonials</span>
+      </a>
+      <a href="#faq" class="mobile-nav-link">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link">
+        <i class="fas fa-headset"></i>
+        <span>Contact</span>
+      </a>
+      <a
+        href="https://mulastar.com/register.php?ref=Sydney"
+        class="mobile-nav-link"
+        style="background: var(--primary-color); color: white"
+      >
+        <i class="fas fa-rocket"></i>
+        <span>Start Earning</span>
+      </a>
+    </nav>
 
     <!-- Sticky CTA -->
     <div
@@ -3120,6 +3377,37 @@
       </a>
     </div>
 
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profileModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalProfileName">Profile Details</h2>
+          <button class="modal-close" id="modalClose" aria-label="Close modal">
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Profile details will be inserted here by JavaScript -->
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn-modal-chat"
+            id="modalChatBtn"
+            onclick="startChatFromModal()"
+          >
+            <i class="fas fa-comment"></i> Start Chat
+          </button>
+          <button
+            class="btn-modal-favorite"
+            id="modalFavoriteBtn"
+            onclick="toggleFavorite()"
+          >
+            <i class="far fa-heart"></i> Add to Favorites
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
@@ -3133,18 +3421,18 @@
             conversations from the comfort of your home.
           </h2>
 
-          <div class="animated-stats">
-            <div class="stat">
-              <div class="stat-number" data-count="15200">0</div>
-              <div class="stat-label">Active Users</div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-count="15200">0</div>
+              <div class="hero-stat-label">Active Users</div>
             </div>
-            <div class="stat">
-              <div class="stat-number" data-count="850000">0</div>
-              <div class="stat-label">Chats Completed</div>
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-count="850000">0</div>
+              <div class="hero-stat-label">Chats Completed</div>
             </div>
-            <div class="stat">
-              <div class="stat-number" data-count="3500000">0</div>
-              <div class="stat-label">Total Earnings ($)</div>
+            <div class="hero-stat">
+              <div class="hero-stat-number" data-count="3500000">0</div>
+              <div class="hero-stat-label">Total Earnings ($)</div>
             </div>
           </div>
 
@@ -3168,333 +3456,247 @@
       </div>
     </section>
 
-    <!-- Enhanced Profile Cards Section -->
-    <div class="profile-cards-section">
+    <!-- Premium Profile Cards Section -->
+    <section class="premium-profiles-section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-badge">
-            <i class="fas fa-users"></i> Available Chat Partners
-          </span>
-          <h2 class="section-title dm-sans text-gradient">
-            Connect With People Willing To Pay For Conversation
-          </h2>
-          <p class="section-subtitle">
-            These are real people looking for meaningful connections. Chat with
-            them and earn money for your time and attention.
+        <div class="premium-header">
+          <div class="header-badge">
+            <span class="badge-icon">
+              <i class="fas fa-bolt"></i>
+            </span>
+            <span class="badge-text">Premium Members</span>
+          </div>
+          <h2 class="premium-title">Connect with Verified Members</h2>
+          <p class="premium-subtitle">
+            Start earning immediately by connecting with members seeking
+            meaningful conversations.
           </p>
         </div>
 
-        <div class="profile-cards-container">
-          <!-- Navigation Arrows -->
-          <button
-            class="profile-nav-arrow prev"
-            aria-label="Previous profile card"
-            id="profilePrev"
-          >
-            <i class="fas fa-chevron-left"></i>
-          </button>
+        <div class="live-stats-ticker">
+          <div class="ticker-container">
+            <div class="ticker-item">
+              <i class="fas fa-users"></i>
+              <div>
+                <div class="ticker-number" data-count="12">0</div>
+                <div class="ticker-label">Online Now</div>
+              </div>
+            </div>
+            <div class="ticker-item">
+              <i class="fas fa-dollar-sign"></i>
+              <div>
+                <div class="ticker-number">$18-50</div>
+                <div class="ticker-label">Per Chat</div>
+              </div>
+            </div>
+            <div class="ticker-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <div class="ticker-number">24/7</div>
+                <div class="ticker-label">Available</div>
+              </div>
+            </div>
+            <div class="ticker-item">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <div class="ticker-number" data-count="15200">0</div>
+                <div class="ticker-label">Verified</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <div class="profile-cards-wrapper">
-            <div class="profile-cards" id="profileCards">
-              <!-- Profile Card 1 -->
-              <div class="profile-card fade-in-up">
-                <div class="profile-card-header">
-                  <div class="profile-badge willing">Willing To Pay</div>
-                  <div class="online-status online" title="Online Now"></div>
+        <div class="profiles-container">
+          <div class="profiles-grid" id="profilesGrid">
+            <!-- Profile Card 1 -->
+            <div class="profile-card" data-profile-id="1">
+              <div class="card-header">
+                <div class="status-badge premium">
+                  <i class="fas fa-crown"></i>
+                  Premium
                 </div>
-                <div class="profile-image">
-                  <img
-                    src="Pictures/oldwoman.jpg"
-                    alt="Emily - Retired teacher looking for conversation"
-                    loading="lazy"
-                    width="140"
-                    height="140"
-                  />
-                  <div class="profile-rating">
-                    <i class="fas fa-star"></i>
-                    <span>Regular Client</span>
-                  </div>
-                </div>
-                <h3 class="profile-name dm-sans">Emily, 65</h3>
-                <p class="profile-location">
-                  <i class="fas fa-map-marker-alt"></i> Chicago, USA
-                </p>
-                <p class="profile-bio dm-sans">
-                  Retired teacher looking for someone to share stories with.
-                  Enjoys meaningful conversations about life experiences.
-                </p>
-                <div class="profile-tags">
-                  <span class="tag">Pays Well</span>
-                  <span class="tag">Regular Chats</span>
-                  <span class="tag">Friendly</span>
-                </div>
-                <div class="profile-stats">
-                  <div class="stat">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>120+ Chats</span>
-                  </div>
-                  <div class="stat">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>High Tipper</span>
-                  </div>
-                </div>
-                <div class="profile-earnings">
-                  <div class="earnings-label">You Can Earn</div>
-                  <div class="earnings-amount">$18<span>/chat</span></div>
-                </div>
-                <button class="btn btn-primary btn-small start-chat">
-                  <i class="fas fa-comment"></i> Start Chatting
-                </button>
+                <div class="online-status active"></div>
               </div>
 
-              <!-- Profile Card 2 -->
-              <div class="profile-card fade-in-up">
-                <div class="profile-card-header">
-                  <div class="profile-badge popular">Popular</div>
-                  <div class="online-status online" title="Online Now"></div>
-                </div>
-                <div class="profile-image">
+              <div class="card-body">
+                <div class="profile-summary">
                   <img
                     src="Pictures/oldman.jpg"
-                    alt="Robert - Business professional seeking advice"
-                    loading="lazy"
-                    width="140"
-                    height="140"
+                    alt="Emily"
+                    class="profile-avatar"
                   />
-                  <div class="profile-rating">
-                    <i class="fas fa-star"></i>
-                    <span>Consistent</span>
+                  <div class="profile-info">
+                    <h3>Emily</h3>
+                    <p class="profile-meta">65 • Retired Teacher</p>
+                    <div class="profile-rating">
+                      <div class="stars">★★★★☆</div>
+                      <span class="rating-text">4.8 (124 chats)</span>
+                    </div>
                   </div>
                 </div>
-                <h3 class="profile-name dm-sans">Robert, 58</h3>
-                <p class="profile-location">
-                  <i class="fas fa-map-marker-alt"></i> London, UK
+
+                <div class="quick-info">
+                  <div class="info-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Earn $18/chat</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>9AM-9PM EST</span>
+                  </div>
+                </div>
+
+                <p class="profile-excerpt">
+                  Loves sharing stories about teaching and cultural
+                  experiences...
                 </p>
-                <p class="profile-bio dm-sans">
-                  Business professional looking for advice and casual
-                  conversation. Interested in cultural exchange and learning.
-                </p>
-                <div class="profile-tags">
-                  <span class="tag">Business Talks</span>
-                  <span class="tag">Cultural Exchange</span>
-                  <span class="tag">Good Listener</span>
-                </div>
-                <div class="profile-stats">
-                  <div class="stat">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>85+ Chats</span>
-                  </div>
-                  <div class="stat">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>Prompt Pay</span>
-                  </div>
-                </div>
-                <div class="profile-earnings">
-                  <div class="earnings-label">You Can Earn</div>
-                  <div class="earnings-amount">$22<span>/chat</span></div>
-                </div>
-                <button class="btn btn-primary btn-small start-chat">
-                  <i class="fas fa-comment"></i> Start Chatting
-                </button>
               </div>
 
-              <!-- Profile Card 3 -->
-              <div class="profile-card fade-in-up">
-                <div class="profile-card-header">
-                  <div class="profile-badge new">New Member</div>
-                  <div
-                    class="online-status busy"
-                    title="Currently Chatting"
-                  ></div>
+              <div class="card-actions">
+                <button class="btn-quick-chat" onclick="quickChat(1)">
+                  <i class="fas fa-comment"></i>
+                  Quick Chat
+                </button>
+                <button class="btn-view-details" onclick="openProfileModal(1)">
+                  <i class="fas fa-eye"></i>
+                  View Details
+                </button>
+              </div>
+            </div>
+
+            <!-- Profile Card 2 -->
+            <div class="profile-card" data-profile-id="2">
+              <div class="card-header">
+                <div class="status-badge featured">
+                  <i class="fas fa-fire"></i>
+                  Featured
                 </div>
-                <div class="profile-image">
+                <div class="online-status active"></div>
+              </div>
+
+              <div class="card-body">
+                <div class="profile-summary">
                   <img
-                    src="Pictures/LONELYOLD.jpg"
-                    alt="Michael - Retired engineer seeking companionship"
-                    loading="lazy"
-                    width="140"
-                    height="140"
+                    src="Pictures/oldman.jpg"
+                    alt="Robert"
+                    class="profile-avatar"
                   />
-                  <div class="profile-rating">
-                    <i class="fas fa-star"></i>
-                    <span>Easy to Talk</span>
+                  <div class="profile-info">
+                    <h3>Robert</h3>
+                    <p class="profile-meta">58 • Business Executive</p>
+                    <div class="profile-rating">
+                      <div class="stars">★★★★★</div>
+                      <span class="rating-text">5.0 (86 chats)</span>
+                    </div>
                   </div>
                 </div>
-                <h3 class="profile-name dm-sans">Michael, 62</h3>
-                <p class="profile-location">
-                  <i class="fas fa-map-marker-alt"></i> Toronto, Canada
+
+                <div class="quick-info">
+                  <div class="info-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Earn $25/chat</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>7AM-11PM GMT</span>
+                  </div>
+                </div>
+
+                <p class="profile-excerpt">
+                  Business mentor interested in cultural exchange and advice...
                 </p>
-                <p class="profile-bio dm-sans">
-                  Retired engineer seeking friendly companionship and
-                  conversation about hobbies, travel, and daily life.
-                </p>
-                <div class="profile-tags">
-                  <span class="tag">Companionship</span>
-                  <span class="tag">Hobbies</span>
-                  <span class="tag">Travel Stories</span>
-                </div>
-                <div class="profile-stats">
-                  <div class="stat">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>New Member</span>
-                  </div>
-                  <div class="stat">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>Generous</span>
-                  </div>
-                </div>
-                <div class="profile-earnings">
-                  <div class="earnings-label">You Can Earn</div>
-                  <div class="earnings-amount">$20<span>/chat</span></div>
-                </div>
-                <button class="btn btn-primary btn-small start-chat">
-                  <i class="fas fa-comment"></i> Start Chatting
-                </button>
               </div>
 
-              <!-- Profile Card 4 -->
-              <div class="profile-card fade-in-up">
-                <div class="profile-card-header">
-                  <div class="profile-badge high-demand">High Demand</div>
-                  <div class="online-status online" title="Online Now"></div>
-                </div>
-                <div class="profile-image">
-                  <img
-                    src="Pictures/sarah.jpg"
-                    alt="Linda - Widow looking for emotional support"
-                    loading="lazy"
-                    width="140"
-                    height="140"
-                  />
-                  <div class="profile-rating">
-                    <i class="fas fa-star"></i>
-                    <span>Very Kind</span>
-                  </div>
-                </div>
-                <h3 class="profile-name dm-sans">Linda, 68</h3>
-                <p class="profile-location">
-                  <i class="fas fa-map-marker-alt"></i> Florida, USA
-                </p>
-                <p class="profile-bio dm-sans">
-                  Widow looking for emotional support and friendly conversation.
-                  Enjoys talking about family, memories, and daily life.
-                </p>
-                <div class="profile-tags">
-                  <span class="tag">Emotional Support</span>
-                  <span class="tag">Good Conversationalist</span>
-                  <span class="tag">Patient</span>
-                </div>
-                <div class="profile-stats">
-                  <div class="stat">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>200+ Chats</span>
-                  </div>
-                  <div class="stat">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>High Budget</span>
-                  </div>
-                </div>
-                <div class="profile-earnings">
-                  <div class="earnings-label">You Can Earn</div>
-                  <div class="earnings-amount">$25<span>/chat</span></div>
-                </div>
-                <button class="btn btn-primary btn-small start-chat">
-                  <i class="fas fa-comment"></i> Start Chatting
+              <div class="card-actions">
+                <button class="btn-quick-chat" onclick="quickChat(2)">
+                  <i class="fas fa-comment"></i>
+                  Quick Chat
+                </button>
+                <button class="btn-view-details" onclick="openProfileModal(2)">
+                  <i class="fas fa-eye"></i>
+                  View Details
                 </button>
               </div>
+            </div>
 
-              <!-- Profile Card 5 -->
-              <div class="profile-card fade-in-up">
-                <div class="profile-card-header">
-                  <div class="profile-badge business">Business Owner</div>
-                  <div
-                    class="online-status offline"
-                    title="Will Return Soon"
-                  ></div>
+            <!-- Profile Card 3 -->
+            <div class="profile-card" data-profile-id="3">
+              <div class="card-header">
+                <div class="status-badge new">
+                  <i class="fas fa-rocket"></i>
+                  New
                 </div>
-                <div class="profile-image">
+                <div class="online-status busy"></div>
+              </div>
+
+              <div class="card-body">
+                <div class="profile-summary">
                   <img
                     src="Pictures/David.jpg"
-                    alt="David - Business owner seeking mentorship conversations"
-                    loading="lazy"
-                    width="140"
-                    height="140"
+                    alt="Michael"
+                    class="profile-avatar"
                   />
-                  <div class="profile-rating">
-                    <i class="fas fa-star"></i>
-                    <span>Professional</span>
+                  <div class="profile-info">
+                    <h3>Michael</h3>
+                    <p class="profile-meta">62 • Retired Engineer</p>
+                    <div class="profile-rating">
+                      <div class="stars">★★★★☆</div>
+                      <span class="rating-text">New Member</span>
+                    </div>
                   </div>
                 </div>
-                <h3 class="profile-name dm-sans">David, 55</h3>
-                <p class="profile-location">
-                  <i class="fas fa-map-marker-alt"></i> New York, USA
+
+                <div class="quick-info">
+                  <div class="info-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Earn $20/chat</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Flexible Hours</span>
+                  </div>
+                </div>
+
+                <p class="profile-excerpt">
+                  Enjoys discussing travel, technology, and daily life
+                  experiences...
                 </p>
-                <p class="profile-bio dm-sans">
-                  Business owner looking for insightful conversations about
-                  success, challenges, and life lessons. Values honest dialogue.
-                </p>
-                <div class="profile-tags">
-                  <span class="tag">Business Insights</span>
-                  <span class="tag">Life Lessons</span>
-                  <span class="tag">Deep Conversations</span>
-                </div>
-                <div class="profile-stats">
-                  <div class="stat">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>150+ Chats</span>
-                  </div>
-                  <div class="stat">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>Top Tipper</span>
-                  </div>
-                </div>
-                <div class="profile-earnings">
-                  <div class="earnings-label">You Can Earn</div>
-                  <div class="earnings-amount">$30<span>/chat</span></div>
-                </div>
-                <button class="btn btn-primary btn-small start-chat">
-                  <i class="fas fa-comment"></i> Start Chatting
+              </div>
+
+              <div class="card-actions">
+                <button class="btn-quick-chat" onclick="quickChat(3)">
+                  <i class="fas fa-comment"></i>
+                  Quick Chat
+                </button>
+                <button class="btn-view-details" onclick="openProfileModal(3)">
+                  <i class="fas fa-eye"></i>
+                  View Details
                 </button>
               </div>
             </div>
           </div>
 
-          <button
-            class="profile-nav-arrow next"
-            aria-label="Next profile card"
-            id="profileNext"
-          >
-            <i class="fas fa-chevron-right"></i>
-          </button>
+          <div class="nav-dots">
+            <button class="dot active" onclick="goToSlide(0)"></button>
+            <button class="dot" onclick="goToSlide(1)"></button>
+            <button class="dot" onclick="goToSlide(2)"></button>
+          </div>
         </div>
 
-        <!-- Navigation Dots -->
-        <div class="profile-cards-nav" id="profileDots"></div>
-
-        <!-- CTA Section -->
-        <div class="profile-cta">
-          <h3 class="cta-title dm-sans">
-            Ready To Earn By Chatting With These People?
-          </h3>
-          <p class="cta-subtitle">
-            Join now and start earning money by having meaningful conversations
-            with people who value your time
-          </p>
-          <div class="cta-buttons">
-            <a
-              href="https://mulastar.com/register.php?ref=Sydney"
-              class="btn btn-primary"
-              rel="noopener noreferrer"
-            >
-              <i class="fas fa-user-plus"></i> Start Earning Now
-            </a>
-            <a href="#fans" class="btn btn-secondary">
-              <i class="fas fa-comments"></i> View More Profiles
-            </a>
+        <div class="quick-join-bar">
+          <div class="join-content">
+            <div>
+              <h3>Ready to Start Earning?</h3>
+              <p>Join now and get instant access to premium members</p>
+            </div>
+            <button class="btn-join" onclick="joinNow()">
+              <i class="fas fa-rocket"></i>
+              Get Started - $10 Activation
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Earnings Calculator -->
     <section class="section calculator-section" id="calculator">
@@ -3620,7 +3822,6 @@
     <section class="section fans-section section-alt" id="fans">
       <div class="container">
         <div class="fans-content">
-          <span class="tag tag-fans dm-sans">For Chat Partners</span>
           <h2 class="section-title dm-sans text-left">
             Earn by Connecting with People Worldwide
           </h2>
@@ -3648,7 +3849,7 @@
               <div class="request-avatar">
                 <span class="request-badge">$</span>
                 <img
-                  src="Pictures/alex.jpeg"
+                  src="/pictures/alex.jpeg"
                   alt="Alex from USA looking for travel conversation"
                   loading="lazy"
                   width="60"
@@ -3737,7 +3938,7 @@
 
         <div class="fans-image-container fade-in-up">
           <img
-            src="Pictures/chat-Image.jpg"
+            src="/pictures/chat-Image.jpg"
             alt="People having online conversations through Chat&Earn platform"
             class="fans-image"
             loading="lazy"
@@ -3765,7 +3966,6 @@
           <div class="chat-icon">
             <i class="fas fa-comments"></i>
           </div>
-          <span class="tag tag-fans dm-sans">Flexible Earnings</span>
           <h2 class="section-title dm-sans" style="color: white">
             Work Anytime, Anywhere
           </h2>
@@ -3808,7 +4008,6 @@
     <section class="section reasons-section">
       <div class="container">
         <div class="reasons-grid">
-          <!-- Image on left -->
           <div class="reasons-image-container fade-in-up">
             <img
               src="Pictures/feature-image.jpg"
@@ -3820,7 +4019,6 @@
             />
           </div>
 
-          <!-- Content on right -->
           <div class="reasons-content">
             <h2 class="section-title dm-sans text-gradient">
               Why Choose Chat&Earn?
@@ -3884,8 +4082,8 @@
             <div class="step-number">1</div>
             <h3 class="step-title">Sign Up</h3>
             <p class="step-description">
-              Create your account with basic information. The process takes less
-              than 5 minutes.
+              Create your account with basic information and complete
+              activation. The process takes less than 3 minutes.
             </p>
           </div>
 
@@ -4441,59 +4639,177 @@
     </footer>
 
     <script>
-      // ===== PERFORMANCE OPTIMIZATIONS =====
-      // Report page load time
-      if ("performance" in window) {
-        window.addEventListener("load", () => {
-          const perfData = window.performance.timing;
-          const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-          console.log(`Page loaded in ${pageLoadTime}ms`);
-        });
-      }
-
-      // ===== DEBOUNCE FUNCTION =====
-      function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-          const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-          };
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-        };
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        // ===== THEME TOGGLE =====
-        const themeToggle = document.getElementById("themeToggle");
-        const body = document.body;
-
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-
-        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-          body.classList.add("dark-mode");
+      // ===== MAIN APPLICATION =====
+      class ChatEarnApp {
+        constructor() {
+          this.init();
         }
 
-        themeToggle.addEventListener("click", function () {
-          body.classList.toggle("dark-mode");
-          const isDarkMode = body.classList.contains("dark-mode");
-          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-          showNotification(
-            isDarkMode ? "Dark mode enabled" : "Light mode enabled",
-          );
-        });
+        init() {
+          // Performance optimization
+          this.reportPageLoadTime();
+
+          // Initialize all components
+          this.initThemeToggle();
+          this.initMobileMenu();
+          this.initCookieConsent();
+          this.initWelcomeNotification();
+          this.initScrollHandlers();
+          this.initAnimatedCounters();
+          this.initEarningsCalculator();
+          this.initCountries();
+          this.initTestimonialCarousel();
+          this.initFAQ();
+          this.initChatRequests();
+          this.initProfileSystem();
+          this.initOptimizations();
+        }
+
+        // ===== PERFORMANCE =====
+        reportPageLoadTime() {
+          if ("performance" in window) {
+            window.addEventListener("load", () => {
+              const perfData = window.performance.timing;
+              const pageLoadTime =
+                perfData.loadEventEnd - perfData.navigationStart;
+              console.log(`Page loaded in ${pageLoadTime}ms`);
+            });
+          }
+        }
+
+        debounce(func, wait) {
+          let timeout;
+          return function executedFunction(...args) {
+            const later = () => {
+              clearTimeout(timeout);
+              func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+          };
+        }
+
+        // ===== THEME TOGGLE =====
+        initThemeToggle() {
+          const themeToggle = document.getElementById("themeToggle");
+          const body = document.body;
+
+          // Check for saved theme preference
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+
+          if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+            body.classList.add("dark-mode");
+          }
+
+          themeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            const isDarkMode = body.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+          });
+        }
+
+        // ===== MOBILE MENU =====
+        initMobileMenu() {
+          const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+          const mobileNav = document.getElementById("mobileNav");
+          const body = document.body;
+
+          if (!mobileMenuToggle || !mobileNav) return;
+
+          mobileMenuToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            this.toggleMobileMenu(mobileMenuToggle, mobileNav, body);
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !mobileNav.contains(event.target) &&
+              !mobileMenuToggle.contains(event.target)
+            ) {
+              this.closeMobileMenu(mobileMenuToggle, mobileNav, body);
+            }
+          });
+
+          // Close menu when clicking on links
+          const mobileLinks = mobileNav.querySelectorAll(".mobile-nav-link");
+          mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              this.closeMobileMenu(mobileMenuToggle, mobileNav, body);
+            });
+          });
+
+          // Close on escape key
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              this.closeMobileMenu(mobileMenuToggle, mobileNav, body);
+            }
+          });
+
+          // Smooth scrolling for all anchor links
+          this.initSmoothScrolling(mobileMenuToggle, mobileNav, body);
+        }
+
+        toggleMobileMenu(toggle, nav, body) {
+          toggle.classList.toggle("active");
+          nav.classList.toggle("active");
+          body.style.overflow = nav.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        closeMobileMenu(toggle, nav, body) {
+          toggle.classList.remove("active");
+          nav.classList.remove("active");
+          body.style.overflow = "";
+        }
+
+        // ===== SMOOTH SCROLLING =====
+        initSmoothScrolling(mobileMenuToggle, mobileNav, body) {
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+              const targetId = this.getAttribute("href");
+              if (targetId === "#") return;
+
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                e.preventDefault();
+                window.scrollTo({
+                  top: targetElement.offsetTop - 80,
+                  behavior: "smooth",
+                });
+
+                // Close mobile menu if open
+                if (mobileNav && mobileNav.classList.contains("active")) {
+                  this.closeMobileMenu(mobileMenuToggle, mobileNav, body);
+                }
+              }
+            });
+          });
+        }
 
         // ===== COOKIE CONSENT =====
-        const cookieConsent = document.getElementById("cookieConsent");
-        const acceptCookiesBtn = document.getElementById("acceptCookies");
-        const declineCookiesBtn = document.getElementById("declineCookies");
+        initCookieConsent() {
+          const cookieConsent = document.getElementById("cookieConsent");
+          const acceptCookiesBtn = document.getElementById("acceptCookies");
+          const declineCookiesBtn = document.getElementById("declineCookies");
 
-        function checkCookies() {
+          if (!cookieConsent || !acceptCookiesBtn || !declineCookiesBtn) return;
+
+          this.checkCookies(cookieConsent);
+
+          acceptCookiesBtn.addEventListener("click", () =>
+            this.acceptCookies(cookieConsent),
+          );
+          declineCookiesBtn.addEventListener("click", () =>
+            this.declineCookies(cookieConsent),
+          );
+        }
+
+        checkCookies(cookieConsent) {
           const cookiesAccepted = localStorage.getItem("cookiesAccepted");
           if (!cookiesAccepted) {
             setTimeout(() => {
@@ -4502,92 +4818,129 @@
           }
         }
 
-        function acceptCookies() {
+        acceptCookies(cookieConsent) {
           localStorage.setItem("cookiesAccepted", "true");
           cookieConsent.classList.remove("show");
         }
 
-        function declineCookies() {
+        declineCookies(cookieConsent) {
           localStorage.setItem("cookiesAccepted", "false");
           cookieConsent.classList.remove("show");
         }
 
-        if (acceptCookiesBtn && declineCookiesBtn) {
-          acceptCookiesBtn.addEventListener("click", acceptCookies);
-          declineCookiesBtn.addEventListener("click", declineCookies);
-          checkCookies();
-        }
-
         // ===== WELCOME NOTIFICATION =====
-        const welcomeNotification = document.getElementById(
-          "welcomeNotification",
-        );
-        const closeNotificationBtn =
-          document.getElementById("closeNotification");
+        initWelcomeNotification() {
+          const welcomeNotification = document.getElementById(
+            "welcomeNotification",
+          );
+          const closeNotificationBtn =
+            document.getElementById("closeNotification");
 
-        setTimeout(() => {
-          welcomeNotification.classList.add("show");
-        }, 1000);
+          if (!welcomeNotification || !closeNotificationBtn) return;
 
-        setTimeout(() => {
-          if (welcomeNotification.classList.contains("show")) {
+          setTimeout(() => {
+            welcomeNotification.classList.add("show");
+          }, 1000);
+
+          setTimeout(() => {
+            if (welcomeNotification.classList.contains("show")) {
+              welcomeNotification.classList.remove("show");
+              welcomeNotification.classList.add("hide");
+            }
+          }, 8000);
+
+          closeNotificationBtn.addEventListener("click", () => {
             welcomeNotification.classList.remove("show");
             welcomeNotification.classList.add("hide");
-          }
-        }, 8000);
+          });
+        }
 
-        closeNotificationBtn.addEventListener("click", function () {
-          welcomeNotification.classList.remove("show");
-          welcomeNotification.classList.add("hide");
-        });
+        // ===== SCROLL HANDLERS =====
+        initScrollHandlers() {
+          const progressBar = document.getElementById("progressBar");
+          const stickyCta = document.getElementById("stickyCta");
+          const header = document.getElementById("mainHeader");
+          const floatingWhatsApp = document.getElementById("floatingWhatsApp");
 
-        // ===== PROGRESS BAR & STICKY CTA =====
-        const progressBar = document.getElementById("progressBar");
-        const stickyCta = document.getElementById("stickyCta");
-        const header = document.getElementById("mainHeader");
-        const floatingWhatsApp = document.getElementById("floatingWhatsApp");
+          let lastScrollTop = 0;
+          let isScrollingUp = false;
+          let scrollTimeout;
 
-        let lastScrollTop = 0;
-        let isScrollingUp = false;
-        let scrollTimeout;
+          const handleScroll = this.debounce(() => {
+            // Progress bar
+            const winScroll =
+              document.body.scrollTop || document.documentElement.scrollTop;
+            const height =
+              document.documentElement.scrollHeight -
+              document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            if (progressBar) progressBar.style.width = scrolled + "%";
 
-        const handleScroll = debounce(() => {
-          // Progress bar
-          const winScroll =
-            document.body.scrollTop || document.documentElement.scrollTop;
-          const height =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
-          const scrolled = (winScroll / height) * 100;
-          if (progressBar) progressBar.style.width = scrolled + "%";
+            // Detect scroll direction
+            const currentScroll =
+              window.pageYOffset || document.documentElement.scrollTop;
 
-          // Detect scroll direction
-          const currentScroll =
-            window.pageYOffset || document.documentElement.scrollTop;
-
-          // Show sticky CTA only when scrolling up
-          if (currentScroll < lastScrollTop) {
-            isScrollingUp = true;
-            if (currentScroll > 500) {
-              stickyCta.classList.add("visible");
-            }
-          } else {
-            isScrollingUp = false;
-            if (currentScroll > 500) {
-              stickyCta.classList.remove("visible");
-            }
-          }
-
-          // Adjust floating WhatsApp position
-          if (window.innerWidth <= 768) {
-            if (stickyCta.classList.contains("visible")) {
-              floatingWhatsApp.style.bottom = "70px";
+            // Show sticky CTA only when scrolling up
+            if (currentScroll < lastScrollTop) {
+              isScrollingUp = true;
+              if (currentScroll > 500 && stickyCta) {
+                stickyCta.classList.add("visible");
+              }
             } else {
-              floatingWhatsApp.style.bottom = "20px";
+              isScrollingUp = false;
+              if (currentScroll > 500 && stickyCta) {
+                stickyCta.classList.remove("visible");
+              }
             }
-          }
 
-          // Header hide/show
+            // Adjust floating WhatsApp position
+            if (floatingWhatsApp) {
+              if (window.innerWidth <= 768) {
+                if (stickyCta && stickyCta.classList.contains("visible")) {
+                  floatingWhatsApp.style.bottom = "70px";
+                } else {
+                  floatingWhatsApp.style.bottom = "20px";
+                }
+              }
+            }
+
+            // Header hide/show
+            this.handleHeaderScroll(header, currentScroll, lastScrollTop);
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              if (isScrollingUp && currentScroll > 500) {
+                if (currentScroll < height - 500) {
+                  setTimeout(() => {
+                    if (stickyCta) {
+                      stickyCta.classList.remove("visible");
+                    }
+                  }, 3000);
+                }
+              }
+            }, 1500);
+          }, 50);
+
+          window.addEventListener("scroll", handleScroll);
+
+          // Sticky CTA click handler
+          if (stickyCta) {
+            stickyCta.addEventListener("click", (e) => {
+              if (!e.target.classList.contains("btn")) {
+                const joinButton = stickyCta.querySelector(".btn");
+                if (joinButton) {
+                  joinButton.click();
+                }
+              }
+            });
+          }
+        }
+
+        handleHeaderScroll(header, currentScroll, lastScrollTop) {
+          if (!header) return;
+
           const headerHeight = header.offsetHeight;
 
           if (window.innerWidth <= 768) {
@@ -4610,515 +4963,175 @@
               header.classList.remove("hidden");
             }
           }
-
-          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-
-          clearTimeout(scrollTimeout);
-
-          scrollTimeout = setTimeout(() => {
-            if (isScrollingUp && currentScroll > 500) {
-              if (currentScroll < height - 500) {
-                setTimeout(() => {
-                  stickyCta.classList.remove("visible");
-                }, 3000);
-              }
-            }
-          }, 1500);
-        }, 50);
-
-        window.addEventListener("scroll", handleScroll);
-
-        // ===== STICKY CTA CLICK HANDLER =====
-        stickyCta.addEventListener("click", function (e) {
-          if (!e.target.classList.contains("btn")) {
-            const joinButton = this.querySelector(".btn");
-            if (joinButton) {
-              joinButton.click();
-            }
-          }
-        });
-
-        // ===== ANIMATED STATS COUNTER =====
-        const statNumbers = document.querySelectorAll(".stat-number");
-
-        function animateCounter(element, target) {
-          const duration = 2000;
-          const frameDuration = 1000 / 60;
-          const totalFrames = Math.round(duration / frameDuration);
-          let frame = 0;
-
-          const counter = setInterval(() => {
-            frame++;
-            const progress = frame / totalFrames;
-            const current = Math.round(target * progress);
-
-            if (current >= target) {
-              element.textContent = target.toLocaleString();
-              clearInterval(counter);
-            } else {
-              element.textContent = current.toLocaleString();
-            }
-          }, frameDuration);
         }
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                statNumbers.forEach((stat) => {
-                  const target = parseInt(stat.getAttribute("data-count"));
-                  if (stat.textContent === "0") {
-                    animateCounter(stat, target);
-                  }
-                });
-              }
-            });
-          },
-          { threshold: 0.5 },
-        );
+        // ===== ANIMATED COUNTERS =====
+        initAnimatedCounters() {
+          const counters = document.querySelectorAll(
+            ".hero-stat-number, .ticker-number[data-count]",
+          );
 
-        if (statNumbers.length > 0) {
-          observer.observe(statNumbers[0].closest(".animated-stats"));
+          counters.forEach((counter) => {
+            if (counter.getAttribute("data-count")) {
+              const target = parseInt(counter.getAttribute("data-count"));
+              this.animateCounter(counter, target);
+            }
+          });
+        }
+
+        animateCounter(counter, target) {
+          const increment = target / 100;
+          let current = 0;
+
+          const updateCounter = () => {
+            if (current < target) {
+              current += increment;
+              counter.textContent = Math.floor(current).toLocaleString();
+              setTimeout(updateCounter, 20);
+            } else {
+              counter.textContent = target.toLocaleString();
+            }
+          };
+
+          // Start counter when in view
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting && counter.textContent === "0") {
+                  updateCounter();
+                }
+              });
+            },
+            { threshold: 0.5 },
+          );
+
+          observer.observe(counter);
         }
 
         // ===== EARNINGS CALCULATOR =====
-        const chatSlider = document.getElementById("chatSlider");
-        const earningsSlider = document.getElementById("earningsSlider");
-        const sliderValue = document.getElementById("sliderValue");
-        const earningsValue = document.getElementById("earningsValue");
-        const monthlyEarnings = document.getElementById("monthlyEarnings");
+        initEarningsCalculator() {
+          const chatSlider = document.getElementById("chatSlider");
+          const earningsSlider = document.getElementById("earningsSlider");
+          const sliderValue = document.getElementById("sliderValue");
+          const earningsValue = document.getElementById("earningsValue");
+          const monthlyEarnings = document.getElementById("monthlyEarnings");
 
-        function updateCalculator() {
-          const chatsPerDay = parseInt(chatSlider.value);
-          const earningsPerChat = parseInt(earningsSlider.value);
-          const monthly = chatsPerDay * earningsPerChat * 30;
+          if (!chatSlider || !earningsSlider) return;
 
-          sliderValue.textContent = `${chatsPerDay} chat${chatsPerDay > 1 ? "s" : ""}`;
-          earningsValue.textContent = `$${earningsPerChat}`;
-          monthlyEarnings.textContent = `$${monthly.toLocaleString()}`;
-        }
+          const updateCalculator = () => {
+            const chatsPerDay = parseInt(chatSlider.value);
+            const earningsPerChat = parseInt(earningsSlider.value);
+            const monthly = chatsPerDay * earningsPerChat * 30;
 
-        if (chatSlider && earningsSlider) {
+            if (sliderValue) {
+              sliderValue.textContent = `${chatsPerDay} chat${chatsPerDay > 1 ? "s" : ""}`;
+            }
+            if (earningsValue) {
+              earningsValue.textContent = `$${earningsPerChat}`;
+            }
+            if (monthlyEarnings) {
+              monthlyEarnings.textContent = `$${monthly.toLocaleString()}`;
+            }
+          };
+
           chatSlider.addEventListener("input", updateCalculator);
           earningsSlider.addEventListener("input", updateCalculator);
           updateCalculator();
         }
 
-        // ===== MOBILE MENU =====
-        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-        const mainNav = document.getElementById("mainNav");
+        // ===== COUNTRIES =====
+        initCountries() {
+          const countries = [
+            {
+              name: "Uganda",
+              flag: "ug.svg",
+              RegFee: "Registration Fee: UGX 19,000",
+            },
+            {
+              name: "Cameroon",
+              flag: "cm.svg",
+              RegFee: "Registration Fee: ZAF 4,100",
+            },
+            {
+              name: "Nigeria",
+              flag: "ng.svg",
+              RegFee: "Registration Fee: ₦8,000",
+            },
+            {
+              name: "Tanzania",
+              flag: "tz.svg",
+              RegFee: "Registration Fee: TZS 12,000",
+            },
+            {
+              name: "Ghana",
+              flag: "gh.svg",
+              RegFee: "Registration Fee: GH₵ 80",
+            },
+            {
+              name: "South Africa",
+              flag: "za.svg",
+              RegFee: "Registration Fee: ZAR 200",
+            },
+            {
+              name: "Kenya",
+              flag: "ke.svg",
+              RegFee: "Registration Fee: KSH 500",
+            },
+            {
+              name: "Zambia",
+              flag: "zm.svg",
+              RegFee: "Registration Fee: ZK 130",
+            },
+            {
+              name: "Malawi",
+              flag: "mw.svg",
+              RegFee: "Registration Fee: MWK 10,000",
+            },
+            {
+              name: "United States",
+              flag: "us.svg",
+              RegFee: "Registration Fee: $10",
+            },
+          ];
 
-        if (mobileMenuToggle && mainNav) {
-          mobileMenuToggle.addEventListener("click", function (e) {
-            e.stopPropagation();
-            mainNav.classList.toggle("active");
-            const icon = this.querySelector("i");
-            if (icon.classList.contains("fa-bars")) {
-              icon.classList.remove("fa-bars");
-              icon.classList.add("fa-times");
-            } else {
-              icon.classList.remove("fa-times");
-              icon.classList.add("fa-bars");
-            }
-          });
+          const countriesGrid = document.getElementById("countriesGrid");
+          if (!countriesGrid) return;
 
-          document.addEventListener("click", function (event) {
-            if (
-              !mainNav.contains(event.target) &&
-              !mobileMenuToggle.contains(event.target)
-            ) {
-              mainNav.classList.remove("active");
-              const icon = mobileMenuToggle.querySelector("i");
-              if (icon) {
-                icon.classList.remove("fa-times");
-                icon.classList.add("fa-bars");
-              }
-            }
-          });
-
-          document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape") {
-              mainNav.classList.remove("active");
-              const icon = mobileMenuToggle.querySelector("i");
-              if (icon) {
-                icon.classList.remove("fa-times");
-                icon.classList.add("fa-bars");
-              }
-            }
-          });
-
-          const navLinks = mainNav.querySelectorAll("a");
-          navLinks.forEach((link) => {
-            link.addEventListener("click", function () {
-              mainNav.classList.remove("active");
-              const icon = mobileMenuToggle.querySelector("i");
-              if (icon) {
-                icon.classList.remove("fa-times");
-                icon.classList.add("fa-bars");
-              }
-            });
-          });
-        }
-
-        // ===== ENHANCED PROFILE CARDS =====
-        const profileCards = document.getElementById("profileCards");
-        const prevBtn = document.getElementById("profilePrev");
-        const nextBtn = document.getElementById("profileNext");
-        const profileDots = document.getElementById("profileDots");
-        const viewProfileBtns = document.querySelectorAll(".start-chat");
-
-        if (profileCards) {
-          let currentIndex = 0;
-          let isAnimating = false;
-          let startX = 0;
-          let currentX = 0;
-          let isDragging = false;
-          let autoScrollInterval;
-          const cards = profileCards.querySelectorAll(".profile-card");
-          const totalCards = cards.length;
-          const cardWidth = 320 + 28;
-          let visibleCards = Math.floor(window.innerWidth / cardWidth);
-
-          function init() {
-            createDots();
-            updateUI();
-            startAutoScroll();
-            setupEventListeners();
-            setupChatButtons();
-          }
-
-          function createDots() {
-            if (!profileDots) return;
-
-            profileDots.innerHTML = "";
-
-            for (let i = 0; i < Math.ceil(totalCards / visibleCards); i++) {
-              const dot = document.createElement("button");
-              dot.className = "nav-dot";
-              dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-              if (i === 0) dot.classList.add("active");
-
-              dot.addEventListener("click", () => goToSlide(i));
-              profileDots.appendChild(dot);
-            }
-          }
-
-          function updateUI() {
-            updateDots();
-            updateArrowVisibility();
-          }
-
-          function updateDots() {
-            if (!profileDots) return;
-
-            const dots = profileDots.querySelectorAll(".nav-dot");
-            const activeDotIndex = Math.floor(currentIndex / visibleCards);
-
-            dots.forEach((dot, index) => {
-              dot.classList.toggle("active", index === activeDotIndex);
-            });
-          }
-
-          function updateArrowVisibility() {
-            if (prevBtn) {
-              prevBtn.style.opacity = currentIndex > 0 ? "0.9" : "0.3";
-              prevBtn.style.cursor =
-                currentIndex > 0 ? "pointer" : "not-allowed";
-            }
-
-            if (nextBtn) {
-              const maxIndex = Math.max(0, totalCards - visibleCards);
-              nextBtn.style.opacity = currentIndex < maxIndex ? "0.9" : "0.3";
-              nextBtn.style.cursor =
-                currentIndex < maxIndex ? "pointer" : "not-allowed";
-            }
-          }
-
-          function goToSlide(index) {
-            if (isAnimating) return;
-
-            const maxIndex = Math.max(0, totalCards - visibleCards);
-            currentIndex = Math.min(Math.max(index, 0), maxIndex);
-
-            isAnimating = true;
-            profileCards.style.transition =
-              "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
-            profileCards.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-            setTimeout(() => {
-              isAnimating = false;
-              updateUI();
-              resetAutoScroll();
-            }, 500);
-          }
-
-          function nextSlide() {
-            const maxIndex = Math.max(0, totalCards - visibleCards);
-            if (currentIndex < maxIndex) {
-              goToSlide(currentIndex + 1);
-            } else {
-              goToSlide(0);
-            }
-          }
-
-          function prevSlide() {
-            const maxIndex = Math.max(0, totalCards - visibleCards);
-            if (currentIndex > 0) {
-              goToSlide(currentIndex - 1);
-            } else {
-              goToSlide(maxIndex);
-            }
-          }
-
-          function startAutoScroll() {
-            clearInterval(autoScrollInterval);
-            autoScrollInterval = setInterval(() => {
-              nextSlide();
-            }, 6000);
-          }
-
-          function resetAutoScroll() {
-            clearInterval(autoScrollInterval);
-            startAutoScroll();
-          }
-
-          function startDrag(e) {
-            isDragging = true;
-            profileCards.style.transition = "none";
-            profileCards.style.cursor = "grabbing";
-
-            startX = getXPosition(e);
-            currentX = startX;
-
-            document.addEventListener("mousemove", dragMove);
-            document.addEventListener("mouseup", endDrag);
-            document.addEventListener("touchmove", dragMove);
-            document.addEventListener("touchend", endDrag);
-          }
-
-          function dragMove(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-
-            currentX = getXPosition(e);
-            const diff = currentX - startX;
-            profileCards.style.transform = `translateX(-${currentIndex * cardWidth - diff}px)`;
-          }
-
-          function endDrag() {
-            if (!isDragging) return;
-            isDragging = false;
-            profileCards.style.cursor = "grab";
-            profileCards.style.transition = "transform 0.3s ease";
-
-            const diff = currentX - startX;
-            const threshold = cardWidth / 3;
-
-            if (Math.abs(diff) > threshold) {
-              if (diff > 0) {
-                prevSlide();
-              } else {
-                nextSlide();
-              }
-            } else {
-              goToSlide(currentIndex);
-            }
-
-            document.removeEventListener("mousemove", dragMove);
-            document.removeEventListener("mouseup", endDrag);
-            document.removeEventListener("touchmove", dragMove);
-            document.removeEventListener("touchend", endDrag);
-          }
-
-          function getXPosition(e) {
-            return e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
-          }
-
-          function setupChatButtons() {
-            viewProfileBtns.forEach((btn, index) => {
-              btn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const profileName =
-                  cards[index].querySelector(".profile-name").textContent;
-                const earnings =
-                  cards[index].querySelector(".earnings-amount").textContent;
-
-                showNotification(
-                  `To start chatting with ${profileName.split(",")[0]}, please create your account first. You can earn ${earnings} per chat!`,
-                );
-
-                setTimeout(() => {
-                  window.open(
-                    "https://mulastar.com/register.php?ref=Sydney",
-                    "_blank",
-                  );
-                }, 1500);
-              });
-            });
-          }
-
-          function setupEventListeners() {
-            if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-            if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-
-            profileCards.addEventListener("mousedown", startDrag);
-            profileCards.addEventListener("touchstart", startDrag);
-
-            document.addEventListener("keydown", (e) => {
-              if (document.activeElement.closest(".profile-cards-container")) {
-                if (e.key === "ArrowLeft") {
-                  e.preventDefault();
-                  prevSlide();
-                } else if (e.key === "ArrowRight") {
-                  e.preventDefault();
-                  nextSlide();
-                }
-              }
-            });
-
-            let resizeTimeout;
-            window.addEventListener("resize", () => {
-              clearTimeout(resizeTimeout);
-              resizeTimeout = setTimeout(() => {
-                visibleCards = Math.floor(window.innerWidth / cardWidth);
-                createDots();
-                goToSlide(
-                  Math.min(
-                    currentIndex,
-                    Math.max(0, totalCards - visibleCards),
-                  ),
-                );
-              }, 250);
-            });
-
-            profileCards.addEventListener("mouseenter", () => {
-              clearInterval(autoScrollInterval);
-            });
-
-            profileCards.addEventListener("mouseleave", () => {
-              startAutoScroll();
-            });
-
-            profileCards.addEventListener("touchstart", () => {
-              clearInterval(autoScrollInterval);
-              setTimeout(() => {
-                startAutoScroll();
-              }, 5000);
-            });
-          }
-
-          init();
-        }
-
-        // ===== COUNTRIES DATA =====
-        const countries = [
-          { name: "Uganda", flag: "ug.svg", link: "/make-money-online-uganda" },
-          {
-            name: "Cameroon",
-            flag: "cm.svg",
-            link: "/make-money-online-cameroon",
-          },
-          {
-            name: "Nigeria",
-            flag: "ng.svg",
-            link: "/make-money-online-nigeria",
-          },
-          {
-            name: "Tanzania",
-            flag: "tz.svg",
-            link: "/make-money-online-tanzania",
-          },
-          { name: "Ghana", flag: "gh.svg", link: "/make-money-online-ghana" },
-          {
-            name: "South Africa",
-            flag: "za.svg",
-            link: "/make-money-online-south-africa",
-          },
-          { name: "Kenya", flag: "ke.svg", link: "/make-money-online-kenya" },
-          { name: "Zambia", flag: "zm.svg", link: "/make-money-online-zambia" },
-          {
-            name: "United States",
-            flag: "us.svg",
-            link: "/make-money-online-united-states",
-          },
-          {
-            name: "United Kingdom",
-            flag: "gb.svg",
-            link: "/make-money-online-united-kingdom",
-          },
-          { name: "Canada", flag: "ca.svg", link: "/make-money-online-canada" },
-          {
-            name: "Australia",
-            flag: "au.svg",
-            link: "/make-money-online-australia",
-          },
-        ];
-
-        const countriesGrid = document.getElementById("countriesGrid");
-        if (countriesGrid) {
           countries.forEach((country, index) => {
             const countryCard = document.createElement("a");
-            countryCard.href = country.link;
             countryCard.className = "country-card fade-in-up";
             countryCard.style.animationDelay = `${index * 0.1}s`;
             countryCard.innerHTML = `
-              <div class="country-flag">
-                <img src="https://flagcdn.com/w320/${country.flag.split(".")[0]}.png" alt="Flag of ${country.name}" loading="lazy" width="80" height="80">
-              </div>
-              <p class="country-name dm-sans">${country.name}</p>
-            `;
+                    <div class="country-flag">
+                        <img src="https://flagcdn.com/w320/${country.flag.split(".")[0]}.png" 
+                             alt="Flag of ${country.name}" 
+                             loading="lazy" 
+                             width="80" 
+                             height="80">
+                    </div>
+                    <p class="country-name dm-sans">${country.name}</p>
+                    <div class="country-fee dm-sans">${country.RegFee}</div>
+                `;
+
+            countryCard.addEventListener("click", (e) => {
+              e.preventDefault();
+              this.showNotification(
+                `To join Chat&Earn from ${country.name}, please create your account. Membership fee: ${country.RegFee}`,
+              );
+              setTimeout(() => {
+                window.open(
+                  "https://mulastar.com/register.php?ref=Sydney",
+                  "_blank",
+                );
+              }, 1500);
+            });
+
             countriesGrid.appendChild(countryCard);
           });
         }
 
-        // ===== SMOOTH SCROLLING =====
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            const targetId = this.getAttribute("href");
-            if (targetId === "#") return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              e.preventDefault();
-              window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: "smooth",
-              });
-
-              if (mainNav && mainNav.classList.contains("active")) {
-                mainNav.classList.remove("active");
-                const icon = mobileMenuToggle.querySelector("i");
-                if (icon) {
-                  icon.classList.remove("fa-times");
-                  icon.classList.add("fa-bars");
-                }
-              }
-            }
-          });
-        });
-
-        // ===== SCROLL ANIMATIONS =====
-        const scrollObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("fade-in-up");
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-        );
-
-        document
-          .querySelectorAll(
-            ".section, .hero-content, .country-card, .feature-card, .step, .fans-image-container, .chat-demo-image-container, .profile-card, .faq-item, .reason-item",
-          )
-          .forEach((element) => {
-            scrollObserver.observe(element);
-          });
-
         // ===== TESTIMONIAL CAROUSEL =====
-        function initTestimonialCarousel() {
+        initTestimonialCarousel() {
           const slides = document.querySelectorAll(".testimonial-slide");
           const dots = document.querySelectorAll(".testimonial-dot");
           const prevBtn = document.querySelector(".testimonial-nav-btn.prev");
@@ -5129,32 +5142,27 @@
           let currentSlide = 0;
           let autoSlideInterval;
 
-          function showSlide(index) {
+          const showSlide = (index) => {
             slides.forEach((slide) => slide.classList.remove("active"));
             dots.forEach((dot) => dot.classList.remove("active"));
 
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add("active");
             dots[currentSlide].classList.add("active");
-          }
+          };
 
-          function nextSlide() {
-            showSlide(currentSlide + 1);
-          }
+          const nextSlide = () => showSlide(currentSlide + 1);
+          const prevSlide = () => showSlide(currentSlide - 1);
 
-          function prevSlide() {
-            showSlide(currentSlide - 1);
-          }
-
-          function startAutoSlide() {
+          const startAutoSlide = () => {
             clearInterval(autoSlideInterval);
             autoSlideInterval = setInterval(nextSlide, 5000);
-          }
+          };
 
-          function resetAutoSlide() {
+          const resetAutoSlide = () => {
             clearInterval(autoSlideInterval);
             startAutoSlide();
-          }
+          };
 
           if (prevBtn)
             prevBtn.addEventListener("click", () => {
@@ -5202,78 +5210,95 @@
           startAutoSlide();
         }
 
-        initTestimonialCarousel();
+        // ===== FAQ =====
+        initFAQ() {
+          const faqQuestions = document.querySelectorAll(".faq-question");
+          faqQuestions.forEach((question) => {
+            question.addEventListener("click", function () {
+              const answer = this.nextElementSibling;
+              const isOpen = answer.classList.contains("open");
 
-        // ===== FAQ FUNCTIONALITY =====
-        const faqQuestions = document.querySelectorAll(".faq-question");
-        faqQuestions.forEach((question) => {
-          question.addEventListener("click", function () {
-            const answer = this.nextElementSibling;
-            const isOpen = answer.classList.contains("open");
+              document.querySelectorAll(".faq-answer").forEach((ans) => {
+                ans.classList.remove("open");
+              });
+              document.querySelectorAll(".faq-question").forEach((q) => {
+                q.classList.remove("active");
+              });
 
-            document.querySelectorAll(".faq-answer").forEach((ans) => {
-              ans.classList.remove("open");
+              if (!isOpen) {
+                answer.classList.add("open");
+                this.classList.add("active");
+              }
             });
-            document.querySelectorAll(".faq-question").forEach((q) => {
-              q.classList.remove("active");
-            });
-
-            if (!isOpen) {
-              answer.classList.add("open");
-              this.classList.add("active");
-            }
-          });
-        });
-
-        // ===== CHAT REQUESTS FUNCTIONALITY =====
-        const acceptButtons = document.querySelectorAll(".accept-request");
-        acceptButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const requestItem = this.closest(".chat-request-item");
-            const userName =
-              requestItem.querySelector(".request-name").textContent;
-            const amount =
-              requestItem.querySelector(".request-amount").textContent;
-
-            this.innerHTML = '<i class="fas fa-check"></i> Accepted';
-            this.disabled = true;
-            this.style.backgroundColor = "var(--primary-color)";
-
-            setTimeout(() => {
-              alert(
-                `You've accepted the chat request from ${userName.split(" from")[0]}! To start chatting, please log in to your Chat&Earn account. ${amount}`,
-              );
-            }, 300);
-
-            setTimeout(() => {
-              requestItem.style.opacity = "0";
-              requestItem.style.transform = "translateX(-20px)";
-              setTimeout(() => {
-                requestItem.remove();
-                addNewChatRequest();
-              }, 300);
-            }, 1500);
-          });
-        });
-
-        const refreshRequestsBtn = document.getElementById("refreshRequests");
-        if (refreshRequestsBtn) {
-          refreshRequestsBtn.addEventListener("click", function () {
-            this.innerHTML =
-              '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
-            this.disabled = true;
-
-            setTimeout(() => {
-              addNewChatRequest();
-              this.innerHTML =
-                '<i class="fas fa-sync-alt"></i> Refresh Requests';
-              this.disabled = false;
-              showNotification("New chat requests loaded!");
-            }, 1000);
           });
         }
 
-        function addNewChatRequest() {
+        // ===== CHAT REQUESTS =====
+        initChatRequests() {
+          const acceptButtons = document.querySelectorAll(".accept-request");
+          acceptButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              this.handleChatRequestAccept(button);
+            });
+          });
+
+          const refreshRequestsBtn = document.getElementById("refreshRequests");
+          if (refreshRequestsBtn) {
+            refreshRequestsBtn.addEventListener("click", () => {
+              this.handleRefreshRequests(refreshRequestsBtn);
+            });
+          }
+
+          // Auto-add new requests
+          setInterval(() => {
+            if (Math.random() > 0.7) {
+              this.addNewChatRequest();
+            }
+          }, 30000);
+        }
+
+        handleChatRequestAccept(button) {
+          const requestItem = button.closest(".chat-request-item");
+          const userName =
+            requestItem.querySelector(".request-name").textContent;
+          const amount =
+            requestItem.querySelector(".request-amount").textContent;
+
+          button.innerHTML = '<i class="fas fa-check"></i> Accepted';
+          button.disabled = true;
+          button.style.backgroundColor = "var(--primary-color)";
+
+          setTimeout(() => {
+            alert(
+              `You've accepted the chat request from ${userName.split(" from")[0]}! To start chatting, please log in to your Chat&Earn account. ${amount}`,
+            );
+          }, 300);
+
+          setTimeout(() => {
+            requestItem.style.opacity = "0";
+            requestItem.style.transform = "translateX(-20px)";
+            setTimeout(() => {
+              requestItem.remove();
+              this.addNewChatRequest();
+            }, 300);
+          }, 1500);
+        }
+
+        handleRefreshRequests(button) {
+          button.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+          button.disabled = true;
+
+          setTimeout(() => {
+            this.addNewChatRequest();
+            button.innerHTML =
+              '<i class="fas fa-sync-alt"></i> Refresh Requests';
+            button.disabled = false;
+            this.showNotification("New chat requests loaded!");
+          }, 1000);
+        }
+
+        addNewChatRequest() {
           const names = [
             "Mildred",
             "David",
@@ -5308,51 +5333,32 @@
           const request = document.createElement("div");
           request.className = "chat-request-item fade-in-up";
           request.innerHTML = `
-            <div class="request-avatar">
-              <span class="request-badge">$</span>
-              <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name} from ${country}" loading="lazy" width="60" height="60">
-            </div>
-            <div class="request-info">
-              <div class="request-name">${name} from ${country}</div>
-              <div class="request-topic">${topic}</div>
-              <div class="request-amount">Earn $${amount}</div>
-              <div class="request-time">Just now</div>
-            </div>
-            <button class="btn btn-primary btn-small accept-request" aria-label="Accept chat request from ${name}">
-              Accept Chat
-            </button>
-          `;
+                <div class="request-avatar">
+                    <span class="request-badge">$</span>
+                    <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name} from ${country}" loading="lazy" width="60" height="60">
+                </div>
+                <div class="request-info">
+                    <div class="request-name">${name} from ${country}</div>
+                    <div class="request-topic">${topic}</div>
+                    <div class="request-amount">Earn $${amount}</div>
+                    <div class="request-time">Just now</div>
+                </div>
+                <button class="btn btn-primary btn-small accept-request" aria-label="Accept chat request from ${name}">
+                    Accept Chat
+                </button>
+            `;
 
           const chatRequests = document.querySelector(".chat-requests");
+          if (!chatRequests) return;
+
           chatRequests.prepend(request);
 
           request
             .querySelector(".accept-request")
-            .addEventListener("click", function () {
-              const requestItem = this.closest(".chat-request-item");
-              const userName =
-                requestItem.querySelector(".request-name").textContent;
-              const amount =
-                requestItem.querySelector(".request-amount").textContent;
-
-              this.innerHTML = '<i class="fas fa-check"></i> Accepted';
-              this.disabled = true;
-              this.style.backgroundColor = "var(--primary-color)";
-
-              setTimeout(() => {
-                alert(
-                  `You've accepted the chat request from ${userName.split(" from")[0]}! To start chatting, please log in to your Chat&Earn account. ${amount}`,
-                );
-              }, 300);
-
-              setTimeout(() => {
-                requestItem.style.opacity = "0";
-                requestItem.style.transform = "translateX(-20px)";
-                setTimeout(() => {
-                  requestItem.remove();
-                  addNewChatRequest();
-                }, 300);
-              }, 1500);
+            .addEventListener("click", () => {
+              this.handleChatRequestAccept(
+                request.querySelector(".accept-request"),
+              );
             });
 
           if (chatRequests.children.length > 4) {
@@ -5360,30 +5366,326 @@
           }
         }
 
-        setInterval(() => {
-          if (Math.random() > 0.7) {
-            addNewChatRequest();
+        // ===== PROFILE SYSTEM =====
+        initProfileSystem() {
+          this.profilesData = {
+            1: {
+              name: "Emily",
+              age: 65,
+              occupation: "Retired Teacher",
+              location: "Chicago, USA",
+              rating: 4.8,
+              totalChats: 124,
+              earnings: "$18/chat",
+              availability: "9AM-9PM EST",
+              bio: "Retired English teacher with 35 years of experience. Loves sharing stories about teaching, travel experiences, and cultural exchange. Enjoys helping younger generations learn about life and education.",
+              interests: [
+                "Teaching",
+                "Travel",
+                "Books",
+                "Cultural Exchange",
+                "Mentoring",
+              ],
+              languages: ["English", "Basic Spanish"],
+              responseTime: "Within 5 minutes",
+              favoriteTopics: [
+                "Life experiences and lessons",
+                "Travel stories from around the world",
+                "Education and teaching methods",
+                "Cultural differences and traditions",
+              ],
+              earningsPotential: "$25-35/hour",
+            },
+            2: {
+              name: "Robert",
+              age: 58,
+              occupation: "Business Executive",
+              location: "London, UK",
+              rating: 5.0,
+              totalChats: 86,
+              earnings: "$25/chat",
+              availability: "7AM-11PM GMT",
+              bio: "Successful business executive with international experience. Enjoys mentoring young professionals and discussing business strategies. Passionate about cultural exchange and leadership development.",
+              interests: ["Business", "Leadership", "Travel", "Wine", "Golf"],
+              languages: ["English", "French"],
+              responseTime: "Within 10 minutes",
+              favoriteTopics: [
+                "Business and career advice",
+                "Leadership and management",
+                "International business culture",
+                "Personal development",
+              ],
+              earningsPotential: "$35-45/hour",
+            },
+            3: {
+              name: "Michael",
+              age: 62,
+              occupation: "Retired Engineer",
+              location: "Toronto, Canada",
+              rating: 4.6,
+              totalChats: "New Member",
+              earnings: "$20/chat",
+              availability: "Flexible Hours",
+              bio: "Retired mechanical engineer who enjoys discussing technology, travel, and daily life. Always curious about different cultures and enjoys learning from others. Patient listener with lots of life experience to share.",
+              interests: [
+                "Technology",
+                "Travel",
+                "Photography",
+                "DIY Projects",
+                "History",
+              ],
+              languages: ["English"],
+              responseTime: "Within 15 minutes",
+              favoriteTopics: [
+                "Technology and innovation",
+                "Travel experiences",
+                "Home improvement projects",
+                "Historical events",
+              ],
+              earningsPotential: "$25-35/hour",
+            },
+          };
+
+          // Initialize profile carousel
+          this.initProfileCarousel();
+
+          // Initialize modal
+          this.initProfileModal();
+        }
+
+        initProfileCarousel() {
+          const dots = document.querySelectorAll(".nav-dots .dot");
+          const profilesGrid = document.getElementById("profilesGrid");
+
+          if (!dots.length || !profilesGrid) return;
+
+          let currentSlide = 0;
+          const totalSlides = 3; // We have 3 profile cards
+
+          const goToSlide = (index) => {
+            currentSlide = index;
+            dots.forEach((dot, i) => {
+              dot.classList.toggle("active", i === index);
+            });
+
+            // In a real implementation, you would animate between slides
+            // For now, we just update the active dot
+          };
+
+          dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => goToSlide(index));
+          });
+
+          // Auto-rotate profiles
+          setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+          }, 5000);
+        }
+
+        initProfileModal() {
+          const modal = document.getElementById("profileModal");
+          const modalClose = document.getElementById("modalClose");
+          const modalChatBtn = document.getElementById("modalChatBtn");
+          const modalFavoriteBtn = document.getElementById("modalFavoriteBtn");
+
+          if (!modal || !modalClose) return;
+
+          // Close modal when clicking outside
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+              this.closeProfileModal();
+            }
+          });
+
+          // Close modal with Escape key
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+              this.closeProfileModal();
+            }
+          });
+
+          // Close button
+          modalClose.addEventListener("click", () => this.closeProfileModal());
+
+          // Expose modal functions to global scope
+          window.openProfileModal = (profileId) =>
+            this.openProfileModal(profileId);
+          window.closeProfileModal = () => this.closeProfileModal();
+          window.startChatFromModal = () => this.startChatFromModal();
+          window.toggleFavorite = () => this.toggleFavorite();
+          window.quickChat = (profileId) => this.quickChat(profileId);
+          window.joinNow = () => this.joinNow();
+          window.goToSlide = (index) => {
+            const dots = document.querySelectorAll(".nav-dots .dot");
+            dots.forEach((dot, i) => {
+              dot.classList.toggle("active", i === index);
+            });
+          };
+        }
+
+        openProfileModal(profileId) {
+          const profile = this.profilesData[profileId];
+          const modal = document.getElementById("profileModal");
+          const modalBody = modal.querySelector(".modal-body");
+
+          document.getElementById("modalProfileName").textContent =
+            profile.name;
+
+          modalBody.innerHTML = `
+                <div class="modal-profile">
+                    <div class="modal-header-info">
+                        <div class="modal-avatar-section">
+                            <img src="/pictures/${profile.name.toLowerCase()}.jpg" alt="${profile.name}" class="modal-avatar">
+                            <div class="modal-status">
+                                <span class="modal-rating">★ ${profile.rating}</span>
+                                <span class="modal-chats">${profile.totalChats} chats</span>
+                            </div>
+                        </div>
+                        <div class="modal-basic-info">
+                            <div class="info-row">
+                                <i class="fas fa-user"></i>
+                                <span>${profile.age} years old</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-briefcase"></i>
+                                <span>${profile.occupation}</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${profile.location}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>About ${profile.name}</h3>
+                        <p>${profile.bio}</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Earnings & Availability</h3>
+                        <div class="earning-details">
+                            <div class="earning-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>
+                                    <strong>${profile.earnings}</strong>
+                                    <small>per chat</small>
+                                </div>
+                            </div>
+                            <div class="earning-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>${profile.availability}</strong>
+                                    <small>available</small>
+                                </div>
+                            </div>
+                            <div class="earning-item">
+                                <i class="fas fa-chart-line"></i>
+                                <div>
+                                    <strong>${profile.earningsPotential}</strong>
+                                    <small>hourly potential</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Favorite Topics</h3>
+                        <div class="topics-list">
+                            ${profile.favoriteTopics.map((topic) => `<span class="topic-tag">${topic}</span>`).join("")}
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Interests & Languages</h3>
+                        <div class="interests-section">
+                            <div class="interests-list">
+                                ${profile.interests.map((interest) => `<span class="interest-tag">${interest}</span>`).join("")}
+                            </div>
+                            <div class="languages-list">
+                                ${profile.languages.map((lang) => `<span class="language-tag">${lang}</span>`).join("")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+          modal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        }
+
+        closeProfileModal() {
+          const modal = document.getElementById("profileModal");
+          modal.style.display = "none";
+          document.body.style.overflow = "";
+        }
+
+        startChatFromModal() {
+          const profileName =
+            document.getElementById("modalProfileName").textContent;
+          this.showNotification(`Starting chat with ${profileName}...`);
+
+          setTimeout(() => {
+            window.open(
+              "https://mulastar.com/register.php?ref=Sydney",
+              "_blank",
+            );
+            this.closeProfileModal();
+          }, 1000);
+        }
+
+        toggleFavorite() {
+          const btn = document.querySelector(".btn-modal-favorite");
+          const icon = btn.querySelector("i");
+
+          if (icon.classList.contains("far")) {
+            icon.classList.remove("far");
+            icon.classList.add("fas");
+            btn.innerHTML = '<i class="fas fa-heart"></i> Added to Favorites';
+            this.showNotification("Added to favorites!");
+          } else {
+            icon.classList.remove("fas");
+            icon.classList.add("far");
+            btn.innerHTML = '<i class="far fa-heart"></i> Add to Favorites';
+            this.showNotification("Removed from favorites");
           }
-        }, 30000);
+        }
+
+        quickChat(profileId) {
+          const profile = this.profilesData[profileId];
+          this.showNotification(`Connecting you to ${profile.name}...`);
+
+          setTimeout(() => {
+            window.open(
+              "https://mulastar.com/register.php?ref=Sydney",
+              "_blank",
+            );
+          }, 1500);
+        }
+
+        joinNow() {
+          window.open("https://mulastar.com/register.php?ref=Sydney", "_blank");
+        }
 
         // ===== NOTIFICATION SYSTEM =====
-        function showNotification(message) {
+        showNotification(message) {
           const notification = document.createElement("div");
           notification.className = "notification";
           notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--text-light);
-            padding: 15px 25px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            transform: translateX(120%);
-            transition: transform 0.3s ease;
-            max-width: 300px;
-          `;
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: var(--text-light);
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                transform: translateX(120%);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
           notification.textContent = message;
           document.body.appendChild(notification);
 
@@ -5405,8 +5707,14 @@
           }, 3000);
         }
 
-        // ===== OPTIMIZE IMAGE LOADING =====
-        function optimizeImages() {
+        // ===== OPTIMIZATIONS =====
+        initOptimizations() {
+          this.optimizeImages();
+          this.initScrollAnimations();
+          this.initTouchOptimizations();
+        }
+
+        optimizeImages() {
           const images = document.querySelectorAll('img[loading="lazy"]');
 
           const imageObserver = new IntersectionObserver(
@@ -5433,24 +5741,102 @@
           });
         }
 
-        optimizeImages();
-
-        // ===== TOUCH DEVICE OPTIMIZATIONS =====
-        if ("ontouchstart" in window) {
-          let lastTouchEnd = 0;
-          document.addEventListener(
-            "touchend",
-            function (event) {
-              const now = new Date().getTime();
-              if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-              }
-              lastTouchEnd = now;
+        initScrollAnimations() {
+          const scrollObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("fade-in-up");
+                }
+              });
             },
-            false,
+            { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
           );
+
+          document
+            .querySelectorAll(
+              ".section, .hero-content, .country-card, .feature-card, .step, .fans-image-container, .chat-demo-image-container, .profile-card, .faq-item, .reason-item",
+            )
+            .forEach((element) => {
+              scrollObserver.observe(element);
+            });
         }
+
+        initTouchOptimizations() {
+          if ("ontouchstart" in window) {
+            let lastTouchEnd = 0;
+            document.addEventListener(
+              "touchend",
+              function (event) {
+                const now = new Date().getTime();
+                if (now - lastTouchEnd <= 300) {
+                  event.preventDefault();
+                }
+                lastTouchEnd = now;
+              },
+              false,
+            );
+          }
+        }
+      }
+
+      // Initialize the application when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        new ChatEarnApp();
       });
+    </script>
+
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (
+                (elem.href && typeof rel != "string") ||
+                rel.length == 0 ||
+                rel.toLowerCase() == "stylesheet"
+              ) {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href =
+                  url +
+                  (url.indexOf("?") >= 0 ? "&" : "?") +
+                  "_cacheOverride=" +
+                  new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol =
+            window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address =
+            protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (
+            sessionStorage &&
+            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
+          ) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error(
+          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.",
+        );
+      }
+      // ]]>
     </script>
   </body>
 </html>
