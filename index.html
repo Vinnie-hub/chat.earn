@@ -6,16 +6,16 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
     />
-    <title>Mulastar - Chat & Earn App | Get Paid to Chat with foreigners</title>
+    <title>Mulastar - Chat & Earn App | Get Paid to Chat with Foreigners</title>
     <meta
       name="description"
-      content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers. On the Chat&Earn app, you get paid to chat from anywhere."
+      content="Make money talking with lonely people, curious strangers, foreigners, older people, and advice seekers. Get paid to chat from anywhere."
     />
 
     <!-- SEO Meta Tags -->
     <meta
       name="keywords"
-      content="make money online, chat and earn, get paid to chat, online chatting jobs, work from home, earn money chatting, chat for money, online companion"
+      content="make money online, chat and earn, get paid to chat, online chatting jobs, work from home, earn money chatting"
     />
     <meta name="author" content="Chat&Earn" />
     <meta name="robots" content="index, follow" />
@@ -52,9 +52,6 @@
     />
 
     <!-- Performance Optimizations -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="https://flagcdn.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
@@ -63,14 +60,12 @@
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
-      crossorigin="anonymous"
     />
 
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin="anonymous"
     />
     <link rel="icon" href="/pictures/favicon.png" type="image/png" />
 
@@ -84,8 +79,7 @@
         "offers": {
           "@type": "Offer",
           "price": "10",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
+          "priceCurrency": "USD"
         },
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -96,6 +90,7 @@
     </script>
 
     <style>
+      /* ===== CSS RESET & BASE STYLES ===== */
       :root {
         /* Light theme colors (default) */
         --primary-color: #029f58;
@@ -125,21 +120,24 @@
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
         --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+        --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
 
         /* Border Radius */
         --radius-sm: 8px;
         --radius-md: 12px;
         --radius-lg: 16px;
         --radius-xl: 24px;
+        --radius-2xl: 32px;
         --radius-full: 9999px;
 
         /* Transitions */
         --transition: all 0.3s ease;
+        --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
         /* Spacing */
-        --section-padding: clamp(3rem, 6vw, 5rem);
+        --section-padding: clamp(3rem, 5vw, 6rem);
         --container-padding: clamp(1rem, 3vw, 2rem);
-        --section-gap: clamp(2rem, 4vw, 4rem);
+        --section-gap: clamp(1.5rem, 3vw, 3rem);
       }
 
       /* Dark theme */
@@ -167,6 +165,7 @@
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
         --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
         --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+        --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
       }
 
       * {
@@ -178,6 +177,7 @@
       html {
         scroll-behavior: smooth;
         font-size: 16px;
+        scroll-padding-top: 80px;
       }
 
       body {
@@ -190,7 +190,6 @@
         -moz-osx-font-smoothing: grayscale;
         width: 100%;
         min-height: 100vh;
-        padding-bottom: 70px;
         transition: var(--transition);
       }
 
@@ -198,29 +197,10 @@
         font-family: "DM Sans", sans-serif;
       }
 
-      /* ===== ACCESSIBILITY ===== */
-      :focus-visible {
-        outline: 3px solid var(--primary-color);
-        outline-offset: 2px;
-        border-radius: var(--radius-sm);
-      }
-
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
       /* ===== UTILITY CLASSES ===== */
       .container {
         width: 100%;
-        max-width: 1280px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 var(--container-padding);
       }
@@ -235,6 +215,21 @@
 
       .section-alt {
         background-color: var(--bg-section-alt);
+        position: relative;
+      }
+
+      .section-alt::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
       }
 
       .text-center {
@@ -263,8 +258,34 @@
         gap: var(--section-gap);
       }
 
-      /* ===== COMPONENTS ===== */
+      .desktop-only {
+        display: none;
+      }
 
+      .mobile-only {
+        display: block;
+      }
+
+      /* ===== ACCESSIBILITY ===== */
+      :focus-visible {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ===== COMPONENTS ===== */
       /* Progress Bar */
       .progress-container {
         position: fixed;
@@ -287,15 +308,15 @@
         transition: width 0.3s ease;
       }
 
-      /* Header */
+      /* ===== IMPROVED HEADER ===== */
       .header {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         z-index: 1001;
         transition: all 0.3s ease;
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
@@ -304,33 +325,9 @@
         border-bottom: 1px solid rgba(2, 159, 88, 0.1);
       }
 
-      .header::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
-
-      .header.scrolled::before {
-        transform: scaleX(1);
-      }
-
       .dark-mode .header {
-        background: rgba(45, 45, 45, 0.95);
+        background: rgba(45, 45, 45, 0.98);
         border-bottom: 1px solid rgba(52, 211, 153, 0.1);
-      }
-
-      .header.hidden {
-        transform: translateY(-100%);
       }
 
       .header.scrolled {
@@ -343,7 +340,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1.5rem;
+        gap: 1rem;
         height: 100%;
       }
 
@@ -351,10 +348,11 @@
       .logo {
         display: flex;
         align-items: center;
-        gap: 0.875rem;
+        gap: 0.75rem;
         text-decoration: none;
         transition: transform 0.3s ease;
         flex-shrink: 0;
+        z-index: 1002;
       }
 
       .logo:hover {
@@ -362,9 +360,9 @@
       }
 
       .logo-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         background: linear-gradient(
@@ -373,14 +371,10 @@
           var(--secondary-color) 100%
         );
         justify-content: center;
-        padding: 8px;
+        padding: 6px;
         box-shadow: 0 4px 15px rgba(2, 159, 88, 0.2);
         transition: all 0.3s ease;
-      }
-
-      .logo:hover .logo-icon {
-        transform: rotate(-5deg) scale(1.05);
-        box-shadow: 0 6px 20px rgba(2, 159, 88, 0.3);
+        flex-shrink: 0;
       }
 
       .logo-icon img {
@@ -396,7 +390,7 @@
       }
 
       .logo-main {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 800;
         color: var(--text-dark);
         letter-spacing: -0.5px;
@@ -412,99 +406,25 @@
       }
 
       .logo-subtext {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         color: var(--text-light-gray);
         font-weight: 500;
-        letter-spacing: 0.5px;
-        margin-top: 2px;
+        letter-spacing: 0.3px;
+        margin-top: 1px;
       }
 
       /* Navigation */
       .nav {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        margin-left: auto;
-        margin-right: 1.5rem;
-      }
-
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.625rem 1rem;
-        color: var(--text-dark);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        position: relative;
-        white-space: nowrap;
-        border: 1px solid transparent;
-      }
-
-      .nav-link i {
-        font-size: 0.9rem;
-        opacity: 0.8;
-        transition: all 0.3s ease;
-      }
-
-      .nav-link:hover {
-        background: var(--primary-light);
-        color: var(--primary-color);
-        border-color: var(--primary-color);
-        transform: translateY(-1px);
-      }
-
-      .nav-link:hover i {
-        opacity: 1;
-        transform: scale(1.1);
-      }
-
-      .nav-link.active {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: white;
-        box-shadow: 0 4px 15px rgba(2, 159, 88, 0.2);
-      }
-
-      .nav-link.active i {
-        opacity: 1;
-        color: white;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 3px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        border-radius: 2px;
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        width: 80%;
+        display: none;
       }
 
       /* Header Actions */
       .header-actions {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.75rem;
         flex-shrink: 0;
+        z-index: 1002;
       }
 
       /* Buttons */
@@ -513,7 +433,7 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        padding: clamp(0.875rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+        padding: clamp(0.875rem, 2vw, 1rem) clamp(1.25rem, 3vw, 2rem);
         border-radius: var(--radius-md);
         font-weight: 600;
         font-size: clamp(0.9rem, 1.5vw, 1rem);
@@ -526,7 +446,7 @@
         position: relative;
         overflow: hidden;
         white-space: nowrap;
-        min-height: 48px;
+        min-height: 44px;
       }
 
       .btn::before {
@@ -594,30 +514,7 @@
       }
 
       .btn-header {
-        padding: 0.625rem 1.25rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        min-height: 42px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        box-shadow: 0 4px 15px rgba(2, 159, 88, 0.2);
-        transition: all 0.3s ease;
-        text-decoration: none;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn-header:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(2, 159, 88, 0.3);
+        display: none;
       }
 
       /* Theme Toggle */
@@ -625,16 +522,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 42px;
-        height: 42px;
-        border-radius: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
         background: var(--bg-light);
         border: 1px solid var(--border-color);
         color: var(--text-dark);
         cursor: pointer;
-        font-size: 1.1rem;
+        font-size: 1rem;
         transition: all 0.3s ease;
         border: none;
+        flex-shrink: 0;
       }
 
       .theme-toggle:hover {
@@ -658,23 +556,25 @@
 
       /* Mobile Menu Toggle */
       .mobile-menu-toggle {
-        display: none;
+        display: flex;
         background: none;
         border: none;
         cursor: pointer;
         padding: 0.5rem;
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         gap: 4px;
         transition: all 0.3s ease;
+        z-index: 1002;
+        flex-shrink: 0;
       }
 
       .menu-icon {
-        width: 24px;
+        width: 22px;
         height: 2px;
         background: var(--text-dark);
         border-radius: 2px;
@@ -709,19 +609,21 @@
         left: 0;
         width: 100%;
         background: var(--bg-white);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         padding: 1rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         border-top: 1px solid var(--border-color);
         z-index: 1000;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
       }
 
       .dark-mode .mobile-nav {
@@ -769,411 +671,526 @@
         color: white;
       }
 
-      /* Sticky CTA */
-      .sticky-cta {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        z-index: 999;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
-        padding: 0.5rem 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-      }
-
-      .sticky-cta.visible {
-        transform: translateY(0);
-      }
-
-      .sticky-cta .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0 var(--container-padding);
-      }
-
-      .sticky-cta-content {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex: 1;
-        min-width: 0;
-      }
-
-      .sticky-cta-icon {
-        background: rgba(255, 255, 255, 0.2);
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        backdrop-filter: blur(5px);
-      }
-
-      .sticky-cta-icon i {
-        font-size: 1rem;
-        color: var(--text-light);
-      }
-
-      .sticky-cta-text {
-        flex: 1;
-        min-width: 0;
-      }
-
-      .sticky-cta-text p {
-        margin: 0;
-        color: var(--text-light);
-        line-height: 1.3;
-      }
-
-      .sticky-cta-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        margin-bottom: 2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .sticky-cta-subtitle {
-        font-size: 0.8rem;
-        opacity: 0.9;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .sticky-cta .btn-small {
-        background: var(--text-light);
-        color: var(--primary-color);
-        border: none;
-        padding: 0.5rem 1.25rem;
-        font-size: 0.85rem;
-        font-weight: 700;
-        min-height: 36px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-        flex-shrink: 0;
-        border-radius: var(--radius-md);
-        transition: var(--transition);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      .sticky-cta .btn-small:hover {
-        background: #f0f0f0;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Floating WhatsApp Button */
-      .floating-whatsapp {
-        position: fixed;
-        bottom: 80px;
-        right: clamp(15px, 3vw, 25px);
-        z-index: 998;
-        display: none;
-      }
-
-      .floating-whatsapp-btn {
-        width: clamp(50px, 8vw, 60px);
-        height: clamp(50px, 8vw, 60px);
-        border-radius: 50%;
-        background: #25d366;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: clamp(1.5rem, 3vw, 1.75rem);
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        transition: var(--transition);
-        text-decoration: none;
-        animation: float 3s ease-in-out infinite;
-        border: 2px solid var(--text-light);
-        min-height: 44px;
-      }
-
-      .floating-whatsapp-btn:hover {
-        background: #128c7e;
-        transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      /* Cookie Consent */
-      .cookie-consent {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: var(--bg-white);
-        color: var(--text-dark);
-        padding: 1.5rem var(--container-padding);
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-        z-index: 1005;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-        border-top: 3px solid var(--primary-color);
-      }
-
-      .cookie-consent.show {
-        transform: translateY(0);
-      }
-
-      .cookie-consent .container {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        text-align: center;
-      }
-
-      @media (min-width: 768px) {
-        .cookie-consent .container {
-          flex-direction: row;
-          justify-content: space-between;
-          text-align: left;
-        }
-      }
-
-      .cookie-consent-content {
-        flex: 1;
-      }
-
-      .cookie-consent-buttons {
-        display: flex;
-        gap: 1rem;
-        flex-shrink: 0;
-      }
-
-      .cookie-consent-btn {
-        padding: 0.5rem 1.5rem;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        cursor: pointer;
-        transition: var(--transition);
-        border: none;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .cookie-consent-btn.accept {
-        background: var(--primary-color);
-        color: var(--text-light);
-      }
-
-      .cookie-consent-btn.decline {
-        background: transparent;
-        color: var(--text-dark);
-        border: 2px solid var(--border-color);
-      }
-
-      /* Welcome Notification */
-      .welcome-notification {
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        padding: 1rem 1.5rem;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-lg);
-        z-index: 1005;
-        transform: translateX(120%);
-        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        max-width: min(300px, 90vw);
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-
-      .welcome-notification.show {
-        transform: translateX(0);
-      }
-
-      .welcome-notification.hide {
-        transform: translateX(120%);
-      }
-
-      .welcome-notification i {
-        font-size: 1.5rem;
-        flex-shrink: 0;
-      }
-
-      .welcome-notification p {
-        font-weight: 600;
-        font-size: clamp(0.85rem, 2vw, 0.95rem);
-        line-height: 1.4;
-      }
-
-      .notification-close {
-        background: none;
-        border: none;
-        color: var(--text-light);
-        cursor: pointer;
-        font-size: 1.2rem;
-        padding: 0.25rem;
-        margin-left: auto;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-      }
-
-      .notification-close:hover {
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      /* ===== LAYOUT COMPONENTS ===== */
-
-      /* Hero Section */
+      /* ===== HERO SECTION ===== */
       .hero {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        padding: clamp(5rem, 12vw, 8rem) 0 clamp(2rem, 6vw, 4rem);
         position: relative;
-        overflow: hidden;
+        color: var(--text-light);
+        padding: clamp(4rem, 10vw, 7rem) 0 clamp(2rem, 5vw, 3.5rem);
         margin-top: 70px;
         width: 100%;
+        min-height: calc(100vh - 70px);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
       }
 
-      .hero::before {
-        content: "";
+      .hero-video-container {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0.1;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+      }
+
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: multiply;
+        z-index: 1;
+      }
+
+      .dark-mode .video-overlay {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 211, 153, 0.8) 0%,
+          rgba(96, 165, 250, 0.8) 100%
+        );
+      }
+
+      .video-control-btn {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        z-index: 3;
+        backdrop-filter: blur(5px);
+        opacity: 0.8;
+      }
+
+      .video-control-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+        opacity: 1;
       }
 
       .hero-content {
         text-align: center;
         max-width: min(900px, 95vw);
-        margin: 0 auto clamp(2rem, 5vw, 3rem);
+        margin: 0 auto;
         position: relative;
-        z-index: 1;
+        z-index: 2;
+        padding: 0 var(--container-padding);
       }
 
       .hero h1 {
-        font-size: clamp(1.75rem, 5vw, 3.25rem);
+        font-size: clamp(2rem, 5vw, 3.5rem);
         font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
         letter-spacing: -0.02em;
-        background: var(--text-light);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        padding: 0 clamp(0.5rem, 2vw, 1rem);
       }
 
       .hero h2 {
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
-        font-weight: 500;
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        font-weight: 400;
         line-height: 1.6;
-        margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-        opacity: 0.95;
-        max-width: min(800px, 95vw);
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 clamp(0.5rem, 2vw, 1rem);
+        margin-bottom: 2rem;
+        opacity: 0.9;
       }
 
       .hero-stats {
         display: flex;
         justify-content: center;
-        gap: 40px;
-        margin: 40px 0;
+        gap: clamp(1rem, 3vw, 3rem);
+        margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+        flex-wrap: wrap;
       }
 
       .hero-stat {
         text-align: center;
+        flex: 1;
+        min-width: 100px;
       }
 
       .hero-stat-number {
-        font-size: 36px;
-        font-weight: 700;
-        margin-bottom: 5px;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .hero-stat-label {
-        font-size: 14px;
+        font-size: clamp(0.75rem, 1.5vw, 0.95rem);
         opacity: 0.8;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
       }
 
       .cta-buttons {
         display: flex;
-        gap: clamp(1rem, 3vw, 1.5rem);
+        gap: 1rem;
         justify-content: center;
-        margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+        margin: clamp(1.5rem, 3vw, 2.5rem) 0;
         flex-wrap: wrap;
-        padding: 0 clamp(0.5rem, 2vw, 1rem);
       }
 
-      /* Section Styles */
-      .section-title {
+      /* ===== PREMIUM PROFILES SECTION ===== */
+      .premium-profiles-section {
+        padding: clamp(2rem, 5vw, 5rem) 0;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .dark-mode .premium-profiles-section {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      }
+
+      .premium-header {
+        text-align: center;
+        margin-bottom: clamp(1.5rem, 3vw, 3rem);
+      }
+
+      .header-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        margin-bottom: 1rem;
+      }
+
+      .badge-icon {
+        font-size: 0.8rem;
+      }
+
+      .premium-title {
         font-size: clamp(1.75rem, 4vw, 3rem);
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: clamp(0.75rem, 2vw, 1rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
         color: var(--text-dark);
-        letter-spacing: -0.02em;
+        line-height: 1.2;
       }
 
-      .section-subtitle {
-        font-size: clamp(0.95rem, 2vw, 1.25rem);
+      .premium-subtitle {
+        font-size: clamp(0.95rem, 2vw, 1.2rem);
         color: var(--text-gray);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        max-width: min(800px, 95%);
+        margin: 0 auto;
         line-height: 1.6;
-        max-width: min(800px, 95vw);
       }
 
-      /* Earnings Calculator */
+      /* Live Stats Ticker */
+      .live-stats-ticker {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: clamp(1rem, 2vw, 2rem);
+        margin-bottom: clamp(1.5rem, 3vw, 3rem);
+        box-shadow: var(--shadow-md);
+      }
+
+      .ticker-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(1rem, 2vw, 2rem);
+      }
+
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .ticker-item i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-light);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .ticker-number {
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        line-height: 1.2;
+      }
+
+      .ticker-label {
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        color: var(--text-gray);
+        margin-top: 0.25rem;
+      }
+
+      /* Profile Cards */
+      .profiles-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(1rem, 2vw, 2rem);
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      }
+
+      .profile-card {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: clamp(1rem, 2vw, 1.75rem);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .status-badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .status-badge.premium {
+        background: linear-gradient(135deg, #ffd700 0%, #ff9500 100%);
+        color: #000;
+      }
+
+      .status-badge.featured {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        color: white;
+      }
+
+      .status-badge.new {
+        background: linear-gradient(135deg, #2f80ed 0%, #2d9cdb 100%);
+        color: white;
+      }
+
+      .online-status {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid var(--bg-white);
+        flex-shrink: 0;
+      }
+
+      .online-status.active {
+        background: #4cd964;
+        box-shadow: 0 0 8px rgba(76, 217, 100, 0.5);
+      }
+
+      .online-status.busy {
+        background: #ff3b30;
+        box-shadow: 0 0 8px rgba(255, 59, 48, 0.5);
+      }
+
+      .profile-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .profile-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--bg-white);
+        box-shadow: var(--shadow-sm);
+        flex-shrink: 0;
+      }
+
+      .profile-info h3 {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--text-dark);
+      }
+
+      .profile-meta {
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        color: var(--text-gray);
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+
+      .stars {
+        color: #ffd700;
+        font-size: 0.8rem;
+      }
+
+      .rating-text {
+        font-size: 0.75rem;
+        color: var(--text-light-gray);
+      }
+
+      .quick-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        margin: 0.75rem 0;
+        background: var(--bg-light);
+        padding: 0.75rem;
+        border-radius: var(--radius-md);
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 0.8rem;
+        color: var(--text-dark);
+      }
+
+      .profile-excerpt {
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        color: var(--text-gray);
+        line-height: 1.5;
+        margin: clamp(0.75rem, 1.5vw, 1rem) 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .card-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: clamp(0.75rem, 1.5vw, 1.5rem);
+      }
+
+      .btn-quick-chat,
+      .btn-view-details {
+        flex: 1;
+        padding: 0.625rem;
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem;
+      }
+
+      .btn-quick-chat {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-quick-chat:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .btn-view-details {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-view-details:hover {
+        background: var(--border-color);
+        transform: translateY(-2px);
+      }
+
+      .nav-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: clamp(1rem, 2vw, 1.5rem);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--border-color);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      /* Quick Join Bar */
+      .quick-join-bar {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        border-radius: var(--radius-lg);
+        padding: clamp(1rem, 2vw, 2.5rem);
+        margin-top: clamp(1.5rem, 3vw, 3rem);
+      }
+
+      .join-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        gap: clamp(1rem, 2vw, 2rem);
+      }
+
+      .join-content h3 {
+        font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .join-content p {
+        opacity: 0.9;
+        font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      }
+
+      .btn-join {
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        padding: clamp(0.875rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-join:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+      }
+
+      /* ===== EARNINGS CALCULATOR ===== */
       .calculator-section {
         background: linear-gradient(
           135deg,
@@ -1191,22 +1208,39 @@
         );
       }
 
+      .section-title {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+        color: var(--text-dark);
+        letter-spacing: -0.02em;
+      }
+
+      .section-subtitle {
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        color: var(--text-gray);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        line-height: 1.6;
+        max-width: min(800px, 95%);
+      }
+
       .calculator {
         background: var(--bg-white);
         border-radius: var(--radius-lg);
-        padding: clamp(1.5rem, 3vw, 2.5rem);
-        max-width: min(600px, 95vw);
-        margin: clamp(1rem, 3vw, 2rem) auto;
+        padding: clamp(1rem, 2vw, 2.5rem);
+        max-width: min(700px, 95%);
+        margin: 1.5rem auto;
         box-shadow: var(--shadow-lg);
       }
 
       .calculator-slider {
         width: 100%;
-        height: 10px;
+        height: 8px;
         -webkit-appearance: none;
         appearance: none;
         background: var(--bg-light);
-        border-radius: 5px;
+        border-radius: 4px;
         margin: clamp(1rem, 2vw, 1.5rem) 0;
         outline: none;
       }
@@ -1214,8 +1248,8 @@
       .calculator-slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         background: linear-gradient(
           135deg,
@@ -1224,16 +1258,15 @@
         );
         cursor: pointer;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        min-height: 44px;
       }
 
       .calculator-result {
         text-align: center;
-        margin-top: clamp(1.5rem, 3vw, 2rem);
+        margin-top: 1.5rem;
       }
 
       .calculator-amount {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(1.75rem, 5vw, 3rem);
         font-weight: 800;
         background: linear-gradient(
           135deg,
@@ -1249,55 +1282,46 @@
 
       .calculator-label {
         color: var(--text-gray);
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: clamp(0.9rem, 2vw, 1rem);
       }
 
-      /* Trust Badges */
+      /* ===== TRUST BADGES ===== */
       .trust-badges {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: clamp(0.75rem, 2vw, 1rem);
-        margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin: clamp(1.5rem, 3vw, 3rem) 0;
       }
 
       .badge {
         background: var(--bg-white);
-        padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+        padding: clamp(0.75rem, 1.5vw, 1.5rem);
         border-radius: var(--radius-sm);
         font-weight: 500;
         box-shadow: var(--shadow-sm);
         display: flex;
         align-items: center;
-        gap: clamp(8px, 1.5vw, 10px);
-        transition: all 0.3s ease;
+        gap: 8px;
+        transition: var(--transition);
         justify-content: center;
         text-align: center;
         min-height: 60px;
         color: var(--text-dark);
+        font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+        border: 1px solid var(--border-color);
       }
 
-      .badge:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-      }
-
-      /* Fans Section */
+      /* ===== FANS SECTION ===== */
       .fans-section .container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: clamp(2rem, 5vw, 4rem);
-        align-items: center;
-      }
-
-      .fans-content {
-        order: 2;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 3vw, 4rem);
       }
 
       .fans-image-container {
-        position: relative;
         width: 100%;
-        height: clamp(350px, 50vw, 800px);
-        border-radius: var(--radius-xl);
+        height: 300px;
+        border-radius: var(--radius-lg);
         overflow: hidden;
         box-shadow: var(--shadow-lg);
         order: 1;
@@ -1310,46 +1334,32 @@
         object-position: center;
       }
 
+      .fans-content {
+        order: 2;
+      }
+
       /* Chat Requests */
       .chat-requests {
         background-color: var(--bg-white);
-        padding: clamp(1.5rem, 3vw, 2rem);
+        padding: clamp(1rem, 2vw, 2rem);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
-        margin-top: clamp(1.5rem, 3vw, 2rem);
+        margin-top: clamp(1rem, 2vw, 1.5rem);
       }
 
       .chat-request-item {
         display: flex;
         flex-direction: column;
-        gap: clamp(1rem, 2vw, 1.5rem);
-        padding: clamp(1rem, 2vw, 1.5rem);
+        gap: 1rem;
+        padding: 1rem;
         border-radius: var(--radius-md);
         background-color: var(--bg-light);
-        margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+        margin-bottom: 0.75rem;
         transition: var(--transition);
         border: 1px solid var(--border-color);
         border-left: 4px solid var(--primary-color);
         position: relative;
         overflow: hidden;
-      }
-
-      .chat-request-item::before {
-        content: "NEW";
-        position: absolute;
-        top: 10px;
-        right: -25px;
-        background: var(--primary-color);
-        color: var(--text-light);
-        padding: 4px 30px;
-        font-size: 12px;
-        font-weight: 600;
-        transform: rotate(45deg);
-      }
-
-      .chat-request-item:hover {
-        transform: translateX(5px);
-        box-shadow: var(--shadow-md);
       }
 
       .request-avatar {
@@ -1361,8 +1371,8 @@
       }
 
       .request-badge {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
@@ -1378,13 +1388,13 @@
         left: -8px;
         top: -8px;
         z-index: 2;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         border: 2px solid var(--bg-white);
       }
 
       .request-avatar img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         object-fit: cover;
         border: 3px solid var(--bg-white);
@@ -1398,7 +1408,7 @@
       }
 
       .request-name {
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: clamp(1rem, 2vw, 1.1rem);
         font-weight: 600;
         margin-bottom: 0.25rem;
         color: var(--text-dark);
@@ -1407,19 +1417,19 @@
 
       .request-topic {
         color: var(--text-gray);
-        font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
         margin-bottom: 8px;
         line-height: 1.4;
       }
 
       .request-amount {
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: clamp(1rem, 2vw, 1.1rem);
         font-weight: 700;
         color: var(--primary-color);
       }
 
       .request-time {
-        font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+        font-size: 0.75rem;
         color: var(--text-light-gray);
         margin-top: 5px;
       }
@@ -1430,7 +1440,7 @@
         margin: 0 auto;
       }
 
-      /* Chat Demo Section */
+      /* ===== CHAT DEMO SECTION ===== */
       .chat-demo-section {
         background: linear-gradient(
           135deg,
@@ -1438,23 +1448,21 @@
           var(--secondary-color) 100%
         );
         color: var(--text-light);
-        padding: clamp(2.5rem, 6vw, 4rem) 0;
+        padding: clamp(2rem, 4vw, 5rem) 0;
         position: relative;
         overflow: hidden;
       }
 
       .chat-demo-section .container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: clamp(2rem, 5vw, 4rem);
-        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 3vw, 4rem);
       }
 
       .chat-demo-image-container {
-        position: relative;
         width: 100%;
-        height: clamp(250px, 50vw, 400px);
-        border-radius: var(--radius-xl);
+        height: 250px;
+        border-radius: var(--radius-lg);
         overflow: hidden;
         box-shadow: var(--shadow-lg);
         order: 1;
@@ -1475,32 +1483,28 @@
       }
 
       .chat-icon {
-        font-size: clamp(2rem, 5vw, 3rem);
-        margin: 0 auto clamp(1rem, 2.5vw, 1.5rem);
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        margin: 0 auto clamp(1rem, 2vw, 2rem);
         display: inline-flex;
         background-color: rgba(255, 255, 255, 0.15);
-        width: clamp(60px, 12vw, 80px);
-        height: clamp(60px, 12vw, 80px);
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         align-items: center;
         justify-content: center;
       }
 
-      /* Countries Section */
-      .countries-section {
-        background: var(--bg-section-alt);
-      }
-
+      /* ===== COUNTRIES SECTION ===== */
       .countries-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: clamp(1rem, 2.5vw, 1.5rem);
-        margin-top: clamp(2rem, 4vw, 3rem);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: clamp(1.5rem, 3vw, 3rem);
       }
 
       .country-card {
         background-color: var(--bg-white);
-        padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+        padding: clamp(1rem, 2vw, 1.75rem) clamp(0.75rem, 1.5vw, 1.25rem);
         border-radius: var(--radius-lg);
         text-align: center;
         text-decoration: none;
@@ -1508,25 +1512,25 @@
         transition: var(--transition);
         box-shadow: var(--shadow-sm);
         border: 1px solid var(--border-color);
-        min-height: 160px;
+        min-height: 140px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
       }
 
       .country-card:hover {
         transform: translateY(-5px);
         box-shadow: var(--shadow-md);
-        border-color: var(--primary-color);
       }
 
       .country-flag {
-        width: clamp(60px, 12vw, 80px);
-        height: clamp(60px, 12vw, 80px);
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         overflow: hidden;
-        margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+        margin: 0 auto clamp(0.75rem, 1.5vw, 1.25rem);
         background-color: var(--bg-white);
         box-shadow: var(--shadow-sm);
         display: flex;
@@ -1542,7 +1546,7 @@
       }
 
       .country-name {
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
         font-weight: 600;
         color: var(--text-dark);
         line-height: 1.3;
@@ -1550,100 +1554,17 @@
       }
 
       .country-fee {
-        font-size: 0.875rem;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
         font-weight: 600;
         color: var(--primary-color);
-        margin-top: 0.5rem;
+        margin-top: clamp(0.5rem, 1vw, 0.75rem);
         background: var(--primary-light);
-        padding: 0.35rem 0.75rem;
+        padding: 0.35rem 0.5rem;
         border-radius: var(--radius-sm);
         border: 1px solid rgba(2, 159, 88, 0.2);
       }
 
-      .dark-mode .country-fee {
-        background: rgba(52, 211, 153, 0.1);
-        border-color: rgba(52, 211, 153, 0.2);
-      }
-
-      .country-card:hover .country-fee {
-        background: var(--primary-color);
-        color: var(--text-light);
-        border-color: var(--primary-color);
-      }
-
-      /* Reasons Section */
-      .reasons-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: clamp(2rem, 5vw, 4rem);
-        align-items: center;
-      }
-
-      .reasons-image-container {
-        position: relative;
-        width: 100%;
-        height: clamp(250px, 60vw, 600px);
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .reasons-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-
-      .reasons-list {
-        list-style: none;
-        position: relative;
-        padding-left: clamp(2rem, 4vw, 2.5rem);
-        margin-top: clamp(1.5rem, 3vw, 2rem);
-      }
-
-      .reason-item {
-        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-        position: relative;
-      }
-
-      .reason-item:last-child {
-        margin-bottom: 0;
-      }
-
-      .reason-number {
-        position: absolute;
-        left: -2.75rem;
-        top: 0;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 1rem;
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-      }
-
-      .reason-title {
-        font-size: clamp(1.125rem, 2.5vw, 1.75rem);
-        font-weight: 700;
-        margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
-        color: var(--text-dark);
-        line-height: 1.3;
-      }
-
-      .reason-description {
-        font-size: clamp(0.9rem, 1.5vw, 1rem);
-        color: var(--text-gray);
-        line-height: 1.6;
-        max-width: min(500px, 100%);
-      }
-
-      /* How It Works */
+      /* ===== REASONS SECTION ===== */
       .how-it-works {
         background: linear-gradient(
           135deg,
@@ -1663,29 +1584,90 @@
         opacity: 0.9;
       }
 
+      .reasons-grid {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 3vw, 4rem);
+      }
+
+      .reasons-image-container {
+        width: 100%;
+        height: 250px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .reasons-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .reasons-list {
+        list-style: none;
+        position: relative;
+        padding-left: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .reason-item {
+        margin-bottom: clamp(1rem, 2vw, 2.5rem);
+        position: relative;
+      }
+
+      .reason-number {
+        position: absolute;
+        left: -2.25rem;
+        top: 0;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+      }
+
+      .reason-title {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+        line-height: 1.3;
+      }
+
+      .reason-description {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        color: var(--text-gray);
+        line-height: 1.6;
+        max-width: min(500px, 100%);
+      }
+
+      /* ===== HOW IT WORKS ===== */
       .steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: clamp(1.5rem, 3vw, 2rem);
-        margin-top: clamp(2rem, 4vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 2vw, 2rem);
+        margin-top: clamp(1.5rem, 3vw, 3rem);
       }
 
       .step {
         background-color: rgba(255, 255, 255, 0.1);
-        padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2rem);
+        padding: clamp(1rem, 2vw, 2.5rem) clamp(1rem, 2vw, 2rem);
         border-radius: var(--radius-lg);
         backdrop-filter: blur(10px);
         transition: var(--transition);
       }
 
-      .step:hover {
-        transform: translateY(-8px);
-        background-color: rgba(255, 255, 255, 0.15);
-      }
-
       .step-number {
-        width: clamp(50px, 10vw, 60px);
-        height: clamp(50px, 10vw, 60px);
+        width: clamp(40px, 5vw, 60px);
+        height: clamp(40px, 5vw, 60px);
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
@@ -1696,72 +1678,54 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        font-size: clamp(1rem, 2vw, 1.5rem);
         font-weight: 800;
-        margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+        margin: 0 auto clamp(0.75rem, 1.5vw, 1.5rem);
         box-shadow: var(--shadow-md);
       }
 
       .step-title {
         font-size: clamp(1.25rem, 2.5vw, 1.5rem);
         font-weight: 700;
-        margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+        margin-bottom: 0.75rem;
         color: var(--text-light);
         line-height: 1.3;
+        text-align: center;
       }
 
       .step-description {
         color: rgba(255, 255, 255, 0.9);
         line-height: 1.6;
-        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+        text-align: center;
       }
 
-      /* Features Section */
+      /* ===== FEATURES SECTION ===== */
       .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: clamp(1.5rem, 3vw, 2rem);
-        margin-top: clamp(2rem, 4vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 2vw, 2rem);
+        margin-top: clamp(1.5rem, 3vw, 3rem);
       }
 
       .feature-card {
         background-color: var(--bg-white);
-        padding: clamp(1.5rem, 3vw, 2rem);
+        padding: clamp(1rem, 2vw, 2.5rem) clamp(1rem, 2vw, 2rem);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-sm);
         transition: var(--transition);
         border: 1px solid var(--border-color);
-        position: relative;
-        overflow: hidden;
-        min-height: 280px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-      }
-
-      .feature-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
+        min-height: 250px;
       }
 
       .feature-card:hover {
         transform: translateY(-5px);
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-lg);
       }
 
       .feature-icon {
-        width: clamp(60px, 12vw, 70px);
-        height: clamp(60px, 12vw, 70px);
+        width: clamp(50px, 6vw, 70px);
+        height: clamp(50px, 6vw, 70px);
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
@@ -1772,16 +1736,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: clamp(24px, 5vw, 32px);
-        margin: 0 auto clamp(1rem, 2vw, 20px);
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        margin: 0 auto clamp(0.75rem, 1.5vw, 1.5rem);
         box-shadow: var(--shadow-md);
-        flex-shrink: 0;
       }
 
       .feature-title {
-        font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
         font-weight: 600;
-        margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+        margin-bottom: 0.75rem;
         color: var(--text-dark);
         text-align: center;
         line-height: 1.3;
@@ -1794,17 +1757,11 @@
         font-size: clamp(0.9rem, 1.5vw, 1rem);
       }
 
-      /* Testimonials Carousel */
+      /* ===== TESTIMONIALS ===== */
       .testimonial-slider {
-        max-width: min(800px, 95vw);
-        margin: clamp(2rem, 4vw, 3rem) auto 0;
+        max-width: min(800px, 95%);
+        margin: clamp(1.5rem, 3vw, 3rem) auto 0;
         position: relative;
-      }
-
-      .testimonial-slider-container {
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 2rem;
       }
 
       .testimonial-slide {
@@ -1816,66 +1773,35 @@
         display: block;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
       .testimonial {
         background-color: var(--bg-white);
-        padding: clamp(1.5rem, 3vw, 2.5rem);
+        padding: clamp(1rem, 2vw, 2.5rem);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
         text-align: left;
         position: relative;
       }
 
-      .testimonial::before {
-        content: '"';
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: clamp(3rem, 6vw, 4rem);
-        color: #d1fae5;
-        font-family: Georgia, serif;
-        line-height: 1;
-      }
-
       .testimonial-text {
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
         line-height: 1.7;
         color: var(--text-dark);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        margin-bottom: clamp(1rem, 2vw, 2rem);
         font-style: italic;
         position: relative;
-        padding-left: clamp(1rem, 2vw, 1.5rem);
-      }
-
-      .testimonial-text::before {
-        content: '"';
-        position: absolute;
-        left: 0;
-        top: -10px;
-        font-size: clamp(2rem, 4vw, 3rem);
-        color: var(--primary-color);
-        opacity: 0.3;
-        font-family: Georgia, serif;
+        padding-left: 1rem;
       }
 
       .testimonial-author {
         display: flex;
         align-items: center;
-        gap: clamp(0.75rem, 2vw, 1rem);
+        gap: 0.75rem;
         flex-wrap: wrap;
       }
 
       .testimonial-author img {
-        width: clamp(50px, 10vw, 60px);
-        height: clamp(50px, 10vw, 60px);
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         object-fit: cover;
         flex-shrink: 0;
@@ -1885,15 +1811,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 1rem;
+        margin-top: 1.5rem;
       }
 
       .testimonial-nav-btn {
         background: var(--bg-white);
         border: 2px solid var(--border-color);
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1904,20 +1830,19 @@
       }
 
       .testimonial-nav-btn:hover {
-        background: var(--primary-color);
+        background: var(--primary-light);
+        color: var(--primary-color);
         border-color: var(--primary-color);
-        color: var(--text-light);
-        transform: scale(1.1);
       }
 
       .testimonial-dots {
         display: flex;
-        gap: 0.75rem;
+        gap: 0.5rem;
       }
 
       .testimonial-dot {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: var(--border-color);
         border: none;
@@ -1930,33 +1855,24 @@
         transform: scale(1.2);
       }
 
-      .testimonial-dot:hover {
-        background: var(--primary-color);
-      }
-
-      /* FAQ */
+      /* ===== FAQ ===== */
       .faq-container {
-        max-width: min(800px, 95vw);
-        margin: clamp(2rem, 4vw, 3rem) auto 0;
+        max-width: min(800px, 95%);
+        margin: clamp(1.5rem, 3vw, 3rem) auto 0;
       }
 
       .faq-item {
-        margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+        margin-bottom: 0.75rem;
         border-radius: var(--radius-md);
         overflow: hidden;
         box-shadow: var(--shadow-sm);
         border: 1px solid var(--border-color);
-        transition: all 0.3s ease;
-      }
-
-      .faq-item:hover {
-        box-shadow: var(--shadow-md);
       }
 
       .faq-question {
         background-color: var(--bg-white);
-        padding: clamp(1rem, 2vw, 1.5rem);
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        padding: 1rem;
+        font-size: 1rem;
         font-weight: 600;
         color: var(--text-dark);
         cursor: pointer;
@@ -1965,16 +1881,11 @@
         align-items: center;
         transition: var(--transition);
         gap: 1rem;
-        min-height: 60px;
-      }
-
-      .faq-question:hover {
-        background-color: var(--bg-light);
+        min-height: 56px;
       }
 
       .faq-question i {
         transition: transform 0.3s ease;
-        flex-shrink: 0;
       }
 
       .faq-question.active i {
@@ -1982,46 +1893,30 @@
       }
 
       .faq-answer {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
         max-height: 0;
         overflow: hidden;
-        transition:
-          max-height 0.3s ease,
-          padding 0.3s ease;
+        transition: all 0.3s ease;
         background-color: var(--bg-white);
+        font-size: 0.9rem;
       }
 
       .faq-answer.open {
-        padding: clamp(1rem, 2vw, 1.5rem);
         max-height: 500px;
+        padding: 1rem;
       }
 
-      /* Contact Section */
-      .contact-section {
-        background: linear-gradient(
-          135deg,
-          var(--bg-section-alt) 0%,
-          var(--bg-light) 100%
-        );
-        padding: clamp(2.5rem, 6vw, 4rem) 0;
-        position: relative;
-      }
-
-      .contact-container {
-        max-width: min(1000px, 95vw);
-        margin: 0 auto;
-      }
-
+      /* ===== CONTACT SECTION ===== */
       .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: clamp(1.5rem, 3vw, 2rem);
-        margin-top: clamp(2rem, 4vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 2vw, 3rem);
+        margin-top: clamp(1.5rem, 3vw, 3rem);
       }
 
       .contact-info {
         background: var(--bg-white);
-        padding: clamp(1.5rem, 3vw, 2rem);
+        padding: clamp(1rem, 2vw, 2.5rem);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
       }
@@ -2029,180 +1924,116 @@
       .contact-method {
         display: flex;
         align-items: center;
-        gap: clamp(1rem, 2vw, 1.5rem);
-        padding: clamp(1rem, 2vw, 1.5rem);
+        gap: 1rem;
+        padding: 1rem;
         background: var(--bg-light);
         border-radius: var(--radius-md);
-        margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+        margin-bottom: 0.75rem;
         transition: var(--transition);
         text-decoration: none;
         color: inherit;
-        min-height: 90px;
+        min-height: 80px;
       }
 
       .contact-method:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
+        background: var(--primary-light);
+        transform: translateX(5px);
       }
 
       .contact-icon {
-        width: clamp(50px, 10vw, 60px);
-        height: clamp(50px, 10vw, 60px);
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        font-size: 1.25rem;
         color: var(--text-light);
         flex-shrink: 0;
       }
 
       .contact-icon.whatsapp {
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        background: #25d366;
       }
 
       .contact-icon.email {
-        background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%);
-      }
-
-      .contact-icon.phone {
-        background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
-      }
-
-      .contact-details h4 {
-        font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--text-dark);
-        line-height: 1.3;
-      }
-
-      .contact-details p {
-        color: var(--text-gray);
-        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-        line-height: 1.4;
-      }
-
-      .response-time {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: var(--text-light);
-        padding: clamp(0.75rem, 2vw, 1rem);
-        border-radius: var(--radius-md);
-        text-align: center;
-        margin-top: 1.5rem;
+        background: var(--primary-color);
       }
 
       .whatsapp-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: clamp(0.75rem, 2vw, 1rem);
-        margin-top: clamp(1.5rem, 3vw, 2rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
       }
 
       .whatsapp-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 15px;
-        padding: clamp(1rem, 2.5vw, 1.5rem);
+        gap: 10px;
+        padding: 1rem;
         background: #25d366;
         color: var(--text-light);
         border-radius: var(--radius-lg);
         font-weight: 600;
-        font-size: clamp(1rem, 2vw, 1.125rem);
+        font-size: 1rem;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         text-decoration: none;
         text-align: center;
-        min-height: 70px;
+        min-height: 60px;
       }
 
       .whatsapp-btn:hover {
         background: #128c7e;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        transform: translateY(-2px);
       }
 
       .whatsapp-btn.secondary {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
+        background: var(--secondary-color);
       }
 
       .whatsapp-btn.secondary:hover {
-        background: linear-gradient(
-          135deg,
-          var(--primary-dark) 0%,
-          #2563eb 100%
-        );
+        background: #1d4ed8;
       }
 
-      /* CTA Section */
+      .response-time {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: var(--bg-light);
+        border-radius: var(--radius-md);
+        text-align: center;
+      }
+
+      /* ===== CTA SECTION ===== */
       .cta-section {
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
           var(--secondary-color) 100%
         );
-        padding: clamp(2.5rem, 6vw, 4rem) 0;
+        padding: clamp(2rem, 4vw, 5rem) 0;
         text-align: center;
         position: relative;
         overflow: hidden;
       }
 
-      .cta-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-        opacity: 0.1;
-      }
-
-      .cta-content {
-        position: relative;
-        z-index: 1;
-        max-width: min(800px, 95vw);
-        margin: 0 auto;
-      }
-
       .cta-title {
         color: var(--text-light);
-        font-size: clamp(1.75rem, 4vw, 3rem);
+        font-size: clamp(1.5rem, 4vw, 3rem);
         font-weight: 800;
         line-height: 1.2;
-        margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+        margin-bottom: 1rem;
         letter-spacing: -0.02em;
       }
 
-      /* Footer */
+      /* ===== FOOTER ===== */
       .footer {
         background-color: var(--bg-white);
-        padding: clamp(2rem, 4vw, 3rem) 0;
+        padding: clamp(1.5rem, 3vw, 3rem) 0;
         border-top: 1px solid var(--border-color);
         position: relative;
-      }
-
-      .footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
       }
 
       .footer-content {
@@ -2213,461 +2044,354 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.75rem;
-        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        gap: 0.5rem;
+        font-size: 1.25rem;
         font-weight: 800;
         color: var(--text-dark);
         text-decoration: none;
-        margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+        margin-bottom: 1.5rem;
         flex-wrap: wrap;
-        min-height: 44px;
       }
 
       .footer-logo img {
-        width: clamp(32px, 4vw, 40px);
-        height: clamp(32px, 4vw, 40px);
+        width: 32px;
+        height: 32px;
         object-fit: contain;
       }
 
       .footer-links {
         display: flex;
-        justify-content: center;
-        gap: clamp(0.75rem, 2vw, 2rem);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
       }
 
       .footer-link {
         color: var(--text-gray);
         text-decoration: none;
         font-weight: 500;
-        padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem);
+        padding: 0.5rem;
         border-radius: var(--radius-sm);
         transition: all 0.2s;
-        font-size: clamp(0.85rem, 1.5vw, 1rem);
+        font-size: 0.85rem;
         white-space: nowrap;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
       .footer-link:hover {
         color: var(--primary-color);
-        background: rgba(2, 159, 88, 0.1);
-      }
-
-      .dark-mode .footer-link:hover {
-        background: rgba(52, 211, 153, 0.1);
       }
 
       .copyright {
         color: var(--text-light-gray);
-        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        font-size: 0.85rem;
         margin-bottom: 1rem;
       }
 
       .footer-text {
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 0.9rem;
         margin-bottom: 10px;
+        color: var(--text-gray);
       }
 
-      .jeff {
+      .footer-text .jeff {
         color: var(--primary-color);
         text-decoration: none;
-        transition: var(--transition);
       }
 
-      .jeff:hover {
+      .footer-text .jeff:hover {
         text-decoration: underline;
       }
 
-      /* ===== PREMIUM PROFILES SECTION ===== */
-      .premium-profiles-section {
-        padding: 4rem 0;
-        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      }
-
-      .dark-mode .premium-profiles-section {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      }
-
-      .premium-header {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-
-      .header-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
+      /* ===== STICKY CTA ===== */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         background: linear-gradient(
           135deg,
           var(--primary-color) 0%,
           var(--secondary-color) 100%
         );
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-weight: 600;
-        font-size: 0.875rem;
-        margin-bottom: 1rem;
+        color: var(--text-light);
+        z-index: 999;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+        padding: 0.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      .badge-icon {
-        font-size: 0.9rem;
+      .sticky-cta.visible {
+        transform: translateY(0);
       }
 
-      .premium-title {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 800;
-        margin-bottom: 1rem;
-        color: var(--text-dark);
-      }
-
-      .premium-subtitle {
-        font-size: clamp(1rem, 2vw, 1.25rem);
-        color: var(--text-gray);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* Live Stats Ticker */
-      .live-stats-ticker {
-        background: var(--bg-white);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        margin-bottom: 3rem;
-        box-shadow: var(--shadow-md);
-      }
-
-      .ticker-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .ticker-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .ticker-item i {
-        font-size: 2rem;
-        color: var(--primary-color);
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--primary-light);
-        border-radius: 50%;
-      }
-
-      .ticker-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-dark);
-        line-height: 1.2;
-      }
-
-      .ticker-label {
-        font-size: 0.875rem;
-        color: var(--text-gray);
-        margin-top: 0.25rem;
-      }
-
-      /* Compact Profile Cards */
-      .profile-card {
-        background: var(--bg-white);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-        box-shadow: var(--shadow-md);
-        transition: var(--transition);
-        border: 1px solid var(--border-color);
-        height: 100%;
-      }
-
-      .profile-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .card-header {
+      .sticky-cta .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
+        gap: 0.5rem;
+        padding: 0 var(--container-padding);
       }
 
-      .status-badge {
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
+      .sticky-cta-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .sticky-cta-icon {
+        background: rgba(255, 255, 255, 0.2);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        backdrop-filter: blur(5px);
+      }
+
+      .sticky-cta-icon i {
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      .sticky-cta-text {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .sticky-cta-text p {
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.3;
+        font-size: 0.9rem;
+      }
+
+      .sticky-cta-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .sticky-cta-subtitle {
         font-size: 0.75rem;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-
-      .status-badge.premium {
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        color: #000;
-      }
-
-      .status-badge.featured {
-        background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-        color: white;
-      }
-
-      .status-badge.new {
-        background: linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%);
-        color: white;
-      }
-
-      .online-status {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        border: 2px solid var(--bg-white);
-      }
-
-      .online-status.active {
-        background: #4cd964;
-        animation: pulse 2s infinite;
-      }
-
-      .online-status.busy {
-        background: #ff9500;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.5;
-        }
-      }
-
-      .profile-summary {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .profile-avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--bg-white);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .profile-info h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-        color: var(--text-dark);
-      }
-
-      .profile-meta {
-        font-size: 0.875rem;
-        color: var(--text-gray);
-        margin-bottom: 0.5rem;
-      }
-
-      .profile-rating {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .stars {
-        color: #ffd700;
-        font-size: 0.9rem;
-      }
-
-      .rating-text {
-        font-size: 0.8rem;
-        color: var(--text-light-gray);
-      }
-
-      .quick-info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-        margin: 1rem 0;
-        background: var(--bg-light);
-        padding: 0.75rem;
-        border-radius: var(--radius-md);
-      }
-
-      .info-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        color: var(--text-dark);
-      }
-
-      .info-item i {
-        color: var(--primary-color);
-        font-size: 0.9rem;
-      }
-
-      .profile-excerpt {
-        font-size: 0.9rem;
-        color: var(--text-gray);
-        line-height: 1.5;
-        margin: 1rem 0;
+        opacity: 0.9;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      .card-actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1.5rem;
-      }
-
-      .btn-quick-chat,
-      .btn-view-details {
-        flex: 1;
-        padding: 0.75rem;
-        border: none;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        font-size: 0.875rem;
-        cursor: pointer;
-        transition: var(--transition);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .btn-quick-chat {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: white;
-      }
-
-      .btn-quick-chat:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(2, 159, 88, 0.3);
-      }
-
-      .btn-view-details {
-        background: var(--bg-light);
-        color: var(--text-dark);
-        border: 1px solid var(--border-color);
-      }
-
-      .btn-view-details:hover {
-        background: var(--border-color);
-        transform: translateY(-2px);
-      }
-
-      /* Profile Grid */
-      .profiles-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .profiles-container {
-        position: relative;
-      }
-
-      .nav-dots {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 2rem;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--border-color);
-        border: none;
-        cursor: pointer;
-        transition: var(--transition);
-      }
-
-      .dot.active {
-        background: var(--primary-color);
-        transform: scale(1.2);
-      }
-
-      .dot:hover {
-        background: var(--primary-color);
-      }
-
-      /* Quick Join Bar */
-      .quick-join-bar {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        border-radius: var(--radius-lg);
-        padding: 2rem;
-        margin-top: 3rem;
-      }
-
-      .join-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: white;
-      }
-
-      .join-content h3 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .join-content p {
-        opacity: 0.9;
-      }
-
-      .btn-join {
-        background: white;
+      .sticky-cta .btn-small {
+        background: var(--text-light);
         color: var(--primary-color);
         border: none;
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        min-height: 32px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        flex-shrink: 0;
         border-radius: var(--radius-md);
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
         transition: var(--transition);
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        justify-content: center;
+        gap: 0.375rem;
+        cursor: pointer;
+        text-decoration: none;
         white-space: nowrap;
       }
 
-      .btn-join:hover {
+      .sticky-cta .btn-small:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       }
 
-      /* Profile Modal */
+      /* ===== FLOATING WHATSAPP ===== */
+      .floating-whatsapp {
+        position: fixed;
+        bottom: 80px;
+        right: 15px;
+        z-index: 998;
+      }
+
+      .floating-whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #25d366;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        transition: var(--transition);
+        text-decoration: none;
+        animation: float 3s ease-in-out infinite;
+        border: 2px solid var(--text-light);
+      }
+
+      .floating-whatsapp-btn:hover {
+        background: #128c7e;
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+      }
+
+      /* ===== WELCOME NOTIFICATION ===== */
+      .welcome-notification {
+        position: fixed;
+        top: 80px;
+        right: 10px;
+        left: 10px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--text-light);
+        padding: 0.875rem 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        z-index: 1005;
+        transform: translateX(120%);
+        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: left;
+      }
+
+      .welcome-notification.show {
+        transform: translateX(0);
+      }
+
+      .welcome-notification.hide {
+        transform: translateX(120%);
+      }
+
+      .welcome-notification i {
+        font-size: 1.25rem;
+        flex-shrink: 0;
+      }
+
+      .welcome-notification p {
+        font-weight: 600;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        flex: 1;
+      }
+
+      .notification-close {
+        background: none;
+        border: none;
+        color: var(--text-light);
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 0.25rem;
+        margin-left: auto;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .notification-close:hover {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* ===== COOKIE CONSENT ===== */
+      .cookie-consent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        color: var(--text-dark);
+        padding: 1rem var(--container-padding);
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1005;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        border-top: 3px solid var(--primary-color);
+      }
+
+      .cookie-consent.show {
+        transform: translateY(0);
+      }
+
+      .cookie-consent .container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .cookie-consent-content {
+        flex: 1;
+        font-size: 0.9rem;
+      }
+
+      .cookie-consent-buttons {
+        display: flex;
+        gap: 0.75rem;
+        flex-shrink: 0;
+        width: 100%;
+      }
+
+      .cookie-consent-btn {
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        font-size: 0.9rem;
+      }
+
+      .cookie-consent-btn.accept {
+        background: var(--primary-color);
+        color: var(--text-light);
+      }
+
+      .cookie-consent-btn.accept:hover {
+        background: var(--primary-dark);
+      }
+
+      .cookie-consent-btn.decline {
+        background: transparent;
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
+      }
+
+      .cookie-consent-btn.decline:hover {
+        background: var(--bg-light);
+      }
+
+      /* ===== ENHANCED PROFILE MODAL ===== */
       .profile-modal {
         display: none;
         position: fixed;
@@ -2676,44 +2400,72 @@
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
         z-index: 10000;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .profile-modal.show {
+        display: flex;
       }
 
       .modal-content {
         background: var(--bg-white);
-        border-radius: var(--radius-lg);
-        width: 90%;
+        border-radius: var(--radius-xl);
+        width: 100%;
         max-width: 500px;
         max-height: 90vh;
         overflow-y: auto;
         box-shadow: var(--shadow-xl);
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       .modal-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem;
+        padding: 1.25rem;
         border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        background: var(--bg-white);
+        z-index: 1;
       }
 
       .modal-header h2 {
         font-size: 1.5rem;
-        font-weight: 700;
         color: var(--text-dark);
+        margin: 0;
       }
 
       .modal-close {
         background: none;
         border: none;
-        font-size: 1.25rem;
+        font-size: 2rem;
         color: var(--text-gray);
         cursor: pointer;
-        padding: 0.5rem;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 50%;
         transition: var(--transition);
+        line-height: 1;
       }
 
       .modal-close:hover {
@@ -2722,29 +2474,334 @@
       }
 
       .modal-body {
-        padding: 1.5rem;
+        padding: 0;
       }
 
+      /* Modal Header Section */
+      .modal-header-section {
+        padding: 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-light) 0%,
+          rgba(219, 234, 254, 0.3) 100%
+        );
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .dark-mode .modal-header-section {
+        background: linear-gradient(
+          135deg,
+          rgba(6, 78, 59, 0.3) 0%,
+          rgba(30, 41, 59, 0.3) 100%
+        );
+      }
+
+      .modal-avatar-container {
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .modal-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+        box-shadow: var(--shadow-md);
+      }
+
+      .modal-avatar-badge {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: var(--primary-color);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        border: 2px solid white;
+      }
+
+      .modal-basic-info {
+        flex: 1;
+      }
+
+      .modal-profile-name {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-profile-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .modal-profile-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      .modal-profile-meta i {
+        color: var(--primary-color);
+      }
+
+      .modal-rating-section {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .modal-rating-stars {
+        font-size: 1.25rem;
+        color: #ffd700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .modal-rating-value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .modal-chats-count {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      .modal-chats-count i {
+        color: var(--primary-color);
+      }
+
+      /* Modal Sections */
+      .modal-section {
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .modal-section:last-child {
+        border-bottom: none;
+      }
+
+      .modal-section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .modal-section-title i {
+        color: var(--primary-color);
+      }
+
+      .modal-bio {
+        color: var(--text-gray);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      /* Earnings Section */
+      .modal-earning-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .modal-earning-item {
+        background: var(--bg-light);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: var(--transition);
+      }
+
+      .modal-earning-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .modal-earning-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .modal-earning-content {
+        flex: 1;
+      }
+
+      .modal-earning-amount {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.25rem;
+      }
+
+      .modal-earning-label {
+        font-size: 0.8rem;
+        color: var(--text-light-gray);
+      }
+
+      /* Interests Section */
+      .modal-interests {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .modal-interest-tag {
+        background: var(--primary-light);
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border: 1px solid rgba(2, 159, 88, 0.2);
+        transition: var(--transition);
+      }
+
+      .modal-interest-tag:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Topics Section */
+      .modal-topics {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      .modal-topic-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        color: var(--text-gray);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .modal-topic-item i {
+        color: var(--primary-color);
+        margin-top: 0.25rem;
+        flex-shrink: 0;
+      }
+
+      /* Languages Section */
+      .modal-languages {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .modal-language-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--bg-light);
+        padding: 0.75rem 1.25rem;
+        border-radius: var(--radius-md);
+        font-weight: 500;
+        color: var(--text-dark);
+      }
+
+      .modal-language-item i {
+        color: var(--primary-color);
+      }
+
+      /* Stats Section */
+      .modal-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 1.5rem 2rem;
+        background: var(--bg-section-alt);
+        border-top: 1px solid var(--border-color);
+      }
+
+      .modal-stat-item {
+        text-align: center;
+        padding: 1rem;
+        background: var(--bg-white);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .modal-stat-value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-stat-label {
+        font-size: 0.8rem;
+        color: var(--text-gray);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Modal Footer */
       .modal-footer {
         padding: 1.5rem;
         border-top: 1px solid var(--border-color);
         display: flex;
         gap: 1rem;
+        background: var(--bg-section-alt);
       }
 
       .btn-modal-chat,
       .btn-modal-favorite {
         flex: 1;
         padding: 1rem;
-        border: none;
         border-radius: var(--radius-md);
         font-weight: 600;
-        cursor: pointer;
-        transition: var(--transition);
+        font-size: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 0.75rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
       }
 
       .btn-modal-chat {
@@ -2758,377 +2815,940 @@
 
       .btn-modal-chat:hover {
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(2, 159, 88, 0.3);
+        box-shadow: 0 8px 25px rgba(2, 159, 88, 0.3);
       }
 
       .btn-modal-favorite {
-        background: var(--bg-light);
+        background: var(--bg-white);
         color: var(--text-dark);
-        border: 1px solid var(--border-color);
+        border: 2px solid var(--border-color);
       }
 
       .btn-modal-favorite:hover {
-        background: var(--border-color);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
         transform: translateY(-2px);
       }
 
-      /* Modal Styles for Profile Details */
-      .modal-profile {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+      .btn-modal-favorite i {
+        transition: all 0.3s ease;
       }
 
-      .modal-header-info {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
+      .btn-modal-favorite.active {
+        color: #ff4757;
+        border-color: #ff4757;
       }
 
-      .modal-avatar-section {
-        flex-shrink: 0;
-        text-align: center;
+      .btn-modal-favorite.active i {
+        color: #ff4757;
       }
 
-      .modal-avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid var(--bg-white);
-        box-shadow: var(--shadow-md);
-      }
-
-      .modal-status {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        margin-top: 0.5rem;
-      }
-
-      .modal-rating {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        display: inline-block;
-        width: fit-content;
-        margin: 0 auto;
-      }
-
-      .modal-chats {
-        font-size: 0.75rem;
-        color: var(--text-gray);
-        text-align: center;
-      }
-
-      .modal-basic-info {
-        flex: 1;
-      }
-
-      .info-row {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
-        font-size: 0.95rem;
-        color: var(--text-dark);
-      }
-
-      .info-row i {
-        color: var(--primary-color);
-        width: 20px;
-        text-align: center;
-      }
-
-      .modal-section {
-        background: var(--bg-light);
-        padding: 1.25rem;
-        border-radius: var(--radius-md);
-      }
-
-      .modal-section h3 {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--text-dark);
-      }
-
-      .earning-details {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 1rem;
-      }
-
-      .earning-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem;
-        background: var(--bg-white);
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border-color);
-      }
-
-      .earning-item i {
-        font-size: 1.25rem;
-        color: var(--primary-color);
-      }
-
-      .earning-item div {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .earning-item strong {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-dark);
-      }
-
-      .earning-item small {
-        font-size: 0.75rem;
-        color: var(--text-gray);
-        margin-top: 0.25rem;
-      }
-
-      .topics-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .topic-tag {
-        background: var(--primary-light);
-        color: var(--primary-color);
-        padding: 0.5rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        border: 1px solid rgba(2, 159, 88, 0.2);
-      }
-
-      .dark-mode .topic-tag {
-        background: rgba(52, 211, 153, 0.1);
-        border-color: rgba(52, 211, 153, 0.2);
-      }
-
-      .interests-section {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .interests-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .interest-tag {
-        background: var(--bg-white);
-        color: var(--text-dark);
-        padding: 0.5rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        border: 1px solid var(--border-color);
-      }
-
-      .languages-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .language-tag {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        color: white;
-        padding: 0.5rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-
-      /* ===== RESPONSIVE DESIGN ===== */
-      @media (min-width: 768px) {
-        .header {
-          height: 80px;
-        }
-
-        .hero {
-          margin-top: 80px;
-        }
-
-        .nav {
-          display: flex;
-        }
-
-        .mobile-menu-toggle {
-          display: none;
-        }
-
-        .floating-whatsapp {
-          display: block;
-        }
-
-        .fans-section .container,
-        .chat-demo-section .container {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .fans-content,
-        .chat-demo-content {
-          order: 1;
-        }
-
-        .fans-image-container,
-        .chat-demo-image-container {
-          order: 2;
-        }
-
-        .chat-request-item {
-          flex-direction: row;
-          text-align: left;
-        }
-
-        .request-info {
-          text-align: left;
-        }
-
-        .request-avatar {
-          justify-content: flex-start;
-        }
-
-        .countries-grid {
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        }
-
-        .reasons-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .reasons-image-container {
-          order: 1;
-        }
-
-        .reasons-content {
-          order: 2;
-        }
-      }
-
-      @media (max-width: 1200px) {
-        .profiles-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .ticker-container {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 900px) {
-        .nav {
-          display: none;
-        }
-
-        .mobile-menu-toggle {
-          display: flex;
-        }
-      }
-
+      /* Mobile Styles for Modal */
       @media (max-width: 768px) {
-        .profiles-grid {
-          grid-template-columns: 1fr;
-          max-width: 400px;
-          margin: 0 auto;
+        .modal-content {
+          max-width: 95%;
+          margin: 1rem;
+          max-height: 90vh;
         }
 
-        .join-content {
+        .modal-header-section {
           flex-direction: column;
           text-align: center;
-          gap: 1.5rem;
+          padding: 1.5rem;
         }
 
-        .btn-join {
-          width: 100%;
+        .modal-avatar {
+          width: 120px;
+          height: 120px;
+        }
+
+        .modal-profile-meta {
           justify-content: center;
         }
 
-        .floating-whatsapp {
-          display: block;
-          bottom: 75px;
-        }
-
-        .countries-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .trust-badges {
+        .modal-earning-details {
           grid-template-columns: 1fr;
         }
 
-        .hero-stats {
-          flex-direction: column;
-          gap: 2rem;
-        }
-
-        .ticker-container {
+        .modal-stats {
           grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .countries-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-buttons {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .btn {
-          width: 100%;
-          max-width: 300px;
-        }
-
-        .welcome-notification {
-          top: 10px;
-          right: 10px;
-          left: 10px;
-          max-width: none;
-        }
-
-        .modal-content {
-          width: 95%;
-          margin: 1rem;
+          gap: 0.75rem;
         }
 
         .modal-footer {
           flex-direction: column;
         }
 
-        .card-actions {
-          flex-direction: column;
-        }
-
-        .quick-info {
-          grid-template-columns: 1fr;
+        .modal-section {
+          padding: 1.25rem;
         }
       }
 
-      /* Touch Device Optimizations */
+      /* ===== ANIMATIONS ===== */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* ===== DESKTOP STYLES ===== */
+      @media (min-width: 768px) {
+        .desktop-only {
+          display: block;
+        }
+
+        .mobile-only {
+          display: none;
+        }
+
+        /* Header */
+        .header {
+          height: 80px;
+          padding: 0.75rem 0;
+        }
+
+        .header .container {
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .logo {
+          gap: 1rem;
+        }
+
+        .logo-icon {
+          width: 50px;
+          height: 50px;
+        }
+
+        .logo-main {
+          font-size: 1.75rem;
+        }
+
+        .logo-subtext {
+          font-size: 0.85rem;
+        }
+
+        /* Navigation */
+        .nav {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+          margin: 0 auto;
+        }
+
+        .nav-link {
+          padding: 0.75rem 1.25rem;
+          font-size: 1rem;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          border-radius: var(--radius-md);
+          text-decoration: none;
+          color: var(--text-dark);
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+          background: var(--primary-light);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-sm);
+        }
+
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 3px;
+          background: linear-gradient(
+            135deg,
+            var(--primary-color) 0%,
+            var(--secondary-color) 100%
+          );
+          border-radius: var(--radius-full);
+          transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+          width: 80%;
+        }
+
+        /* Header Actions */
+        .header-actions {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .btn-header {
+          display: flex;
+          padding: 0.75rem 1.5rem;
+          font-size: 0.95rem;
+          min-height: 44px;
+          align-items: center;
+          gap: 0.5rem;
+          white-space: nowrap;
+          border-radius: var(--radius-md);
+          text-decoration: none;
+          background: linear-gradient(
+            135deg,
+            var(--primary-color) 0%,
+            var(--secondary-color) 100%
+          );
+          color: white;
+          box-shadow: 0 4px 15px rgba(2, 159, 88, 0.3);
+        }
+
+        .mobile-menu-toggle {
+          display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+          min-height: 90vh;
+          margin-top: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hero-content {
+          max-width: min(1200px, 95%);
+          padding: 4rem;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          border-radius: var(--radius-2xl);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+
+        .hero h2 {
+          font-size: 1.4rem;
+        }
+
+        .hero-stats {
+          gap: 3rem;
+        }
+
+        .hero-stat-number {
+          font-size: 2.5rem;
+        }
+
+        .hero-stat-label {
+          font-size: 0.95rem;
+          letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+          gap: 2rem;
+        }
+
+        .btn {
+          padding: 1.25rem 2.5rem;
+          font-size: 1.1rem;
+          border-radius: var(--radius-lg);
+        }
+
+        /* Video Controls */
+        .video-control-btn {
+          bottom: 30px;
+          right: 30px;
+          width: 45px;
+          height: 45px;
+          font-size: 1.1rem;
+        }
+
+        .hero-video {
+          opacity: 0.5;
+        }
+
+        /* Premium Profiles */
+        .premium-profiles-section {
+          padding: 5rem 0;
+        }
+
+        .header-badge {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.9rem;
+        }
+
+        .premium-title {
+          font-size: 3rem;
+        }
+
+        .premium-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .live-stats-ticker {
+          padding: 2rem;
+          border-radius: var(--radius-xl);
+        }
+
+        .ticker-container {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+        }
+
+        .ticker-item i {
+          width: 60px;
+          height: 60px;
+          font-size: 1.75rem;
+        }
+
+        .ticker-number {
+          font-size: 1.75rem;
+        }
+
+        .profiles-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .profile-card {
+          padding: 1.75rem;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 2px solid transparent;
+        }
+
+        .profile-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--shadow-xl);
+          border-color: var(--primary-color);
+        }
+
+        .profile-avatar {
+          width: 60px;
+          height: 60px;
+        }
+
+        .quick-info {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 1rem;
+        }
+
+        .profile-excerpt {
+          -webkit-line-clamp: 3;
+        }
+
+        .card-actions {
+          gap: 1rem;
+        }
+
+        .btn-quick-chat,
+        .btn-view-details {
+          padding: 0.875rem;
+          font-size: 0.9rem;
+        }
+
+        .quick-join-bar {
+          padding: 2.5rem;
+          border-radius: var(--radius-xl);
+        }
+
+        .join-content {
+          flex-direction: row;
+          text-align: left;
+          justify-content: space-between;
+        }
+
+        .join-content h3 {
+          font-size: 1.75rem;
+        }
+
+        .join-content p {
+          font-size: 1.05rem;
+        }
+
+        .btn-join {
+          width: auto;
+        }
+
+        /* Calculator */
+        .calculator {
+          max-width: min(700px, 90%);
+          padding: 2.5rem;
+          border-radius: var(--radius-xl);
+        }
+
+        .calculator-slider {
+          height: 10px;
+          margin: 2rem 0;
+        }
+
+        .calculator-slider::-webkit-slider-thumb {
+          width: 32px;
+          height: 32px;
+        }
+
+        .calculator-amount {
+          font-size: 3rem;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .badge {
+          padding: 1.5rem;
+          font-size: 1.05rem;
+          min-height: 80px;
+          border-radius: var(--radius-lg);
+          transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-md);
+        }
+
+        /* Fans Section */
+        .fans-section .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+        }
+
+        .fans-content {
+          order: 1;
+        }
+
+        .fans-image-container {
+          order: 2;
+          height: 400px;
+          border-radius: var(--radius-xl);
+        }
+
+        .fans-image {
+          border-radius: var(--radius-xl);
+        }
+
+        /* Chat Requests */
+        .chat-requests {
+          padding: 2rem;
+          border-radius: var(--radius-xl);
+        }
+
+        .chat-request-item {
+          flex-direction: row;
+          align-items: center;
+          padding: 1.25rem;
+        }
+
+        .request-info {
+          text-align: left;
+          margin-left: 1.5rem;
+        }
+
+        .chat-request-item .btn {
+          width: auto;
+          min-width: 140px;
+          margin: 0;
+        }
+
+        /* Chat Demo Section */
+        .chat-demo-section .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+        }
+
+        .chat-demo-image-container {
+          height: 400px;
+          order: 2;
+          border-radius: var(--radius-xl);
+        }
+
+        .chat-demo-content {
+          order: 1;
+          text-align: left;
+        }
+
+        .chat-icon {
+          font-size: 2.5rem;
+          width: 80px;
+          height: 80px;
+          margin: 0 0 2rem;
+        }
+
+        /* Countries */
+        .countries-grid {
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.5rem;
+        }
+
+        .country-card {
+          padding: 1.75rem 1.25rem;
+          min-height: 180px;
+          border-radius: var(--radius-lg);
+          transition: all 0.3s ease;
+        }
+
+        .country-card:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-lg);
+          border-color: var(--primary-color);
+        }
+
+        .country-flag {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 1.25rem;
+        }
+
+        .country-name {
+          font-size: 1.1rem;
+        }
+
+        .country-fee {
+          font-size: 0.9rem;
+        }
+
+        /* Reasons */
+        .reasons-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+        }
+
+        .reasons-image-container {
+          height: 500px;
+          order: 2;
+          border-radius: var(--radius-xl);
+        }
+
+        .reasons-content {
+          order: 1;
+        }
+
+        .reasons-list {
+          padding-left: 3rem;
+          margin-top: 2rem;
+        }
+
+        .reason-item {
+          margin-bottom: 2.5rem;
+        }
+
+        .reason-number {
+          width: 2.5rem;
+          height: 2.5rem;
+          left: -3.5rem;
+          font-size: 1.1rem;
+        }
+
+        .reason-title {
+          font-size: 1.3rem;
+        }
+
+        .reason-description {
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        /* How It Works */
+        .steps {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .step {
+          padding: 2.5rem 2rem;
+          border-radius: var(--radius-xl);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .step:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+
+        .step-title {
+          font-size: 1.5rem;
+        }
+
+        .step-description {
+          font-size: 1.05rem;
+          line-height: 1.7;
+        }
+
+        /* Features */
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .feature-card {
+          padding: 2.5rem 2rem;
+          border-radius: var(--radius-xl);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--shadow-xl);
+          border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+          width: 70px;
+          height: 70px;
+          font-size: 1.75rem;
+        }
+
+        .feature-title {
+          font-size: 1.35rem;
+        }
+
+        .feature-description {
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+          max-width: min(900px, 95%);
+        }
+
+        .testimonial {
+          padding: 2.5rem;
+          border-radius: var(--radius-xl);
+        }
+
+        .testimonial-text {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          margin-bottom: 2rem;
+          padding-left: 1.5rem;
+        }
+
+        .testimonial-author img {
+          width: 60px;
+          height: 60px;
+        }
+
+        .testimonial-nav-btn {
+          width: 50px;
+          height: 50px;
+          font-size: 1.25rem;
+        }
+
+        /* FAQ */
+        .faq-container {
+          max-width: min(800px, 90%);
+        }
+
+        .faq-item {
+          margin-bottom: 1rem;
+          border-radius: var(--radius-lg);
+        }
+
+        .faq-question {
+          padding: 1.5rem;
+          font-size: 1.1rem;
+        }
+
+        .faq-answer {
+          font-size: 1rem;
+          line-height: 1.7;
+          padding: 0 1.5rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+        }
+
+        .contact-info {
+          padding: 2.5rem;
+          border-radius: var(--radius-xl);
+        }
+
+        .contact-method {
+          padding: 1.5rem;
+          border-radius: var(--radius-lg);
+        }
+
+        .contact-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+
+        .whatsapp-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+
+        .whatsapp-btn {
+          padding: 1.25rem;
+          font-size: 1.1rem;
+          min-height: 70px;
+          border-radius: var(--radius-lg);
+        }
+
+        /* CTA */
+        .cta-section {
+          padding: 5rem 0;
+        }
+
+        .cta-title {
+          font-size: 3rem;
+        }
+
+        /* Footer */
+        .footer {
+          padding: 3rem 0;
+        }
+
+        .footer-logo {
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+          width: 40px;
+          height: 40px;
+        }
+
+        .footer-links {
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .footer-link {
+          font-size: 0.95rem;
+          padding: 0.75rem 1rem;
+        }
+
+        .footer-link:hover {
+          background: var(--primary-light);
+          color: var(--primary-color);
+        }
+
+        .copyright {
+          font-size: 0.95rem;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+          display: none;
+        }
+
+        /* Welcome Notification */
+        .welcome-notification {
+          left: auto;
+          right: 20px;
+          max-width: 400px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: var(--bg-light);
+          border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(
+            135deg,
+            var(--primary-color) 0%,
+            var(--secondary-color) 100%
+          );
+          border-radius: 6px;
+          border: 3px solid var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(
+            135deg,
+            var(--primary-dark) 0%,
+            #2563eb 100%
+          );
+        }
+      }
+
+      /* Large Desktop */
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1400px;
+          padding: 0 3rem;
+        }
+
+        .hero h1 {
+          font-size: 4rem;
+        }
+
+        .hero h2 {
+          font-size: 1.5rem;
+        }
+
+        .section-title {
+          font-size: 3.5rem;
+        }
+
+        .section-subtitle {
+          font-size: 1.3rem;
+        }
+
+        .premium-title {
+          font-size: 3.5rem;
+        }
+
+        .profiles-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+        }
+
+        .countries-grid {
+          grid-template-columns: repeat(5, 1fr);
+          gap: 2rem;
+        }
+
+        .features-grid {
+          gap: 3rem;
+        }
+
+        .fans-section .container,
+        .chat-demo-section .container,
+        .reasons-grid {
+          gap: 5rem;
+        }
+      }
+
+      /* Ultra-wide screens */
+      @media (min-width: 1600px) {
+        .container {
+          max-width: 1500px;
+        }
+
+        .hero h1 {
+          font-size: 4.5rem;
+        }
+
+        .profiles-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .countries-grid {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+
+      /* Print styles */
+      @media print {
+        .header,
+        .sticky-cta,
+        .floating-whatsapp,
+        .mobile-nav,
+        .theme-toggle,
+        .mobile-menu-toggle,
+        .cta-buttons,
+        .card-actions {
+          display: none !important;
+        }
+
+        .hero {
+          color: black;
+          background: white !important;
+          min-height: auto;
+          margin-top: 0;
+        }
+
+        .hero-video-container {
+          display: none;
+        }
+
+        .hero-content {
+          background: transparent !important;
+          backdrop-filter: none !important;
+          border: none !important;
+        }
+
+        .section {
+          padding: 2rem 0;
+          break-inside: avoid;
+        }
+
+        .btn {
+          display: none !important;
+        }
+
+        a {
+          text-decoration: none;
+          color: black !important;
+        }
+
+        .profile-card,
+        .feature-card,
+        .badge,
+        .country-card {
+          border: 1px solid #ddd !important;
+          box-shadow: none !important;
+          break-inside: avoid;
+        }
+      }
+
+      /* Touch device optimizations */
       @media (hover: none) and (pointer: coarse) {
         .btn:hover,
         .feature-card:hover,
@@ -3149,50 +3769,6 @@
         .profile-card:active {
           transform: scale(0.98);
         }
-      }
-
-      /* CUSTOM SCROLLBAR */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: var(--bg-light);
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(
-          135deg,
-          var(--primary-dark) 0%,
-          #2563eb 100%
-        );
-      }
-
-      /* ANIMATIONS */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
       }
     </style>
   </head>
@@ -3377,7 +3953,7 @@
       </a>
     </div>
 
-    <!-- Profile Modal -->
+    <!-- Enhanced Profile Modal -->
     <div class="profile-modal" id="profileModal">
       <div class="modal-content">
         <div class="modal-header">
@@ -3387,21 +3963,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <!-- Profile details will be inserted here by JavaScript -->
+          <!-- Profile content will be dynamically inserted here -->
         </div>
         <div class="modal-footer">
-          <button
-            class="btn-modal-chat"
-            id="modalChatBtn"
-            onclick="startChatFromModal()"
-          >
+          <button class="btn-modal-chat" id="modalChatBtn">
             <i class="fas fa-comment"></i> Start Chat
           </button>
-          <button
-            class="btn-modal-favorite"
-            id="modalFavoriteBtn"
-            onclick="toggleFavorite()"
-          >
+          <button class="btn-modal-favorite" id="modalFavoriteBtn">
             <i class="far fa-heart"></i> Add to Favorites
           </button>
         </div>
@@ -3410,6 +3978,29 @@
 
     <!-- Hero Section -->
     <section class="hero">
+      <div class="hero-video-container">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class="hero-video"
+          id="heroVideo"
+        >
+          <source src="Pictures/chatting-background.mp4" type="video/mp4" />
+          <source src="Pictures/chatting-background.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+        <button
+          class="video-control-btn"
+          id="videoMuteBtn"
+          aria-label="Toggle video sound"
+        >
+          <i class="fas fa-volume-mute"></i>
+        </button>
+      </div>
+
       <div class="container">
         <div class="hero-content">
           <h1 class="dm-sans">
@@ -3508,178 +4099,11 @@
 
         <div class="profiles-container">
           <div class="profiles-grid" id="profilesGrid">
-            <!-- Profile Card 1 -->
-            <div class="profile-card" data-profile-id="1">
-              <div class="card-header">
-                <div class="status-badge premium">
-                  <i class="fas fa-crown"></i>
-                  Premium
-                </div>
-                <div class="online-status active"></div>
-              </div>
-
-              <div class="card-body">
-                <div class="profile-summary">
-                  <img
-                    src="Pictures/oldwoman.jpg"
-                    alt="Emily"
-                    class="profile-avatar"
-                  />
-                  <div class="profile-info">
-                    <h3>Emily</h3>
-                    <p class="profile-meta">65 • Retired Teacher</p>
-                    <div class="profile-rating">
-                      <div class="stars">★★★★☆</div>
-                      <span class="rating-text">4.8 (124 chats)</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="quick-info">
-                  <div class="info-item">
-                    <i class="fas fa-dollar-sign"></i>
-                    <span>Earn $18/chat</span>
-                  </div>
-                  <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <span>9AM-9PM EST</span>
-                  </div>
-                </div>
-
-                <p class="profile-excerpt">
-                  Loves sharing stories about teaching and cultural
-                  experiences...
-                </p>
-              </div>
-
-              <div class="card-actions">
-                <button class="btn-quick-chat" onclick="quickChat(1)">
-                  <i class="fas fa-comment"></i>
-                  Quick Chat
-                </button>
-                <button class="btn-view-details" onclick="openProfileModal(1)">
-                  <i class="fas fa-eye"></i>
-                  View Details
-                </button>
-              </div>
-            </div>
-
-            <!-- Profile Card 2 -->
-            <div class="profile-card" data-profile-id="2">
-              <div class="card-header">
-                <div class="status-badge featured">
-                  <i class="fas fa-fire"></i>
-                  Featured
-                </div>
-                <div class="online-status active"></div>
-              </div>
-
-              <div class="card-body">
-                <div class="profile-summary">
-                  <img
-                    src="Pictures/oldman.jpg"
-                    alt="Robert"
-                    class="profile-avatar"
-                  />
-                  <div class="profile-info">
-                    <h3>Robert</h3>
-                    <p class="profile-meta">58 • Business Executive</p>
-                    <div class="profile-rating">
-                      <div class="stars">★★★★★</div>
-                      <span class="rating-text">5.0 (86 chats)</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="quick-info">
-                  <div class="info-item">
-                    <i class="fas fa-dollar-sign"></i>
-                    <span>Earn $25/chat</span>
-                  </div>
-                  <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <span>7AM-11PM GMT</span>
-                  </div>
-                </div>
-
-                <p class="profile-excerpt">
-                  Business mentor interested in cultural exchange and advice...
-                </p>
-              </div>
-
-              <div class="card-actions">
-                <button class="btn-quick-chat" onclick="quickChat(2)">
-                  <i class="fas fa-comment"></i>
-                  Quick Chat
-                </button>
-                <button class="btn-view-details" onclick="openProfileModal(2)">
-                  <i class="fas fa-eye"></i>
-                  View Details
-                </button>
-              </div>
-            </div>
-
-            <!-- Profile Card 3 -->
-            <div class="profile-card" data-profile-id="3">
-              <div class="card-header">
-                <div class="status-badge new">
-                  <i class="fas fa-rocket"></i>
-                  New
-                </div>
-                <div class="online-status busy"></div>
-              </div>
-
-              <div class="card-body">
-                <div class="profile-summary">
-                  <img
-                    src="Pictures/David.jpg"
-                    alt="Michael"
-                    class="profile-avatar"
-                  />
-                  <div class="profile-info">
-                    <h3>Michael</h3>
-                    <p class="profile-meta">62 • Retired Engineer</p>
-                    <div class="profile-rating">
-                      <div class="stars">★★★★☆</div>
-                      <span class="rating-text">New Member</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="quick-info">
-                  <div class="info-item">
-                    <i class="fas fa-dollar-sign"></i>
-                    <span>Earn $20/chat</span>
-                  </div>
-                  <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Flexible Hours</span>
-                  </div>
-                </div>
-
-                <p class="profile-excerpt">
-                  Enjoys discussing travel, technology, and daily life
-                  experiences...
-                </p>
-              </div>
-
-              <div class="card-actions">
-                <button class="btn-quick-chat" onclick="quickChat(3)">
-                  <i class="fas fa-comment"></i>
-                  Quick Chat
-                </button>
-                <button class="btn-view-details" onclick="openProfileModal(3)">
-                  <i class="fas fa-eye"></i>
-                  View Details
-                </button>
-              </div>
-            </div>
+            <!-- Profile cards will be loaded here -->
           </div>
 
-          <div class="nav-dots">
-            <button class="dot active" onclick="goToSlide(0)"></button>
-            <button class="dot" onclick="goToSlide(1)"></button>
-            <button class="dot" onclick="goToSlide(2)"></button>
+          <div class="nav-dots" id="profileDots">
+            <!-- Dots will be added dynamically -->
           </div>
         </div>
 
@@ -3689,7 +4113,7 @@
               <h3>Ready to Start Earning?</h3>
               <p>Join now and get instant access to premium members</p>
             </div>
-            <button class="btn-join" onclick="joinNow()">
+            <button class="btn-join" id="joinNowBtn">
               <i class="fas fa-rocket"></i>
               Get Started - $10 Activation
             </button>
@@ -4005,7 +4429,7 @@
     </section>
 
     <!-- Reasons Section -->
-    <section class="section reasons-section">
+    <section class="section reasons-section section-alt">
       <div class="container">
         <div class="reasons-grid">
           <div class="reasons-image-container fade-in-up">
@@ -4072,8 +4496,10 @@
     <!-- How It Works -->
     <section class="section how-it-works" id="how-it-works">
       <div class="container">
-        <h2 class="section-title dm-sans">Start Earning in 3 Simple Steps</h2>
-        <p class="section-subtitle">
+        <h2 class="section-title dm-sans text-center">
+          Start Earning in 3 Simple Steps
+        </h2>
+        <p class="section-subtitle text-center">
           Join our platform and begin your earning journey today
         </p>
 
@@ -4167,146 +4593,7 @@
 
         <div class="testimonial-slider">
           <div class="testimonial-slider-container">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-slide active">
-              <div class="testimonial">
-                <div class="testimonial-text dm-sans">
-                  "Chat&Earn has been life-changing. As a student, I can now pay
-                  my tuition while helping people feel less lonely. I've made
-                  friends from all over the world and earn $500+ monthly!"
-                </div>
-                <div class="testimonial-author">
-                  <img
-                    src="Pictures/Milly.jpeg"
-                    alt="Mildred M. - University Student"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                  />
-                  <div>
-                    <div style="font-weight: 600">Mildred M.</div>
-                    <div style="opacity: 0.9">University Student, Kenya</div>
-                    <div
-                      style="
-                        font-size: 0.9rem;
-                        color: var(--primary-color);
-                        margin-top: 5px;
-                      "
-                    >
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="testimonial-slide">
-              <div class="testimonial">
-                <div class="testimonial-text dm-sans">
-                  "I was skeptical at first, but now I earn $800/month working
-                  from home. The flexibility is amazing - I chat when my kids
-                  are at school. The people I've met are genuinely interesting
-                  and kind."
-                </div>
-                <div class="testimonial-author">
-                  <img
-                    src="Pictures/sarina.jpg"
-                    alt="Sarina K. - Stay-at-Home Mom"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                  />
-                  <div>
-                    <div style="font-weight: 600">Sarina K.</div>
-                    <div style="opacity: 0.9">Stay-at-Home Mom, Uganda</div>
-                    <div
-                      style="
-                        font-size: 0.9rem;
-                        color: var(--primary-color);
-                        margin-top: 5px;
-                      "
-                    >
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-slide">
-              <div class="testimonial">
-                <div class="testimonial-text dm-sans">
-                  "As a retiree, this gives me purpose and extra income. I chat
-                  about my life experiences and help younger people with advice.
-                  Earning $300/week while making a difference is wonderful."
-                </div>
-                <div class="testimonial-author">
-                  <img
-                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                    alt="John D. - Retired Teacher"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                  />
-                  <div>
-                    <div style="font-weight: 600">John D.</div>
-                    <div style="opacity: 0.9">Retired Teacher, Ghana</div>
-                    <div
-                      style="
-                        font-size: 0.9rem;
-                        color: var(--primary-color);
-                        margin-top: 5px;
-                      "
-                    >
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Testimonial 4 -->
-            <div class="testimonial-slide">
-              <div class="testimonial">
-                <div class="testimonial-text dm-sans">
-                  "From Nigeria, I earn more chatting than my previous office
-                  job! The platform is secure, payments are reliable, and I've
-                  learned so much about different cultures. Highly recommended!"
-                </div>
-                <div class="testimonial-author">
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                    alt="Emmanuel A. - Digital Nomad"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                  />
-                  <div>
-                    <div style="font-weight: 600">Emmanuel A.</div>
-                    <div style="opacity: 0.9">Digital Nomad, Nigeria</div>
-                    <div
-                      style="
-                        font-size: 0.9rem;
-                        color: var(--primary-color);
-                        margin-top: 5px;
-                      "
-                    >
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Testimonial slides will be loaded here -->
           </div>
 
           <!-- Testimonial Navigation -->
@@ -4317,23 +4604,8 @@
             >
               <i class="fas fa-chevron-left"></i>
             </button>
-            <div class="testimonial-dots">
-              <button
-                class="testimonial-dot active"
-                aria-label="Show testimonial 1"
-              ></button>
-              <button
-                class="testimonial-dot"
-                aria-label="Show testimonial 2"
-              ></button>
-              <button
-                class="testimonial-dot"
-                aria-label="Show testimonial 3"
-              ></button>
-              <button
-                class="testimonial-dot"
-                aria-label="Show testimonial 4"
-              ></button>
+            <div class="testimonial-dots" id="testimonialDots">
+              <!-- Dots will be added dynamically -->
             </div>
             <button
               class="testimonial-nav-btn next"
@@ -4356,53 +4628,8 @@
           Get answers to common questions about Chat&Earn
         </p>
 
-        <div class="faq-container">
-          <div class="faq-item fade-in-up">
-            <div class="faq-question dm-sans">
-              How do payments work? <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer dm-sans">
-              Payments are processed weekly every Friday. You can withdraw your
-              earnings once you reach $20 minimum via PayPal, bank transfer, or
-              mobile money. There are no fees for withdrawals.
-            </div>
-          </div>
-
-          <div class="faq-item fade-in-up">
-            <div class="faq-question dm-sans">
-              What are the requirements to join?
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer dm-sans">
-              You need to be 18+ years old, have a stable internet connection,
-              and pay the $10 account activation fee. No specific education or
-              experience is required.
-            </div>
-          </div>
-
-          <div class="faq-item fade-in-up">
-            <div class="faq-question dm-sans">
-              What topics can I chat about? <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer dm-sans">
-              You can discuss hobbies, travel, culture, life experiences,
-              advice, and general interests. All conversations must be
-              respectful and appropriate. We provide topic suggestions to help
-              you get started.
-            </div>
-          </div>
-
-          <div class="faq-item fade-in-up">
-            <div class="faq-question dm-sans">
-              How much time do I need to commit?
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer dm-sans">
-              You can chat as little or as much as you want. Some members chat
-              1-2 hours daily ($200-400/month), while others chat 4+ hours daily
-              ($800-1500/month). It's completely flexible.
-            </div>
-          </div>
+        <div class="faq-container" id="faqContainer">
+          <!-- FAQ items will be loaded here -->
         </div>
       </div>
     </section>
@@ -4646,12 +4873,10 @@
         }
 
         init() {
-          // Performance optimization
-          this.reportPageLoadTime();
-
           // Initialize all components
           this.initThemeToggle();
           this.initMobileMenu();
+          this.initVideoBackground();
           this.initCookieConsent();
           this.initWelcomeNotification();
           this.initScrollHandlers();
@@ -4663,30 +4888,6 @@
           this.initChatRequests();
           this.initProfileSystem();
           this.initOptimizations();
-        }
-
-        // ===== PERFORMANCE =====
-        reportPageLoadTime() {
-          if ("performance" in window) {
-            window.addEventListener("load", () => {
-              const perfData = window.performance.timing;
-              const pageLoadTime =
-                perfData.loadEventEnd - perfData.navigationStart;
-              console.log(`Page loaded in ${pageLoadTime}ms`);
-            });
-          }
-        }
-
-        debounce(func, wait) {
-          let timeout;
-          return function executedFunction(...args) {
-            const later = () => {
-              clearTimeout(timeout);
-              func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-          };
         }
 
         // ===== THEME TOGGLE =====
@@ -4791,6 +4992,121 @@
           });
         }
 
+        // ===== VIDEO BACKGROUND =====
+        initVideoBackground() {
+          const video = document.getElementById("heroVideo");
+          const muteBtn = document.getElementById("videoMuteBtn");
+
+          if (!video || !muteBtn) return;
+
+          // Check for reduced motion preference
+          const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          ).matches;
+
+          if (prefersReducedMotion) {
+            video.style.display = "none";
+            return;
+          }
+
+          // Mute/unmute functionality
+          muteBtn.addEventListener("click", () => {
+            if (video.muted) {
+              video.muted = false;
+              muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+              muteBtn.setAttribute("aria-label", "Mute video");
+              // Try to play when unmuting
+              video
+                .play()
+                .catch((e) =>
+                  console.log("Video play prevented after unmute:", e),
+                );
+            } else {
+              video.muted = true;
+              muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+              muteBtn.setAttribute("aria-label", "Unmute video");
+            }
+          });
+
+          // Handle video events
+          video.addEventListener("canplay", () => {
+            // Try to play the video
+            const playPromise = video.play();
+
+            if (playPromise !== undefined) {
+              playPromise.catch((error) => {
+                console.log("Video autoplay prevented:", error);
+                // Show play button if autoplay is blocked
+                muteBtn.style.display = "flex";
+                muteBtn.innerHTML = '<i class="fas fa-play"></i>';
+                muteBtn.setAttribute("aria-label", "Play video");
+
+                muteBtn.addEventListener(
+                  "click",
+                  function playOnClick() {
+                    video
+                      .play()
+                      .then(() => {
+                        video.muted = false;
+                        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        muteBtn.setAttribute("aria-label", "Mute video");
+                        muteBtn.removeEventListener("click", playOnClick);
+                      })
+                      .catch((e) => console.log("Manual play prevented:", e));
+                  },
+                  { once: true },
+                );
+              });
+            }
+          });
+
+          video.addEventListener("error", (e) => {
+            console.log("Video error:", e);
+            video.style.display = "none";
+
+            // Try fallback video
+            const sources = video.querySelectorAll("source");
+            let currentSourceIndex = 0;
+
+            const tryNextSource = () => {
+              if (currentSourceIndex < sources.length) {
+                const source = sources[currentSourceIndex];
+                video.src = source.src;
+                video.load();
+                currentSourceIndex++;
+              } else {
+                console.log(
+                  "All video sources failed, using gradient background",
+                );
+                video.style.display = "none";
+              }
+            };
+
+            tryNextSource();
+          });
+
+          // Pause video when not visible (Intersection Observer)
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  video.play().catch((e) => {
+                    console.log("Video play on scroll prevented:", e);
+                  });
+                } else {
+                  video.pause();
+                }
+              });
+            },
+            {
+              threshold: 0.1,
+              rootMargin: "50px",
+            },
+          );
+
+          observer.observe(video);
+        }
+
         // ===== COOKIE CONSENT =====
         initCookieConsent() {
           const cookieConsent = document.getElementById("cookieConsent");
@@ -4866,7 +5182,7 @@
           let isScrollingUp = false;
           let scrollTimeout;
 
-          const handleScroll = this.debounce(() => {
+          const handleScroll = () => {
             // Progress bar
             const winScroll =
               document.body.scrollTop || document.documentElement.scrollTop;
@@ -4921,9 +5237,11 @@
                 }
               }
             }, 1500);
-          }, 50);
+          };
 
-          window.addEventListener("scroll", handleScroll);
+          window.addEventListener("scroll", () => {
+            requestAnimationFrame(handleScroll);
+          });
 
           // Sticky CTA click handler
           if (stickyCta) {
@@ -4987,7 +5305,7 @@
             if (current < target) {
               current += increment;
               counter.textContent = Math.floor(current).toLocaleString();
-              setTimeout(updateCounter, 20);
+              requestAnimationFrame(updateCounter);
             } else {
               counter.textContent = target.toLocaleString();
             }
@@ -4998,11 +5316,11 @@
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting && counter.textContent === "0") {
-                  updateCounter();
+                  requestAnimationFrame(updateCounter);
                 }
               });
             },
-            { threshold: 0.5 },
+            { threshold: 0.3 },
           );
 
           observer.observe(counter);
@@ -5045,52 +5363,52 @@
             {
               name: "Uganda",
               flag: "ug.svg",
-              RegFee: "Registration Fee: UGX 19,000",
+              regFee: "Registration Fee: UGX 19,000",
             },
             {
               name: "Cameroon",
               flag: "cm.svg",
-              RegFee: "Registration Fee: ZAF 4,100",
+              regFee: "Registration Fee: ZAF 4,100",
             },
             {
               name: "Nigeria",
               flag: "ng.svg",
-              RegFee: "Registration Fee: ₦8,000",
+              regFee: "Registration Fee: ₦8,000",
             },
             {
               name: "Tanzania",
               flag: "tz.svg",
-              RegFee: "Registration Fee: TZS 12,000",
+              regFee: "Registration Fee: TZS 12,000",
             },
             {
               name: "Ghana",
               flag: "gh.svg",
-              RegFee: "Registration Fee: GH₵ 80",
+              regFee: "Registration Fee: GH₵ 80",
             },
             {
               name: "South Africa",
               flag: "za.svg",
-              RegFee: "Registration Fee: ZAR 200",
+              regFee: "Registration Fee: ZAR 200",
             },
             {
               name: "Kenya",
               flag: "ke.svg",
-              RegFee: "Registration Fee: KSH 500",
+              regFee: "Registration Fee: KSH 500",
             },
             {
               name: "Zambia",
               flag: "zm.svg",
-              RegFee: "Registration Fee: ZK 130",
+              regFee: "Registration Fee: ZK 130",
             },
             {
               name: "Malawi",
               flag: "mw.svg",
-              RegFee: "Registration Fee: MWK 10,000",
+              regFee: "Registration Fee: MWK 10,000",
             },
             {
               name: "United States",
               flag: "us.svg",
-              RegFee: "Registration Fee: $10",
+              regFee: "Registration Fee: $10",
             },
           ];
 
@@ -5098,25 +5416,24 @@
           if (!countriesGrid) return;
 
           countries.forEach((country, index) => {
-            const countryCard = document.createElement("a");
+            const countryCard = document.createElement("div");
             countryCard.className = "country-card fade-in-up";
             countryCard.style.animationDelay = `${index * 0.1}s`;
             countryCard.innerHTML = `
-                    <div class="country-flag">
-                        <img src="https://flagcdn.com/w320/${country.flag.split(".")[0]}.png" 
-                             alt="Flag of ${country.name}" 
-                             loading="lazy" 
-                             width="80" 
-                             height="80">
-                    </div>
-                    <p class="country-name dm-sans">${country.name}</p>
-                    <div class="country-fee dm-sans">${country.RegFee}</div>
-                `;
+              <div class="country-flag">
+                <img src="https://flagcdn.com/w320/${country.flag.split(".")[0]}.png" 
+                     alt="Flag of ${country.name}" 
+                     loading="lazy" 
+                     width="80" 
+                     height="80">
+              </div>
+              <p class="country-name dm-sans">${country.name}</p>
+              <div class="country-fee dm-sans">${country.regFee}</div>
+            `;
 
-            countryCard.addEventListener("click", (e) => {
-              e.preventDefault();
+            countryCard.addEventListener("click", () => {
               this.showNotification(
-                `To join Chat&Earn from ${country.name}, please create your account. Membership fee: ${country.RegFee}`,
+                `To join Chat&Earn from ${country.name}, please create your account. Membership fee: ${country.regFee}`,
               );
               setTimeout(() => {
                 window.open(
@@ -5132,27 +5449,96 @@
 
         // ===== TESTIMONIAL CAROUSEL =====
         initTestimonialCarousel() {
-          const slides = document.querySelectorAll(".testimonial-slide");
-          const dots = document.querySelectorAll(".testimonial-dot");
+          const testimonials = [
+            {
+              name: "Mildred M.",
+              role: "University Student, Kenya",
+              image: "Pictures/Milly.jpeg",
+              text: "Chat&Earn has been life-changing. As a student, I can now pay my tuition while helping people feel less lonely. I've made friends from all over the world and earn $500+ monthly!",
+              rating: 5,
+            },
+            {
+              name: "Sarina K.",
+              role: "Stay-at-Home Mom, Uganda",
+              image: "Pictures/sarina.jpg",
+              text: "I was skeptical at first, but now I earn $800/month working from home. The flexibility is amazing - I chat when my kids are at school. The people I've met are genuinely interesting and kind.",
+              rating: 4.5,
+            },
+            {
+              name: "John D.",
+              role: "Retired Teacher, Ghana",
+              image:
+                "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80",
+              text: "As a retiree, this gives me purpose and extra income. I chat about my life experiences and help younger people with advice. Earning $300/week while making a difference is wonderful.",
+              rating: 5,
+            },
+            {
+              name: "Emmanuel A.",
+              role: "Digital Nomad, Nigeria",
+              image:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+              text: "From Nigeria, I earn more chatting than my previous office job! The platform is secure, payments are reliable, and I've learned so much about different cultures. Highly recommended!",
+              rating: 5,
+            },
+          ];
+
+          const sliderContainer = document.querySelector(
+            ".testimonial-slider-container",
+          );
+          const dotsContainer = document.getElementById("testimonialDots");
           const prevBtn = document.querySelector(".testimonial-nav-btn.prev");
           const nextBtn = document.querySelector(".testimonial-nav-btn.next");
 
-          if (!slides.length) return;
+          if (!sliderContainer || !dotsContainer) return;
+
+          // Create testimonial slides
+          testimonials.forEach((testimonial, index) => {
+            // Create slide
+            const slide = document.createElement("div");
+            slide.className = `testimonial-slide ${index === 0 ? "active" : ""}`;
+            slide.innerHTML = `
+              <div class="testimonial">
+                <div class="testimonial-text dm-sans">"${testimonial.text}"</div>
+                <div class="testimonial-author">
+                  <img src="${testimonial.image}" alt="${testimonial.name}" loading="lazy" width="60" height="60">
+                  <div>
+                    <div style="font-weight: 600">${testimonial.name}</div>
+                    <div style="opacity: 0.9">${testimonial.role}</div>
+                    <div style="font-size: 0.9rem; color: var(--primary-color); margin-top: 5px;">
+                      ${this.generateStars(testimonial.rating)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            sliderContainer.appendChild(slide);
+
+            // Create dot
+            const dot = document.createElement("button");
+            dot.className = `testimonial-dot ${index === 0 ? "active" : ""}`;
+            dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
+            dot.addEventListener("click", () => this.showTestimonial(index));
+            dotsContainer.appendChild(dot);
+          });
 
           let currentSlide = 0;
+          const totalSlides = testimonials.length;
           let autoSlideInterval;
 
-          const showSlide = (index) => {
+          this.showTestimonial = (index) => {
+            const slides = document.querySelectorAll(".testimonial-slide");
+            const dots = document.querySelectorAll(".testimonial-dot");
+
             slides.forEach((slide) => slide.classList.remove("active"));
             dots.forEach((dot) => dot.classList.remove("active"));
 
-            currentSlide = (index + slides.length) % slides.length;
+            currentSlide = (index + totalSlides) % totalSlides;
             slides[currentSlide].classList.add("active");
             dots[currentSlide].classList.add("active");
           };
 
-          const nextSlide = () => showSlide(currentSlide + 1);
-          const prevSlide = () => showSlide(currentSlide - 1);
+          const nextSlide = () => this.showTestimonial(currentSlide + 1);
+          const prevSlide = () => this.showTestimonial(currentSlide - 1);
 
           const startAutoSlide = () => {
             clearInterval(autoSlideInterval);
@@ -5175,13 +5561,6 @@
               nextSlide();
               resetAutoSlide();
             });
-
-          dots.forEach((dot, index) => {
-            dot.addEventListener("click", () => {
-              showSlide(index);
-              resetAutoSlide();
-            });
-          });
 
           document.addEventListener("keydown", (e) => {
             if (e.key === "ArrowLeft") {
@@ -5206,18 +5585,81 @@
             });
           }
 
-          showSlide(0);
           startAutoSlide();
+        }
+
+        generateStars(rating) {
+          let stars = "";
+          const fullStars = Math.floor(rating);
+          const hasHalfStar = rating % 1 >= 0.5;
+
+          for (let i = 0; i < fullStars; i++) {
+            stars += '<i class="fas fa-star"></i> ';
+          }
+
+          if (hasHalfStar) {
+            stars += '<i class="fas fa-star-half-alt"></i> ';
+          }
+
+          const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+          for (let i = 0; i < emptyStars; i++) {
+            stars += '<i class="far fa-star"></i> ';
+          }
+
+          return stars;
         }
 
         // ===== FAQ =====
         initFAQ() {
+          const faqData = [
+            {
+              question: "How do payments work?",
+              answer:
+                "Payments are processed weekly every Friday. You can withdraw your earnings once you reach $20 minimum via PayPal, bank transfer, or mobile money. There are no fees for withdrawals.",
+            },
+            {
+              question: "What are the requirements to join?",
+              answer:
+                "You need to be 18+ years old, have a stable internet connection, and pay the $10 account activation fee. No specific education or experience is required.",
+            },
+            {
+              question: "What topics can I chat about?",
+              answer:
+                "You can discuss hobbies, travel, culture, life experiences, advice, and general interests. All conversations must be respectful and appropriate. We provide topic suggestions to help you get started.",
+            },
+            {
+              question: "How much time do I need to commit?",
+              answer:
+                "You can chat as little or as much as you want. Some members chat 1-2 hours daily ($200-400/month), while others chat 4+ hours daily ($800-1500/month). It's completely flexible.",
+            },
+          ];
+
+          const faqContainer = document.getElementById("faqContainer");
+          if (!faqContainer) return;
+
+          faqData.forEach((item, index) => {
+            const faqItem = document.createElement("div");
+            faqItem.className = "faq-item fade-in-up";
+            faqItem.style.animationDelay = `${index * 0.1}s`;
+            faqItem.innerHTML = `
+              <div class="faq-question dm-sans">
+                ${item.question} <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer dm-sans">
+                ${item.answer}
+              </div>
+            `;
+            faqContainer.appendChild(faqItem);
+          });
+
+          // Add event listeners to FAQ questions
           const faqQuestions = document.querySelectorAll(".faq-question");
           faqQuestions.forEach((question) => {
             question.addEventListener("click", function () {
               const answer = this.nextElementSibling;
               const isOpen = answer.classList.contains("open");
 
+              // Close all other FAQs
               document.querySelectorAll(".faq-answer").forEach((ans) => {
                 ans.classList.remove("open");
               });
@@ -5225,6 +5667,7 @@
                 q.classList.remove("active");
               });
 
+              // Toggle current FAQ
               if (!isOpen) {
                 answer.classList.add("open");
                 this.classList.add("active");
@@ -5269,8 +5712,8 @@
           button.style.backgroundColor = "var(--primary-color)";
 
           setTimeout(() => {
-            alert(
-              `You've accepted the chat request from ${userName.split(" from")[0]}! To start chatting, please log in to your Chat&Earn account. ${amount}`,
+            this.showNotification(
+              `You've accepted the chat request from ${userName}! To start chatting, please log in to your Chat&Earn account. ${amount}`,
             );
           }, 300);
 
@@ -5333,20 +5776,20 @@
           const request = document.createElement("div");
           request.className = "chat-request-item fade-in-up";
           request.innerHTML = `
-                <div class="request-avatar">
-                    <span class="request-badge">$</span>
-                    <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name} from ${country}" loading="lazy" width="60" height="60">
-                </div>
-                <div class="request-info">
-                    <div class="request-name">${name} from ${country}</div>
-                    <div class="request-topic">${topic}</div>
-                    <div class="request-amount">Earn $${amount}</div>
-                    <div class="request-time">Just now</div>
-                </div>
-                <button class="btn btn-primary btn-small accept-request" aria-label="Accept chat request from ${name}">
-                    Accept Chat
-                </button>
-            `;
+            <div class="request-avatar">
+              <span class="request-badge">$</span>
+              <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name} from ${country}" loading="lazy" width="60" height="60">
+            </div>
+            <div class="request-info">
+              <div class="request-name">${name} from ${country}</div>
+              <div class="request-topic">${topic}</div>
+              <div class="request-amount">Earn $${amount}</div>
+              <div class="request-time">Just now</div>
+            </div>
+            <button class="btn btn-primary btn-small accept-request" aria-label="Accept chat request from ${name}">
+              Accept Chat
+            </button>
+          `;
 
           const chatRequests = document.querySelector(".chat-requests");
           if (!chatRequests) return;
@@ -5368,8 +5811,9 @@
 
         // ===== PROFILE SYSTEM =====
         initProfileSystem() {
-          this.profilesData = {
-            1: {
+          this.profilesData = [
+            {
+              id: 1,
               name: "Emily",
               age: 65,
               occupation: "Retired Teacher",
@@ -5395,8 +5839,12 @@
                 "Cultural differences and traditions",
               ],
               earningsPotential: "$25-35/hour",
+              image: "Pictures/oldwoman.jpg",
+              status: "premium",
+              online: true,
             },
-            2: {
+            {
+              id: 2,
               name: "Robert",
               age: 58,
               occupation: "Business Executive",
@@ -5416,8 +5864,12 @@
                 "Personal development",
               ],
               earningsPotential: "$35-45/hour",
+              image: "Pictures/oldman.jpg",
+              status: "featured",
+              online: true,
             },
-            3: {
+            {
+              id: 3,
               name: "Michael",
               age: 62,
               occupation: "Retired Engineer",
@@ -5443,43 +5895,146 @@
                 "Historical events",
               ],
               earningsPotential: "$25-35/hour",
+              image: "Pictures/David.jpg",
+              status: "new",
+              online: false,
             },
-          };
+          ];
 
-          // Initialize profile carousel
-          this.initProfileCarousel();
+          // Load profile cards
+          this.loadProfileCards();
 
-          // Initialize modal
+          // Initialize modal functionality
           this.initProfileModal();
+
+          // Initialize join button
+          const joinNowBtn = document.getElementById("joinNowBtn");
+          if (joinNowBtn) {
+            joinNowBtn.addEventListener("click", () => this.joinNow());
+          }
+        }
+
+        loadProfileCards() {
+          const profilesGrid = document.getElementById("profilesGrid");
+          const dotsContainer = document.getElementById("profileDots");
+
+          if (!profilesGrid || !dotsContainer) return;
+
+          // Clear existing content
+          profilesGrid.innerHTML = "";
+          dotsContainer.innerHTML = "";
+
+          // Create profile cards
+          this.profilesData.forEach((profile, index) => {
+            const profileCard = document.createElement("div");
+            profileCard.className = "profile-card fade-in-up";
+            profileCard.style.animationDelay = `${index * 0.1}s`;
+            profileCard.setAttribute("data-profile-id", profile.id);
+            profileCard.innerHTML = `
+              <div class="card-header">
+                <div class="status-badge ${profile.status}">
+                  <i class="fas ${profile.status === "premium" ? "fa-crown" : profile.status === "featured" ? "fa-fire" : "fa-rocket"}"></i>
+                  ${profile.status.charAt(0).toUpperCase() + profile.status.slice(1)}
+                </div>
+                <div class="online-status ${profile.online ? "active" : "busy"}"></div>
+              </div>
+              <div class="card-body">
+                <div class="profile-summary">
+                  <img src="${profile.image}" alt="${profile.name}" class="profile-avatar" onerror="this.src='https://i.pravatar.cc/300?img=${profile.id}'">
+                  <div class="profile-info">
+                    <h3>${profile.name}</h3>
+                    <p class="profile-meta">${profile.age} • ${profile.occupation}</p>
+                    <div class="profile-rating">
+                      <div class="stars">${this.generateStars(profile.rating)}</div>
+                      <span class="rating-text">${profile.rating} (${profile.totalChats} ${typeof profile.totalChats === "number" ? "chats" : ""})</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="quick-info">
+                  <div class="info-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>${profile.earnings}</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>${profile.availability}</span>
+                  </div>
+                </div>
+                <p class="profile-excerpt">${profile.bio}</p>
+              </div>
+              <div class="card-actions">
+                <button class="btn-quick-chat" data-profile-id="${profile.id}">
+                  <i class="fas fa-comment"></i> Quick Chat
+                </button>
+                <button class="btn-view-details" data-profile-id="${profile.id}">
+                  <i class="fas fa-eye"></i> View Details
+                </button>
+              </div>
+            `;
+            profilesGrid.appendChild(profileCard);
+
+            // Create dot
+            const dot = document.createElement("button");
+            dot.className = `dot ${index === 0 ? "active" : ""}`;
+            dot.addEventListener("click", () => this.goToSlide(index));
+            dotsContainer.appendChild(dot);
+          });
+
+          // Add event listeners to profile buttons
+          document.querySelectorAll(".btn-quick-chat").forEach((button) => {
+            button.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const profileId = parseInt(
+                button.getAttribute("data-profile-id"),
+              );
+              this.quickChat(profileId);
+            });
+          });
+
+          document.querySelectorAll(".btn-view-details").forEach((button) => {
+            button.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const profileId = parseInt(
+                button.getAttribute("data-profile-id"),
+              );
+              this.openProfileModal(profileId);
+            });
+          });
+
+          // Add click event to profile cards
+          document.querySelectorAll(".profile-card").forEach((card) => {
+            card.addEventListener("click", (e) => {
+              if (
+                !e.target.closest(".btn-quick-chat") &&
+                !e.target.closest(".btn-view-details")
+              ) {
+                const profileId = parseInt(
+                  card.getAttribute("data-profile-id"),
+                );
+                this.openProfileModal(profileId);
+              }
+            });
+          });
+
+          // Initialize carousel
+          this.initProfileCarousel();
         }
 
         initProfileCarousel() {
           const dots = document.querySelectorAll(".nav-dots .dot");
-          const profilesGrid = document.getElementById("profilesGrid");
-
-          if (!dots.length || !profilesGrid) return;
-
           let currentSlide = 0;
-          const totalSlides = 3; // We have 3 profile cards
 
-          const goToSlide = (index) => {
-            currentSlide = index;
+          this.goToSlide = (index) => {
             dots.forEach((dot, i) => {
               dot.classList.toggle("active", i === index);
             });
-
-            // In a real implementation, you would animate between slides
-            // For now, we just update the active dot
+            currentSlide = index;
           };
-
-          dots.forEach((dot, index) => {
-            dot.addEventListener("click", () => goToSlide(index));
-          });
 
           // Auto-rotate profiles
           setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            goToSlide(currentSlide);
+            currentSlide = (currentSlide + 1) % dots.length;
+            this.goToSlide(currentSlide);
           }, 5000);
         }
 
@@ -5508,160 +6063,210 @@
           // Close button
           modalClose.addEventListener("click", () => this.closeProfileModal());
 
-          // Expose modal functions to global scope
-          window.openProfileModal = (profileId) =>
-            this.openProfileModal(profileId);
-          window.closeProfileModal = () => this.closeProfileModal();
-          window.startChatFromModal = () => this.startChatFromModal();
-          window.toggleFavorite = () => this.toggleFavorite();
-          window.quickChat = (profileId) => this.quickChat(profileId);
-          window.joinNow = () => this.joinNow();
-          window.goToSlide = (index) => {
-            const dots = document.querySelectorAll(".nav-dots .dot");
-            dots.forEach((dot, i) => {
-              dot.classList.toggle("active", i === index);
-            });
-          };
+          // Chat button
+          if (modalChatBtn) {
+            modalChatBtn.addEventListener("click", () =>
+              this.startChatFromModal(),
+            );
+          }
+
+          // Favorite button
+          if (modalFavoriteBtn) {
+            modalFavoriteBtn.addEventListener("click", () =>
+              this.toggleFavorite(modalFavoriteBtn),
+            );
+          }
         }
 
         openProfileModal(profileId) {
-          const profile = this.profilesData[profileId];
+          const profile = this.profilesData.find((p) => p.id === profileId);
+          if (!profile) return;
+
           const modal = document.getElementById("profileModal");
           const modalBody = modal.querySelector(".modal-body");
+          const modalProfileName = document.getElementById("modalProfileName");
 
-          document.getElementById("modalProfileName").textContent =
-            profile.name;
+          modalProfileName.textContent = "Profile Details";
 
           modalBody.innerHTML = `
-                <div class="modal-profile">
-                    <div class="modal-header-info">
-                        <div class="modal-avatar-section">
-                            <img src="/pictures/${profile.name.toLowerCase()}.jpg" alt="${profile.name}" class="modal-avatar">
-                            <div class="modal-status">
-                                <span class="modal-rating">★ ${profile.rating}</span>
-                                <span class="modal-chats">${profile.totalChats} chats</span>
-                            </div>
-                        </div>
-                        <div class="modal-basic-info">
-                            <div class="info-row">
-                                <i class="fas fa-user"></i>
-                                <span>${profile.age} years old</span>
-                            </div>
-                            <div class="info-row">
-                                <i class="fas fa-briefcase"></i>
-                                <span>${profile.occupation}</span>
-                            </div>
-                            <div class="info-row">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>${profile.location}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>About ${profile.name}</h3>
-                        <p>${profile.bio}</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Earnings & Availability</h3>
-                        <div class="earning-details">
-                            <div class="earning-item">
-                                <i class="fas fa-dollar-sign"></i>
-                                <div>
-                                    <strong>${profile.earnings}</strong>
-                                    <small>per chat</small>
-                                </div>
-                            </div>
-                            <div class="earning-item">
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <strong>${profile.availability}</strong>
-                                    <small>available</small>
-                                </div>
-                            </div>
-                            <div class="earning-item">
-                                <i class="fas fa-chart-line"></i>
-                                <div>
-                                    <strong>${profile.earningsPotential}</strong>
-                                    <small>hourly potential</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Favorite Topics</h3>
-                        <div class="topics-list">
-                            ${profile.favoriteTopics.map((topic) => `<span class="topic-tag">${topic}</span>`).join("")}
-                        </div>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Interests & Languages</h3>
-                        <div class="interests-section">
-                            <div class="interests-list">
-                                ${profile.interests.map((interest) => `<span class="interest-tag">${interest}</span>`).join("")}
-                            </div>
-                            <div class="languages-list">
-                                ${profile.languages.map((lang) => `<span class="language-tag">${lang}</span>`).join("")}
-                            </div>
-                        </div>
-                    </div>
+            <div class="modal-header-section">
+              <div class="modal-avatar-container">
+                <img src="${profile.image}" alt="${profile.name}" class="modal-avatar" onerror="this.src='https://i.pravatar.cc/300?img=${profile.id}'">
+                <div class="modal-avatar-badge">
+                  <i class="fas fa-check-circle"></i>
+                  Verified
                 </div>
-            `;
+              </div>
+              <div class="modal-basic-info">
+                <h3 class="modal-profile-name">${profile.name}</h3>
+                <div class="modal-profile-meta">
+                  <span class="modal-age"><i class="fas fa-birthday-cake"></i> ${profile.age} years</span>
+                  <span class="modal-occupation"><i class="fas fa-briefcase"></i> ${profile.occupation}</span>
+                  <span class="modal-location"><i class="fas fa-map-marker-alt"></i> ${profile.location}</span>
+                </div>
+                <div class="modal-rating-section">
+                  <div class="modal-rating-stars">
+                    ${this.generateStars(profile.rating)}
+                    <span class="modal-rating-value">${profile.rating}</span>
+                  </div>
+                  <div class="modal-chats-count">
+                    <i class="fas fa-comments"></i> ${profile.totalChats} ${typeof profile.totalChats === "number" ? "chats" : ""}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-section">
+              <h4 class="modal-section-title"><i class="fas fa-user-circle"></i> About Me</h4>
+              <p class="modal-bio">${profile.bio}</p>
+            </div>
+            <div class="modal-section">
+              <h4 class="modal-section-title"><i class="fas fa-dollar-sign"></i> Earnings & Availability</h4>
+              <div class="modal-earning-details">
+                <div class="modal-earning-item">
+                  <div class="modal-earning-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                  </div>
+                  <div class="modal-earning-content">
+                    <div class="modal-earning-amount">${profile.earnings}</div>
+                    <div class="modal-earning-label">Per Chat</div>
+                  </div>
+                </div>
+                <div class="modal-earning-item">
+                  <div class="modal-earning-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="modal-earning-content">
+                    <div class="modal-earning-amount">${profile.availability}</div>
+                    <div class="modal-earning-label">Available Hours</div>
+                  </div>
+                </div>
+                <div class="modal-earning-item">
+                  <div class="modal-earning-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="modal-earning-content">
+                    <div class="modal-earning-amount">${profile.earningsPotential}</div>
+                    <div class="modal-earning-label">Hourly Potential</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-section">
+              <h4 class="modal-section-title"><i class="fas fa-heart"></i> Interests</h4>
+              <div class="modal-interests">
+                ${profile.interests.map((interest) => `<span class="modal-interest-tag">${interest}</span>`).join("")}
+              </div>
+            </div>
+            <div class="modal-section">
+              <h4 class="modal-section-title"><i class="fas fa-comment"></i> Favorite Topics</h4>
+              <div class="modal-topics">
+                ${profile.favoriteTopics
+                  .map(
+                    (topic) => `
+                  <div class="modal-topic-item">
+                    <i class="fas fa-chevron-right"></i>
+                    <span>${topic}</span>
+                  </div>
+                `,
+                  )
+                  .join("")}
+              </div>
+            </div>
+            <div class="modal-section">
+              <h4 class="modal-section-title"><i class="fas fa-language"></i> Languages</h4>
+              <div class="modal-languages">
+                ${profile.languages
+                  .map(
+                    (lang) => `
+                  <div class="modal-language-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${lang}</span>
+                  </div>
+                `,
+                  )
+                  .join("")}
+              </div>
+            </div>
+            <div class="modal-stats">
+              <div class="modal-stat-item">
+                <div class="modal-stat-value">${profile.responseTime}</div>
+                <div class="modal-stat-label">Response Time</div>
+              </div>
+              <div class="modal-stat-item">
+                <div class="modal-stat-value">98%</div>
+                <div class="modal-stat-label">Reply Rate</div>
+              </div>
+              <div class="modal-stat-item">
+                <div class="modal-stat-value">24h</div>
+                <div class="modal-stat-label">Availability</div>
+              </div>
+            </div>
+          `;
 
-          modal.style.display = "flex";
+          // Store current profile ID for modal actions
+          modal.setAttribute("data-current-profile-id", profileId);
+
+          // Show modal
+          modal.classList.add("show");
           document.body.style.overflow = "hidden";
         }
 
         closeProfileModal() {
           const modal = document.getElementById("profileModal");
-          modal.style.display = "none";
+          modal.classList.remove("show");
           document.body.style.overflow = "";
         }
 
         startChatFromModal() {
-          const profileName =
-            document.getElementById("modalProfileName").textContent;
-          this.showNotification(`Starting chat with ${profileName}...`);
+          const modal = document.getElementById("profileModal");
+          const profileId = modal.getAttribute("data-current-profile-id");
+          const profile = this.profilesData.find(
+            (p) => p.id === parseInt(profileId),
+          );
 
-          setTimeout(() => {
-            window.open(
-              "https://mulastar.com/register.php?ref=Sydney",
-              "_blank",
-            );
+          if (profile) {
+            this.showNotification(`Starting chat with ${profile.name}...`);
             this.closeProfileModal();
-          }, 1000);
+
+            setTimeout(() => {
+              window.open(
+                "https://mulastar.com/register.php?ref=Sydney",
+                "_blank",
+              );
+            }, 1000);
+          }
         }
 
-        toggleFavorite() {
-          const btn = document.querySelector(".btn-modal-favorite");
-          const icon = btn.querySelector("i");
+        toggleFavorite(button) {
+          const icon = button.querySelector("i");
 
           if (icon.classList.contains("far")) {
             icon.classList.remove("far");
             icon.classList.add("fas");
-            btn.innerHTML = '<i class="fas fa-heart"></i> Added to Favorites';
+            button.innerHTML =
+              '<i class="fas fa-heart"></i> Added to Favorites';
+            button.classList.add("active");
             this.showNotification("Added to favorites!");
           } else {
             icon.classList.remove("fas");
             icon.classList.add("far");
-            btn.innerHTML = '<i class="far fa-heart"></i> Add to Favorites';
+            button.innerHTML = '<i class="far fa-heart"></i> Add to Favorites';
+            button.classList.remove("active");
             this.showNotification("Removed from favorites");
           }
         }
 
         quickChat(profileId) {
-          const profile = this.profilesData[profileId];
-          this.showNotification(`Connecting you to ${profile.name}...`);
-
-          setTimeout(() => {
-            window.open(
-              "https://mulastar.com/register.php?ref=Sydney",
-              "_blank",
-            );
-          }, 1500);
+          const profile = this.profilesData.find((p) => p.id === profileId);
+          if (profile) {
+            this.showNotification(`Connecting you to ${profile.name}...`);
+            setTimeout(() => {
+              window.open(
+                "https://mulastar.com/register.php?ref=Sydney",
+                "_blank",
+              );
+            }, 1500);
+          }
         }
 
         joinNow() {
@@ -5673,19 +6278,20 @@
           const notification = document.createElement("div");
           notification.className = "notification";
           notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-                color: var(--text-light);
-                padding: 15px 25px;
-                border-radius: 8px;
-                box-shadow: var(--shadow-lg);
-                z-index: 1000;
-                transform: translateX(120%);
-                transition: transform 0.3s ease;
-                max-width: 300px;
-            `;
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+            font-weight: 600;
+          `;
           notification.textContent = message;
           document.body.appendChild(notification);
 
@@ -5701,6 +6307,7 @@
             () => (notification.style.transform = "translateX(0)"),
             10,
           );
+
           setTimeout(() => {
             notification.style.transform = "translateX(120%)";
             setTimeout(() => notification.remove(), 300);
@@ -5709,36 +6316,9 @@
 
         // ===== OPTIMIZATIONS =====
         initOptimizations() {
-          this.optimizeImages();
           this.initScrollAnimations();
           this.initTouchOptimizations();
-        }
-
-        optimizeImages() {
-          const images = document.querySelectorAll('img[loading="lazy"]');
-
-          const imageObserver = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  const img = entry.target;
-                  const src = img.getAttribute("data-src") || img.src;
-
-                  if (src !== img.src) {
-                    img.src = src;
-                  }
-                  imageObserver.unobserve(img);
-                }
-              });
-            },
-            { rootMargin: "50px 0px" },
-          );
-
-          images.forEach((img) => {
-            if (!img.complete) {
-              imageObserver.observe(img);
-            }
-          });
+          this.initDesktopEnhancements();
         }
 
         initScrollAnimations() {
@@ -5778,65 +6358,35 @@
             );
           }
         }
+
+        initDesktopEnhancements() {
+          if (window.innerWidth >= 768) {
+            // Parallax effect for desktop
+            const heroVideo = document.querySelector(".hero-video-container");
+            window.addEventListener("scroll", () => {
+              const scrolled = window.pageYOffset;
+              if (heroVideo) {
+                heroVideo.style.transform = `translateY(${scrolled * 0.5}px)`;
+              }
+            });
+
+            // Enhanced hover effects
+            const cards = document.querySelectorAll(
+              ".feature-card, .profile-card, .country-card",
+            );
+            cards.forEach((card) => {
+              card.addEventListener("mouseenter", () => {
+                card.style.transition = "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+              });
+            });
+          }
+        }
       }
 
       // Initialize the application when DOM is loaded
       document.addEventListener("DOMContentLoaded", () => {
         new ChatEarnApp();
       });
-    </script>
-
-    <!-- Code injected by live-server -->
-    <script>
-      // <![CDATA[  <-- For SVG support
-      if ("WebSocket" in window) {
-        (function () {
-          function refreshCSS() {
-            var sheets = [].slice.call(document.getElementsByTagName("link"));
-            var head = document.getElementsByTagName("head")[0];
-            for (var i = 0; i < sheets.length; ++i) {
-              var elem = sheets[i];
-              var parent = elem.parentElement || head;
-              parent.removeChild(elem);
-              var rel = elem.rel;
-              if (
-                (elem.href && typeof rel != "string") ||
-                rel.length == 0 ||
-                rel.toLowerCase() == "stylesheet"
-              ) {
-                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
-                elem.href =
-                  url +
-                  (url.indexOf("?") >= 0 ? "&" : "?") +
-                  "_cacheOverride=" +
-                  new Date().valueOf();
-              }
-              parent.appendChild(elem);
-            }
-          }
-          var protocol =
-            window.location.protocol === "http:" ? "ws://" : "wss://";
-          var address =
-            protocol + window.location.host + window.location.pathname + "/ws";
-          var socket = new WebSocket(address);
-          socket.onmessage = function (msg) {
-            if (msg.data == "reload") window.location.reload();
-            else if (msg.data == "refreshcss") refreshCSS();
-          };
-          if (
-            sessionStorage &&
-            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
-          ) {
-            console.log("Live reload enabled.");
-            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
-          }
-        })();
-      } else {
-        console.error(
-          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.",
-        );
-      }
-      // ]]>
     </script>
   </body>
 </html>
