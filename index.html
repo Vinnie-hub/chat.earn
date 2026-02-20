@@ -7,10 +7,9 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
     />
     <title>
-      Mulastar - Chat& Earn App| Earn Money Chatting with lonely People Worldwide
+      Mulastar - Chat& Earn App| Earn Money Chatting with lonely People
+      Worldwide
     </title>
-
-    <!-- SEO Meta Tags -->
     <meta
       name="description"
       content="Make money chatting with lonely people, curious strangers, and advice seekers. Join 15,000+ earners who get paid for meaningful conversations from home."
@@ -21,8 +20,6 @@
     />
     <meta name="author" content="Mulastar" />
     <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mulastar.com/" />
     <meta
@@ -38,27 +35,38 @@
       content="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771386865/vitaly-gariev-cHbyGVOQspk-unsplash_spxj6y.jpg"
     />
 
-    <!-- Preconnect -->
+    <!-- Preconnect for speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://flagcdn.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://i.pravatar.cc" />
 
-    <!-- Fonts -->
+    <!-- Fonts: display=swap for non-blocking -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome: load async to avoid render-blocking -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media = 'all'"
     />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    /></noscript>
+
     <link
       rel="icon"
       href="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771489654/favicon_it80ef.png"
     />
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -176,6 +184,15 @@
         background-color: var(--gray-50);
         line-height: 1.6;
         overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      /* CRITICAL FIX: Prevent overflow on all elements */
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
       }
 
       .container {
@@ -364,6 +381,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0;
+        gap: 0.5rem;
       }
 
       .logo {
@@ -394,6 +412,7 @@
         display: flex;
         flex-direction: column;
         line-height: 1.2;
+        min-width: 0;
       }
       .logo-main {
         font-size: 1.4rem;
@@ -457,6 +476,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        flex-shrink: 0;
       }
       .btn-header {
         background: var(--gradient-primary);
@@ -480,10 +500,8 @@
       }
       @media (max-width: 480px) {
         .btn-header {
-          padding: 0.5rem;
-          width: 100px;
-          height: 40px;
-          justify-content: center;
+          padding: 0.5rem 0.875rem;
+          font-size: 0.85rem;
         }
       }
 
@@ -594,7 +612,6 @@
         z-index: 0;
         overflow: hidden;
       }
-
       .hero-video {
         position: absolute;
         top: 0;
@@ -608,7 +625,6 @@
         will-change: auto;
         pointer-events: none;
       }
-
       @media (max-width: 768px) and (orientation: portrait) {
         .hero-video {
           object-position: center 20%;
@@ -626,7 +642,6 @@
         height: 100%;
         object-fit: cover;
       }
-
       .video-overlay {
         position: absolute;
         inset: 0;
@@ -1009,13 +1024,14 @@
         color: var(--gray-500);
       }
 
+      /* FIXED: Profiles grid mobile */
       .profiles-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.25rem;
         margin-bottom: 0.75rem;
       }
-      @media (min-width: 640px) {
+      @media (min-width: 600px) {
         .profiles-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -1350,7 +1366,7 @@
       .chat-request-item {
         display: grid;
         grid-template-columns: auto 1fr auto;
-        gap: 1rem;
+        gap: 0.75rem;
         align-items: center;
         padding: 1rem;
         border-radius: var(--radius-lg);
@@ -1360,7 +1376,8 @@
         border: 1px solid var(--gray-200);
         border-left: 4px solid var(--primary-500);
       }
-      @media (max-width: 480px) {
+      /* FIXED: Mobile chat request layout */
+      @media (max-width: 540px) {
         .chat-request-item {
           grid-template-columns: auto 1fr;
           grid-template-rows: auto auto;
@@ -1496,6 +1513,7 @@
       }
 
       /* ===== COUNTRIES ===== */
+      /* FIXED: Countries grid for mobile */
       .countries-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1550,8 +1568,8 @@
       }
       @media (max-width: 480px) {
         .country-flag {
-          width: 52px;
-          height: 52px;
+          width: 48px;
+          height: 48px;
         }
       }
       .country-flag img {
@@ -1572,6 +1590,14 @@
         background: var(--primary-50);
         padding: 0.2rem 0.6rem;
         border-radius: var(--radius-full);
+      }
+      @media (max-width: 480px) {
+        .country-name {
+          font-size: 0.8rem;
+        }
+        .country-fee {
+          font-size: 0.7rem;
+        }
       }
 
       /* ===== REASONS ===== */
@@ -1600,7 +1626,6 @@
           order: 1;
         }
       }
-
       .reasons-image {
         width: 100%;
         height: 100%;
@@ -1666,6 +1691,7 @@
         color: white;
       }
 
+      /* FIXED: Steps grid mobile */
       .steps {
         display: grid;
         grid-template-columns: 1fr;
@@ -1718,6 +1744,7 @@
       }
 
       /* ===== FEATURES ===== */
+      /* FIXED: Features grid mobile */
       .features-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -1932,6 +1959,7 @@
       }
 
       /* ===== CONTACT ===== */
+      /* FIXED: Contact grid */
       .contact-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -1995,6 +2023,7 @@
         margin-bottom: 0.2rem;
       }
 
+      /* FIXED: WhatsApp grid mobile */
       .whatsapp-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -2039,14 +2068,6 @@
         text-align: center;
         position: relative;
         overflow: hidden;
-      }
-      .cta-section::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-size: 100px 100px;
-        opacity: 0.1;
-        pointer-events: none;
       }
       .cta-title {
         color: white;
@@ -2271,14 +2292,14 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        max-width: 320px;
+        max-width: 300px;
         pointer-events: none;
       }
       @media (max-width: 480px) {
         .social-proof-container {
           bottom: 80px;
           left: 10px;
-          max-width: 260px;
+          max-width: 240px;
         }
       }
       .social-proof-item {
@@ -2294,7 +2315,7 @@
         animation:
           slideIn 0.5s forwards,
           fadeOut 0.5s 4.5s forwards;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         border: 1px solid var(--gray-200);
         pointer-events: auto;
       }
@@ -2317,7 +2338,7 @@
       }
       .social-proof-item span {
         color: var(--gray-600);
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         display: block;
       }
       @keyframes slideIn {
@@ -2345,7 +2366,7 @@
         z-index: 10000;
         transform: translateX(120%);
         transition: transform var(--transition-base);
-        max-width: 320px;
+        max-width: 300px;
         font-weight: 600;
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
@@ -2361,12 +2382,18 @@
       .notification.info {
         background: var(--info);
       }
+      @media (max-width: 480px) {
+        .notification {
+          max-width: calc(100vw - 2rem);
+          right: 1rem;
+        }
+      }
 
       .welcome-notification {
         position: fixed;
         top: 90px;
         right: 16px;
-        max-width: 360px;
+        max-width: 320px;
         background: var(--gradient-primary);
         color: white;
         padding: 0.875rem 1.25rem;
@@ -2415,7 +2442,7 @@
         left: 50%;
         transform: translateX(-50%) translateY(200%);
         width: calc(100% - 2rem);
-        max-width: 480px;
+        max-width: 440px;
         background: white;
         color: var(--gray-900);
         padding: 1.25rem;
@@ -2484,7 +2511,7 @@
         background: white;
         border-radius: var(--radius-xl);
         width: 100%;
-        max-width: 580px;
+        max-width: 560px;
         max-height: 90vh;
         overflow-y: auto;
         box-shadow: var(--shadow-2xl);
@@ -2500,7 +2527,6 @@
           transform: translateY(0);
         }
       }
-
       .modal-header {
         display: flex;
         justify-content: space-between;
@@ -2684,7 +2710,7 @@
 
       /* ===== SCROLLBAR ===== */
       ::-webkit-scrollbar {
-        width: 10px;
+        width: 8px;
       }
       ::-webkit-scrollbar-track {
         background: var(--gray-100);
@@ -2698,7 +2724,6 @@
         filter: brightness(1.1);
       }
 
-      /* ===== UTILITIES ===== */
       .text-center {
         text-align: center;
       }
@@ -2748,11 +2773,13 @@
             <img
               src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771489674/dollar_yeahke.jpg"
               alt="Mulastar Logo"
+              width="44"
+              height="44"
             />
           </div>
           <div class="logo-text">
             <span class="logo-main">Mulastar</span>
-            <span class="logo-badge">Chat & Earn</span>
+            <span class="logo-badge">Chat &amp; Earn</span>
           </div>
         </a>
 
@@ -2782,7 +2809,11 @@
           >
             <i class="fas fa-rocket"></i><span>Register</span>
           </a>
-          <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            aria-label="Toggle menu"
+          >
             <span class="menu-icon"></span>
             <span class="menu-icon"></span>
             <span class="menu-icon"></span>
@@ -2852,15 +2883,14 @@
         class="floating-whatsapp-btn"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
       >
         <i class="fab fa-whatsapp"></i>
       </a>
     </div>
 
-    <!-- Social Proof Notifications Container -->
     <div class="social-proof-container" id="socialProofContainer"></div>
 
-    <!-- Welcome Notification -->
     <div class="welcome-notification" id="welcomeNotification">
       <i class="fas fa-bullhorn"></i>
       <p>Welcome to Mulastar! Start earning today!</p>
@@ -2869,7 +2899,6 @@
       </button>
     </div>
 
-    <!-- Cookie Consent -->
     <div class="cookie-consent" id="cookieConsent">
       <div class="cookie-consent-content">
         <p>
@@ -2892,7 +2921,7 @@
       <div class="video-modal-content">
         <button class="close-modal" id="closeVideoModal">&times;</button>
         <div class="video-wrapper">
-          <video controls id="demoVideo" preload="metadata">
+          <video controls id="demoVideo" preload="none">
             <source
               src="https://res.cloudinary.com/dovhxt8ye/video/upload/v1771346779/Chat_Earn_video_j5cd1n.mp4"
               type="video/mp4"
@@ -2933,8 +2962,8 @@
           muted
           playsinline
           webkit-playsinline
-          poster="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771386865/vitaly-gariev-cHbyGVOQspk-unsplash_spxj6y.jpg"
-          preload="auto"
+          poster="https://res.cloudinary.com/dovhxt8ye/image/upload/f_auto,q_auto/v1771386865/vitaly-gariev-cHbyGVOQspk-unsplash_spxj6y.jpg"
+          preload="metadata"
         >
           <source
             src="https://res.cloudinary.com/dovhxt8ye/video/upload/v1771347956/mixkit-elderly-woman-texts-on-mobile-phone-and-smiles-9143-hd-ready_slmgo8.mp4"
@@ -2942,7 +2971,7 @@
           />
           <div class="video-fallback">
             <img
-              src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771386865/vitaly-gariev-cHbyGVOQspk-unsplash_spxj6y.jpg"
+              src="https://res.cloudinary.com/dovhxt8ye/image/upload/f_auto,q_auto/v1771386865/vitaly-gariev-cHbyGVOQspk-unsplash_spxj6y.jpg"
               alt="Hero Background"
             />
           </div>
@@ -2963,9 +2992,8 @@
           </div>
 
           <h1>
-            <span>Get Paid to </span>
-            <span class="text-gradient">Chat</span>
-            <span> with People Worldwide</span>
+            <span>Get Paid to </span><span class="text-gradient">Chat</span
+            ><span> with People Worldwide</span>
           </h1>
 
           <h2>
@@ -3009,7 +3037,7 @@
 
           <div class="trust-badges">
             <div class="trust-item">
-              <i class="fas fa-shield-alt"></i><span>Secure & Private</span>
+              <i class="fas fa-shield-alt"></i><span>Secure &amp; Private</span>
             </div>
             <div class="trust-item">
               <i class="fas fa-clock"></i><span>Instant Payouts</span>
@@ -3050,7 +3078,6 @@
             <div class="ticker-item">
               <i class="fas fa-dollar-sign"></i>
               <div>
-                <!-- UPDATED: Realistic $3 per chat -->
                 <div class="ticker-number">$3</div>
                 <div class="ticker-label">Per Chat</div>
               </div>
@@ -3218,6 +3245,8 @@
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
                   alt="Alex"
                   loading="lazy"
+                  width="60"
+                  height="60"
                 />
               </div>
               <div class="request-info">
@@ -3225,7 +3254,6 @@
                 <div class="request-topic">
                   Looking for travel conversation partner
                 </div>
-                <!-- UPDATED: Realistic $3 earnings -->
                 <div class="request-amount">Earn $3</div>
                 <div class="request-time">2 min ago</div>
               </div>
@@ -3241,12 +3269,13 @@
                   src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80"
                   alt="Maria"
                   loading="lazy"
+                  width="60"
+                  height="60"
                 />
               </div>
               <div class="request-info">
                 <div class="request-name">Maria from Spain</div>
                 <div class="request-topic">Casual conversation in English</div>
-                <!-- UPDATED: Realistic $3 earnings -->
                 <div class="request-amount">Earn $3</div>
                 <div class="request-time">5 min ago</div>
               </div>
@@ -3262,6 +3291,8 @@
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
                   alt="John"
                   loading="lazy"
+                  width="60"
+                  height="60"
                 />
               </div>
               <div class="request-info">
@@ -3269,7 +3300,6 @@
                 <div class="request-topic">
                   Cultural exchange about traditions
                 </div>
-                <!-- UPDATED: Realistic $3 earnings -->
                 <div class="request-amount">Earn $3</div>
                 <div class="request-time">10 min ago</div>
               </div>
@@ -3288,7 +3318,7 @@
 
         <div class="fans-image-container">
           <img
-            src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771489747/chat-Image_qfjvoy.jpg"
+            src="https://res.cloudinary.com/dovhxt8ye/image/upload/f_auto,q_auto/v1771489747/chat-Image_qfjvoy.jpg"
             alt="People having online conversations"
             class="fans-image"
             loading="lazy"
@@ -3302,7 +3332,7 @@
       <div class="container">
         <div class="chat-demo-image-container">
           <img
-            src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771489711/chat-demo_wvruem.jpg"
+            src="https://res.cloudinary.com/dovhxt8ye/image/upload/f_auto,q_auto/v1771489711/chat-demo_wvruem.jpg"
             alt="Chat interface demonstration"
             class="chat-demo-image"
             loading="lazy"
@@ -3353,13 +3383,11 @@
             loading="lazy"
           />
         </div>
-
         <div class="reasons-content">
           <h2 class="section-title text-gradient">Why Choose Mulastar?</h2>
           <p class="section-subtitle">
             Discover the benefits of joining our platform
           </p>
-
           <ol class="reasons-list">
             <li class="reason-item">
               <div class="reason-number">1</div>
@@ -3619,7 +3647,14 @@
       <div class="container">
         <div class="cta-content">
           <h2 class="cta-title">Start Your Earning Journey Today</h2>
-          <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem">
+          <p
+            style="
+              font-size: 1.2rem;
+              opacity: 0.9;
+              margin-bottom: 2rem;
+              color: white;
+            "
+          >
             Join thousands who are already earning from meaningful conversations
           </p>
           <div class="cta-buttons">
@@ -3651,6 +3686,8 @@
             <img
               src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771489674/dollar_yeahke.jpg"
               alt="Mulastar Logo"
+              width="48"
+              height="48"
             />
             <span>Mulastar</span>
           </a>
@@ -3689,15 +3726,12 @@
     <script>
       (function () {
         "use strict";
-
         const CONFIG = {
           ANIMATION_DURATION: 600,
           AUTO_SLIDE_INTERVAL: 5000,
           NOTIFICATION_DURATION: 3000,
           SOCIAL_PROOF_INTERVAL: 12000,
         };
-
-        // ===== REALISTIC EARNINGS: $3 per chat =====
         const EARNINGS_PER_CHAT = 3;
 
         const DATA = {
@@ -3710,7 +3744,7 @@
               location: "Chicago, USA",
               rating: 4.8,
               totalChats: 124,
-              earnings: "$3/chat", // UPDATED
+              earnings: "$3/chat",
               availability: "9AM-9PM EST",
               bio: "Retired English teacher with 35 years of experience. Loves sharing stories about teaching, travel experiences, and cultural exchange.",
               interests: ["Teaching", "Travel", "Books", "Cultural Exchange"],
@@ -3728,7 +3762,7 @@
               location: "London, UK",
               rating: 5.0,
               totalChats: 86,
-              earnings: "$3/chat", // UPDATED
+              earnings: "$3/chat",
               availability: "7AM-11PM GMT",
               bio: "Successful business executive with international experience. Enjoys mentoring young professionals and discussing business strategies.",
               interests: ["Business", "Leadership", "Travel", "Wine"],
@@ -3746,7 +3780,7 @@
               location: "Toronto, Canada",
               rating: 4.6,
               totalChats: 42,
-              earnings: "$3/chat", // UPDATED
+              earnings: "$3/chat",
               availability: "Flexible Hours",
               bio: "Retired mechanical engineer who enjoys discussing technology, travel, and daily life. Patient listener with lots of life experience to share.",
               interests: ["Technology", "Travel", "Photography", "DIY"],
@@ -3821,55 +3855,44 @@
             },
             {
               question: "How much time do I need to commit?",
-              answer: `Your earnings depend on how actively you choose to chat. Each chat pays $3.
-
-If you decide to do this full-time, you can complete all 10 daily chat sessions:
-- 2 chats in the morning = $6
-- 3 chats in the afternoon = $9
-- 5 chats at night (when most foreigners are online) = $15
-
-That's $30 per day — approximately $900 per month.
-
-If you prefer to work part-time, that's completely fine too. Even 3 chats a day adds up to $9/day or around $270/month.
-
-It's fully flexible. You decide your schedule and how much you want to earn.`,
+              answer:
+                "Your earnings depend on how actively you choose to chat. Each chat pays $3.\n\nIf you decide to do this full-time, you can complete all 10 daily chat sessions:\n- 2 chats in the morning = $6\n- 3 chats in the afternoon = $9\n- 5 chats at night (when most foreigners are online) = $15\n\nThat's $30 per day — approximately $900 per month.\n\nIf you prefer to work part-time, that's completely fine too. Even 3 chats a day adds up to $9/day or around $270/month.\n\nIt's fully flexible. You decide your schedule and how much you want to earn.",
             },
           ],
         };
 
         const Utils = {
-          formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          formatNumber(n) {
+            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           },
-          generateStars(rating) {
-            const fullStars = Math.floor(rating);
-            const hasHalf = rating % 1 >= 0.5;
-            let stars = "";
-            for (let i = 0; i < fullStars; i++)
-              stars += '<i class="fas fa-star"></i>';
-            if (hasHalf) stars += '<i class="fas fa-star-half-alt"></i>';
-            for (let i = fullStars + (hasHalf ? 1 : 0); i < 5; i++)
-              stars += '<i class="far fa-star"></i>';
-            return stars;
+          generateStars(r) {
+            const f = Math.floor(r),
+              h = r % 1 >= 0.5;
+            let s = "";
+            for (let i = 0; i < f; i++) s += '<i class="fas fa-star"></i>';
+            if (h) s += '<i class="fas fa-star-half-alt"></i>';
+            for (let i = f + (h ? 1 : 0); i < 5; i++)
+              s += '<i class="far fa-star"></i>';
+            return s;
           },
-          showNotification(message, type = "info") {
-            const notification = document.createElement("div");
-            notification.className = `notification ${type}`;
-            notification.setAttribute("role", "alert");
-            notification.innerHTML = `<div style="display:flex;align-items:center;gap:10px"><i class="fas ${type === "success" ? "fa-check-circle" : type === "error" ? "fa-exclamation-circle" : "fa-info-circle"}"></i><span>${message}</span></div>`;
-            document.body.appendChild(notification);
-            requestAnimationFrame(() => notification.classList.add("show"));
+          showNotification(msg, type = "info") {
+            const n = document.createElement("div");
+            n.className = `notification ${type}`;
+            n.setAttribute("role", "alert");
+            n.innerHTML = `<div style="display:flex;align-items:center;gap:10px"><i class="fas ${type === "success" ? "fa-check-circle" : type === "error" ? "fa-exclamation-circle" : "fa-info-circle"}"></i><span>${msg}</span></div>`;
+            document.body.appendChild(n);
+            requestAnimationFrame(() => n.classList.add("show"));
             setTimeout(() => {
-              notification.classList.remove("show");
-              setTimeout(() => notification.remove(), 300);
+              n.classList.remove("show");
+              setTimeout(() => n.remove(), 300);
             }, CONFIG.NOTIFICATION_DURATION);
           },
-          showLoading(message = "Redirecting...", url) {
-            const overlay = document.getElementById("loadingOverlay");
-            const loadingText = document.getElementById("loadingText");
-            if (overlay && loadingText) {
-              loadingText.textContent = message;
-              overlay.classList.add("active");
+          showLoading(msg = "Redirecting...", url) {
+            const o = document.getElementById("loadingOverlay"),
+              t = document.getElementById("loadingText");
+            if (o && t) {
+              t.textContent = msg;
+              o.classList.add("active");
               setTimeout(() => {
                 window.location.href = url;
               }, 1500);
@@ -3884,7 +3907,6 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
             this.lastScrollY = 0;
             this.init();
           }
-
           init() {
             this.cacheElements();
             this.initMobileMenu();
@@ -3904,7 +3926,6 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
             this.initMobileVideo();
             this.initSocialProof();
           }
-
           cacheElements() {
             this.elements = {
               body: document.body,
@@ -3953,36 +3974,27 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               ),
             };
           }
-
-          // Mobile video fix
           initMobileVideo() {
-            const video = this.elements.heroVideo;
-            if (!video) return;
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                const playOnInteract = () => {
-                  video.play().catch(() => {});
-                  document.removeEventListener("touchstart", playOnInteract);
-                  document.removeEventListener("click", playOnInteract);
+            const v = this.elements.heroVideo;
+            if (!v) return;
+            const p = v.play();
+            if (p !== undefined) {
+              p.catch(() => {
+                const play = () => {
+                  v.play().catch(() => {});
+                  document.removeEventListener("touchstart", play);
+                  document.removeEventListener("click", play);
                 };
-                document.addEventListener("touchstart", playOnInteract, {
-                  once: true,
-                });
-                document.addEventListener("click", playOnInteract, {
-                  once: true,
-                });
+                document.addEventListener("touchstart", play, { once: true });
+                document.addEventListener("click", play, { once: true });
               });
             }
             document.addEventListener("visibilitychange", () => {
-              if (document.visibilityState === "visible") {
-                video.play().catch(() => {});
-              } else {
-                video.pause();
-              }
+              document.visibilityState === "visible"
+                ? v.play().catch(() => {})
+                : v.pause();
             });
           }
-
           initMobileMenu() {
             this.elements.mobileMenuToggle?.addEventListener("click", (e) => {
               e.stopPropagation();
@@ -3992,20 +4004,18 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               if (
                 !this.elements.mobileNav?.contains(e.target) &&
                 !this.elements.mobileMenuToggle?.contains(e.target)
-              ) {
+              )
                 this.closeMobileMenu();
-              }
             });
             document.addEventListener("keydown", (e) => {
               if (e.key === "Escape") this.closeMobileMenu();
             });
             this.elements.mobileNav
               ?.querySelectorAll(".mobile-nav-link")
-              .forEach((link) => {
-                link.addEventListener("click", () => this.closeMobileMenu());
-              });
+              .forEach((l) =>
+                l.addEventListener("click", () => this.closeMobileMenu()),
+              );
           }
-
           toggleMobileMenu() {
             this.elements.mobileMenuToggle?.classList.toggle("active");
             this.elements.mobileNav?.classList.toggle("active");
@@ -4014,49 +4024,34 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
                 ? "hidden"
                 : "";
           }
-
           closeMobileMenu() {
             this.elements.mobileMenuToggle?.classList.remove("active");
             this.elements.mobileNav?.classList.remove("active");
             this.elements.body.style.overflow = "";
           }
-
           initScrollEffects() {
-            const header = this.elements.header;
-            const progressBar = this.elements.progressBar;
-            const stickyCta = this.elements.stickyCta;
+            const h = this.elements.header,
+              pb = this.elements.progressBar,
+              sc = this.elements.stickyCta;
             let ticking = false;
-
             window.addEventListener(
               "scroll",
               () => {
-                const currentScrollY = window.scrollY;
                 if (!ticking) {
                   requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    const docHeight =
-                      document.documentElement.scrollHeight -
-                      window.innerHeight;
-                    const progress =
-                      docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-
-                    if (header)
-                      header.classList.toggle("scrolled", scrollY > 50);
-                    if (progressBar) progressBar.style.width = progress + "%";
-
-                    if (stickyCta) {
-                      if (scrollY > 500) {
-                        if (scrollY < this.lastScrollY) {
-                          stickyCta.classList.add("visible");
-                        } else {
-                          stickyCta.classList.remove("visible");
-                        }
-                      } else {
-                        stickyCta.classList.remove("visible");
-                      }
+                    const sy = window.scrollY,
+                      dh =
+                        document.documentElement.scrollHeight -
+                        window.innerHeight;
+                    if (h) h.classList.toggle("scrolled", sy > 50);
+                    if (pb)
+                      pb.style.width = (dh > 0 ? (sy / dh) * 100 : 0) + "%";
+                    if (sc) {
+                      sy > 500 && sy < this.lastScrollY
+                        ? sc.classList.add("visible")
+                        : sc.classList.remove("visible");
                     }
-
-                    this.lastScrollY = scrollY;
+                    this.lastScrollY = sy;
                     ticking = false;
                   });
                   ticking = true;
@@ -4064,20 +4059,14 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               },
               { passive: true },
             );
-
             if (this.elements.liveCounter) {
-              let count = 1247;
+              let c = 1247;
               setInterval(() => {
-                count = Math.max(
-                  1000,
-                  count + Math.floor(Math.random() * 20) - 5,
-                );
-                this.elements.liveCounter.textContent =
-                  Utils.formatNumber(count);
+                c = Math.max(1000, c + Math.floor(Math.random() * 20) - 5);
+                this.elements.liveCounter.textContent = Utils.formatNumber(c);
               }, 8000);
             }
           }
-
           initVideoModal() {
             this.elements.watchDemoBtn?.addEventListener("click", () => {
               this.elements.videoModal?.classList.add("active");
@@ -4097,7 +4086,6 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
                 this.closeVideoModal();
             });
           }
-
           closeVideoModal() {
             this.elements.videoModal?.classList.remove("active");
             if (this.elements.demoVideo) {
@@ -4105,14 +4093,12 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               this.elements.demoVideo.currentTime = 0;
             }
           }
-
           initCookieConsent() {
-            if (!localStorage.getItem("cookiesAccepted")) {
+            if (!localStorage.getItem("cookiesAccepted"))
               setTimeout(
                 () => this.elements.cookieConsent?.classList.add("show"),
                 2000,
               );
-            }
             this.elements.acceptCookies?.addEventListener("click", () => {
               localStorage.setItem("cookiesAccepted", "true");
               this.elements.cookieConsent?.classList.remove("show");
@@ -4122,7 +4108,6 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               this.elements.cookieConsent?.classList.remove("show");
             });
           }
-
           initWelcomeNotification() {
             if (!sessionStorage.getItem("notificationShown")) {
               setTimeout(() => {
@@ -4135,302 +4120,228 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
                 8000,
               );
             }
-            this.elements.closeNotification?.addEventListener("click", () => {
-              this.elements.welcomeNotification?.classList.remove("show");
-            });
+            this.elements.closeNotification?.addEventListener("click", () =>
+              this.elements.welcomeNotification?.classList.remove("show"),
+            );
           }
-
           initCounters() {
-            const counters = document.querySelectorAll("[data-count]");
-            const observer = new IntersectionObserver(
+            const obs = new IntersectionObserver(
               (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entries.forEach((e) => {
+                  if (e.isIntersecting && !e.target.dataset.animated) {
                     this.animateCounter(
-                      entry.target,
-                      parseInt(entry.target.dataset.count),
+                      e.target,
+                      parseInt(e.target.dataset.count),
                     );
-                    entry.target.dataset.animated = "true";
+                    e.target.dataset.animated = "true";
                   }
                 });
               },
               { threshold: 0.5 },
             );
-            counters.forEach((counter) => observer.observe(counter));
+            document
+              .querySelectorAll("[data-count]")
+              .forEach((c) => obs.observe(c));
           }
-
-          animateCounter(element, target) {
-            const duration = 2000;
-            const startTime = performance.now();
-            const update = (currentTime) => {
-              const progress = Math.min(
-                (currentTime - startTime) / duration,
-                1,
-              );
-              const value = Math.floor(target * this.easeOutCubic(progress));
-              element.textContent =
-                value < 1000 ? value.toString() : Utils.formatNumber(value);
-              if (progress < 1) requestAnimationFrame(update);
+          animateCounter(el, target) {
+            const dur = 2000,
+              start = performance.now();
+            const up = (now) => {
+              const p = Math.min((now - start) / dur, 1),
+                v = Math.floor(target * this.easeOutCubic(p));
+              el.textContent = v < 1000 ? v.toString() : Utils.formatNumber(v);
+              if (p < 1) requestAnimationFrame(up);
               else
-                element.textContent =
+                el.textContent =
                   target < 1000
                     ? target.toString()
                     : Utils.formatNumber(target);
             };
-            requestAnimationFrame(update);
+            requestAnimationFrame(up);
           }
-
           easeOutCubic(x) {
             return 1 - Math.pow(1 - x, 3);
           }
-
-          // ===== UPDATED CALCULATOR: Fixed $3/chat rate =====
           initCalculator() {
             if (!this.elements.chatSlider) return;
-            const update = () => {
-              const chats = parseInt(this.elements.chatSlider.value);
+            const upd = () => {
+              const c = parseInt(this.elements.chatSlider.value);
               if (this.elements.sliderValue)
-                this.elements.sliderValue.textContent = `${chats} chat${chats > 1 ? "s" : ""}`;
+                this.elements.sliderValue.textContent = `${c} chat${c > 1 ? "s" : ""}`;
               if (this.elements.chatCount)
-                this.elements.chatCount.textContent = chats;
-              if (this.elements.monthlyEarnings) {
-                const monthly = chats * EARNINGS_PER_CHAT * 30;
-                this.elements.monthlyEarnings.textContent = `$${Utils.formatNumber(monthly)}`;
-              }
+                this.elements.chatCount.textContent = c;
+              if (this.elements.monthlyEarnings)
+                this.elements.monthlyEarnings.textContent = `$${Utils.formatNumber(c * EARNINGS_PER_CHAT * 30)}`;
             };
-            this.elements.chatSlider.addEventListener("input", update);
-            update();
+            this.elements.chatSlider.addEventListener("input", upd);
+            upd();
           }
-
           initCountries() {
             if (!this.elements.countriesGrid) return;
-            DATA.countries.forEach((country, index) => {
+            const frag = document.createDocumentFragment();
+            DATA.countries.forEach((country, i) => {
               const card = document.createElement("div");
               card.className = "country-card";
-              card.style.animationDelay = `${index * 0.08}s`;
-              card.innerHTML = `
-                <div class="country-flag">
-                  <img src="https://flagcdn.com/w160/${country.flag}.png" alt="Flag of ${country.name}" loading="lazy" width="62" height="62" onerror="this.src='https://placehold.co/62x62?text=${country.name.charAt(0)}'">
-                </div>
-                <p class="country-name">${country.name}</p>
-                <div class="country-fee">${country.regFee}</div>
-              `;
+              card.style.animationDelay = `${i * 0.08}s`;
+              card.innerHTML = `<div class="country-flag"><img src="https://flagcdn.com/w80/${country.flag}.png" alt="Flag of ${country.name}" loading="lazy" width="62" height="62" onerror="this.src='https://placehold.co/62x62?text=${country.name.charAt(0)}'"></div><p class="country-name">${country.name}</p><div class="country-fee">${country.regFee}</div>`;
               card.addEventListener("click", () => {
                 Utils.showNotification(
-                  `To join Mulastar from ${country.name}, You are required to pay a registration fee: ${country.regFee}`,
+                  `Join from ${country.name}: ${country.regFee} registration fee`,
                   "info",
                 );
                 setTimeout(
                   () =>
                     Utils.showLoading(
-                      "Redirecting to registration...",
+                      "Redirecting...",
                       "https://mulastar.com/register.php?ref=Sydney",
                     ),
                   500,
                 );
               });
-              this.elements.countriesGrid.appendChild(card);
+              frag.appendChild(card);
             });
+            this.elements.countriesGrid.appendChild(frag);
           }
-
           loadProfiles() {
             if (!this.elements.profilesGrid) return;
-            DATA.profiles.forEach((profile, index) => {
-              this.elements.profilesGrid.appendChild(
-                this.createProfileCard(profile),
-              );
+            const frag = document.createDocumentFragment();
+            DATA.profiles.forEach((p, i) => {
+              frag.appendChild(this.createProfileCard(p));
               const dot = document.createElement("button");
-              dot.className = `dot ${index === 0 ? "active" : ""}`;
-              dot.addEventListener("click", () => this.goToProfileSlide(index));
+              dot.className = `dot ${i === 0 ? "active" : ""}`;
+              dot.addEventListener("click", () => this.goToProfileSlide(i));
               this.elements.profileDots?.appendChild(dot);
             });
+            this.elements.profilesGrid.appendChild(frag);
           }
-
-          createProfileCard(profile) {
+          createProfileCard(p) {
             const card = document.createElement("div");
             card.className = "profile-card";
-            card.dataset.profileId = profile.id;
-            card.innerHTML = `
-              <div class="card-header">
-                <div class="status-badge ${profile.status}">
-                  <i class="fas ${profile.status === "premium" ? "fa-crown" : profile.status === "featured" ? "fa-fire" : "fa-rocket"}"></i>
-                  ${profile.status.charAt(0).toUpperCase() + profile.status.slice(1)}
-                </div>
-                <div class="online-status ${profile.online ? "active" : "busy"}"></div>
-              </div>
-              <div class="profile-summary">
-                <img src="${profile.image}" alt="${profile.name}" class="profile-avatar" loading="lazy">
-                <div class="profile-info">
-                  <h3>${profile.name}</h3>
-                  <p class="profile-meta">${profile.age} • ${profile.occupation}</p>
-                  <div class="profile-rating">
-                    <div class="stars">${Utils.generateStars(profile.rating)}</div>
-                    <span>${profile.rating}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="quick-info">
-                <div class="info-item"><i class="fas fa-dollar-sign"></i><span>${profile.earnings}</span></div>
-                <div class="info-item"><i class="fas fa-clock"></i><span>${profile.availability}</span></div>
-              </div>
-              <p class="profile-excerpt">${profile.bio.substring(0, 100)}...</p>
-              <div class="card-actions">
-                <button class="btn-quick-chat" data-profile-id="${profile.id}"><i class="fas fa-comment"></i> Quick Chat</button>
-                <button class="btn-view-details" data-profile-id="${profile.id}"><i class="fas fa-eye"></i> View Details</button>
-              </div>
-            `;
+            card.dataset.profileId = p.id;
+            card.innerHTML = `<div class="card-header"><div class="status-badge ${p.status}"><i class="fas ${p.status === "premium" ? "fa-crown" : p.status === "featured" ? "fa-fire" : "fa-rocket"}"></i>${p.status.charAt(0).toUpperCase() + p.status.slice(1)}</div><div class="online-status ${p.online ? "active" : "busy"}"></div></div><div class="profile-summary"><img src="${p.image}" alt="${p.name}" class="profile-avatar" loading="lazy" width="66" height="66"><div class="profile-info"><h3>${p.name}</h3><p class="profile-meta">${p.age} • ${p.occupation}</p><div class="profile-rating"><div class="stars">${Utils.generateStars(p.rating)}</div><span>${p.rating}</span></div></div></div><div class="quick-info"><div class="info-item"><i class="fas fa-dollar-sign"></i><span>${p.earnings}</span></div><div class="info-item"><i class="fas fa-clock"></i><span>${p.availability}</span></div></div><p class="profile-excerpt">${p.bio.substring(0, 100)}...</p><div class="card-actions"><button class="btn-quick-chat" data-profile-id="${p.id}"><i class="fas fa-comment"></i> Quick Chat</button><button class="btn-view-details" data-profile-id="${p.id}"><i class="fas fa-eye"></i> Details</button></div>`;
             card
               .querySelector(".btn-quick-chat")
               ?.addEventListener("click", (e) => {
                 e.stopPropagation();
-                this.quickChat(profile.id);
+                this.quickChat(p.id);
               });
             card
               .querySelector(".btn-view-details")
               ?.addEventListener("click", (e) => {
                 e.stopPropagation();
-                this.openProfileModal(profile.id);
+                this.openProfileModal(p.id);
               });
-            card.addEventListener("click", () =>
-              this.openProfileModal(profile.id),
-            );
+            card.addEventListener("click", () => this.openProfileModal(p.id));
             return card;
           }
-
-          goToProfileSlide(index) {
+          goToProfileSlide(i) {
             document
               .querySelectorAll(".dot")
-              .forEach((d, i) => d.classList.toggle("active", i === index));
+              .forEach((d, j) => d.classList.toggle("active", j === i));
           }
-
           loadTestimonials() {
             if (!this.elements.testimonialSlider) return;
-            DATA.testimonials.forEach((testimonial, index) => {
-              const slide = document.createElement("div");
-              slide.className = `testimonial-slide ${index === 0 ? "active" : ""}`;
-              slide.innerHTML = `
-                <div class="testimonial">
-                  <div class="testimonial-text">"${testimonial.text}"</div>
-                  <div class="testimonial-author">
-                    <img src="${testimonial.image}" alt="${testimonial.name}" loading="lazy">
-                    <div>
-                      <div style="font-weight:600">${testimonial.name}</div>
-                      <div style="color:var(--gray-500);font-size:.9rem">${testimonial.role}</div>
-                      <div style="color:#fbbf24;font-size:.85rem;margin-top:4px">${Utils.generateStars(testimonial.rating)}</div>
-                    </div>
-                  </div>
-                </div>
-              `;
-              this.elements.testimonialSlider.appendChild(slide);
+            const frag = document.createDocumentFragment();
+            DATA.testimonials.forEach((t, i) => {
+              const s = document.createElement("div");
+              s.className = `testimonial-slide ${i === 0 ? "active" : ""}`;
+              s.innerHTML = `<div class="testimonial"><div class="testimonial-text">"${t.text}"</div><div class="testimonial-author"><img src="${t.image}" alt="${t.name}" loading="lazy" width="56" height="56"><div><div style="font-weight:600">${t.name}</div><div style="color:var(--gray-500);font-size:.9rem">${t.role}</div><div style="color:#fbbf24;font-size:.85rem;margin-top:4px">${Utils.generateStars(t.rating)}</div></div></div></div>`;
+              frag.appendChild(s);
               const dot = document.createElement("button");
-              dot.className = `testimonial-dot ${index === 0 ? "active" : ""}`;
-              dot.addEventListener("click", () => this.goToTestimonial(index));
+              dot.className = `testimonial-dot ${i === 0 ? "active" : ""}`;
+              dot.addEventListener("click", () => this.goToTestimonial(i));
               this.elements.testimonialDots?.appendChild(dot);
             });
+            this.elements.testimonialSlider.appendChild(frag);
             this.initTestimonialCarousel();
           }
-
           initTestimonialCarousel() {
-            let current = 0;
-            let interval;
-            const slides = document.querySelectorAll(".testimonial-slide");
-            const dots = document.querySelectorAll(".testimonial-dot");
-
-            this.goToTestimonial = (index) => {
+            let cur = 0,
+              interval;
+            const slides = document.querySelectorAll(".testimonial-slide"),
+              dots = document.querySelectorAll(".testimonial-dot");
+            this.goToTestimonial = (i) => {
               slides.forEach((s) => s.classList.remove("active"));
               dots.forEach((d) => d.classList.remove("active"));
-              current = (index + slides.length) % slides.length;
-              slides[current].classList.add("active");
-              dots[current].classList.add("active");
+              cur = (i + slides.length) % slides.length;
+              slides[cur].classList.add("active");
+              dots[cur].classList.add("active");
             };
-
-            const next = () => this.goToTestimonial(current + 1);
-            const reset = () => {
-              clearInterval(interval);
-              interval = setInterval(next, CONFIG.AUTO_SLIDE_INTERVAL);
-            };
-
+            const next = () => this.goToTestimonial(cur + 1),
+              reset = () => {
+                clearInterval(interval);
+                interval = setInterval(next, CONFIG.AUTO_SLIDE_INTERVAL);
+              };
             this.elements.testimonialNext?.addEventListener("click", () => {
               next();
               reset();
             });
             this.elements.testimonialPrev?.addEventListener("click", () => {
-              this.goToTestimonial(current - 1);
+              this.goToTestimonial(cur - 1);
               reset();
             });
             interval = setInterval(next, CONFIG.AUTO_SLIDE_INTERVAL);
           }
-
           loadFaqs() {
             if (!this.elements.faqContainer) return;
-            DATA.faqs.forEach((faq) => {
+            const frag = document.createDocumentFragment();
+            DATA.faqs.forEach((f) => {
               const item = document.createElement("div");
               item.className = "faq-item";
-              item.innerHTML = `
-                <div class="faq-question">${faq.question} <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">${faq.answer}</div>
-              `;
-              const question = item.querySelector(".faq-question");
-              const answer = item.querySelector(".faq-answer");
-              question.addEventListener("click", () => {
-                const isOpen = answer.classList.contains("open");
+              item.innerHTML = `<div class="faq-question">${f.question} <i class="fas fa-chevron-down"></i></div><div class="faq-answer">${f.answer.replace(/\n/g, "<br>")}</div>`;
+              const q = item.querySelector(".faq-question"),
+                a = item.querySelector(".faq-answer");
+              q.addEventListener("click", () => {
+                const open = a.classList.contains("open");
                 document
                   .querySelectorAll(".faq-answer")
-                  .forEach((a) => a.classList.remove("open"));
+                  .forEach((x) => x.classList.remove("open"));
                 document
                   .querySelectorAll(".faq-question")
-                  .forEach((q) => q.classList.remove("active"));
-                if (!isOpen) {
-                  answer.classList.add("open");
-                  question.classList.add("active");
+                  .forEach((x) => x.classList.remove("active"));
+                if (!open) {
+                  a.classList.add("open");
+                  q.classList.add("active");
                 }
               });
-              this.elements.faqContainer.appendChild(item);
+              frag.appendChild(item);
             });
+            this.elements.faqContainer.appendChild(frag);
           }
-
-          // ===== UPDATED CHAT REQUESTS: Fixed $3/chat =====
           initChatRequests() {
-            document.querySelectorAll(".accept-request").forEach((button) => {
-              button.addEventListener("click", (e) =>
-                this.acceptChatRequest(e),
+            document
+              .querySelectorAll(".accept-request")
+              .forEach((b) =>
+                b.addEventListener("click", (e) => this.acceptChatRequest(e)),
               );
-            });
             this.elements.refreshRequests?.addEventListener("click", () =>
               this.refreshRequests(),
             );
-
-            // Periodically add new requests
             setInterval(() => {
-              if (Math.random() > 0.7) {
-                this.addNewChatRequest();
-              }
+              if (Math.random() > 0.7) this.addNewChatRequest();
             }, 30000);
           }
-
           acceptChatRequest(event) {
-            const button = event.currentTarget;
-            const request = button.closest(".chat-request-item");
-            const name = request.querySelector(".request-name").textContent;
-            button.innerHTML = '<i class="fas fa-check"></i> Accepted';
-            button.disabled = true;
-            button.style.opacity = ".5";
-            // UPDATED: Realistic $3 in notification
+            const btn = event.currentTarget,
+              req = btn.closest(".chat-request-item"),
+              name = req.querySelector(".request-name").textContent;
+            btn.innerHTML = '<i class="fas fa-check"></i> Accepted';
+            btn.disabled = true;
+            btn.style.opacity = ".5";
             Utils.showNotification(
-              `You've accepted chat from ${name}! To start chatting, please log in to your Mulastar account. You'll earn $3 for this chat.`,
+              `Accepted chat from ${name}! Login to your Mulastar accountt and start chatting. You'll earn $3.`,
               "success",
             );
             setTimeout(() => {
-              request.style.opacity = "0";
-              request.style.transform = "translateX(-20px)";
-              request.style.transition = "all .3s";
+              req.style.opacity = "0";
+              req.style.transform = "translateX(-20px)";
+              req.style.transition = "all .3s";
               setTimeout(() => {
-                request.remove();
+                req.remove();
                 this.addNewChatRequest();
               }, 300);
             }, 1500);
           }
-
           refreshRequests() {
             const btn = this.elements.refreshRequests;
             btn.innerHTML =
@@ -4444,77 +4355,52 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               Utils.showNotification("New chat requests loaded!", "success");
             }, 1000);
           }
-
-          // ===== UPDATED: Fixed $3 per chat in dynamic requests =====
           addNewChatRequest() {
             const names = [
-              "Mildred",
-              "David",
-              "Emma",
-              "James",
-              "Lisa",
-              "Michael",
-              "Sophia",
-              "Frank",
-              "Anna",
-              "Tom",
-            ];
-            const countries = [
-              "USA",
-              "UK",
-              "Canada",
-              "Australia",
-              "Germany",
-              "France",
-              "Netherlands",
-              "Sweden",
-            ];
-            const topics = [
-              "Travel experiences",
-              "Daily life chat",
-              "Cultural exchange",
-              "Hobbies discussion",
-              "Language practice",
-              "Life advice",
-            ];
-
-            const name = names[Math.floor(Math.random() * names.length)];
-            const country =
-              countries[Math.floor(Math.random() * countries.length)];
-            const topic = topics[Math.floor(Math.random() * topics.length)];
-            // UPDATED: Always $3 per chat — realistic and consistent
-            const amount = EARNINGS_PER_CHAT;
-
-            const request = document.createElement("div");
-            request.className = "chat-request-item";
-            request.innerHTML = `
-              <div class="request-avatar">
-                <span class="request-badge">$</span>
-                <img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name}" loading="lazy">
-              </div>
-              <div class="request-info">
-                <div class="request-name">${name} from ${country}</div>
-                <div class="request-topic">${topic}</div>
-                <div class="request-amount">Earn $${amount}</div>
-                <div class="request-time">Just now</div>
-              </div>
-              <button class="btn btn-primary btn-small accept-request">Accept Chat</button>
-            `;
-
-            const chatRequests = document.querySelector(".chat-requests");
-            chatRequests.prepend(request);
-
-            request
+                "Mildred",
+                "David",
+                "Emma",
+                "James",
+                "Lisa",
+                "Michael",
+                "Sophia",
+                "Frank",
+                "Anna",
+                "Tom",
+              ],
+              countries = [
+                "USA",
+                "UK",
+                "Canada",
+                "Australia",
+                "Germany",
+                "France",
+                "Netherlands",
+                "Sweden",
+              ],
+              topics = [
+                "Travel experiences",
+                "Daily life chat",
+                "Cultural exchange",
+                "Hobbies discussion",
+                "Language practice",
+                "Life advice",
+              ];
+            const name = names[Math.floor(Math.random() * names.length)],
+              country = countries[Math.floor(Math.random() * countries.length)],
+              topic = topics[Math.floor(Math.random() * topics.length)];
+            const req = document.createElement("div");
+            req.className = "chat-request-item";
+            req.innerHTML = `<div class="request-avatar"><span class="request-badge">$</span><img src="https://i.pravatar.cc/60?img=${Math.floor(Math.random() * 70)}" alt="${name}" loading="lazy" width="60" height="60"></div><div class="request-info"><div class="request-name">${name} from ${country}</div><div class="request-topic">${topic}</div><div class="request-amount">Earn $${EARNINGS_PER_CHAT}</div><div class="request-time">Just now</div></div><button class="btn btn-primary btn-small accept-request">Accept Chat</button>`;
+            const chatReqs = document.querySelector(".chat-requests");
+            chatReqs.prepend(req);
+            req
               .querySelector(".accept-request")
               .addEventListener("click", (e) => this.acceptChatRequest(e));
-
-            // Keep max 4 requests visible
-            const items = chatRequests.querySelectorAll(".chat-request-item");
-            if (items.length > 4) {
-              chatRequests.removeChild(chatRequests.lastElementChild);
-            }
+            const items = chatReqs.querySelectorAll(".chat-request-item");
+            if (items.length > 4)
+              chatReqs.removeChild(chatReqs.lastElementChild);
           }
-
           initProfileModal() {
             this.elements.modalClose?.addEventListener("click", () =>
               this.closeProfileModal(),
@@ -4533,73 +4419,32 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               this.toggleFavorite(e.currentTarget),
             );
           }
-
-          openProfileModal(profileId) {
-            const profile = DATA.profiles.find((p) => p.id === profileId);
-            if (!profile) return;
-            this.currentProfile = profile;
-            this.elements.modalBody.innerHTML = `
-              <div class="modal-header-section">
-                <img src="${profile.image}" alt="${profile.name}" class="modal-avatar">
-                <div>
-                  <h3 class="modal-profile-name">${profile.name}</h3>
-                  <p>${profile.age} years • ${profile.location}</p>
-                  <p>${profile.occupation}</p>
-                </div>
-              </div>
-              <div class="modal-section">
-                <h4 class="modal-section-title"><i class="fas fa-user-circle"></i> About Me</h4>
-                <p class="modal-bio">${profile.bio}</p>
-              </div>
-              <div class="modal-section">
-                <h4 class="modal-section-title"><i class="fas fa-dollar-sign"></i> Earnings & Availability</h4>
-                <div class="modal-earning-details">
-                  <div class="modal-earning-item">
-                    <div class="modal-earning-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <div><div class="modal-earning-amount">${profile.earnings}</div><div>Per Chat</div></div>
-                  </div>
-                  <div class="modal-earning-item">
-                    <div class="modal-earning-icon"><i class="fas fa-clock"></i></div>
-                    <div><div class="modal-earning-amount">${profile.availability}</div><div>Available Hours</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-section">
-                <h4 class="modal-section-title"><i class="fas fa-heart"></i> Interests</h4>
-                <div class="modal-interests">${profile.interests.map((i) => `<span class="modal-interest-tag">${i}</span>`).join("")}</div>
-              </div>
-              <div class="modal-section">
-                <h4 class="modal-section-title"><i class="fas fa-language"></i> Languages</h4>
-                <div class="modal-interests">${profile.languages.map((l) => `<span class="modal-interest-tag">${l}</span>`).join("")}</div>
-              </div>
-            `;
+          openProfileModal(id) {
+            const p = DATA.profiles.find((x) => x.id === id);
+            if (!p) return;
+            this.currentProfile = p;
+            this.elements.modalBody.innerHTML = `<div class="modal-header-section"><img src="${p.image}" alt="${p.name}" class="modal-avatar" width="110" height="110"><div><h3 class="modal-profile-name">${p.name}</h3><p>${p.age} years • ${p.location}</p><p>${p.occupation}</p></div></div><div class="modal-section"><h4 class="modal-section-title"><i class="fas fa-user-circle"></i> About Me</h4><p class="modal-bio">${p.bio}</p></div><div class="modal-section"><h4 class="modal-section-title"><i class="fas fa-dollar-sign"></i> Earnings &amp; Availability</h4><div class="modal-earning-details"><div class="modal-earning-item"><div class="modal-earning-icon"><i class="fas fa-money-bill-wave"></i></div><div><div class="modal-earning-amount">${p.earnings}</div><div>Per Chat</div></div></div><div class="modal-earning-item"><div class="modal-earning-icon"><i class="fas fa-clock"></i></div><div><div class="modal-earning-amount">${p.availability}</div><div>Available Hours</div></div></div></div></div><div class="modal-section"><h4 class="modal-section-title"><i class="fas fa-heart"></i> Interests</h4><div class="modal-interests">${p.interests.map((i) => `<span class="modal-interest-tag">${i}</span>`).join("")}</div></div><div class="modal-section"><h4 class="modal-section-title"><i class="fas fa-language"></i> Languages</h4><div class="modal-interests">${p.languages.map((l) => `<span class="modal-interest-tag">${l}</span>`).join("")}</div></div>`;
             this.elements.profileModal?.classList.add("show");
             this.elements.body.style.overflow = "hidden";
           }
-
           closeProfileModal() {
             this.elements.profileModal?.classList.remove("show");
             this.elements.body.style.overflow = "";
           }
-
-          quickChat(profileId) {
-            const profile = DATA.profiles.find((p) => p.id === profileId);
-            if (profile) {
-              Utils.showNotification(
-                `Connecting you to ${profile.name}...`,
-                "info",
-              );
+          quickChat(id) {
+            const p = DATA.profiles.find((x) => x.id === id);
+            if (p) {
+              Utils.showNotification(`Connecting to ${p.name}...`, "info");
               setTimeout(
                 () =>
                   Utils.showLoading(
-                    "Redirecting to registration...",
+                    "Redirecting...",
                     "https://mulastar.com/register.php?ref=Sydney",
                   ),
                 1500,
               );
             }
           }
-
           startChat() {
             if (this.currentProfile) {
               Utils.showNotification(
@@ -4610,45 +4455,39 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               setTimeout(
                 () =>
                   Utils.showLoading(
-                    "Redirecting to registration...",
+                    "Redirecting...",
                     "https://mulastar.com/register.php?ref=Sydney",
                   ),
                 1000,
               );
             }
           }
-
-          toggleFavorite(button) {
-            const icon = button.querySelector("i");
-            if (icon.classList.contains("far")) {
-              icon.classList.replace("far", "fas");
-              button.innerHTML =
-                '<i class="fas fa-heart"></i> Added to Favorites';
-              button.classList.add("active");
+          toggleFavorite(btn) {
+            const i = btn.querySelector("i");
+            if (i.classList.contains("far")) {
+              i.classList.replace("far", "fas");
+              btn.innerHTML = '<i class="fas fa-heart"></i> Added to Favorites';
+              btn.classList.add("active");
               Utils.showNotification("Added to favorites!", "success");
             } else {
-              icon.classList.replace("fas", "far");
-              button.innerHTML =
-                '<i class="far fa-heart"></i> Add to Favorites';
-              button.classList.remove("active");
+              i.classList.replace("fas", "far");
+              btn.innerHTML = '<i class="far fa-heart"></i> Add to Favorites';
+              btn.classList.remove("active");
               Utils.showNotification("Removed from favorites", "info");
             }
           }
-
           initRegisterLinks() {
-            document.querySelectorAll(".register-link").forEach((link) => {
-              link.addEventListener("click", (e) => {
+            document.querySelectorAll(".register-link").forEach((l) =>
+              l.addEventListener("click", (e) => {
                 e.preventDefault();
                 Utils.showLoading(
                   "Preparing your account...",
-                  link.dataset.url ||
+                  l.dataset.url ||
                     "https://mulastar.com/register.php?ref=Sydney",
                 );
-              });
-            });
+              }),
+            );
           }
-
-          // ===== UPDATED SOCIAL PROOF: Realistic amounts =====
           initSocialProof() {
             const names = [
               "Sarah from Nairobi",
@@ -4672,41 +4511,27 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               "Faith from Blantyre",
               "Samuel from Eldoret",
               "Fatima from Casablanca",
-"Omar from Cairo",
-"Amara from Freetown",
-"Kofi from Takoradi",
-"Blessing from Benin City",
-"Tunde from Port Harcourt",
-"Zanele from Durban",
-"Moussa from Bamako",
-"Amina from Khartoum",
-"Elias from Addis Ababa",
-"Doreen from Kisumu",
-"Chidi from Enugu",
-"Hassan from Giza",
-"Leila from Tunis",
-"Kwame from Tema",
-"Sipho from Pretoria",
-"Binta from Banjul",
-"George from Monrovia",
-"Prudence from Harare",
-"Ishmael from Windhoek",
+              "Omar from Cairo",
+              "Amara from Freetown",
+              "Kofi from Takoradi",
+              "Blessing from Benin City",
             ];
             const actions = [
               { icon: "fa-user-plus", text: "just activated their account" },
-              { icon: "fa-comment",
+              {
+                icon: "fa-comment",
                 text: "started chatting with a new client",
               },
               {
                 icon: "fa-dollar-sign",
                 text: "earned $3 from a completed chat",
-              }, // UPDATED
+              },
               {
                 icon: "fa-check-circle",
                 text: "completed 5 chats today — earned $15",
-              }, // UPDATED
-              { icon: "fa-coins", text: "withdrew $9 via Mobile Money" }, // UPDATED
-              { icon: "fa-wallet", text: "received a $6 payout" }, // UPDATED
+              },
+              { icon: "fa-coins", text: "withdrew $9 via Mobile Money" },
+              { icon: "fa-wallet", text: "received a $6 payout" },
               {
                 icon: "fa-star",
                 text: "received a 5-star rating from a client",
@@ -4715,68 +4540,30 @@ It's fully flexible. You decide your schedule and how much you want to earn.`,
               {
                 icon: "fa-trophy",
                 text: "completed all 10 daily chats — earned $30",
-              }, // UPDATED
-              { icon: "fa-money-bill-wave", text: "withdrew $30 successfully" }, // UPDATED
+              },
+              { icon: "fa-money-bill-wave", text: "withdrew $30 successfully" },
               {
                 icon: "fa-thumbs-up",
                 text: "got positive feedback from a client",
               },
               { icon: "fa-globe", text: "connected with a client from the UK" },
-              {
-                icon: "fa-gift",
-                text: "earned a bonus for being active today",
-              },
-              { icon: "fa-user-check", text: "just verified their profile" },
-{ icon: "fa-rocket", text: "reached Level 2 status!" },
-{ icon: "fa-hand-holding-usd", text: "earned $4.50 from a premium chat" },
-{ icon: "fa-chart-line", text: "just hit their weekly earning goal" },
-{ icon: "fa-users", text: "referred a friend and earned a bonus" },
-{ icon: "fa-medal", text: "ranked in the top 50 chatters today" },
-{ icon: "fa-piggy-bank", text: "saved $50 in total earnings this month" },
-{ icon: "fa-shield-alt", text: "secured their account with 2FA" },
-{ icon: "fa-heart", text: "added to a client's favorites list" },
-{ icon: "fa-mobile-alt", text: "is chatting via the mobile app" },
-{ icon: "fa-crown", text: "unlocked the 'Pro Talker' badge" },
-{ icon: "fa-history", text: "just completed their 50th chat!" },
-{ icon: "fa-paper-plane", text: "sent a message to a global client" },
-{ icon: "fa-percentage", text: "received a $2 loyalty tip" },
-{ icon: "fa-smile", text: "made a new connection in Europe" },
-{ icon: "fa-clock", text: "has been active for 3 hours straight" },
-{ icon: "fa-university", text: "withdrew $25 via Bank Transfer" },
-{ icon: "fa-gem", text: "redeemed activity points for a $5 credit" },
-{ icon: "fa-lightbulb", text: "completed the 'How to Earn' tutorial" },
-{ icon: "fa-fire", text: "is on a 7-day earning streak!" },
+              { icon: "fa-fire", text: "is on a 7-day earning streak!" },
+              { icon: "fa-crown", text: "unlocked the 'Pro Talker' badge" },
             ];
-
-            const showProof = () => {
+            const show = () => {
               if (!this.elements.socialProofContainer) return;
-
-              const name = names[Math.floor(Math.random() * names.length)];
-              const action =
-                actions[Math.floor(Math.random() * actions.length)];
-
+              const name = names[Math.floor(Math.random() * names.length)],
+                action = actions[Math.floor(Math.random() * actions.length)];
               const item = document.createElement("div");
               item.className = "social-proof-item";
-              item.innerHTML = `
-                <div class="icon-circle">
-                  <i class="fas ${action.icon}"></i>
-                </div>
-                <div>
-                  <strong>${name}</strong> ${action.text}
-                  <span>${Math.floor(Math.random() * 2) + 1} min ago</span>
-                </div>
-              `;
-
+              item.innerHTML = `<div class="icon-circle"><i class="fas ${action.icon}"></i></div><div><strong>${name}</strong> ${action.text}<span>${Math.floor(Math.random() * 2) + 1} min ago</span></div>`;
               this.elements.socialProofContainer.appendChild(item);
-
               setTimeout(() => {
                 if (item.parentNode) item.remove();
               }, 8000);
             };
-
-            // First notification after 20 seconds
-            setTimeout(showProof, 20000);
-            setInterval(showProof, CONFIG.SOCIAL_PROOF_INTERVAL);
+            setTimeout(show, 20000);
+            setInterval(show, CONFIG.SOCIAL_PROOF_INTERVAL);
           }
         }
 
