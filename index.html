@@ -78,6 +78,7 @@
         --r-2xl: 28px;
         --r-full: 9999px;
         --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-h: 68px;
       }
       html {
         font-size: 16px;
@@ -107,7 +108,7 @@
         width: 100%;
         max-width: 1240px;
         margin: 0 auto;
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
       }
       @media (min-width: 768px) {
         .container {
@@ -163,14 +164,18 @@
         font-family: var(--font-mono);
       }
 
-      /* NAV */
+      /* ═══════════════════════════════════════
+         NAV — IMPROVED RESPONSIVE
+      ═══════════════════════════════════════ */
       .nav {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 1000;
-        padding: 0.875rem 0;
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
         background: rgba(247, 249, 252, 0.92);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid transparent;
@@ -179,19 +184,21 @@
       .nav.scrolled {
         border-bottom-color: var(--border);
         box-shadow: var(--shadow-sm);
-        background: rgba(255, 255, 255, 0.96);
+        background: rgba(255, 255, 255, 0.97);
       }
       .nav-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
+        gap: 0.75rem;
+        width: 100%;
       }
       .logo {
         display: flex;
         align-items: center;
         gap: 0.625rem;
         text-decoration: none;
+        flex-shrink: 0;
       }
       .logo-mark {
         width: 36px;
@@ -203,6 +210,7 @@
         justify-content: center;
         box-shadow: var(--shadow-blue);
         overflow: hidden;
+        flex-shrink: 0;
       }
       .logo-mark img {
         width: 100%;
@@ -211,7 +219,7 @@
       }
       .logo-name {
         font-family: var(--font-display);
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 800;
         letter-spacing: 0.08em;
         color: var(--text);
@@ -219,6 +227,8 @@
       .logo-name span {
         color: var(--blue);
       }
+
+      /* Desktop links */
       .nav-links {
         display: none;
       }
@@ -238,6 +248,7 @@
           border-radius: var(--r-full);
           transition: all var(--transition);
           letter-spacing: 0.03em;
+          white-space: nowrap;
         }
         .nav-links a:hover {
           color: var(--blue);
@@ -247,8 +258,41 @@
       .nav-actions {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.625rem;
+        flex-shrink: 0;
       }
+
+      /* Register btn — smaller on mobile */
+      .nav-reg-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
+        border-radius: var(--r-full);
+        font-weight: 600;
+        font-size: 0.8rem;
+        font-family: var(--font-display);
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--blue), var(--blue2));
+        color: #fff;
+        box-shadow: var(--shadow-blue);
+        transition: all var(--transition);
+        white-space: nowrap;
+        letter-spacing: 0.03em;
+      }
+      .nav-reg-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(26, 86, 219, 0.35);
+      }
+      @media (max-width: 380px) {
+        .nav-reg-btn span.reg-label {
+          display: none;
+        }
+      }
+
+      /* HAMBURGER */
       .hamburger {
         display: flex;
         flex-direction: column;
@@ -257,6 +301,10 @@
         padding: 0.5rem;
         border-radius: var(--r-sm);
         transition: background var(--transition);
+        background: none;
+        border: none;
+        -webkit-tap-highlight-color: transparent;
+        flex-shrink: 0;
       }
       @media (min-width: 960px) {
         .hamburger {
@@ -268,40 +316,50 @@
       }
       .hamburger span {
         display: block;
-        width: 18px;
+        width: 20px;
         height: 2px;
         background: var(--text-mid);
         border-radius: 2px;
-        transition: all var(--transition);
+        transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
       }
       .hamburger.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: translateY(7px) rotate(45deg);
       }
       .hamburger.open span:nth-child(2) {
         opacity: 0;
+        transform: scaleX(0);
       }
       .hamburger.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: translateY(-7px) rotate(-45deg);
       }
+
+      /* MOBILE NAV OVERLAY */
       .mobile-nav {
         position: fixed;
-        top: 64px;
+        top: var(--nav-h);
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.99);
+        backdrop-filter: blur(24px);
         z-index: 999;
         display: flex;
         flex-direction: column;
-        padding: 1.5rem;
-        gap: 0.375rem;
+        padding: 1.5rem 1.25rem 2rem;
+        gap: 0.25rem;
         transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
         border-top: 1px solid var(--border);
+        overflow-y: auto;
       }
       .mobile-nav.open {
         transform: translateX(0);
+      }
+      @media (min-width: 960px) {
+        .mobile-nav {
+          display: none !important;
+        }
       }
       .mobile-nav a {
         color: var(--text-mid);
@@ -312,10 +370,33 @@
         padding: 0.875rem 1rem;
         border-radius: var(--r-lg);
         transition: all var(--transition);
+        display: block;
       }
       .mobile-nav a:hover {
         color: var(--blue);
         background: var(--blue-light);
+      }
+      .mobile-nav-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 0.5rem 0;
+      }
+      .mobile-nav-register {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-radius: var(--r-lg);
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--blue), var(--blue2));
+        color: #fff;
+        text-decoration: none;
+        margin-top: auto;
+        letter-spacing: 0.04em;
+        box-shadow: var(--shadow-blue);
       }
 
       /* BUTTONS */
@@ -354,29 +435,6 @@
       .btn-outline:hover {
         border-color: var(--blue);
         background: var(--blue-light);
-      }
-      .btn-cyan {
-        background: linear-gradient(135deg, var(--cyan), #38bdf8);
-        color: #fff;
-      }
-      .btn-cyan:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
-      }
-      .btn-green {
-        background: linear-gradient(135deg, var(--green), #10b981);
-        color: #fff;
-      }
-      .btn-green:hover {
-        transform: translateY(-2px);
-      }
-      .btn-wa {
-        background: #25d366;
-        color: #fff;
-      }
-      .btn-wa:hover {
-        background: #1fa352;
-        transform: translateY(-2px);
       }
       .btn-lg {
         padding: 0.875rem 2rem;
@@ -513,7 +571,7 @@
       }
       .hero h1 {
         font-family: var(--font-display);
-        font-size: clamp(2.6rem, 6.5vw, 5rem);
+        font-size: clamp(2.4rem, 6.5vw, 5rem);
         font-weight: 800;
         line-height: 1.08;
         letter-spacing: -0.02em;
@@ -1500,7 +1558,9 @@
         background: var(--blue-light);
       }
 
-      /* REQUESTS */
+      /* ═══════════════════════════════════════
+         LIVE REQUESTS — REDESIGNED
+      ═══════════════════════════════════════ */
       .requests-section {
         background: var(--bg);
       }
@@ -1515,66 +1575,223 @@
           grid-template-columns: 1fr 1fr;
         }
       }
+
+      /* Header stats row */
+      .req-stats-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+      }
+      .req-stat-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--r-full);
+        padding: 0.35rem 0.875rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        font-family: var(--font-display);
+        color: var(--text-mid);
+      }
+      .req-stat-pill i {
+        font-size: 0.68rem;
+      }
+      .req-stat-pill.green i,
+      .req-stat-pill.green {
+        color: var(--green);
+      }
+      .req-stat-pill.blue i,
+      .req-stat-pill.blue {
+        color: var(--blue);
+      }
+      .req-stat-pill.gold i,
+      .req-stat-pill.gold {
+        color: var(--gold);
+      }
+
+      /* Request card — improved */
       .request-card {
         background: var(--white);
         border: 1px solid var(--border);
         border-radius: var(--r-xl);
         overflow: hidden;
         transition: all var(--transition);
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.875rem;
         box-shadow: var(--shadow-sm);
+        position: relative;
+      }
+      .request-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, var(--blue), var(--cyan));
+        opacity: 0;
+        transition: opacity var(--transition);
       }
       .request-card:hover {
         border-color: var(--blue-mid);
-        box-shadow: var(--shadow);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
       }
+      .request-card:hover::before {
+        opacity: 1;
+      }
+
       .request-head {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 0.875rem 1.125rem;
-        background: var(--bg);
-        border-bottom: 1px solid var(--border);
+        gap: 0.875rem;
+        padding: 1rem 1.125rem 0.875rem;
+        position: relative;
+      }
+      .req-avatar-wrap {
+        position: relative;
+        flex-shrink: 0;
       }
       .request-avatar {
-        width: 40px;
-        height: 40px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         object-fit: cover;
-        flex-shrink: 0;
+        border: 2.5px solid var(--border);
+        display: block;
+        background: var(--bg2);
+      }
+      .req-country-flag {
+        position: absolute;
+        bottom: -2px;
+        right: -4px;
+        font-size: 0.95rem;
+        line-height: 1;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+      }
+      .req-online-ring {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        right: 1px;
+        bottom: 1px;
+        border-radius: 50%;
+        border: 2px solid var(--green);
+        animation: onlineRing 2.5s ease-in-out infinite;
+        pointer-events: none;
+      }
+      @keyframes onlineRing {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .req-online-ring.offline {
+        border-color: var(--border-mid);
+        animation: none;
+      }
+
+      .request-info {
+        flex: 1;
+        min-width: 0;
       }
       .request-name {
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         color: var(--text);
+        margin-bottom: 0.1rem;
       }
-      .request-loc {
+      .request-meta {
         font-size: 0.7rem;
         color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        flex-wrap: wrap;
       }
+      .req-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--border-mid);
+        display: inline-block;
+      }
+
       .request-earn {
-        margin-left: auto;
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        font-weight: 700;
+        flex-shrink: 0;
+        font-family: var(--font-display);
+        font-size: 0.88rem;
+        font-weight: 800;
         color: var(--green);
         background: var(--green-light);
-        padding: 0.2rem 0.5rem;
+        padding: 0.3rem 0.7rem;
         border-radius: var(--r-full);
-        border: 1px solid rgba(5, 150, 105, 0.15);
+        border: 1.5px solid rgba(5, 150, 105, 0.2);
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-      .request-body {
-        padding: 0.75rem 1.125rem;
+      .request-earn span {
+        font-size: 0.58rem;
+        font-weight: 600;
+        opacity: 0.75;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-top: 0.1rem;
+      }
+
+      .req-topic-area {
+        padding: 0.625rem 1.125rem;
+        border-top: 1px solid var(--bg2);
+      }
+      .req-topic-bubble {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0 var(--r-lg) var(--r-lg) var(--r-lg);
+        padding: 0.5rem 0.75rem;
         font-size: 0.82rem;
         color: var(--text-mid);
+        line-height: 1.5;
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
       }
+      .req-topic-bubble::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 10px;
+        height: 10px;
+        background: var(--border);
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+      }
+      .req-topic-bubble::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 9px;
+        height: 9px;
+        background: var(--bg);
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+      }
+
       .request-foot {
         padding: 0.75rem 1.125rem;
         display: flex;
-        gap: 0.625rem;
+        gap: 0.5rem;
         border-top: 1px solid var(--border);
         align-items: center;
+        background: rgba(247, 249, 252, 0.5);
       }
       .request-time {
         font-size: 0.66rem;
@@ -1585,26 +1802,77 @@
         gap: 0.25rem;
         font-family: var(--font-mono);
       }
-      .section-image {
-        border-radius: var(--r-xl);
-        overflow: hidden;
-        height: 380px;
+
+      /* Request panel image side */
+      .requests-visual-panel {
+        background: var(--white);
         border: 1px solid var(--border);
-        box-shadow: var(--shadow);
+        border-radius: var(--r-2xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        flex-direction: column;
       }
-      .section-image img {
+      .req-visual-img {
         width: 100%;
-        height: 100%;
+        height: 280px;
         object-fit: cover;
+        display: block;
+      }
+      @media (min-width: 900px) {
+        .req-visual-img {
+          height: 220px;
+        }
+      }
+      .req-visual-stats {
+        padding: 1.25rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+      .req-vs-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: 0.875rem;
+        text-align: center;
+        transition: all var(--transition);
+      }
+      .req-vs-card:hover {
+        border-color: var(--blue-mid);
+        background: var(--white);
+      }
+      .req-vs-val {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--blue);
+        letter-spacing: -0.02em;
+      }
+      .req-vs-lbl {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--text-faint);
+        margin-top: 0.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-family: var(--font-display);
+      }
+      .req-vs-card.green .req-vs-val {
+        color: var(--green);
+      }
+      .req-vs-card.gold .req-vs-val {
+        color: var(--gold);
+      }
+      .req-visual-cta {
+        padding: 1rem 1.25rem;
+        border-top: 1px solid var(--border);
       }
 
-      /* ═══════════════════════════════════════════════════ */
-      /* WHY SECTION — Redesigned Bento Layout              */
-      /* ═══════════════════════════════════════════════════ */
+      /* WHY SECTION */
       .why-section {
         background: var(--white);
       }
-
       .why-bento {
         display: grid;
         grid-template-columns: 1fr;
@@ -1621,7 +1889,6 @@
           grid-template-columns: repeat(4, 1fr);
         }
       }
-
       .why-card {
         background: var(--bg);
         border: 1px solid var(--border);
@@ -1655,7 +1922,6 @@
       .why-card:hover::before {
         transform: scaleX(1);
       }
-
       .why-card-num {
         font-family: var(--font-display);
         font-size: 4.5rem;
@@ -1725,8 +1991,6 @@
         margin-top: auto;
         width: fit-content;
       }
-
-      /* INFO BOXES — horizontal row */
       .why-info-row {
         display: grid;
         grid-template-columns: 1fr;
@@ -1738,7 +2002,6 @@
           grid-template-columns: 1fr 1fr;
         }
       }
-
       .info-box {
         background: var(--bg);
         border: 1px solid var(--border);
@@ -2679,6 +2942,12 @@
         .hero {
           padding: 6rem 0 3rem;
         }
+        .offer-modal-body {
+          padding: 1.25rem;
+        }
+        .offer-new-price {
+          font-size: 3rem;
+        }
       }
       @media (prefers-reduced-motion: reduce) {
         *,
@@ -2780,13 +3049,13 @@
         <div class="offer-modal-body">
           <div style="text-align: center">
             <span class="offer-badge"
-              ><i class="fas fa-fire"></i>
-              <span id="offerBadgeText">VERIFY TO CONTINUE</span></span
+              ><i class="fas fa-fire"></i
+              ><span id="offerBadgeText">VERIFY TO CONTINUE</span></span
             >
           </div>
           <div class="offer-pricing">
             <div class="offer-old-label">
-              One-time fee to unlock all featutes
+              One-time fee to unlock all features
             </div>
             <div class="offer-old-price" id="offerOldPrice">KSH 650</div>
             <div class="offer-new-price" id="offerNewPrice">KSH 500</div>
@@ -2831,8 +3100,8 @@
             data-url="https://mulastar.com/register.php?ref=Sydney"
             id="offerCta"
           >
-            <i class="fas fa-bolt"></i>
-            <span id="offerCtaText">Register Now — KSH 500 </span>
+            <i class="fas fa-bolt"></i
+            ><span id="offerCtaText">Register Now — KSH 500</span>
           </a>
         </div>
         <div class="offer-modal-footer">
@@ -2907,7 +3176,7 @@
             </div>
             <span class="logo-name">MULA<span>STAR</span></span>
           </a>
-          <nav class="nav-links">
+          <nav class="nav-links" aria-label="Main navigation">
             <a href="#how-it-works">How It Works</a>
             <a href="#countries">Countries</a>
             <a href="#features">Features</a>
@@ -2917,31 +3186,41 @@
           <div class="nav-actions">
             <a
               href="javascript:void(0)"
-              class="btn btn-primary register-link"
+              class="nav-reg-btn register-link"
               data-url="https://mulastar.com/register.php?ref=Sydney"
-              ><i class="fas fa-rocket"></i> Register</a
             >
-            <div class="hamburger" id="hamburger">
+              <i class="fas fa-rocket"></i
+              ><span class="reg-label">Register</span>
+            </a>
+            <button
+              class="hamburger"
+              id="hamburger"
+              aria-label="Toggle menu"
+              aria-expanded="false"
+              aria-controls="mobileNav"
+            >
               <span></span><span></span><span></span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
     </header>
 
-    <nav class="mobile-nav" id="mobileNav">
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
       <a href="#how-it-works">How It Works</a>
       <a href="#countries">Countries</a>
       <a href="#features">Features</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
+      <div class="mobile-nav-divider"></div>
       <a
         href="javascript:void(0)"
-        class="btn btn-primary register-link"
-        style="margin-top: 1rem"
+        class="mobile-nav-register register-link"
         data-url="https://mulastar.com/register.php?ref=Sydney"
-        ><i class="fas fa-rocket"></i> Register Now</a
       >
+        <i class="fas fa-rocket"></i> Register Now — Only $5
+      </a>
     </nav>
 
     <!-- HERO -->
@@ -3175,31 +3454,76 @@
       </div>
     </section>
 
-    <!-- CHAT REQUESTS -->
+    <!-- CHAT REQUESTS — REDESIGNED -->
     <section class="requests-section section">
       <div class="container">
         <div class="section-head fade-up">
           <div class="section-label">Live Requests</div>
           <h2 class="section-title">Real people, <em>ready to chat</em></h2>
           <p class="section-sub">
-            These requests are waiting for an earner like you right now. Every
-            accepted chat = $3.
+            New requests arriving every few minutes. Every accepted and
+            completed chat = $3 straight to your account.
           </p>
         </div>
         <div class="requests-wrap">
-          <div id="chatRequestsList"></div>
-          <div class="section-image">
+          <div>
+            <!-- Stats pills row -->
+            <div class="req-stats-row">
+              <span class="req-stat-pill green"
+                ><i class="fas fa-circle" style="font-size: 0.5rem"></i>
+                <span id="activeReqCount">847</span> requests live</span
+              >
+              <span class="req-stat-pill blue"
+                ><i class="fas fa-bolt"></i> Avg wait: 2 min</span
+              >
+              <span class="req-stat-pill gold"
+                ><i class="fas fa-dollar-sign"></i> $3 per chat</span
+              >
+            </div>
+            <div id="chatRequestsList"></div>
+          </div>
+          <!-- Visual panel -->
+          <div class="requests-visual-panel fade-up">
             <img
               src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771731493/Earn_money_chatting_with_lonely_people_oatsrl.png"
-              alt="Person chatting online"
+              alt="Person chatting online and earning"
+              class="req-visual-img"
               loading="lazy"
             />
+            <div class="req-visual-stats">
+              <div class="req-vs-card">
+                <div class="req-vs-val" data-count="15200">0</div>
+                <div class="req-vs-lbl">Active Earners</div>
+              </div>
+              <div class="req-vs-card green">
+                <div class="req-vs-val">$3</div>
+                <div class="req-vs-lbl">Per Chat</div>
+              </div>
+              <div class="req-vs-card gold">
+                <div class="req-vs-val">$270</div>
+                <div class="req-vs-lbl">Max/Month</div>
+              </div>
+              <div class="req-vs-card">
+                <div class="req-vs-val">150+</div>
+                <div class="req-vs-lbl">Countries</div>
+              </div>
+            </div>
+            <div class="req-visual-cta">
+              <a
+                href="javascript:void(0)"
+                class="btn btn-primary register-link"
+                data-url="https://mulastar.com/register.php?ref=Sydney"
+                style="width: 100%; justify-content: center"
+              >
+                <i class="fas fa-rocket"></i> Start Accepting Requests
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY MULASTAR — REDESIGNED -->
+    <!-- WHY MULASTAR -->
     <section class="why-section section" id="features">
       <div class="container">
         <div class="section-head center fade-up">
@@ -3210,8 +3534,6 @@
             and your time.
           </p>
         </div>
-
-        <!-- BENTO REASONS GRID -->
         <div class="why-bento">
           <div class="why-card fade-up">
             <div class="why-card-num">01</div>
@@ -3276,8 +3598,6 @@
             >
           </div>
         </div>
-
-        <!-- INFO BOXES — Side by Side -->
         <div class="why-info-row">
           <div class="info-box fade-up">
             <div class="info-box-header">
@@ -3771,7 +4091,7 @@
           },
           {
             q: "Why pay $5 registration?",
-            a: "The $5 activation fee covers account verification, platform setup, and your permanent access. However, most earners recover this within their first day of chatting.",
+            a: "The $5 activation fee covers account verification, platform setup, and your permanent access. Most earners recover this within their first day of chatting.",
           },
           {
             q: "Can I do this from my phone?",
@@ -3779,30 +4099,46 @@
           },
           {
             q: "Is this legitimate?",
-            a: "Yes, It is legally registered and currently operates in 12+ African countries. Over 15,000 active earners are paid daily. We've paid out over $2.5 million to members globally.",
+            a: "Yes. It is legally registered and currently operates in 12+ African countries. Over 15,000 active earners are paid daily. We've paid out over $2.5 million to members globally.",
           },
         ];
 
-        const CHAT_REQUESTS = [
+        // Chat requests with richer data including real avatar images
+        const CHAT_REQUESTS_INIT = [
           {
             name: "Alex",
-            country: "USA",
-            topic: "Looking for a travel conversation partner 🌍",
+            age: 52,
+            country: "United States",
+            flag: "🇺🇸",
+            topic:
+              "Looking for a travel conversation partner 🌍 — been wanting to visit Africa",
             time: "2 min ago",
+            online: true,
+            occupation: "Retired Consultant",
             img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
           },
           {
             name: "Maria",
+            age: 48,
             country: "Spain",
-            topic: "Casual English conversation — culture exchange ☕",
+            flag: "🇪🇸",
+            topic:
+              "Casual English + culture exchange ☕ — love learning about different traditions",
             time: "5 min ago",
+            online: true,
+            occupation: "Teacher",
             img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
           },
           {
             name: "John",
-            country: "UK",
-            topic: "Tell me about traditions in your country 🎉",
+            age: 61,
+            country: "United Kingdom",
+            flag: "🇬🇧",
+            topic:
+              "Tell me about traditions in your country 🎉 — a genuine listener",
             time: "10 min ago",
+            online: true,
+            occupation: "Retired Engineer",
             img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
           },
         ];
@@ -3848,33 +4184,50 @@
           }
         });
 
-        // MOBILE NAV
+        // ═══════════════════════════════════════
+        // MOBILE NAV — IMPROVED
+        // ═══════════════════════════════════════
         const ham = $id("hamburger"),
           mNav = $id("mobileNav");
-        ham?.addEventListener("click", () => {
-          ham.classList.toggle("open");
-          mNav.classList.toggle("open");
-          document.body.style.overflow = mNav.classList.contains("open")
-            ? "hidden"
-            : "";
+        function openMobileNav() {
+          ham.classList.add("open");
+          mNav.classList.add("open");
+          ham.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMobileNav() {
+          ham.classList.remove("open");
+          mNav.classList.remove("open");
+          ham.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+        ham?.addEventListener("click", (e) => {
+          e.stopPropagation();
+          mNav.classList.contains("open") ? closeMobileNav() : openMobileNav();
         });
-        mNav?.querySelectorAll("a").forEach((a) =>
-          a.addEventListener("click", () => {
-            ham.classList.remove("open");
-            mNav.classList.remove("open");
-            document.body.style.overflow = "";
-          }),
-        );
+        // Close when clicking a link
+        mNav
+          ?.querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", closeMobileNav));
+        // Close when clicking outside
         document.addEventListener("click", (e) => {
           if (
             mNav &&
+            mNav.classList.contains("open") &&
             !mNav.contains(e.target) &&
-            ham &&
             !ham.contains(e.target)
           ) {
-            ham.classList.remove("open");
-            mNav.classList.remove("open");
-            document.body.style.overflow = "";
+            closeMobileNav();
+          }
+        });
+        // Close on ESC
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeMobileNav();
+            closeVM();
+            closeModal();
+            closeChatModal();
+            closeOfferModal();
           }
         });
 
@@ -3906,6 +4259,15 @@
             lc = Math.max(1000, lc + Math.floor(Math.random() * 20) - 5);
             lcEl.textContent = fmt(lc);
           }, 8000);
+
+        // Active request counter
+        let arc = 847;
+        const arcEl = $id("activeReqCount");
+        if (arcEl)
+          setInterval(() => {
+            arc = Math.max(500, arc + Math.floor(Math.random() * 12) - 3);
+            arcEl.textContent = fmt(arc);
+          }, 6000);
 
         // COUNT ANIMATION
         const cntObs = new IntersectionObserver(
@@ -3953,14 +4315,14 @@
           "$5 Registration Fee",
           "$3 Per Chat",
           "150+ Countries",
-          "daily Payouts",
+          "Daily Payouts",
           "4.8★ Rating",
           "24/7 Support",
           "No Monthly Fees",
           "Instant Setup",
           "Flexible Hours",
           "M-Pesa Payouts",
-          "No withdrawal fees",
+          "No Withdrawal Fees",
           "Chat from Anywhere",
         ];
         const track = $id("tickerTrack");
@@ -4009,22 +4371,9 @@
           $id("cookieBar")?.classList.remove("show");
         });
 
-        // ESC KEY
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            closeVM();
-            closeModal();
-            closeChatModal();
-            closeOfferModal();
-          }
-        });
-
-        // ═══════════════════════════════════════
         // OFFER MODAL
-        // ═══════════════════════════════════════
-        const offerModalOverlay = $id("offerModalOverlay");
-        const offerModalClose = $id("offerModalClose");
-
+        const offerModalOverlay = $id("offerModalOverlay"),
+          offerModalClose = $id("offerModalClose");
         function openOfferModal(c) {
           $id("offerFlag").textContent = c.flag;
           $id("offerCountryName").textContent = c.name;
@@ -4053,9 +4402,6 @@
         offerModalOverlay?.addEventListener("click", (e) => {
           if (e.target === offerModalOverlay) closeOfferModal();
         });
-
-        // Track selected country from countries section
-        // Default to Kenya if no country selected
         window._selectedCountry = COUNTRIES[0];
 
         // COUNTRIES
@@ -4065,21 +4411,12 @@
             const card = document.createElement("div");
             card.className = "country-card fade-up";
             card.style.transitionDelay = i * 0.04 + "s";
-            card.innerHTML = `
-            <div class="country-card-bg" style="background-image:url('${c.img}')"></div>
-            <div class="country-card-overlay"></div>
-            <div class="country-card-content">
-              <div class="country-flag">${c.flag}</div>
-              <div class="country-name">${c.name}</div>
-              <div class="country-fee-display">${c.regFee}</div>
-            </div>
-            <div class="country-select-btn"><i class="fas fa-arrow-right"></i></div>`;
+            card.innerHTML = `<div class="country-card-bg" style="background-image:url('${c.img}')"></div><div class="country-card-overlay"></div><div class="country-card-content"><div class="country-flag">${c.flag}</div><div class="country-name">${c.name}</div><div class="country-fee-display">${c.regFee}</div></div><div class="country-select-btn"><i class="fas fa-arrow-right"></i></div>`;
             card.addEventListener("click", () => {
               document
                 .querySelectorAll(".country-card")
                 .forEach((x) => x.classList.remove("active"));
               card.classList.add("active");
-              // Store selected country globally so chat flow can use it
               window._selectedCountry = c;
               openOfferModal(c);
             });
@@ -4099,14 +4436,7 @@
           const p = PROFILES.find((x) => x.id === id);
           if (!p) return;
           currentProfile = p;
-          modalBody.innerHTML = `
-          <div class="modal-hero"><img src="${p.image}" alt="${p.name}" class="modal-avatar" width="76" height="76"/>
-          <div><div class="modal-name">${p.name}, ${p.age}</div><div class="modal-sub">${p.occupation} · ${p.location}</div>
-          <div style="color:var(--gold);font-size:.78rem;margin-top:.3rem">${stars(p.rating)} <span style="color:var(--text-muted)">${p.rating} · ${p.chats} chats</span></div></div></div>
-          <div class="modal-section"><div class="modal-section-title">About</div><p class="modal-bio">${p.bio}</p></div>
-          <div class="modal-section"><div class="modal-section-title">Interests</div><div class="modal-tags">${p.interests.map((i) => `<span class="modal-tag">${i}</span>`).join("")}</div></div>
-          <div class="modal-section"><div class="modal-section-title">Languages</div><div class="modal-tags">${p.languages.map((l) => `<span class="modal-tag">${l}</span>`).join("")}</div></div>
-          <div class="modal-section"><div class="modal-section-title">Availability & Rate</div><p style="font-size:.875rem;color:var(--text-muted)">${p.availability} · <span style="color:var(--green);font-weight:700">$3 per chat</span></p></div>`;
+          modalBody.innerHTML = `<div class="modal-hero"><img src="${p.image}" alt="${p.name}" class="modal-avatar" width="76" height="76"/><div><div class="modal-name">${p.name}, ${p.age}</div><div class="modal-sub">${p.occupation} · ${p.location}</div><div style="color:var(--gold);font-size:.78rem;margin-top:.3rem">${stars(p.rating)} <span style="color:var(--text-muted)">${p.rating} · ${p.chats} chats</span></div></div></div><div class="modal-section"><div class="modal-section-title">About</div><p class="modal-bio">${p.bio}</p></div><div class="modal-section"><div class="modal-section-title">Interests</div><div class="modal-tags">${p.interests.map((i) => `<span class="modal-tag">${i}</span>`).join("")}</div></div><div class="modal-section"><div class="modal-section-title">Languages</div><div class="modal-tags">${p.languages.map((l) => `<span class="modal-tag">${l}</span>`).join("")}</div></div><div class="modal-section"><div class="modal-section-title">Availability & Rate</div><p style="font-size:.875rem;color:var(--text-muted)">${p.availability} · <span style="color:var(--green);font-weight:700">$3 per chat</span></p></div>`;
           modalOverlay.classList.add("show");
           document.body.style.overflow = "hidden";
         }
@@ -4149,22 +4479,12 @@
                   ? "badge-featured"
                   : "badge-new";
             const bl = p.status.charAt(0).toUpperCase() + p.status.slice(1);
-            card.innerHTML = `
-            <div class="profile-card-top-bar"></div>
-            <div class="profile-head"><span class="profile-badge ${bc}">${bl}</span><span class="online-dot ${p.online ? "on" : "off"}"></span></div>
-            <div class="profile-body">
-              <img src="${p.image}" alt="${p.name}" class="profile-avatar" loading="lazy" width="56" height="56"/>
-              <div><div class="profile-name">${p.name}, ${p.age}</div><div class="profile-meta">${p.occupation}<br/>${p.location}</div>
-              <div class="profile-rating">${stars(p.rating)} <span style="color:var(--text-faint);font-size:.68rem;margin-left:.2rem">${p.rating}</span></div></div>
-            </div>
-            <div class="profile-chips">${p.interests
+            card.innerHTML = `<div class="profile-card-top-bar"></div><div class="profile-head"><span class="profile-badge ${bc}">${bl}</span><span class="online-dot ${p.online ? "on" : "off"}"></span></div><div class="profile-body"><img src="${p.image}" alt="${p.name}" class="profile-avatar" loading="lazy" width="56" height="56"/><div><div class="profile-name">${p.name}, ${p.age}</div><div class="profile-meta">${p.occupation}<br/>${p.location}</div><div class="profile-rating">${stars(p.rating)} <span style="color:var(--text-faint);font-size:.68rem;margin-left:.2rem">${p.rating}</span></div></div></div><div class="profile-chips">${p.interests
               .slice(0, 3)
               .map((i) => `<span class="chip">${i}</span>`)
-              .join("")}</div>
-            <div class="profile-actions">
-              <button class="btn-card btn-card-primary open-chat-btn"><i class="fas fa-comment"></i> Chat</button>
-              <button class="btn-card btn-card-ghost view-detail-btn"><i class="fas fa-eye"></i> Details</button>
-            </div>`;
+              .join(
+                "",
+              )}</div><div class="profile-actions"><button class="btn-card btn-card-primary open-chat-btn"><i class="fas fa-comment"></i> Chat</button><button class="btn-card btn-card-ghost view-detail-btn"><i class="fas fa-eye"></i> Details</button></div>`;
             card
               .querySelector(".open-chat-btn")
               .addEventListener("click", (e) => {
@@ -4184,7 +4504,6 @@
         }
 
         // CHAT MODAL
-        // After first reply → close chat → open offer modal (not direct redirect)
         let chatProfile = null,
           chatReplied = false,
           chatTypingTimeout = null;
@@ -4193,7 +4512,6 @@
           chatInput = $id("chatModalInput"),
           chatSend = $id("chatModalSend"),
           chatClose = $id("chatModalClose");
-
         function openChatModal(profile) {
           chatProfile = profile;
           chatReplied = false;
@@ -4220,7 +4538,6 @@
         chatOverlay?.addEventListener("click", (e) => {
           if (e.target === chatOverlay) closeChatModal();
         });
-
         function addMsg(side, text) {
           const now = new Date(),
             time =
@@ -4259,10 +4576,8 @@
                   "them",
                   "That's wonderful! I'd love to continue this conversation. To unlock full chat access and start earning, please complete your registration — it only takes a moment! 🎉",
                 );
-                // ─── KEY CHANGE: Open offer modal instead of direct redirect ───
                 setTimeout(() => {
                   closeChatModal();
-                  // Use the country the user selected, or default to Kenya
                   const country = window._selectedCountry || COUNTRIES[0];
                   openOfferModal(country);
                 }, 2200);
@@ -4275,29 +4590,52 @@
           if (e.key === "Enter") sendReply();
         });
 
-        // CHAT REQUESTS
+        // ═══════════════════════════════════════
+        // CHAT REQUESTS — IMPROVED RENDERING
+        // ═══════════════════════════════════════
         const crl = $id("chatRequestsList");
-        let reqList = [...CHAT_REQUESTS];
+        let reqList = [...CHAT_REQUESTS_INIT];
+
+        function buildReqCard(r) {
+          const card = document.createElement("div");
+          card.className = "request-card";
+          const onlineCls = r.online !== false ? "" : "offline";
+          card.innerHTML = `
+          <div class="request-head">
+            <div class="req-avatar-wrap">
+              <img src="${r.img}" alt="${r.name}" class="request-avatar" loading="lazy" width="52" height="52"
+                onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(r.name)}&size=104&background=1a56db&color=fff&bold=true&rounded=true'"
+              />
+              <div class="req-online-ring ${onlineCls}"></div>
+              <span class="req-country-flag">${r.flag || "🌍"}</span>
+            </div>
+            <div class="request-info">
+              <div class="request-name">${r.name}${r.age ? ", " + r.age : ""}</div>
+              <div class="request-meta">
+                <i class="fas fa-map-marker-alt" style="font-size:.6rem;color:var(--blue)"></i>
+                ${r.country}
+                ${r.occupation ? `<span class="req-dot"></span>${r.occupation}` : ""}
+              </div>
+            </div>
+            <div class="request-earn">+$${EARN}<span>Earn</span></div>
+          </div>
+          <div class="req-topic-area">
+            <div class="req-topic-bubble">${r.topic}</div>
+          </div>
+          <div class="request-foot">
+            <button class="btn btn-primary" style="font-size:.78rem;padding:.4rem .875rem" onclick="acceptReq(this,'${r.name}')"><i class="fas fa-check"></i> Accept</button>
+            <button class="btn btn-outline" style="font-size:.78rem;padding:.4rem .875rem;color:var(--text-muted);border-color:var(--border)" onclick="skipReq(this)"><i class="fas fa-forward"></i> Skip</button>
+            <span class="request-time"><i class="fas fa-clock"></i> ${r.time}</span>
+          </div>`;
+          return card;
+        }
+
         function renderRequests() {
           if (!crl) return;
           crl.innerHTML = "";
-          reqList.forEach((r) => {
-            const card = document.createElement("div");
-            card.className = "request-card";
-            card.innerHTML = `
-            <div class="request-head">
-              <img src="${r.img}" alt="${r.name}" class="request-avatar" loading="lazy" width="40" height="40"/>
-              <div><div class="request-name">${r.name} from ${r.country}</div><div class="request-loc"><i class="fas fa-map-marker-alt" style="font-size:.65rem;color:var(--blue)"></i> ${r.country}</div></div>
-              <span class="request-earn">+$${EARN}</span>
-            </div>
-            <div class="request-body"><i class="fas fa-comment-alt" style="color:var(--blue);margin-right:.35rem;font-size:.72rem"></i>${r.topic}</div>
-            <div class="request-foot">
-              <button class="btn btn-primary" style="font-size:.78rem;padding:.4rem .875rem" onclick="acceptReq(this,'${r.name}')"><i class="fas fa-check"></i> Accept</button>
-              <span class="request-time"><i class="fas fa-clock"></i>${r.time}</span>
-            </div>`;
-            crl.appendChild(card);
-          });
+          reqList.forEach((r) => crl.appendChild(buildReqCard(r)));
         }
+
         window.acceptReq = (btn, name) => {
           btn.innerHTML = '<i class="fas fa-check"></i> Accepted';
           btn.disabled = true;
@@ -4307,62 +4645,102 @@
             const c = btn.closest(".request-card");
             if (c) {
               c.style.opacity = "0";
-              c.style.transition = "all .3s";
+              c.style.transform = "translateX(20px)";
+              c.style.transition = "all .35s";
               setTimeout(() => {
                 c.remove();
                 addRandReq();
-              }, 300);
+              }, 350);
             }
           }, 1500);
         };
+        window.skipReq = (btn) => {
+          const c = btn.closest(".request-card");
+          if (c) {
+            c.style.opacity = "0";
+            c.style.transform = "translateX(-20px)";
+            c.style.transition = "all .35s";
+            setTimeout(() => {
+              c.remove();
+              addRandReq();
+            }, 350);
+          }
+        };
+
+        const randNames = [
+          "Sophie",
+          "Kevin",
+          "Anna",
+          "Marco",
+          "Lisa",
+          "Thomas",
+          "Grace",
+          "James",
+          "Olivia",
+          "David",
+          "Priya",
+          "Carlos",
+        ];
+        const randCountries = [
+          { name: "USA", flag: "🇺🇸" },
+          { name: "UK", flag: "🇬🇧" },
+          { name: "Canada", flag: "🇨🇦" },
+          { name: "Germany", flag: "🇩🇪" },
+          { name: "Australia", flag: "🇦🇺" },
+          { name: "Netherlands", flag: "🇳🇱" },
+          { name: "Sweden", flag: "🇸🇪" },
+          { name: "France", flag: "🇫🇷" },
+          { name: "Japan", flag: "🇯🇵" },
+        ];
+        const randTopics = [
+          "Cultural exchange chat 🌍 — curious about daily life",
+          "Casual daily conversation ☕ — just want to connect",
+          "Travel stories & tips 🗺️ — planning an Africa trip",
+          "Life advice & friendly chat 💬",
+          "Language practice 🗣️ — love learning new cultures",
+          "Hobbies & interests 🎯 — looking for common ground",
+          "Looking for someone to talk to 😊 — open to any topic",
+        ];
+        const randOccupations = [
+          "Retired Teacher",
+          "Business Owner",
+          "Software Engineer",
+          "Doctor",
+          "Artist",
+          "Consultant",
+          "Librarian",
+          "Chef",
+        ];
+        const avatarSeeds = [10, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
+
         function addRandReq() {
-          const names = [
-              "Sophie",
-              "Kevin",
-              "Anna",
-              "Marco",
-              "Lisa",
-              "Thomas",
-              "Grace",
-              "James",
-            ],
-            countries = [
-              "USA",
-              "UK",
-              "Canada",
-              "Germany",
-              "Australia",
-              "Netherlands",
-              "Sweden",
-              "France",
-            ],
-            topics = [
-              "Cultural exchange chat 🌍",
-              "Casual daily conversation ☕",
-              "Travel stories & tips 🗺️",
-              "Life advice & chat 💬",
-              "Language practice 🗣️",
-              "Hobbies & interests 🎯",
-            ];
-          const n = names[Math.floor(Math.random() * names.length)],
-            c2 = countries[Math.floor(Math.random() * countries.length)],
-            t = topics[Math.floor(Math.random() * topics.length)];
-          reqList = [
-            {
-              name: n,
-              country: c2,
-              topic: t,
-              time: "Just now",
-              img: `https://i.pravatar.cc/48?img=${Math.floor(Math.random() * 70) + 1}`,
-            },
-            ...reqList.slice(0, 2),
-          ];
+          const n = randNames[Math.floor(Math.random() * randNames.length)];
+          const c2 =
+            randCountries[Math.floor(Math.random() * randCountries.length)];
+          const t = randTopics[Math.floor(Math.random() * randTopics.length)];
+          const occ =
+            randOccupations[Math.floor(Math.random() * randOccupations.length)];
+          const seed =
+            avatarSeeds[Math.floor(Math.random() * avatarSeeds.length)];
+          const age = Math.floor(Math.random() * 30) + 38;
+          const newReq = {
+            name: n,
+            age,
+            country: c2.name,
+            flag: c2.flag,
+            topic: t,
+            time: "Just now",
+            online: true,
+            occupation: occ,
+            img: `https://i.pravatar.cc/104?img=${seed}`,
+          };
+          reqList = [newReq, ...reqList.slice(0, 2)];
           renderRequests();
         }
         renderRequests();
         setInterval(() => {
           if (Math.random() > 0.6) addRandReq();
-        }, 30000);
+        }, 28000);
 
         // FAQ
         const fc = $id("faqContainer");
