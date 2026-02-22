@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <meta
@@ -68,8 +68,8 @@
         --shadow-lg:
           0 20px 60px rgba(15, 23, 42, 0.12), 0 8px 24px rgba(15, 23, 42, 0.06);
         --shadow-blue: 0 8px 32px rgba(26, 86, 219, 0.2);
-        --font-display: "Cormorant Garamond", Georgia, serif;
-        --font-body: "DM Sans", sans-serif;
+        --font-display: "Montserrat", sans-serif;
+        --font-body: "Lato", sans-serif;
         --font-mono: "DM Mono", monospace;
         --r-sm: 6px;
         --r-md: 10px;
@@ -91,6 +91,7 @@
         color: var(--text);
         line-height: 1.6;
         overflow-x: hidden;
+        font-weight: 400;
       }
       ::-webkit-scrollbar {
         width: 4px;
@@ -113,11 +114,8 @@
           padding: 0 2.5rem;
         }
       }
-      section {
-        position: relative;
-      }
 
-      /* ══ PROGRESS ══ */
+      /* PROGRESS */
       #progress-bar {
         position: fixed;
         top: 0;
@@ -130,7 +128,7 @@
         border-radius: 0 2px 2px 0;
       }
 
-      /* ══ LOADING ══ */
+      /* LOADING */
       .loading-overlay {
         position: fixed;
         inset: 0;
@@ -165,7 +163,7 @@
         font-family: var(--font-mono);
       }
 
-      /* ══ NAV ══ */
+      /* NAV */
       .nav {
         position: fixed;
         top: 0;
@@ -212,10 +210,10 @@
         object-fit: cover;
       }
       .logo-name {
-        font-family: var(--font-body);
+        font-family: var(--font-display);
         font-size: 1.1rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
+        font-weight: 800;
+        letter-spacing: 0.08em;
         color: var(--text);
       }
       .logo-name span {
@@ -233,11 +231,13 @@
         .nav-links a {
           color: var(--text-muted);
           text-decoration: none;
-          font-size: 0.875rem;
-          font-weight: 500;
+          font-family: var(--font-display);
+          font-size: 0.8rem;
+          font-weight: 600;
           padding: 0.4rem 0.875rem;
           border-radius: var(--r-full);
           transition: all var(--transition);
+          letter-spacing: 0.03em;
         }
         .nav-links a:hover {
           color: var(--blue);
@@ -306,8 +306,9 @@
       .mobile-nav a {
         color: var(--text-mid);
         text-decoration: none;
+        font-family: var(--font-display);
         font-size: 1rem;
-        font-weight: 500;
+        font-weight: 600;
         padding: 0.875rem 1rem;
         border-radius: var(--r-lg);
         transition: all var(--transition);
@@ -317,7 +318,7 @@
         background: var(--blue-light);
       }
 
-      /* ══ BUTTONS ══ */
+      /* BUTTONS */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -326,7 +327,7 @@
         border-radius: var(--r-full);
         font-weight: 600;
         font-size: 0.875rem;
-        font-family: var(--font-body);
+        font-family: var(--font-display);
         text-decoration: none;
         border: none;
         cursor: pointer;
@@ -334,7 +335,7 @@
         white-space: nowrap;
         position: relative;
         overflow: hidden;
-        letter-spacing: 0.01em;
+        letter-spacing: 0.04em;
       }
       .btn-primary {
         background: linear-gradient(135deg, var(--blue), var(--blue2));
@@ -385,9 +386,10 @@
         padding: 1rem 2.25rem;
         font-size: 1.05rem;
         border-radius: var(--r-lg);
+        font-weight: 700;
       }
 
-      /* ══ HERO ══ */
+      /* HERO */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -446,7 +448,6 @@
           grid-template-columns: 1fr 1fr;
         }
       }
-
       .hero-eyebrow {
         display: inline-flex;
         align-items: center;
@@ -510,13 +511,12 @@
           transform: translateY(0);
         }
       }
-
       .hero h1 {
         font-family: var(--font-display);
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        font-weight: 600;
-        line-height: 1.05;
-        letter-spacing: -0.01em;
+        font-size: clamp(2.6rem, 6.5vw, 5rem);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
         margin-bottom: 1.5rem;
         color: var(--text);
         animation: slideInLeft 0.7s 0.1s ease both;
@@ -527,16 +527,16 @@
       }
       .hero h1 strong {
         color: var(--gold);
-        font-weight: 700;
         font-style: normal;
       }
       .hero-desc {
-        font-size: 1.05rem;
+        font-size: 1.08rem;
         color: var(--text-mid);
-        line-height: 1.8;
+        line-height: 1.85;
         max-width: 500px;
         margin-bottom: 2.5rem;
         animation: slideInLeft 0.7s 0.2s ease both;
+        font-weight: 300;
       }
       .hero-ctas {
         display: flex;
@@ -557,7 +557,9 @@
         gap: 0.4rem;
         font-size: 0.8rem;
         color: var(--text-muted);
-        font-weight: 500;
+        font-weight: 700;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
       }
       .trust-item i {
         color: var(--blue);
@@ -589,7 +591,7 @@
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-faint);
-        font-family: var(--font-mono);
+        font-family: var(--font-display);
       }
       .live-badge {
         display: flex;
@@ -604,6 +606,7 @@
         letter-spacing: 0.05em;
         text-transform: uppercase;
         border: 1px solid rgba(5, 150, 105, 0.2);
+        font-family: var(--font-display);
       }
       .chat-visual {
         background: var(--bg);
@@ -636,6 +639,7 @@
         font-size: 0.875rem;
         font-weight: 700;
         color: var(--text);
+        font-family: var(--font-display);
       }
       .chat-header-info p {
         font-size: 0.7rem;
@@ -704,7 +708,7 @@
       .earn-badge-amount {
         font-family: var(--font-display);
         font-size: 2rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--green);
         line-height: 1;
       }
@@ -743,7 +747,7 @@
       .stat-val {
         font-family: var(--font-display);
         font-size: 1.4rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--blue);
         letter-spacing: -0.02em;
         line-height: 1;
@@ -752,7 +756,9 @@
         font-size: 0.67rem;
         color: var(--text-faint);
         margin-top: 0.15rem;
-        font-weight: 500;
+        font-weight: 700;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
       }
       .stat-box.stat-highlight {
         background: linear-gradient(135deg, var(--blue), var(--blue2));
@@ -765,7 +771,7 @@
         color: rgba(255, 255, 255, 0.75);
       }
 
-      /* ══ TICKER ══ */
+      /* TICKER */
       .ticker-bar {
         background: linear-gradient(
           90deg,
@@ -788,9 +794,11 @@
         display: flex;
         align-items: center;
         gap: 0.4rem;
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-size: 0.72rem;
+        font-weight: 700;
         color: rgba(255, 255, 255, 0.9);
+        font-family: var(--font-display);
+        letter-spacing: 0.04em;
       }
       .ticker-item::after {
         content: "◆";
@@ -807,7 +815,7 @@
         }
       }
 
-      /* ══ SECTIONS ══ */
+      /* SECTIONS */
       .section {
         padding: 6rem 0;
       }
@@ -818,13 +826,13 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        font-family: var(--font-mono);
+        font-family: var(--font-display);
         font-size: 0.65rem;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--blue);
         margin-bottom: 0.75rem;
-        font-weight: 500;
+        font-weight: 700;
       }
       .section-label::before {
         content: "";
@@ -836,9 +844,9 @@
       }
       h2.section-title {
         font-family: var(--font-display);
-        font-size: clamp(2rem, 4.5vw, 3.25rem);
-        font-weight: 600;
-        letter-spacing: -0.01em;
+        font-size: clamp(1.9rem, 4.2vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
         line-height: 1.1;
         margin-bottom: 1rem;
         color: var(--text);
@@ -849,13 +857,13 @@
       }
       h2.section-title strong {
         color: var(--gold);
-        font-weight: 700;
       }
       .section-sub {
         font-size: 1rem;
         color: var(--text-muted);
         max-width: 580px;
-        line-height: 1.8;
+        line-height: 1.85;
+        font-weight: 300;
       }
       .section-head {
         margin-bottom: 3.5rem;
@@ -867,7 +875,7 @@
         margin: 0 auto;
       }
 
-      /* ══ HOW IT WORKS ══ */
+      /* HOW IT WORKS */
       .how-section {
         background: var(--white);
       }
@@ -899,7 +907,7 @@
       .step-num {
         font-family: var(--font-display);
         font-size: 5rem;
-        font-weight: 700;
+        font-weight: 900;
         color: var(--blue);
         opacity: 0.05;
         position: absolute;
@@ -925,30 +933,21 @@
         margin-bottom: 1.25rem;
       }
       .step-title {
+        font-family: var(--font-display);
         font-size: 1.05rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
         color: var(--text);
+        letter-spacing: -0.01em;
       }
       .step-desc {
         font-size: 0.875rem;
         color: var(--text-muted);
-        line-height: 1.75;
-      }
-      .step-arrow {
-        display: none;
-      }
-      @media (min-width: 768px) {
-        .step-arrow {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--blue-mid);
-          font-size: 1.25rem;
-        }
+        line-height: 1.8;
+        font-weight: 300;
       }
 
-      /* ══ COUNTRIES ══ */
+      /* COUNTRIES */
       .countries-section {
         background: var(--bg);
       }
@@ -967,7 +966,6 @@
           grid-template-columns: repeat(5, 1fr);
         }
       }
-
       .country-card {
         border-radius: var(--r-xl);
         overflow: hidden;
@@ -1030,6 +1028,7 @@
         line-height: 1;
       }
       .country-name {
+        font-family: var(--font-display);
         font-size: 0.85rem;
         font-weight: 700;
         color: #fff;
@@ -1071,57 +1070,125 @@
         font-family: var(--font-mono);
       }
 
-      /* ══ OFFER ══ */
-      .offer-section {
-        background: var(--white);
+      /* OFFER MODAL */
+      .offer-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(10px);
+        z-index: 10002;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
       }
-      .offer-card {
-        max-width: 680px;
-        margin: 0 auto;
+      .offer-modal-overlay.show {
+        display: flex;
+      }
+      .offer-modal-box {
         background: var(--white);
         border: 1px solid var(--border);
         border-radius: var(--r-2xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
+        width: 100%;
+        max-width: 540px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow:
+          0 32px 80px rgba(15, 23, 42, 0.25),
+          0 0 0 1px rgba(26, 86, 219, 0.08);
+        animation: offerModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
       }
-      .offer-card-header {
-        padding: 2.5rem 2rem;
+      @keyframes offerModalIn {
+        from {
+          opacity: 0;
+          transform: scale(0.92) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .offer-modal-close {
+        position: absolute;
+        top: 0.875rem;
+        right: 0.875rem;
+        z-index: 10;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: all var(--transition);
+      }
+      .offer-modal-close:hover {
+        background: rgba(225, 29, 72, 0.9);
+        border-color: transparent;
+      }
+      .offer-modal-header {
+        padding: 2.5rem 2rem 2rem;
         text-align: center;
         position: relative;
         overflow: hidden;
         background-size: cover;
         background-position: center;
         background-color: var(--blue);
+        border-radius: var(--r-2xl) var(--r-2xl) 0 0;
       }
-      .offer-card-overlay {
+      .offer-modal-header-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
-          135deg,
+          160deg,
           rgba(26, 86, 219, 0.88),
           rgba(14, 165, 233, 0.78)
         );
       }
-      .offer-card-content {
+      .offer-modal-header-content {
         position: relative;
         z-index: 2;
       }
       .offer-flag {
         font-size: 3rem;
         margin-bottom: 0.5rem;
+        display: block;
       }
       .offer-country-name {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #fff;
         font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.02em;
+        display: block;
       }
       .offer-country-sub {
-        font-size: 0.875rem;
+        font-size: 0.85rem;
         color: rgba(255, 255, 255, 0.75);
+        display: block;
+        margin-top: 0.2rem;
       }
-      .offer-body {
-        padding: 2rem;
+      .offer-ribbon {
+        position: absolute;
+        top: 1.5rem;
+        left: -3rem;
+        background: var(--accent);
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.35rem 3.5rem;
+        transform: rotate(-40deg);
+        letter-spacing: 0.08em;
+      }
+      .offer-modal-body {
+        padding: 1.75rem 2rem;
       }
       .offer-badge {
         display: inline-flex;
@@ -1135,10 +1202,25 @@
         font-size: 0.78rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
+        font-family: var(--font-display);
+        letter-spacing: 0.04em;
       }
       .offer-pricing {
         text-align: center;
         margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, var(--bg), var(--blue-light));
+        border-radius: var(--r-xl);
+        border: 1px solid var(--blue-mid);
+      }
+      .offer-old-label {
+        font-size: 0.65rem;
+        color: var(--text-faint);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.4rem;
+        font-family: var(--font-display);
+        font-weight: 700;
       }
       .offer-old-price {
         font-size: 1.1rem;
@@ -1146,43 +1228,40 @@
         text-decoration: line-through;
         font-family: var(--font-mono);
       }
-      .offer-old-label {
-        font-size: 0.68rem;
-        color: var(--text-faint);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.5rem;
-      }
       .offer-new-price {
         font-family: var(--font-display);
         font-size: 4rem;
         color: var(--blue);
-        font-weight: 600;
+        font-weight: 800;
         line-height: 1;
         margin: 0.5rem 0;
+        letter-spacing: -0.03em;
       }
       .offer-new-label {
         font-size: 0.68rem;
         color: var(--blue);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-family: var(--font-mono);
+        letter-spacing: 0.12em;
+        font-family: var(--font-display);
+        font-weight: 700;
       }
       .offer-discount {
         display: inline-block;
         background: linear-gradient(135deg, var(--accent), #f43f5e);
         color: #fff;
-        padding: 0.2rem 0.75rem;
+        padding: 0.25rem 0.875rem;
         border-radius: var(--r-full);
         font-size: 0.72rem;
         font-weight: 700;
         margin: 0.625rem 0;
+        font-family: var(--font-display);
       }
       .offer-savings {
         font-size: 0.85rem;
         color: var(--gold);
         margin-top: 0.25rem;
-        font-weight: 600;
+        font-weight: 700;
+        font-family: var(--font-display);
       }
       .offer-urgency {
         background: rgba(217, 119, 6, 0.06);
@@ -1197,7 +1276,8 @@
         align-items: center;
         gap: 0.5rem;
         justify-content: center;
-        font-weight: 600;
+        font-weight: 700;
+        font-family: var(--font-display);
       }
       .offer-features {
         list-style: none;
@@ -1219,18 +1299,14 @@
         font-size: 0.8rem;
         flex-shrink: 0;
       }
-      .offer-divider {
-        height: 1px;
-        background: var(--border);
-        margin: 1.25rem 0;
-      }
-      .offer-footer {
+      .offer-modal-footer {
         display: flex;
         justify-content: center;
         gap: 2rem;
         padding: 1rem;
         border-top: 1px solid var(--border);
         background: var(--bg);
+        border-radius: 0 0 var(--r-2xl) var(--r-2xl);
       }
       .offer-footer-item {
         display: flex;
@@ -1238,102 +1314,15 @@
         gap: 0.4rem;
         font-size: 0.72rem;
         color: var(--text-faint);
-        font-weight: 500;
+        font-weight: 700;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
       }
       .offer-footer-item i {
         color: var(--blue);
       }
 
-      /* ══ CALCULATOR ══ */
-      .calc-section {
-        background: var(--bg);
-      }
-      .calc-wrap {
-        max-width: 760px;
-        margin: 0 auto;
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--r-2xl);
-        padding: 2.5rem;
-        box-shadow: var(--shadow);
-      }
-      .calc-label {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--text-mid);
-        margin-bottom: 0.875rem;
-        display: block;
-      }
-      .calc-slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 5px;
-        border-radius: 3px;
-        background: var(--bg3);
-        outline: none;
-        cursor: pointer;
-      }
-      .calc-slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--blue), var(--cyan));
-        cursor: pointer;
-        border: 3px solid var(--white);
-        box-shadow: var(--shadow-blue);
-      }
-      .calc-range-labels {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.7rem;
-        color: var(--text-faint);
-        margin-top: 0.5rem;
-        font-family: var(--font-mono);
-      }
-      .calc-result {
-        background: linear-gradient(
-          135deg,
-          var(--blue-light),
-          var(--cyan-light)
-        );
-        border: 1px solid var(--blue-mid);
-        border-radius: var(--r-xl);
-        padding: 2rem;
-        text-align: center;
-        margin-top: 2rem;
-      }
-      .calc-amount {
-        font-family: var(--font-display);
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
-        color: var(--blue);
-        font-weight: 600;
-        line-height: 1;
-      }
-      .calc-breakdown {
-        display: flex;
-        justify-content: center;
-        gap: 2.5rem;
-        flex-wrap: wrap;
-        margin-top: 1.25rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--blue-mid);
-      }
-      .calc-bd-val {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--text);
-      }
-      .calc-bd-lbl {
-        font-size: 0.62rem;
-        color: var(--text-faint);
-        margin-top: 0.15rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-family: var(--font-mono);
-      }
-
-      /* ══ PROFILES ══ */
+      /* PROFILES */
       .profiles-section {
         background: var(--white);
       }
@@ -1352,7 +1341,6 @@
           grid-template-columns: repeat(3, 1fr);
         }
       }
-
       .profile-card {
         background: var(--white);
         border: 1px solid var(--border);
@@ -1395,6 +1383,7 @@
         text-transform: uppercase;
         padding: 0.2rem 0.5rem;
         border-radius: var(--r-full);
+        font-family: var(--font-display);
       }
       .badge-premium {
         background: var(--gold-light);
@@ -1438,6 +1427,7 @@
         flex-shrink: 0;
       }
       .profile-name {
+        font-family: var(--font-display);
         font-size: 0.95rem;
         font-weight: 700;
         color: var(--text);
@@ -1463,12 +1453,13 @@
       }
       .chip {
         font-size: 0.65rem;
-        font-weight: 500;
+        font-weight: 600;
         padding: 0.2rem 0.5rem;
         border-radius: var(--r-full);
         background: var(--bg);
         border: 1px solid var(--border);
         color: var(--text-muted);
+        font-family: var(--font-display);
       }
       .profile-actions {
         display: grid;
@@ -1479,15 +1470,16 @@
         padding: 0.5rem;
         font-size: 0.78rem;
         border-radius: var(--r-md);
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
         border: none;
-        font-family: var(--font-body);
+        font-family: var(--font-display);
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.3rem;
         transition: all var(--transition);
+        letter-spacing: 0.03em;
       }
       .btn-card-primary {
         background: linear-gradient(135deg, var(--blue), var(--blue2));
@@ -1508,7 +1500,7 @@
         background: var(--blue-light);
       }
 
-      /* ══ REQUESTS ══ */
+      /* REQUESTS */
       .requests-section {
         background: var(--bg);
       }
@@ -1552,6 +1544,7 @@
         flex-shrink: 0;
       }
       .request-name {
+        font-family: var(--font-display);
         font-weight: 700;
         font-size: 0.85rem;
         color: var(--text);
@@ -1605,96 +1598,169 @@
         object-fit: cover;
       }
 
-      /* ══ WHY ══ */
+      /* ═══════════════════════════════════════════════════ */
+      /* WHY SECTION — Redesigned Bento Layout              */
+      /* ═══════════════════════════════════════════════════ */
       .why-section {
         background: var(--white);
       }
-      .reasons-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.875rem;
-      }
-      .reason {
-        display: flex;
+
+      .why-bento {
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 1rem;
-        align-items: flex-start;
+        margin-bottom: 2rem;
+      }
+      @media (min-width: 640px) {
+        .why-bento {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .why-bento {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .why-card {
         background: var(--bg);
         border: 1px solid var(--border);
-        border-radius: var(--r-lg);
-        padding: 1.375rem;
+        border-radius: var(--r-xl);
+        padding: 1.75rem 1.5rem;
+        position: relative;
+        overflow: hidden;
         transition: all var(--transition);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
       }
-      .reason:hover {
+      .why-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), var(--cyan));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
+      }
+      .why-card:hover {
         border-color: var(--blue-mid);
-        box-shadow: var(--shadow);
-        transform: translateX(4px);
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
         background: var(--white);
       }
-      .reason-num {
-        width: 34px;
-        height: 34px;
-        border-radius: var(--r-sm);
+      .why-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .why-card-num {
+        font-family: var(--font-display);
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: var(--blue);
+        opacity: 0.06;
+        position: absolute;
+        bottom: -0.5rem;
+        right: 0.75rem;
+        line-height: 1;
+        pointer-events: none;
+      }
+      .why-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--r-md);
         background: linear-gradient(
           135deg,
           var(--blue-light),
           var(--cyan-light)
         );
         border: 1px solid var(--blue-mid);
-        color: var(--blue);
-        font-weight: 700;
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 1.15rem;
+        color: var(--blue);
         flex-shrink: 0;
       }
-      .reason-title {
+      .why-card-label {
+        font-size: 0.6rem;
         font-weight: 700;
-        margin-bottom: 0.2rem;
-        color: var(--text);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-family: var(--font-display);
+        margin-bottom: -0.25rem;
       }
-      .reason-desc {
-        font-size: 0.875rem;
+      .why-card-title {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+      .why-card-desc {
+        font-size: 0.82rem;
         color: var(--text-muted);
-        line-height: 1.7;
+        line-height: 1.75;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+      .why-card-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: var(--blue-light);
+        border: 1px solid var(--blue-mid);
+        color: var(--blue);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 0.25rem 0.625rem;
+        border-radius: var(--r-full);
+        margin-top: auto;
+        width: fit-content;
       }
 
-      /* ══ FEATURES ══ */
-      .features-section {
-        background: var(--bg);
-      }
-      .features-grid {
+      /* INFO BOXES — horizontal row */
+      .why-info-row {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
+        margin-top: 1rem;
       }
-      @media (min-width: 640px) {
-        .features-grid {
-          grid-template-columns: repeat(2, 1fr);
+      @media (min-width: 768px) {
+        .why-info-row {
+          grid-template-columns: 1fr 1fr;
         }
       }
-      @media (min-width: 1024px) {
-        .features-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      .feature-card {
-        background: var(--white);
+
+      .info-box {
+        background: var(--bg);
         border: 1px solid var(--border);
         border-radius: var(--r-xl);
         padding: 1.75rem;
         transition: all var(--transition);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
       }
-      .feature-card:hover {
+      .info-box:hover {
         border-color: var(--blue-mid);
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow);
       }
-      .feature-icon {
-        width: 52px;
-        height: 52px;
+      .info-box-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .info-box-icon {
+        width: 48px;
+        height: 48px;
         border-radius: var(--r-md);
         background: linear-gradient(
           135deg,
@@ -1707,21 +1773,66 @@
         justify-content: center;
         font-size: 1.2rem;
         color: var(--blue);
-        margin-bottom: 1.125rem;
+        flex-shrink: 0;
       }
-      .feature-title {
+      .info-box-header-text h3 {
         font-size: 0.95rem;
         font-weight: 700;
-        margin-bottom: 0.4rem;
         color: var(--text);
+        font-family: var(--font-display);
+        letter-spacing: -0.01em;
+        margin: 0;
       }
-      .feature-desc {
-        font-size: 0.875rem;
+      .info-box-header-text p {
+        font-size: 0.75rem;
         color: var(--text-muted);
-        line-height: 1.75;
+        font-weight: 300;
+        margin: 0;
+      }
+      .info-box-divider {
+        height: 1px;
+        background: var(--border);
+      }
+      .info-box-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .info-box-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        font-size: 0.82rem;
+        color: var(--text-mid);
+        padding: 0.15rem 0;
+      }
+      .info-box-list li i {
+        color: var(--green);
+        flex-shrink: 0;
+        margin-top: 0.2rem;
+        font-size: 0.75rem;
+      }
+      .note {
+        background: var(--blue-light);
+        border: 1px solid var(--blue-mid);
+        border-radius: var(--r-sm);
+        padding: 0.625rem 0.875rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--blue);
+        line-height: 1.55;
+        font-family: var(--font-display);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .note i {
+        flex-shrink: 0;
+        opacity: 0.7;
       }
 
-      /* ══ FAQ ══ */
+      /* FAQ */
       .faq-section {
         background: var(--white);
       }
@@ -1742,7 +1853,7 @@
       }
       .faq-q {
         padding: 1rem 1.25rem;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.9rem;
         cursor: pointer;
         display: flex;
@@ -1750,6 +1861,8 @@
         align-items: center;
         color: var(--text);
         transition: color var(--transition);
+        font-family: var(--font-display);
+        letter-spacing: -0.01em;
       }
       .faq-q i {
         color: var(--text-muted);
@@ -1768,9 +1881,10 @@
         max-height: 0;
         overflow: hidden;
         font-size: 0.875rem;
-        line-height: 1.8;
+        line-height: 1.85;
         color: var(--text-muted);
         transition: all 0.3s ease;
+        font-weight: 300;
       }
       .faq-a.open {
         max-height: 300px;
@@ -1778,118 +1892,7 @@
         border-top: 1px solid var(--border);
       }
 
-      /* ══ Q&A ══ */
-      .qa-section {
-        background: var(--bg);
-      }
-      .qa-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      @media (min-width: 992px) {
-        .qa-grid {
-          grid-template-columns: 1fr 1fr;
-          align-items: start;
-        }
-      }
-      .qa-item {
-        margin-bottom: 1.5rem;
-      }
-      .qa-item h4 {
-        font-size: 0.9rem;
-        font-weight: 700;
-        margin-bottom: 0.4rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text);
-      }
-      .qa-item h4 i {
-        color: var(--blue);
-        width: 1.2rem;
-      }
-      .qa-item p {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-        line-height: 1.8;
-        padding-left: 1.7rem;
-      }
-      .qa-item p a {
-        color: var(--blue);
-        text-decoration: none;
-      }
-      .info-box {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--r-xl);
-        padding: 1.75rem;
-        margin-bottom: 1rem;
-        transition: border-color var(--transition);
-      }
-      .info-box:hover {
-        border-color: var(--blue-mid);
-      }
-      .info-box-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: linear-gradient(
-          135deg,
-          var(--blue-light),
-          var(--cyan-light)
-        );
-        border: 1px solid var(--blue-mid);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.3rem;
-        color: var(--blue);
-        margin: 0 auto 1rem;
-      }
-      .info-box h3 {
-        text-align: center;
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 0.625rem;
-        color: var(--text);
-      }
-      .info-box > p {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-        text-align: center;
-        line-height: 1.75;
-        margin-bottom: 0.875rem;
-      }
-      .info-box-list {
-        list-style: none;
-      }
-      .info-box-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.5rem;
-        font-size: 0.82rem;
-        color: var(--text-mid);
-        padding: 0.35rem 0;
-      }
-      .info-box-list li i {
-        color: var(--green);
-        flex-shrink: 0;
-        margin-top: 0.2rem;
-      }
-      .note {
-        background: var(--blue-light);
-        border: 1px solid var(--blue-mid);
-        border-radius: var(--r-sm);
-        padding: 0.75rem 0.875rem;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--blue);
-        margin-top: 0.875rem;
-        line-height: 1.6;
-      }
-
-      /* ══ CONTACT ══ */
+      /* CONTACT */
       .contact-section {
         background: var(--blue-light);
       }
@@ -1916,7 +1919,7 @@
         color: var(--text-faint);
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        font-family: var(--font-mono);
+        font-family: var(--font-display);
       }
       .contact-method {
         display: flex;
@@ -1953,6 +1956,7 @@
         background: linear-gradient(135deg, var(--blue), var(--cyan));
       }
       .contact-title {
+        font-family: var(--font-display);
         font-weight: 700;
         font-size: 0.875rem;
         color: var(--text);
@@ -1980,10 +1984,12 @@
         gap: 0.4rem;
         padding: 0.75rem;
         border-radius: var(--r-md);
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.82rem;
         text-decoration: none;
         transition: all var(--transition);
+        font-family: var(--font-display);
+        letter-spacing: 0.03em;
       }
       .wa-btn.green {
         background: #25d366;
@@ -2000,7 +2006,7 @@
         opacity: 0.9;
       }
 
-      /* ══ FOOTER ══ */
+      /* FOOTER */
       .footer {
         background: var(--text);
         color: rgba(255, 255, 255, 0.7);
@@ -2015,9 +2021,11 @@
       }
       .footer .logo-name {
         color: #fff;
+        font-family: var(--font-display);
+        font-weight: 800;
       }
       .footer .logo-name span {
-        color: var(--cyan-light);
+        color: #93c5fd;
       }
       .footer-links {
         display: flex;
@@ -2032,6 +2040,9 @@
         padding: 0.25rem 0.75rem;
         border-radius: var(--r-full);
         transition: all var(--transition);
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: 0.03em;
       }
       .footer-links a:hover {
         color: #fff;
@@ -2045,7 +2056,7 @@
         color: rgba(255, 255, 255, 0.6);
       }
 
-      /* ══ STICKY CTA ══ */
+      /* STICKY CTA */
       .sticky-cta {
         position: fixed;
         bottom: 0;
@@ -2070,16 +2081,19 @@
         gap: 1rem;
       }
       .sticky-text {
+        font-family: var(--font-display);
         font-weight: 700;
         font-size: 0.9rem;
         color: var(--text);
+        letter-spacing: -0.01em;
       }
       .sticky-sub {
         font-size: 0.7rem;
         color: var(--text-muted);
+        font-weight: 400;
       }
 
-      /* ══ FLOAT WA ══ */
+      /* FLOAT WA */
       .float-wa {
         position: fixed;
         bottom: 80px;
@@ -2113,7 +2127,7 @@
         }
       }
 
-      /* ══ MODALS ══ */
+      /* PROFILE MODAL */
       .modal-overlay {
         position: fixed;
         inset: 0;
@@ -2161,6 +2175,7 @@
         z-index: 1;
       }
       .modal-head h3 {
+        font-family: var(--font-display);
         font-size: 0.9rem;
         font-weight: 700;
         color: var(--text);
@@ -2208,7 +2223,7 @@
         font-family: var(--font-display);
         font-size: 1.35rem;
         color: var(--text);
-        font-weight: 600;
+        font-weight: 700;
       }
       .modal-sub {
         font-size: 0.82rem;
@@ -2220,18 +2235,19 @@
         border-bottom: 1px solid var(--border);
       }
       .modal-section-title {
+        font-family: var(--font-display);
         font-size: 0.62rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.12em;
         color: var(--blue);
         margin-bottom: 0.75rem;
-        font-family: var(--font-mono);
       }
       .modal-bio {
         font-size: 0.875rem;
         color: var(--text-muted);
         line-height: 1.8;
+        font-weight: 300;
       }
       .modal-tags {
         display: flex;
@@ -2240,12 +2256,13 @@
       }
       .modal-tag {
         font-size: 0.68rem;
-        font-weight: 500;
+        font-weight: 600;
         padding: 0.2rem 0.625rem;
         border-radius: var(--r-full);
         background: var(--blue-light);
         border: 1px solid var(--blue-mid);
         color: var(--blue);
+        font-family: var(--font-display);
       }
       .modal-foot {
         padding: 1.125rem;
@@ -2258,7 +2275,7 @@
         border-top: 1px solid var(--border);
       }
 
-      /* ══ CHAT MODAL ══ */
+      /* CHAT MODAL */
       .chat-modal-overlay {
         position: fixed;
         inset: 0;
@@ -2329,6 +2346,7 @@
         flex-shrink: 0;
       }
       .chat-modal-name {
+        font-family: var(--font-display);
         font-weight: 700;
         font-size: 0.9rem;
         color: var(--text);
@@ -2492,11 +2510,13 @@
         padding: 0.3rem 1rem;
         font-size: 0.7rem;
         color: var(--green);
-        font-weight: 600;
+        font-weight: 700;
         margin: 0 1rem;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
       }
 
-      /* ══ NOTIFICATION ══ */
+      /* NOTIFICATION */
       .notification {
         position: fixed;
         top: 80px;
@@ -2522,7 +2542,7 @@
         color: var(--green);
       }
 
-      /* ══ SOCIAL PROOF ══ */
+      /* SOCIAL PROOF */
       .sp-container {
         position: fixed;
         bottom: 90px;
@@ -2564,7 +2584,7 @@
         }
       }
 
-      /* ══ COOKIE ══ */
+      /* COOKIE */
       .cookie-bar {
         position: fixed;
         bottom: 16px;
@@ -2589,6 +2609,7 @@
         line-height: 1.65;
         margin-bottom: 0.875rem;
         text-align: center;
+        font-weight: 300;
       }
       .cookie-btns {
         display: flex;
@@ -2601,9 +2622,10 @@
         font-weight: 700;
         cursor: pointer;
         border: none;
-        font-family: var(--font-body);
+        font-family: var(--font-display);
         font-size: 0.82rem;
         transition: all var(--transition);
+        letter-spacing: 0.04em;
       }
       .cookie-btn.accept {
         background: linear-gradient(135deg, var(--blue), var(--blue2));
@@ -2615,7 +2637,7 @@
         border: 1px solid var(--border);
       }
 
-      /* ══ VIDEO MODAL ══ */
+      /* VIDEO MODAL */
       .video-modal {
         display: none;
         position: fixed;
@@ -2630,7 +2652,7 @@
         display: flex;
       }
 
-      /* ══ FADE UP ══ */
+      /* FADE UP */
       .fade-up {
         opacity: 0;
         transform: translateY(24px);
@@ -2642,8 +2664,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-
-      /* ══ SCROLLBAR in chat ══ */
       .chat-modal-messages::-webkit-scrollbar {
         width: 3px;
       }
@@ -2736,6 +2756,95 @@
           <button class="chat-modal-send" id="chatModalSend">
             <i class="fas fa-paper-plane"></i>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFER MODAL -->
+    <div class="offer-modal-overlay" id="offerModalOverlay">
+      <div class="offer-modal-box">
+        <button class="offer-modal-close" id="offerModalClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="offer-modal-header" id="offerModalHeader">
+          <div class="offer-ribbon" id="offerRibbon">23% OFF</div>
+          <div class="offer-modal-header-overlay"></div>
+          <div class="offer-modal-header-content">
+            <span class="offer-flag" id="offerFlag">🇰🇪</span>
+            <span class="offer-country-name" id="offerCountryName">Kenya</span>
+            <span class="offer-country-sub" id="offerCountrySub"
+              >Mulastar Registration Offer</span
+            >
+          </div>
+        </div>
+        <div class="offer-modal-body">
+          <div style="text-align: center">
+            <span class="offer-badge"
+              ><i class="fas fa-fire"></i>
+              <span id="offerBadgeText">VERIFY TO CONTINUE</span></span
+            >
+          </div>
+          <div class="offer-pricing">
+            <div class="offer-old-label">
+              One-time fee to unlock all featutes
+            </div>
+            <div class="offer-old-price" id="offerOldPrice">KSH 650</div>
+            <div class="offer-new-price" id="offerNewPrice">KSH 500</div>
+            <div class="offer-new-label">Your Special Price Today</div>
+            <span class="offer-discount" id="offerDiscount"
+              >Save 23% Today</span
+            >
+            <div class="offer-savings" id="offerSavings">
+              💰 You save KSH 150 — limited time!
+            </div>
+          </div>
+          <div class="offer-urgency">
+            <i class="fas fa-clock"></i
+            ><span id="offerUrgency">⏳ Offer expires soon — grab it now!</span>
+          </div>
+          <ul class="offer-features">
+            <li>
+              <i class="fas fa-check-circle"></i> One-time fee — no monthly
+              subscriptions ever
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Access to thousands of global
+              chat requests
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Earn $3 per completed
+              conversation ($90–$270/month)
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Daily withdrawals via
+              <span id="offerPayment">M-Pesa</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> 24/7 WhatsApp support from day
+              one
+            </li>
+          </ul>
+          <a
+            href="javascript:void(0)"
+            class="btn btn-primary btn-lg register-link"
+            style="width: 100%; justify-content: center"
+            data-url="https://mulastar.com/register.php?ref=Sydney"
+            id="offerCta"
+          >
+            <i class="fas fa-bolt"></i>
+            <span id="offerCtaText">Register Now — KSH 500 </span>
+          </a>
+        </div>
+        <div class="offer-modal-footer">
+          <span class="offer-footer-item"
+            ><i class="fas fa-lock"></i> Secure Payment</span
+          >
+          <span class="offer-footer-item"
+            ><i class="fas fa-bolt"></i> Instant Activation</span
+          >
+          <span class="offer-footer-item"
+            ><i class="fas fa-shield-alt"></i> Supported</span
+          >
         </div>
       </div>
     </div>
@@ -2851,8 +2960,10 @@
           <p class="hero-desc">
             Connect with curious foreigners, lonely people, and advice seekers.
             Earn
-            <strong style="color: var(--blue)">$3 per conversation</strong> — no
-            experience needed, just be yourself.
+            <strong style="color: var(--blue); font-weight: 700"
+              >$3 per conversation</strong
+            >
+            — no experience needed, just be yourself.
           </p>
           <div class="hero-ctas">
             <a
@@ -3012,106 +3123,8 @@
         </div>
         <div class="countries-grid" id="countriesGrid"></div>
         <p class="country-hint">
-          👆 Tap your country to reveal your exclusive offer below
+          👆 Tap your country to reveal your exclusive offer
         </p>
-      </div>
-    </section>
-
-    <!-- OFFER -->
-    <section class="offer-section section" id="offer-section">
-      <div class="container">
-        <div class="section-head center">
-          <div class="section-label">Exclusive Deal</div>
-          <h2 class="section-title">Your <em>personalized</em> offer</h2>
-        </div>
-        <div class="offer-card" id="offerCard">
-          <div
-            class="offer-card-header"
-            id="offerCardHeader"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80&quot;);
-            "
-          >
-            <div class="offer-card-overlay"></div>
-            <div class="offer-card-content">
-              <div class="offer-flag" id="offerFlag">🇰🇪</div>
-              <div class="offer-country-name" id="offerCountryName">Kenya</div>
-              <div class="offer-country-sub" id="offerCountrySub">
-                Mulastar Registration Offer
-              </div>
-            </div>
-          </div>
-          <div class="offer-body">
-            <div style="text-align: center">
-              <span class="offer-badge"
-                ><i class="fas fa-fire"></i> 23% OFF — LIMITED TIME</span
-              >
-            </div>
-            <div class="offer-pricing">
-              <div class="offer-old-label">
-                Regular Price (converted from $5)
-              </div>
-              <div class="offer-old-price" id="offerOldPrice">KSH 650</div>
-              <div class="offer-new-price" id="offerNewPrice">KSH 500</div>
-              <div class="offer-new-label">Your Special Price Today</div>
-              <span class="offer-discount" id="offerDiscount"
-                >Save 23% Today</span
-              >
-              <div class="offer-savings" id="offerSavings">
-                💰 You save KSH 150 — limited time!
-              </div>
-            </div>
-            <div class="offer-urgency">
-              <i class="fas fa-clock"></i>
-              <span id="offerUrgency"
-                >⏳ Offer expires soon — grab it now!</span
-              >
-            </div>
-            <ul class="offer-features">
-              <li>
-                <i class="fas fa-check-circle"></i> One-time fee — no monthly
-                subscriptions ever
-              </li>
-              <li>
-                <i class="fas fa-check-circle"></i> Access to thousands of
-                global chat requests
-              </li>
-              <li>
-                <i class="fas fa-check-circle"></i> Earn $3 per completed
-                conversation ($90–$270/month)
-              </li>
-              <li>
-                <i class="fas fa-check-circle"></i> Weekly withdrawals via
-                <span id="offerPayment">M-Pesa</span>
-              </li>
-              <li>
-                <i class="fas fa-check-circle"></i> 24/7 WhatsApp support from
-                day one
-              </li>
-            </ul>
-            <a
-              href="javascript:void(0)"
-              class="btn btn-primary btn-lg register-link"
-              style="width: 100%; justify-content: center"
-              data-url="https://mulastar.com/register.php?ref=Sydney"
-              id="offerCta"
-            >
-              <i class="fas fa-bolt"></i>
-              <span id="offerCtaText">Register Now — KSH 500</span>
-            </a>
-          </div>
-          <div class="offer-footer">
-            <span class="offer-footer-item"
-              ><i class="fas fa-lock"></i> Secure Payment</span
-            >
-            <span class="offer-footer-item"
-              ><i class="fas fa-bolt"></i> Instant Activation</span
-            >
-            <span class="offer-footer-item"
-              ><i class="fas fa-shield-alt"></i> Supported</span
-            >
-          </div>
-        </div>
       </div>
     </section>
 
@@ -3155,93 +3168,8 @@
             <h3 class="step-title">Chat & Earn</h3>
             <p class="step-desc">
               Accept chat requests, have genuine conversations, and earn $3 per
-              completed session. Withdraw to M-Pesa, PayPal, or bank weekly.
+              completed session. Withdraw to M-Pesa, PayPal, or bank daily.
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALCULATOR -->
-    <section class="calc-section section" id="calculator">
-      <div class="container">
-        <div class="section-head center fade-up">
-          <div class="section-label">Earnings Calculator</div>
-          <h2 class="section-title">How much can <em>you earn?</em></h2>
-          <p class="section-sub">
-            Drag the slider to estimate your monthly income based on daily
-            activity.
-          </p>
-        </div>
-        <div class="calc-wrap fade-up">
-          <label class="calc-label" for="chatSlider"
-            >Chats per day:
-            <span
-              id="sliderDisplay"
-              style="
-                color: var(--blue);
-                font-family: var(--font-mono);
-                font-weight: 700;
-              "
-              >5</span
-            ></label
-          >
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value="5"
-            class="calc-slider"
-            id="chatSlider"
-          />
-          <div class="calc-range-labels">
-            <span>1 chat/day</span><span>10 chats/day</span>
-          </div>
-          <div class="calc-result">
-            <div
-              style="
-                font-size: 0.62rem;
-                color: var(--text-faint);
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                margin-bottom: 0.5rem;
-                font-family: var(--font-mono);
-              "
-            >
-              Monthly Estimate
-            </div>
-            <div class="calc-amount" id="monthlyResult">$450</div>
-            <div
-              style="
-                font-size: 0.85rem;
-                color: var(--text-muted);
-                margin-top: 0.35rem;
-              "
-            >
-              Based on <span id="calcChats">5</span> chats × $3 × 30 days
-            </div>
-            <div class="calc-breakdown">
-              <div>
-                <div class="calc-bd-val" id="bdDaily">$15</div>
-                <div class="calc-bd-lbl">Daily</div>
-              </div>
-              <div>
-                <div class="calc-bd-val" id="bdWeekly">$105</div>
-                <div class="calc-bd-lbl">Weekly</div>
-              </div>
-              <div>
-                <div class="calc-bd-val" id="bdMonthly">$450</div>
-                <div class="calc-bd-lbl">Monthly</div>
-              </div>
-            </div>
-          </div>
-          <div style="text-align: center; margin-top: 2rem">
-            <a
-              href="javascript:void(0)"
-              class="btn btn-primary btn-lg register-link"
-              data-url="https://mulastar.com/register.php?ref=Sydney"
-              ><i class="fas fa-chart-line"></i> Start Earning at This Rate</a
-            >
           </div>
         </div>
       </div>
@@ -3262,7 +3190,7 @@
           <div id="chatRequestsList"></div>
           <div class="section-image">
             <img
-              src="https://res.cloudinary.com/dovhxt8ye/image/upload/f_auto,q_auto/v1771489747/chat-Image_qfjvoy.jpg"
+              src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1771731493/Earn_money_chatting_with_lonely_people_oatsrl.png"
               alt="Person chatting online"
               loading="lazy"
             />
@@ -3271,251 +3199,150 @@
       </div>
     </section>
 
-    <!-- WHY MULASTAR -->
-    <section class="why-section section">
-      <div
-        class="container"
-        style="
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 3rem;
-          align-items: center;
-        "
-      >
-        <div>
+    <!-- WHY MULASTAR — REDESIGNED -->
+    <section class="why-section section" id="features">
+      <div class="container">
+        <div class="section-head center fade-up">
           <div class="section-label">Why Mulastar</div>
           <h2 class="section-title">Built for <em>real earners</em></h2>
-          <p class="section-sub" style="margin-bottom: 2rem">
+          <p class="section-sub">
             No gimmicks — a fair platform that pays you for genuine conversation
             and your time.
           </p>
-          <ul class="reasons-list">
-            <li class="reason fade-up">
-              <div class="reason-num">01</div>
-              <div>
-                <div class="reason-title">Low Startup Cost</div>
-                <p class="reason-desc">
-                  One-time $5 activation. No monthly fees, no hidden charges —
-                  ever.
-                </p>
-              </div>
-            </li>
-            <li class="reason fade-up" style="transition-delay: 0.1s">
-              <div class="reason-num">02</div>
-              <div>
-                <div class="reason-title">Fully Flexible Schedule</div>
-                <p class="reason-desc">
-                  Work during breaks, evenings, or weekends. No fixed hours.
-                  You're in control.
-                </p>
-              </div>
-            </li>
-            <li class="reason fade-up" style="transition-delay: 0.2s">
-              <div class="reason-num">03</div>
-              <div>
-                <div class="reason-title">Global Connections</div>
-                <p class="reason-desc">
-                  Meet fascinating people from 150+ countries and expand your
-                  worldview while earning.
-                </p>
-              </div>
-            </li>
-            <li class="reason fade-up" style="transition-delay: 0.3s">
-              <div class="reason-num">04</div>
-              <div>
-                <div class="reason-title">Reliable Weekly Payments</div>
-                <p class="reason-desc">
-                  Paid every week via PayPal, bank transfer, M-Pesa, MTN, or
-                  Airtel Money.
-                </p>
-              </div>
-            </li>
-          </ul>
         </div>
-      </div>
-    </section>
 
-    <!-- FEATURES -->
-    <section class="features-section section" id="features">
-      <div class="container">
-        <div class="section-head center fade-up">
-          <div class="section-label">Platform</div>
-          <h2 class="section-title">Everything you need to <em>succeed</em></h2>
+        <!-- BENTO REASONS GRID -->
+        <div class="why-bento">
+          <div class="why-card fade-up">
+            <div class="why-card-num">01</div>
+            <div class="why-card-icon"><i class="fas fa-wallet"></i></div>
+            <div>
+              <div class="why-card-label">Cost</div>
+              <div class="why-card-title">Low Startup Cost</div>
+            </div>
+            <p class="why-card-desc">
+              One-time $5 activation. No monthly fees, no hidden charges — ever.
+              Most earners recover this within their first chat session.
+            </p>
+            <span class="why-card-stat"
+              ><i class="fas fa-check-circle"></i> Pay once, earn forever</span
+            >
+          </div>
+          <div class="why-card fade-up" style="transition-delay: 0.08s">
+            <div class="why-card-num">02</div>
+            <div class="why-card-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="why-card-label">Flexibility</div>
+              <div class="why-card-title">Fully Flexible Schedule</div>
+            </div>
+            <p class="why-card-desc">
+              Work during breaks, evenings, or weekends. No fixed hours, no
+              boss. You decide exactly when and how much you earn.
+            </p>
+            <span class="why-card-stat"
+              ><i class="fas fa-moon"></i> Work anytime, anywhere</span
+            >
+          </div>
+          <div class="why-card fade-up" style="transition-delay: 0.16s">
+            <div class="why-card-num">03</div>
+            <div class="why-card-icon"><i class="fas fa-globe-africa"></i></div>
+            <div>
+              <div class="why-card-label">Network</div>
+              <div class="why-card-title">Global Connections</div>
+            </div>
+            <p class="why-card-desc">
+              Meet fascinating people from 150+ countries and expand your
+              worldview — all while getting paid for the conversation.
+            </p>
+            <span class="why-card-stat"
+              ><i class="fas fa-globe"></i> 150+ countries</span
+            >
+          </div>
+          <div class="why-card fade-up" style="transition-delay: 0.24s">
+            <div class="why-card-num">04</div>
+            <div class="why-card-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div>
+              <div class="why-card-label">Payments</div>
+              <div class="why-card-title">Reliable Daily Payouts</div>
+            </div>
+            <p class="why-card-desc">
+              Paid every day via PayPal, bank transfer, M-Pesa, MTN, or Airtel
+              Money. Zero withdrawal fees, always on time.
+            </p>
+            <span class="why-card-stat"
+              ><i class="fas fa-calendar-check"></i> Every day</span
+            >
+          </div>
         </div>
-        <div class="features-grid">
-          <div class="feature-card fade-up">
-            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3 class="feature-title">Safe Environment</h3>
-            <p class="feature-desc">
-              All conversations are monitored for safety. Your privacy is
-              protected and interactions stay respectful at all times.
-            </p>
-          </div>
-          <div class="feature-card fade-up" style="transition-delay: 0.05s">
-            <div class="feature-icon"><i class="fas fa-clock"></i></div>
-            <h3 class="feature-title">Flexible Hours</h3>
-            <p class="feature-desc">
-              Set your availability, go online when it suits you, and earn on
-              your own schedule — day or night, 24/7.
-            </p>
-          </div>
-          <div class="feature-card fade-up" style="transition-delay: 0.1s">
-            <div class="feature-icon"><i class="fas fa-globe"></i></div>
-            <h3 class="feature-title">Global Reach</h3>
-            <p class="feature-desc">
-              Connect with people from 150+ countries. Language options
-              available for non-English speakers too.
-            </p>
-          </div>
-          <div class="feature-card fade-up" style="transition-delay: 0.15s">
-            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-            <h3 class="feature-title">Instant Setup</h3>
-            <p class="feature-desc">
-              From registration to your first chat in under an hour. No training
-              required — just be yourself and start chatting.
-            </p>
-          </div>
-          <div class="feature-card fade-up" style="transition-delay: 0.2s">
-            <div class="feature-icon"><i class="fas fa-wallet"></i></div>
-            <h3 class="feature-title">Multiple Payouts</h3>
-            <p class="feature-desc">
-              Withdraw via PayPal, bank transfer, M-Pesa, MTN Money, Airtel
-              Money, and other local options.
-            </p>
-          </div>
-          <div class="feature-card fade-up" style="transition-delay: 0.25s">
-            <div class="feature-icon"><i class="fas fa-headset"></i></div>
-            <h3 class="feature-title">24/7 Support</h3>
-            <p class="feature-desc">
-              Our team is always available on WhatsApp and email to guide you
-              through any issue, any time of day.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Q&A -->
-    <section class="qa-section section" id="your-questions">
-      <div class="container">
-        <div class="section-head center fade-up">
-          <div class="section-label">Transparency</div>
-          <h2 class="section-title">
-            Your questions, <em>answered honestly</em>
-          </h2>
-          <p class="section-sub">
-            No fluff — here's how Mulastar really works.
-          </p>
-        </div>
-        <div class="qa-grid">
-          <div>
-            <div class="qa-item fade-up">
-              <h4>
-                <i class="fas fa-shield-alt"></i> Is this legitimate or a scam?
-              </h4>
-              <p>
-                100% real. Over 15,000 active earners are paid weekly. We've
-                paid out over $2.5 million to members globally. Check our
-                <a href="#faq">FAQs</a> for details.
-              </p>
-            </div>
-            <div class="qa-item fade-up">
-              <h4>
-                <i class="fas fa-chart-line"></i> How much can I realistically
-                earn?
-              </h4>
-              <p>
-                You earn a flat $3 per completed chat. Our calculator shows: 5
-                chats/day ≈ $450/month. 10 chats/day ≈ $900/month. It depends on
-                your effort.
-              </p>
-            </div>
-            <div class="qa-item fade-up">
-              <h4>
-                <i class="fas fa-comment-dots"></i> What do I actually do?
-              </h4>
-              <p>
-                Have friendly conversations — about culture, travel, life
-                advice, hobbies. No experience needed. Just be yourself and chat
-                like you would with a friend.
-              </p>
-            </div>
-            <div class="qa-item fade-up">
-              <h4>
-                <i class="fas fa-mobile-alt"></i> What equipment do I need?
-              </h4>
-              <p>
-                Just a smartphone and internet connection. No laptop or special
-                gear required. You can do it from anywhere in the world.
-              </p>
-            </div>
-            <div class="qa-item fade-up">
-              <h4>
-                <i class="fas fa-globe-africa"></i> Available across Africa?
-              </h4>
-              <p>
-                Yes! Thousands of earners across Kenya, Nigeria, Ghana, Uganda,
-                Tanzania, South Africa and beyond. Withdraw directly to M-Pesa
-                and local mobile money.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div class="info-box fade-up">
+        <!-- INFO BOXES — Side by Side -->
+        <div class="why-info-row">
+          <div class="info-box fade-up">
+            <div class="info-box-header">
               <div class="info-box-icon">
                 <i class="fas fa-hand-holding-heart"></i>
               </div>
-              <h3>Why is there a registration fee?</h3>
-              <p>The one-time $5 fee is an activation charge that covers:</p>
-              <ul class="info-box-list">
-                <li>
-                  <i class="fas fa-check-circle"></i> Account verification to
-                  block bots & scammers
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i> Platform maintenance and
-                  24/7 support infrastructure
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i> Access to our global
-                  network of active clients
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i> Premium chat matching and
-                  profile placement
-                </li>
-              </ul>
-              <div class="note">
-                Zero hidden fees or monthly subscriptions after activation — you
-                pay once, that's it.
+              <div class="info-box-header-text">
+                <h3>Why is there a registration fee?</h3>
+                <p>One-time $5 activation covers:</p>
               </div>
             </div>
-            <div class="info-box fade-up">
+            <div class="info-box-divider"></div>
+            <ul class="info-box-list">
+              <li>
+                <i class="fas fa-check-circle"></i> Account verification to
+                block bots & scammers
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Platform maintenance and
+                24/7 support infrastructure
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Access to our global network
+                of active clients
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Premium chat matching and
+                profile placement
+              </li>
+            </ul>
+            <div class="note">
+              <i class="fas fa-info-circle"></i> Zero hidden fees or monthly
+              subscriptions — you pay once, that's it.
+            </div>
+          </div>
+          <div class="info-box fade-up" style="transition-delay: 0.1s">
+            <div class="info-box-header">
               <div class="info-box-icon"><i class="fas fa-headset"></i></div>
-              <h3>Will I be guided when I join?</h3>
-              <p>Absolutely. You're never alone here.</p>
-              <ul class="info-box-list">
-                <li>
-                  <i class="fas fa-check-circle"></i> Step-by-step onboarding
-                  guides for new members
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i> 24/7 WhatsApp & email
-                  support from our team
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i> Active community of
-                  earners sharing tips
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i> Personal onboarding
-                  assistance for every new member
-                </li>
-              </ul>
-              <div class="note">
-                We succeed when you succeed — committed to your growth from day
-                one.
+              <div class="info-box-header-text">
+                <h3>Will I be guided when I join?</h3>
+                <p>Absolutely. You're never alone here.</p>
               </div>
+            </div>
+            <div class="info-box-divider"></div>
+            <ul class="info-box-list">
+              <li>
+                <i class="fas fa-check-circle"></i> Step-by-step onboarding
+                guides for new members
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> 24/7 WhatsApp & email
+                support from our team
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Active community of earners
+                sharing tips
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Personal onboarding
+                assistance for every new member
+              </li>
+            </ul>
+            <div class="note">
+              <i class="fas fa-heart"></i> We succeed when you succeed —
+              committed to your growth from day one.
             </div>
           </div>
         </div>
@@ -3604,7 +3431,7 @@
                   letter-spacing: 0.12em;
                   margin-bottom: 0.75rem;
                   font-weight: 700;
-                  font-family: var(--font-mono);
+                  font-family: var(--font-display);
                 "
               >
                 Support Hours
@@ -3752,7 +3579,6 @@
         const EARN = 3;
         const REG_URL = "https://mulastar.com/register.php?ref=Sydney";
 
-        // ── DATA ──
         const COUNTRIES = [
           {
             name: "Kenya",
@@ -3911,7 +3737,6 @@
             age: 62,
             occupation: "Retired Engineer",
             location: "Toronto, Canada",
-            location2: "Canada",
             rating: 4.6,
             chats: 42,
             availability: "Flexible",
@@ -3945,8 +3770,16 @@
             a: "Completely flexible. Even 30 minutes earns real money. Full-time: 10 chats/day = $900/month. Part-time: 3 chats/day = $270/month. You decide your own pace.",
           },
           {
-            q: "Is the $5 registration refundable?",
-            a: "The $5 activation fee is non-refundable as it covers account verification, platform setup, and your permanent access. However, most earners recover this within their first day of chatting.",
+            q: "Why pay $5 registration?",
+            a: "The $5 activation fee covers account verification, platform setup, and your permanent access. However, most earners recover this within their first day of chatting.",
+          },
+          {
+            q: "Can I do this from my phone?",
+            a: "Yes! Our platform is fully optimized for mobile. You can chat and manage your account from any smartphone with internet access.",
+          },
+          {
+            q: "Is this legitimate?",
+            a: "Yes, It is legally registered and currently operates in 12+ African countries. Over 15,000 active earners are paid daily. We've paid out over $2.5 million to members globally.",
           },
         ];
 
@@ -3974,12 +3807,11 @@
           },
         ];
 
-        // ── UTILS ──
         const $id = (id) => document.getElementById(id);
         const fmt = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         const stars = (r) => {
-          let s = "";
-          const f = Math.floor(r),
+          let s = "",
+            f = Math.floor(r),
             h = r % 1 >= 0.5;
           for (let i = 0; i < f; i++)
             s += '<i class="fas fa-star" style="color:var(--gold)"></i>';
@@ -4007,7 +3839,7 @@
           setTimeout(() => n.classList.remove("show"), 3500);
         };
 
-        // ── REGISTER LINKS ──
+        // REGISTER LINKS
         document.addEventListener("click", (e) => {
           const el = e.target.closest(".register-link");
           if (el) {
@@ -4016,7 +3848,7 @@
           }
         });
 
-        // ── MOBILE NAV ──
+        // MOBILE NAV
         const ham = $id("hamburger"),
           mNav = $id("mobileNav");
         ham?.addEventListener("click", () => {
@@ -4046,7 +3878,7 @@
           }
         });
 
-        // ── SCROLL ──
+        // SCROLL
         let lastY = 0;
         window.addEventListener(
           "scroll",
@@ -4066,7 +3898,7 @@
           { passive: true },
         );
 
-        // ── LIVE COUNT ──
+        // LIVE COUNT
         let lc = 1247;
         const lcEl = $id("liveCount");
         if (lcEl)
@@ -4075,7 +3907,7 @@
             lcEl.textContent = fmt(lc);
           }, 8000);
 
-        // ── COUNT ANIMATION ──
+        // COUNT ANIMATION
         const cntObs = new IntersectionObserver(
           (entries) => {
             entries.forEach((e) => {
@@ -4101,7 +3933,7 @@
           .querySelectorAll("[data-count]")
           .forEach((el) => cntObs.observe(el));
 
-        // ── FADE-UP ──
+        // FADE-UP
         const fadeObs = new IntersectionObserver(
           (entries) => {
             entries.forEach((e) => {
@@ -4114,32 +3946,33 @@
           .querySelectorAll(".fade-up")
           .forEach((el) => fadeObs.observe(el));
 
-        // ── TICKER ──
+        // TICKER
         const tickerItems = [
           "15,000+ Active Earners",
           "$2.5M+ Paid Out",
+          "$5 Registration Fee",
           "$3 Per Chat",
           "150+ Countries",
-          "Weekly Payouts",
+          "daily Payouts",
           "4.8★ Rating",
           "24/7 Support",
           "No Monthly Fees",
           "Instant Setup",
           "Flexible Hours",
           "M-Pesa Payouts",
+          "No withdrawal fees",
           "Chat from Anywhere",
         ];
         const track = $id("tickerTrack");
-        if (track) {
+        if (track)
           [...tickerItems, ...tickerItems].forEach((t) => {
             const s = document.createElement("span");
             s.className = "ticker-item";
             s.textContent = t;
             track.appendChild(s);
           });
-        }
 
-        // ── VIDEO MODAL ──
+        // VIDEO MODAL
         const wdb = $id("watchDemoBtn"),
           vm = $id("videoModal"),
           cvm = $id("closeVideoModal"),
@@ -4164,7 +3997,7 @@
           if (e.target === vm) closeVM();
         });
 
-        // ── COOKIE ──
+        // COOKIE
         if (!localStorage.getItem("cookieConsent"))
           setTimeout(() => $id("cookieBar")?.classList.add("show"), 3000);
         $id("acceptCookies")?.addEventListener("click", () => {
@@ -4176,67 +4009,23 @@
           $id("cookieBar")?.classList.remove("show");
         });
 
-        // ── ESC KEY ──
+        // ESC KEY
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") {
             closeVM();
             closeModal();
             closeChatModal();
+            closeOfferModal();
           }
         });
 
-        // ── CALCULATOR ──
-        const slider = $id("chatSlider");
-        if (slider) {
-          const update = () => {
-            const c = parseInt(slider.value),
-              d = c * EARN,
-              w = d * 7,
-              m = d * 30;
-            $id("sliderDisplay").textContent = c;
-            $id("calcChats").textContent = c;
-            $id("monthlyResult").textContent = "$" + fmt(m);
-            $id("bdDaily").textContent = "$" + fmt(d);
-            $id("bdWeekly").textContent = "$" + fmt(w);
-            $id("bdMonthly").textContent = "$" + fmt(m);
-          };
-          slider.addEventListener("input", update);
-          update();
-        }
+        // ═══════════════════════════════════════
+        // OFFER MODAL
+        // ═══════════════════════════════════════
+        const offerModalOverlay = $id("offerModalOverlay");
+        const offerModalClose = $id("offerModalClose");
 
-        // ── COUNTRIES ──
-        const cg = $id("countriesGrid");
-        if (cg) {
-          COUNTRIES.forEach((c, i) => {
-            const card = document.createElement("div");
-            card.className = "country-card fade-up";
-            card.style.transitionDelay = i * 0.04 + "s";
-            card.innerHTML = `
-      <div class="country-card-bg" style="background-image:url('${c.img}')"></div>
-      <div class="country-card-overlay"></div>
-      <div class="country-card-content">
-        <div class="country-flag">${c.flag}</div>
-        <div class="country-name">${c.name}</div>
-        <div class="country-fee-display">${c.regFee}</div>
-      </div>
-      <div class="country-select-btn"><i class="fas fa-arrow-right"></i></div>`;
-            card.addEventListener("click", () => {
-              document
-                .querySelectorAll(".country-card")
-                .forEach((x) => x.classList.remove("active"));
-              card.classList.add("active");
-              updateOffer(c);
-              $id("offer-section").scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            });
-            cg.appendChild(card);
-            fadeObs.observe(card);
-          });
-        }
-
-        function updateOffer(c) {
+        function openOfferModal(c) {
           $id("offerFlag").textContent = c.flag;
           $id("offerCountryName").textContent = c.name;
           $id("offerCountrySub").textContent =
@@ -4244,15 +4033,62 @@
           $id("offerOldPrice").textContent = c.markedPrice;
           $id("offerNewPrice").textContent = c.regFee;
           $id("offerDiscount").textContent = "Save " + c.discount + " Today";
+          $id("offerBadgeText").textContent =
+            c.discount + " OFF — LIMITED TIME";
+          $id("offerRibbon").textContent = c.discount + " OFF";
           $id("offerSavings").textContent =
             "💰 You save " + c.save + " — limited time!";
           $id("offerUrgency").textContent = c.urgency;
           $id("offerPayment").textContent = c.payment;
           $id("offerCtaText").textContent = "Register Now — " + c.regFee;
-          $id("offerCardHeader").style.backgroundImage = `url('${c.img}')`;
+          $id("offerModalHeader").style.backgroundImage = `url('${c.img}')`;
+          offerModalOverlay.classList.add("show");
+          document.body.style.overflow = "hidden";
+        }
+        function closeOfferModal() {
+          offerModalOverlay?.classList.remove("show");
+          document.body.style.overflow = "";
+        }
+        offerModalClose?.addEventListener("click", closeOfferModal);
+        offerModalOverlay?.addEventListener("click", (e) => {
+          if (e.target === offerModalOverlay) closeOfferModal();
+        });
+
+        // Track selected country from countries section
+        // Default to Kenya if no country selected
+        window._selectedCountry = COUNTRIES[0];
+
+        // COUNTRIES
+        const cg = $id("countriesGrid");
+        if (cg) {
+          COUNTRIES.forEach((c, i) => {
+            const card = document.createElement("div");
+            card.className = "country-card fade-up";
+            card.style.transitionDelay = i * 0.04 + "s";
+            card.innerHTML = `
+            <div class="country-card-bg" style="background-image:url('${c.img}')"></div>
+            <div class="country-card-overlay"></div>
+            <div class="country-card-content">
+              <div class="country-flag">${c.flag}</div>
+              <div class="country-name">${c.name}</div>
+              <div class="country-fee-display">${c.regFee}</div>
+            </div>
+            <div class="country-select-btn"><i class="fas fa-arrow-right"></i></div>`;
+            card.addEventListener("click", () => {
+              document
+                .querySelectorAll(".country-card")
+                .forEach((x) => x.classList.remove("active"));
+              card.classList.add("active");
+              // Store selected country globally so chat flow can use it
+              window._selectedCountry = c;
+              openOfferModal(c);
+            });
+            cg.appendChild(card);
+            fadeObs.observe(card);
+          });
         }
 
-        // ── PROFILE MODAL ──
+        // PROFILE MODAL
         let currentProfile = null;
         const modalOverlay = $id("profileModal"),
           modalClose = $id("modalClose"),
@@ -4264,13 +4100,13 @@
           if (!p) return;
           currentProfile = p;
           modalBody.innerHTML = `
-    <div class="modal-hero"><img src="${p.image}" alt="${p.name}" class="modal-avatar" width="76" height="76"/>
-    <div><div class="modal-name">${p.name}, ${p.age}</div><div class="modal-sub">${p.occupation} · ${p.location}</div>
-    <div style="color:var(--gold);font-size:0.78rem;margin-top:0.3rem">${stars(p.rating)} <span style="color:var(--text-muted)">${p.rating} · ${p.chats} chats</span></div></div></div>
-    <div class="modal-section"><div class="modal-section-title">About</div><p class="modal-bio">${p.bio}</p></div>
-    <div class="modal-section"><div class="modal-section-title">Interests</div><div class="modal-tags">${p.interests.map((i) => `<span class="modal-tag">${i}</span>`).join("")}</div></div>
-    <div class="modal-section"><div class="modal-section-title">Languages</div><div class="modal-tags">${p.languages.map((l) => `<span class="modal-tag">${l}</span>`).join("")}</div></div>
-    <div class="modal-section"><div class="modal-section-title">Availability & Rate</div><p style="font-size:0.875rem;color:var(--text-muted)">${p.availability} · <span style="color:var(--green);font-weight:700">$3 per chat</span></p></div>`;
+          <div class="modal-hero"><img src="${p.image}" alt="${p.name}" class="modal-avatar" width="76" height="76"/>
+          <div><div class="modal-name">${p.name}, ${p.age}</div><div class="modal-sub">${p.occupation} · ${p.location}</div>
+          <div style="color:var(--gold);font-size:.78rem;margin-top:.3rem">${stars(p.rating)} <span style="color:var(--text-muted)">${p.rating} · ${p.chats} chats</span></div></div></div>
+          <div class="modal-section"><div class="modal-section-title">About</div><p class="modal-bio">${p.bio}</p></div>
+          <div class="modal-section"><div class="modal-section-title">Interests</div><div class="modal-tags">${p.interests.map((i) => `<span class="modal-tag">${i}</span>`).join("")}</div></div>
+          <div class="modal-section"><div class="modal-section-title">Languages</div><div class="modal-tags">${p.languages.map((l) => `<span class="modal-tag">${l}</span>`).join("")}</div></div>
+          <div class="modal-section"><div class="modal-section-title">Availability & Rate</div><p style="font-size:.875rem;color:var(--text-muted)">${p.availability} · <span style="color:var(--green);font-weight:700">$3 per chat</span></p></div>`;
           modalOverlay.classList.add("show");
           document.body.style.overflow = "hidden";
         }
@@ -4300,7 +4136,7 @@
           );
         });
 
-        // ── PROFILES GRID ──
+        // PROFILES GRID
         const pg = $id("profilesGrid");
         if (pg) {
           PROFILES.forEach((p) => {
@@ -4314,21 +4150,21 @@
                   : "badge-new";
             const bl = p.status.charAt(0).toUpperCase() + p.status.slice(1);
             card.innerHTML = `
-      <div class="profile-card-top-bar"></div>
-      <div class="profile-head"><span class="profile-badge ${bc}">${bl}</span><span class="online-dot ${p.online ? "on" : "off"}"></span></div>
-      <div class="profile-body">
-        <img src="${p.image}" alt="${p.name}" class="profile-avatar" loading="lazy" width="56" height="56"/>
-        <div><div class="profile-name">${p.name}, ${p.age}</div><div class="profile-meta">${p.occupation}<br/>${p.location}</div>
-        <div class="profile-rating">${stars(p.rating)} <span style="color:var(--text-faint);font-size:0.68rem;margin-left:0.2rem">${p.rating}</span></div></div>
-      </div>
-      <div class="profile-chips">${p.interests
-        .slice(0, 3)
-        .map((i) => `<span class="chip">${i}</span>`)
-        .join("")}</div>
-      <div class="profile-actions">
-        <button class="btn-card btn-card-primary open-chat-btn"><i class="fas fa-comment"></i> Chat</button>
-        <button class="btn-card btn-card-ghost view-detail-btn"><i class="fas fa-eye"></i> Details</button>
-      </div>`;
+            <div class="profile-card-top-bar"></div>
+            <div class="profile-head"><span class="profile-badge ${bc}">${bl}</span><span class="online-dot ${p.online ? "on" : "off"}"></span></div>
+            <div class="profile-body">
+              <img src="${p.image}" alt="${p.name}" class="profile-avatar" loading="lazy" width="56" height="56"/>
+              <div><div class="profile-name">${p.name}, ${p.age}</div><div class="profile-meta">${p.occupation}<br/>${p.location}</div>
+              <div class="profile-rating">${stars(p.rating)} <span style="color:var(--text-faint);font-size:.68rem;margin-left:.2rem">${p.rating}</span></div></div>
+            </div>
+            <div class="profile-chips">${p.interests
+              .slice(0, 3)
+              .map((i) => `<span class="chip">${i}</span>`)
+              .join("")}</div>
+            <div class="profile-actions">
+              <button class="btn-card btn-card-primary open-chat-btn"><i class="fas fa-comment"></i> Chat</button>
+              <button class="btn-card btn-card-ghost view-detail-btn"><i class="fas fa-eye"></i> Details</button>
+            </div>`;
             card
               .querySelector(".open-chat-btn")
               .addEventListener("click", (e) => {
@@ -4347,7 +4183,8 @@
           });
         }
 
-        // ── CHAT MODAL ──
+        // CHAT MODAL
+        // After first reply → close chat → open offer modal (not direct redirect)
         let chatProfile = null,
           chatReplied = false,
           chatTypingTimeout = null;
@@ -4367,7 +4204,6 @@
           chatInput.value = "";
           chatOverlay.classList.add("show");
           document.body.style.overflow = "hidden";
-          // Show typing indicator then first message
           const typing = addTypingIndicator();
           setTimeout(() => {
             typing.remove();
@@ -4408,7 +4244,6 @@
           chatMsgs.scrollTop = chatMsgs.scrollHeight;
           return div;
         }
-
         function sendReply() {
           const text = chatInput.value.trim();
           if (!text) return;
@@ -4416,10 +4251,6 @@
           addMsg("me", text);
           if (!chatReplied) {
             chatReplied = true;
-            // Show earn notice
-            const en = $id("chatEarnNotice");
-            if (en) en.style.background = "var(--blue-light)";
-            // Typing then redirect message
             chatTypingTimeout = setTimeout(() => {
               const t = addTypingIndicator();
               setTimeout(() => {
@@ -4428,28 +4259,23 @@
                   "them",
                   "That's wonderful! I'd love to continue this conversation. To unlock full chat access and start earning, please complete your registration — it only takes a moment! 🎉",
                 );
+                // ─── KEY CHANGE: Open offer modal instead of direct redirect ───
                 setTimeout(() => {
                   closeChatModal();
-                  $id("offer-section").scrollIntoView({ behavior: "smooth" });
-                  showNotif(
-                    "To continue chatting, register your account to start earning $3 per chat 🎉",
-                  );
-                  setTimeout(
-                    () => redirect("Preparing your account…", REG_URL),
-                    2800,
-                  );
+                  // Use the country the user selected, or default to Kenya
+                  const country = window._selectedCountry || COUNTRIES[0];
+                  openOfferModal(country);
                 }, 2200);
               }, 1600);
             }, 600);
           }
         }
-
         chatSend?.addEventListener("click", sendReply);
         chatInput?.addEventListener("keypress", (e) => {
           if (e.key === "Enter") sendReply();
         });
 
-        // ── CHAT REQUESTS ──
+        // CHAT REQUESTS
         const crl = $id("chatRequestsList");
         let reqList = [...CHAT_REQUESTS];
         function renderRequests() {
@@ -4459,29 +4285,29 @@
             const card = document.createElement("div");
             card.className = "request-card";
             card.innerHTML = `
-      <div class="request-head">
-        <img src="${r.img}" alt="${r.name}" class="request-avatar" loading="lazy" width="40" height="40"/>
-        <div><div class="request-name">${r.name} from ${r.country}</div><div class="request-loc"><i class="fas fa-map-marker-alt" style="font-size:0.65rem;color:var(--blue)"></i> ${r.country}</div></div>
-        <span class="request-earn">+$${EARN}</span>
-      </div>
-      <div class="request-body"><i class="fas fa-comment-alt" style="color:var(--blue);margin-right:0.35rem;font-size:0.72rem"></i>${r.topic}</div>
-      <div class="request-foot">
-        <button class="btn btn-primary" style="font-size:0.78rem;padding:0.4rem 0.875rem" onclick="acceptReq(this,'${r.name}')"><i class="fas fa-check"></i> Accept</button>
-        <span class="request-time"><i class="fas fa-clock"></i>${r.time}</span>
-      </div>`;
+            <div class="request-head">
+              <img src="${r.img}" alt="${r.name}" class="request-avatar" loading="lazy" width="40" height="40"/>
+              <div><div class="request-name">${r.name} from ${r.country}</div><div class="request-loc"><i class="fas fa-map-marker-alt" style="font-size:.65rem;color:var(--blue)"></i> ${r.country}</div></div>
+              <span class="request-earn">+$${EARN}</span>
+            </div>
+            <div class="request-body"><i class="fas fa-comment-alt" style="color:var(--blue);margin-right:.35rem;font-size:.72rem"></i>${r.topic}</div>
+            <div class="request-foot">
+              <button class="btn btn-primary" style="font-size:.78rem;padding:.4rem .875rem" onclick="acceptReq(this,'${r.name}')"><i class="fas fa-check"></i> Accept</button>
+              <span class="request-time"><i class="fas fa-clock"></i>${r.time}</span>
+            </div>`;
             crl.appendChild(card);
           });
         }
         window.acceptReq = (btn, name) => {
           btn.innerHTML = '<i class="fas fa-check"></i> Accepted';
           btn.disabled = true;
-          btn.style.opacity = "0.6";
+          btn.style.opacity = ".6";
           showNotif(`Accepted chat from ${name}! Register to start.`);
           setTimeout(() => {
             const c = btn.closest(".request-card");
             if (c) {
               c.style.opacity = "0";
-              c.style.transition = "all 0.3s";
+              c.style.transition = "all .3s";
               setTimeout(() => {
                 c.remove();
                 addRandReq();
@@ -4519,12 +4345,12 @@
               "Hobbies & interests 🎯",
             ];
           const n = names[Math.floor(Math.random() * names.length)],
-            c = countries[Math.floor(Math.random() * countries.length)],
+            c2 = countries[Math.floor(Math.random() * countries.length)],
             t = topics[Math.floor(Math.random() * topics.length)];
           reqList = [
             {
               name: n,
-              country: c,
+              country: c2,
               topic: t,
               time: "Just now",
               img: `https://i.pravatar.cc/48?img=${Math.floor(Math.random() * 70) + 1}`,
@@ -4538,7 +4364,7 @@
           if (Math.random() > 0.6) addRandReq();
         }, 30000);
 
-        // ── FAQ ──
+        // FAQ
         const fc = $id("faqContainer");
         if (fc) {
           FAQS.forEach((f) => {
@@ -4564,7 +4390,7 @@
           });
         }
 
-        // ── SOCIAL PROOF ──
+        // SOCIAL PROOF
         const spNames = [
           "Sarah from Nairobi",
           "John from Lagos",
@@ -4597,7 +4423,7 @@
         setTimeout(showSP, 12000);
         setInterval(showSP, 10000);
 
-        // ── SMOOTH SCROLL ──
+        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach((a) => {
           a.addEventListener("click", (e) => {
             const id = a.getAttribute("href").slice(1),
